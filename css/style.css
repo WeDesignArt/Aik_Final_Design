@@ -2769,14 +2769,14 @@ header .logo {
         padding-right: 34px;
     }
     .custom_adjustment{
-      height: 1000px;
+      height: 900px;
     }
     .index_custom .interest_section {
-        bottom: -242px;
+        bottom: -126px;
         left: 28px;
     }
     .index_custom .logo_arch {
-        top: 95%;
+        top: 79%;
         width: 690px;
     }
 
@@ -2789,7 +2789,7 @@ header .logo {
         }
 
     .interest_section {
-        bottom: -320px;
+        bottom: -300px;
         left: -13px;
     }
 
@@ -2809,6 +2809,13 @@ header .logo {
         bottom: 74%;
         left: -30%;
       }
+
+      .mobile_track .mobile_pill.pill_left {
+        left: -3%;
+    }
+        .mobile_track .mobile_pill.pill_right {
+        right: 6%;
+        }
 
 
 }
@@ -2901,7 +2908,7 @@ header .logo {
     display: flex;
     align-items: center;
     border: 2px solid #e5e5e5;
-    border-radius: 50px;
+    border-radius: 24px;
     padding: 6px 6px 6px 22px;
     gap: 12px;
     margin-bottom: 28px;
@@ -3056,7 +3063,7 @@ header .logo {
     }
     .srch-input-wrap {
         padding: 4px 4px 4px 16px;
-        gap: 8px;
+        gap: 4px;
         margin-bottom: 20px;
     }
     .srch-input {
@@ -3064,8 +3071,8 @@ header .logo {
         padding: 8px 0;
     }
     .srch-submit-btn {
-        padding: 10px 16px;
-        font-size: 14px;
+        padding: 10px 14px;
+        font-size: 12px;
     }
     .srch-popular {
         gap: 8px;
