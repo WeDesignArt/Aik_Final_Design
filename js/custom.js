@@ -320,35 +320,3 @@ const testimonialSwiper = new Swiper("#testimonialSwiper", {
     },
   },
 });
-
-// ============================================================
-// Search Drawer
-// ============================================================
-(function () {
-  var overlay   = document.getElementById("searchOverlay");
-  var input     = document.getElementById("searchInput");
-  var searchBtn = document.querySelector(".search-btn");
-  var closeBtn  = document.getElementById("searchClose");
-  var backdrop  = document.querySelector(".srch-backdrop");
-
-  if (!overlay || !searchBtn) return;
-
-  function openSearch() {
-    overlay.classList.add("is-open");
-    document.body.style.overflow = "hidden";
-    setTimeout(function () { if (input) input.focus(); }, 440);
-  }
-
-  function closeSearch() {
-    overlay.classList.remove("is-open");
-    document.body.style.overflow = "";
-    if (input) input.value = "";
-  }
-
-  searchBtn.addEventListener("click", openSearch);
-  if (closeBtn)   closeBtn.addEventListener("click", closeSearch);
-  if (backdrop)   backdrop.addEventListener("click", closeSearch);
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && overlay.classList.contains("is-open")) closeSearch();
-  });
-})();

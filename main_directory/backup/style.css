@@ -11,55 +11,6 @@
 }
 
 
-
-/* ===================DEBIT CARD PAGE===================== */
-
-/* Hero caption — own class, not reusing .mobile_track (that class
-   carries the phone-mockup's breakpoint width/position rules used
-   on index.html / business.html, which is what made this heading
-   jump around at different resolutions). Centered over .hero_img
-   with plain flex centering so it stays consistent at every size. */
-.debit-hero-caption {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  pointer-events: none;
-}
-
-.debit-hero-caption h1 {
-  color: #fff;
-  font-size: 4rem;
-  margin: 0;
-}
-
-.debit-hero-caption h1 span {
-  color: var(--aik-yellow);
-}
-
-@media (max-width: 991px) {
-  .debit-hero-caption h1 {
-    font-size: 2.75rem;
-  }
-}
-
-@media (max-width: 575px) {
-  .debit-hero-caption h1 {
-    font-size: 2rem;
-  }
-}
-
-.debit_custom_smarter-sec h2 {
-  color: var(--aik-green) !important;
-}
-.debit_custom_smarter-sec p{
-  color: #000 !important;
-}
-
-
 /* Transaction Section */
 
 
@@ -1046,9 +997,6 @@ footer.aik-footer {
   line-height: 1.2;
   margin-bottom: 18px;
 }
-.md-news-title span {
-  color: var(--aik-yellow);
-}
 
 .md-news-subtitle {
   margin: 0 auto;
@@ -1168,100 +1116,6 @@ footer.aik-footer {
   .md-news__title {
     font-size: 1.3rem;
   }
-}
-
-/* ==========================================
-   ORDER STEPS (debit-card.html "How to Order")
-   New class on top of .news-single-content so
-   other pages using that class stay untouched
-========================================== */
-
-.order-steps .step-info {
-  height: auto;
-  min-height: unset;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 14px;
-  padding: 18px 22px;
-}
-
-.order-steps .step-info__num {
-    flex: 0 0 auto;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--aik-yellow);
-    color: #065258;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 35px;
-    border-radius: 50%;
-    font-weight: 700;
-
-}
-
-.order-steps .step-info__body {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.order-steps .step-info__title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--aik-yellow);
-  margin: 0 0 4px;
-  -webkit-line-clamp: unset;
-  line-clamp: unset;
-}
-
-.order-steps .step-info__desc {
-  font-size: 13px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
-}
-
-@media (max-width: 767px) {
-  .order-steps .step-info {
-    padding: 14px 18px;
-    gap: 10px;
-  }
-
-  .order-steps .step-info__title {
-    font-size: 16px;
-  }
-}
-
-.order-steps .step-info--green .step-info__num {
-  background: var(--aik-green);
-  color: var(--aik-yellow);
-}
-
-.step-info--green .step-info__num p{
-  color: var(--aik-green) !important;
-}
-
-.order-steps .step-info--green .step-info__title {
-  color: var(--aik-green);
-}
-
-.order-steps .step-info--green .step-info__desc {
-  color: var(--aik-green);
-}
-
-/* Keep decorative grid graphics behind the card content on this section */
-.md-news-section .container {
-  position: relative;
-  z-index: 2;
-}
-
-.md-news-section .grid-left,
-.md-news-section .grid-right {
-  z-index: 0;
 }
 
 
@@ -1750,7 +1604,7 @@ footer.aik-footer {
 }
 
 .smarter-sec__heading {
-  font-size: 56px;
+  font-size: 58px;
   font-weight: 800;
   color: #fff;
   line-height: 1.1;
@@ -1768,23 +1622,6 @@ footer.aik-footer {
   margin: 0 0 40px;
   max-width: 420px;
 }
-
-.smarter-sec__desc li{
-  margin-bottom: 10px;
-}
-
-.smarter-sec__desc li::marker {
-  color: var(--aik-yellow); /* Sirf bullets red hon gi */
-  font-size: 1.2rem; /* Bullets ka size bhi bara kar sakte hain */
-}
-
-
-.smarter-sec__desc li span{
-color: var(--aik-yellow);
-font-weight: 700;
-font-size: 17px;
-}
-
 
 .smarter-sec__btns {
   display: flex;
@@ -1816,29 +1653,6 @@ font-size: 17px;
 .smarter-sec__right img {
   display: block;
 
-}
-
-/* ==========================================
-   WHY CHOOSE THE AIK CARD (debit-card.html)
-   New class so it only affects this section
-   and doesn't touch other .smarter-sec usages
-========================================== */
-
-.why-choose-sec {
-  align-items: flex-end;
-}
-
-.why-choose-sec .smarter-sec__inner {
-  padding-bottom: 0;
-}
-
-.why-choose-sec .smarter-sec__right {
-  align-items: flex-end;
-}
-
-.why-choose-sec .smarter-sec__right img {
-  display: block;
-  margin-bottom: 0;
 }
 
 /* ==========================================
@@ -3411,39 +3225,4 @@ header .logo {
   .footer-acc-body .aik-footer__social {
     margin-bottom: 14px;
   }
-}
-
-/* ── Off-canvas menu — "Features" dropdown ───────────────── */
-/* main.css sets .children{display:none} permanently, but app.js's GSAP
-   accordion only animates height (no display toggle), so the submenu
-   stayed invisible on click. Force display:block and let height:0 +
-   overflow:hidden hold it collapsed until GSAP tweens the height open. */
-#menu.menuNav > li.has-children > ul.children {
-  display: block;
-  height: 0;
-  overflow: hidden;
-}
-
-#menu.menuNav > li.has-children > ul.children li a {
-  color: var(--aik-yellow);
-}
-
-/* Theme's default ::after chevron (main.css .has-children:after) is
-   --primary_color (#065258) on a #065258-tinted backdrop, so it's
-   invisible. Hide it and use an explicit, visible chevron instead. */
-#menu.menuNav > li.has-children:after {
-  content: none;
-}
-
-#menu.menuNav > li.has-children > a .aik-menu-arrow {
-  color: var(--aik-yellow);
-  font-size: 0.7em;
-  margin-left: 8px;
-  display: inline-block;
-  transition: transform 0.4s ease;
-  vertical-align: middle;
-}
-
-#menu.menuNav > li.has-children.active > a .aik-menu-arrow {
-  transform: rotate(180deg);
 }

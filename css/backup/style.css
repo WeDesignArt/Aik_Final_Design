@@ -1210,7 +1210,7 @@ footer.aik-footer {
 
 .order-steps .step-info__title {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--aik-yellow);
   margin: 0 0 4px;
@@ -3411,39 +3411,4 @@ header .logo {
   .footer-acc-body .aik-footer__social {
     margin-bottom: 14px;
   }
-}
-
-/* ── Off-canvas menu — "Features" dropdown ───────────────── */
-/* main.css sets .children{display:none} permanently, but app.js's GSAP
-   accordion only animates height (no display toggle), so the submenu
-   stayed invisible on click. Force display:block and let height:0 +
-   overflow:hidden hold it collapsed until GSAP tweens the height open. */
-#menu.menuNav > li.has-children > ul.children {
-  display: block;
-  height: 0;
-  overflow: hidden;
-}
-
-#menu.menuNav > li.has-children > ul.children li a {
-  color: var(--aik-yellow);
-}
-
-/* Theme's default ::after chevron (main.css .has-children:after) is
-   --primary_color (#065258) on a #065258-tinted backdrop, so it's
-   invisible. Hide it and use an explicit, visible chevron instead. */
-#menu.menuNav > li.has-children:after {
-  content: none;
-}
-
-#menu.menuNav > li.has-children > a .aik-menu-arrow {
-  color: var(--aik-yellow);
-  font-size: 0.7em;
-  margin-left: 8px;
-  display: inline-block;
-  transition: transform 0.4s ease;
-  vertical-align: middle;
-}
-
-#menu.menuNav > li.has-children.active > a .aik-menu-arrow {
-  transform: rotate(180deg);
 }

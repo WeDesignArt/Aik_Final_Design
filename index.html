@@ -127,7 +127,15 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="javascript:void(0);">About Us</a></li>
           <li><a href="javascript:void(0);">Promotion Card</a></li>
-          <li><a href="javascript:void(0);">Features</a></li>
+          <li><a href="javascript:void(0);">Features <i class="bi bi-chevron-down aik-menu-arrow"></i></a>
+            <ul>
+              <li><a href="javascript:void(0);">Digital Account Opening</a></li>
+              <li><a href="javascript:void(0);">Money Transfer</a></li>
+              <li><a href="javascript:void(0);">Mobile Load</a></li>
+              <li><a href="javascript:void(0);">Utility Bill Payments</a></li>
+              <li><a href="debit-card.html">Debit Card</a></li>
+            </ul>
+          </li>
           <li><a href="javascript:void(0);">News Media</a></li>
           <li><a href="javascript:void(0);">Help</a></li>
           <li><a href="javascript:void(0);">Careers</a></li>
@@ -442,6 +450,7 @@
           </div>
         </div>
       </section>
+      
       <section class="app-dl-section bg_f" style="background-image:url(images/mob-app__section_bg.jpg)">
         <div class="container position-relative">
           <div class="app-dl-wrap">
@@ -716,6 +725,52 @@
       });
     });</script>
 
+
+  <!-- Mobile Footer Accordion -->
+  <script>
+    (function () {
+      function initFooterAccordion() {
+        if (window.innerWidth > 767) return;
+
+        var cols = document.querySelectorAll(
+          '.aik-footer__col:not(.aik-footer__col--brand):not(.aik-footer__col--app)'
+        );
+
+        cols.forEach(function (col) {
+          var firstHeading = col.querySelector('.aik-footer__heading');
+          if (!firstHeading || firstHeading.dataset.accInit) return;
+          firstHeading.dataset.accInit = 'true';
+
+          // Wrap all siblings after the first heading in a body div
+          var body = document.createElement('div');
+          body.className = 'footer-acc-body';
+
+          var toMove = [];
+          var sibling = firstHeading.nextElementSibling;
+          while (sibling) {
+            toMove.push(sibling);
+            sibling = sibling.nextElementSibling;
+          }
+          toMove.forEach(function (el) { body.appendChild(el); });
+          col.appendChild(body);
+
+          // Append yellow arrow to heading
+          var arrow = document.createElement('span');
+          arrow.className = 'footer-acc-arrow';
+          arrow.setAttribute('aria-hidden', 'true');
+          arrow.innerHTML = '<i class="bi bi-arrow-right"></i>';
+          firstHeading.appendChild(arrow);
+
+          // Toggle on click
+          firstHeading.addEventListener('click', function () {
+            col.classList.toggle('is-open');
+          });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', initFooterAccordion);
+    })();
+  </script>
 
   <script>
     (function () {
