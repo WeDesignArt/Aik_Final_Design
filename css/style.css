@@ -48,7 +48,7 @@
 
 @media (max-width: 575px) {
   .debit-hero-caption h1 {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 }
 
@@ -2931,9 +2931,13 @@ header .logo {
     justify-content: center;
 }
 .smarter-sec {
-        padding: 75px 0;
-           align-items: start;
-      }
+  padding: 75px 0;
+  align-items: start;
+}
+
+.debit_custom_why-choose-sec{
+  padding: 75px 0 0 !important;
+}
 
 
 }
