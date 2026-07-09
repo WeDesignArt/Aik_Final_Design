@@ -44,7 +44,7 @@
 
 .debit_hero_item{
 
-    min-height:60vh !important;
+    min-height:70vh !important;
 }
 
 /* laptop */
@@ -1388,7 +1388,7 @@ footer.aik-footer {
 
 .cf-section {
   padding: 100px 0;
-  background: #f3f3f3;
+  /* background: #f3f3f3; */
 }
 
 .cf-header h2 {
@@ -1873,6 +1873,21 @@ footer.aik-footer {
   margin: 0 0 40px;
   max-width: 420px;
 }
+
+.debit_custom_smarter-sec .smarter-sec__desc {
+
+    max-width: 600px !important;
+}
+.debit_custom_smarter-sec .smarter-sec__left{
+     max-width: 720px !important;
+}
+
+
+
+.deen-sec .smarter-sec__left {
+  max-width: 665px !important;
+}
+
 
 .smarter-sec__desc li{
   margin-bottom: 10px;
@@ -3656,12 +3671,12 @@ header .logo {
 }
 
 .pif-header {
-  max-width: 720px;
+  /* max-width: 720px; */
   margin: 0 auto 50px;
 }
 
 .pif-heading {
-  font-size: 2.75rem;
+  font-size: 4rem;
   font-weight: 800;
   color: var(--aik-green);
   line-height: 1.25;
@@ -3673,7 +3688,7 @@ header .logo {
 }
 
 .pif-subtext {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.7;
   color: #444;
   margin: 0;
@@ -3681,7 +3696,7 @@ header .logo {
 
 .pif-card {
   background: var(--aik-yellow);
-  border: 2px solid var(--aik-green);
+  /* border: 2px solid var(--aik-green); */
   border-radius: 30px;
   max-width: 960px;
   margin: 0 auto;
@@ -3693,7 +3708,7 @@ header .logo {
 .pif-card__title {
   text-align: center;
   color: var(--aik-green);
-  font-size: 1.85rem;
+  font-size: 3rem;
   font-weight: 800;
   margin: 0 0 40px;
 }
@@ -3713,7 +3728,7 @@ header .logo {
   display: block;
   color: var(--aik-green);
   font-weight: 700;
-  font-size: 14px;
+  font-size: 0.8vw;
   margin-bottom: 8px;
 }
 
@@ -4038,4 +4053,33 @@ header .logo {
   top: 0;
   right: 0;
   bottom: auto;
+}
+
+.grid-top-left {
+  top: 0;
+  left: 0;
+  bottom: auto;
+}
+
+.grid-bottom-right{
+  bottom: 0;
+  right: 0;
+  top: auto;
+} 
+
+
+
+
+
+@media (max-width: 767.98px) {
+  .connect-sec-custom {
+    padding: 75px 0 0 !important;
+    align-items: flex-end;
+  }
+}
+
+.deen-smarter-sec .smarter-sec__inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
