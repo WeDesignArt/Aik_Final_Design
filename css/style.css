@@ -4092,3 +4092,36 @@ header .logo {
   align-items: flex-end;
   justify-content: flex-end;
 }
+
+@media (max-width: 1399px){
+  .app-dl-right img {
+    max-height: 650px;
+  }
+
+  .app-dl-heading {
+    font-size: 4rem;
+  }
+  .app-dl-logo img {
+    
+    max-width: 220px;
+  }
+  .app-dl-diamond {
+        position: absolute;
+        /* inset: 0; */
+        z-index: 0;
+        pointer-events: none;
+        right: -167px;
+        /* bottom: 0; */
+        width: 116%;
+        /* height: 83%; */
+        object-fit: cover;
+        top: 0%;
+    }
+
+
+    .app-dl-diamond {
+    right: -167px;
+    top: 1%;
+    }
+    
+}
