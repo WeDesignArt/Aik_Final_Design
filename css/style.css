@@ -4132,4 +4132,8 @@ header .logo {
     .debit_custom_why-choose-sec .smarter-sec__inner {
         align-items: flex-end;
     }
+
+    .debit_custom_smarter-sec .smarter-sec__left {
+    max-width: 600px !important;
+}
 }
