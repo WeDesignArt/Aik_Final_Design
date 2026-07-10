@@ -2340,25 +2340,7 @@ font-size: 17px;
   }
 }
 
-@media (max-width: 575px) {
-  .app-dl-section {
-    padding: 60px 0 0;
-    height: auto;
-  }
 
-  .app-dl-heading {
-    font-size: 48px;
-  }
-
-  .app-dl-right img {
-    max-height: 320px;
-  }
-
-  .home_about_section {
-    height: auto !important;
-    padding: 25% 0 !important;
-}
-}
 
 
 
@@ -2940,18 +2922,7 @@ font-size: 17px;
     text-align: center;
 }
 
-    .app-dl-diamond {
-        position: absolute;
-        /* inset: 0; */
-        z-index: 0;
-        pointer-events: none;
-        right: -18px;
-        /* bottom: 0; */
-        width: 106%;
-        /* height: 83%; */
-        object-fit: cover;
-        top: 68%;
-    }
+
     .aik-newsletter__text h2{
       font-size: 10vw;
     }
@@ -4136,4 +4107,36 @@ header .logo {
     .debit_custom_smarter-sec .smarter-sec__left {
     max-width: 600px !important;
 }
+}
+@media (max-width: 575px) {
+  .app-dl-section {
+    padding: 60px 0 0;
+    height: auto;
+  }
+
+  .app-dl-heading {
+    font-size: 48px;
+  }
+
+  .app-dl-right img {
+    max-height: 320px;
+  }
+
+  .home_about_section {
+    height: auto !important;
+    padding: 25% 0 !important;
+}
+
+    .app-dl-diamond {
+        position: absolute;
+        /* inset: 0; */
+        z-index: 0;
+        pointer-events: none;
+        right: -18px;
+        /* bottom: 0; */
+        width: 106%;
+        /* height: 83%; */
+        object-fit: cover;
+        top: 68%;
+    }
 }
