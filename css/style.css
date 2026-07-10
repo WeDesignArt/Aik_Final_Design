@@ -2750,7 +2750,7 @@ font-size: 17px;
 
 
   .smarter-sec__right img {
-    max-width: 600px;
+    max-width: 500px;
     /* <--- Yahan se phone ki width control / kam kar sakte hain */
   }
 }
