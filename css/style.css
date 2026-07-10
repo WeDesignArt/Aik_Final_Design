@@ -4031,6 +4031,10 @@ header .logo {
   }
 }
 
+.smarter-sec__inner img{
+  width: 700px;
+}
+
 @media (max-width: 400px) {
   .pif-card {
     padding: 28px 16px;
