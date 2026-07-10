@@ -4035,6 +4035,11 @@ header .logo {
   width: 700px;
 }
 
+@media (max-width: 991px) {
+.smarter-sec__inner img{
+  width: 100% !important;
+}
+}
 @media (max-width: 400px) {
   .pif-card {
     padding: 28px 16px;
