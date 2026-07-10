@@ -4124,4 +4124,12 @@ header .logo {
     top: 1%;
     }
     
+    .debit_custom_why-choose-sec{
+      
+    padding: 100px 0 0;
+    
+    }
+    .debit_custom_why-choose-sec .smarter-sec__inner {
+        align-items: flex-end;
+    }
 }
