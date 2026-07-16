@@ -1,0 +1,53 @@
+{
+    "key": "group_aik_testimonial",
+    "title": "Testimonial Details",
+    "fields": [
+        {
+            "key": "field_aik_testimonial_role",
+            "label": "Role / Title (e.g. Small Business Owner)",
+            "name": "role",
+            "type": "text"
+        },
+        {
+            "key": "field_aik_testimonial_rating",
+            "label": "Rating (1-5)",
+            "name": "rating",
+            "type": "number",
+            "default_value": 5,
+            "min": 1,
+            "max": 5,
+            "wrapper": { "width": "30" }
+        },
+        {
+            "key": "field_aik_testimonial_headline",
+            "label": "Headline",
+            "name": "headline",
+            "type": "text",
+            "instructions": "e.g. A Truly Reliable Digital Banking Experience"
+        },
+        {
+            "key": "field_aik_testimonial_quote",
+            "label": "Quote",
+            "name": "quote",
+            "type": "textarea",
+            "rows": 4
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "testimonial"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Post Title on a Testimonial post = the author's name."
+}

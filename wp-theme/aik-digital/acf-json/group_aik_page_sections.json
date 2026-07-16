@@ -1,0 +1,773 @@
+{
+    "key": "group_aik_page_sections",
+    "title": "Page Sections",
+    "fields": [
+        {
+            "key": "field_aik_page_sections",
+            "label": "Page Sections",
+            "name": "page_sections",
+            "type": "flexible_content",
+            "instructions": "Add, remove and drag-reorder sections to build this page. The same section types can be used multiple times per page in any order.",
+            "button_label": "Add Section",
+            "min": "",
+            "max": "",
+            "layouts": {
+                "layout_aik_hero": {
+                    "key": "layout_aik_hero",
+                    "name": "hero",
+                    "label": "Hero",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_hero_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "Wrap the highlighted words in **double asterisks**, e.g. The Smarter Way to Move **Your Money**",
+                            "default_value": "The Smarter Way to Move **Your Money**"
+                        },
+                        {
+                            "key": "field_aik_hero_bg_image",
+                            "label": "Background Image",
+                            "name": "bg_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "large"
+                        },
+                        {
+                            "key": "field_aik_hero_mobile_image",
+                            "label": "Mobile Screenshot Image",
+                            "name": "mobile_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_aik_hero_pill1_icon",
+                            "label": "Pill 1 Icon",
+                            "name": "pill_1_icon",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "thumbnail",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_hero_pill1_text",
+                            "label": "Pill 1 Text",
+                            "name": "pill_1_text",
+                            "type": "text",
+                            "default_value": "Riba-free principles and protected by bank-grade",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_hero_pill2_icon",
+                            "label": "Pill 2 Icon",
+                            "name": "pill_2_icon",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "thumbnail",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_hero_pill2_text",
+                            "label": "Pill 2 Text",
+                            "name": "pill_2_text",
+                            "type": "text",
+                            "default_value": "Utilities & Transfers all in one place",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_hero_show_interest",
+                            "label": "Show \"No Interest\" Banner",
+                            "name": "show_no_interest_banner",
+                            "type": "true_false",
+                            "default_value": 1,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_aik_hero_interest_image",
+                            "label": "No Interest Banner Image",
+                            "name": "no_interest_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_show_interest",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_hero_style",
+                            "label": "Hero Style",
+                            "name": "hero_style",
+                            "type": "select",
+                            "instructions": "\"Business\" adds a subheading, two buttons, and repositions the pills top-right/bottom-left, matching business.html's richer hero. \"Inner Page\" is the shorter, centered-heading hero used on Debit Card, Deen, Payroll, Safa, Tijarat, Aghaaz, What's New, and Connect — it has a reduced height and its own desktop/mobile background images instead of the app mockup and pills.",
+                            "choices": { "standard": "Standard (heading only, index.html)", "business": "Business (subheading + buttons)", "inner": "Inner Page (short hero, centered heading)" },
+                            "default_value": "standard",
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_aik_hero_mobile_bg_image",
+                            "label": "Mobile Background Image",
+                            "name": "mobile_bg_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "instructions": "Used below the 575px breakpoint instead of Background Image. Leave blank to fall back to the generic bg-1.png.",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_style",
+                                        "operator": "==",
+                                        "value": "inner"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_hero_subheading",
+                            "label": "Subheading",
+                            "name": "subheading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "default_value": "Scale your business with Pakistan’s premium Shariah-compliant digital financial network.",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_style",
+                                        "operator": "==",
+                                        "value": "business"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_hero_button1_text",
+                            "label": "Button 1 Text",
+                            "name": "button_1_text",
+                            "type": "text",
+                            "default_value": "Get Started Digitally",
+                            "wrapper": { "width": "50" },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_style",
+                                        "operator": "==",
+                                        "value": "business"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_hero_button1_link",
+                            "label": "Button 1 Link",
+                            "name": "button_1_link",
+                            "type": "url",
+                            "wrapper": { "width": "50" },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_style",
+                                        "operator": "==",
+                                        "value": "business"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_hero_button2_text",
+                            "label": "Button 2 Text",
+                            "name": "button_2_text",
+                            "type": "text",
+                            "default_value": "Speak to an Expert",
+                            "wrapper": { "width": "50" },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_style",
+                                        "operator": "==",
+                                        "value": "business"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_hero_button2_link",
+                            "label": "Button 2 Link",
+                            "name": "button_2_link",
+                            "type": "url",
+                            "wrapper": { "width": "50" },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_style",
+                                        "operator": "==",
+                                        "value": "business"
+                                    }
+                                ]
+                            ]
+                        }
+                    ]
+                },
+                "layout_aik_home_about": {
+                    "key": "layout_aik_home_about",
+                    "name": "home_about",
+                    "label": "Home About",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_about_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "Experience a **borderless** **digital** wallet where Shariah compliance meets high **velocity banking**"
+                        },
+                        {
+                            "key": "field_aik_about_description",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "rows": 2
+                        },
+                        {
+                            "key": "field_aik_about_button_text",
+                            "label": "Button Text",
+                            "name": "button_text",
+                            "type": "text",
+                            "default_value": "Read More",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_about_button_link",
+                            "label": "Button Link",
+                            "name": "button_link",
+                            "type": "url",
+                            "wrapper": { "width": "50" }
+                        }
+                    ]
+                },
+                "layout_aik_bento_grid": {
+                    "key": "layout_aik_bento_grid",
+                    "name": "bento_grid",
+                    "label": "Bento Grid (Feature Cards)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_bento_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "Enjoy a **Better Payment** Experience"
+                        },
+                        {
+                            "key": "field_aik_bento_custom_grid",
+                            "label": "Custom Grid Layout",
+                            "name": "custom_grid",
+                            "type": "true_false",
+                            "instructions": "Used on the Business page (only 3 cards) — makes the 3rd card span the full width as a featured card, matching business.html.",
+                            "default_value": 0,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_aik_bento_cards",
+                            "label": "Cards",
+                            "name": "cards",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Card",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_bento_card_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "type": "image",
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "wrapper": { "width": "25" }
+                                },
+                                {
+                                    "key": "field_aik_bento_card_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "type": "image",
+                                    "return_format": "array",
+                                    "preview_size": "medium",
+                                    "wrapper": { "width": "25" }
+                                },
+                                {
+                                    "key": "field_aik_bento_card_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "wrapper": { "width": "50" }
+                                },
+                                {
+                                    "key": "field_aik_bento_card_desc",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": { "width": "100" }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "layout_aik_smarter_section": {
+                    "key": "layout_aik_smarter_section",
+                    "name": "smarter_section",
+                    "label": "Smarter Section (Feature/Spend/Why-Choose block)",
+                    "display": "block",
+                    "instructions": "The main reusable content block — add this as many times as needed per page, in any order, for hero-style feature/benefit sections.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_smarter_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "Spend **Smarter,** the **Halal** Way"
+                        },
+                        {
+                            "key": "field_aik_smarter_description",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "rows": 3,
+                            "instructions": "Plain paragraph. Leave blank if you're using Bullet List Items below instead (e.g. \"Why Choose\" / \"Key Features\" style sections) — when List Items has entries, it's used instead of this."
+                        },
+                        {
+                            "key": "field_aik_smarter_list_items",
+                            "label": "Bullet List Items",
+                            "name": "list_items",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add List Item",
+                            "min": 0,
+                            "max": 0,
+                            "instructions": "Use this instead of Description for \"Why Choose\" / \"Key Features\" style sections — renders as a bulleted list with the item heading highlighted in yellow, e.g. \"Instant Savings at Checkout: There is no need to wait...\". Don't type a trailing colon in the heading, it's added automatically.",
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_smarter_list_item_heading",
+                                    "label": "Item Heading",
+                                    "name": "item_heading",
+                                    "type": "text",
+                                    "wrapper": { "width": "35" }
+                                },
+                                {
+                                    "key": "field_aik_smarter_list_item_text",
+                                    "label": "Item Text",
+                                    "name": "item_text",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": { "width": "65" }
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_smarter_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_aik_smarter_image_position",
+                            "label": "Image Position",
+                            "name": "image_position",
+                            "type": "select",
+                            "choices": { "right": "Right", "left": "Left" },
+                            "default_value": "right",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_smarter_bg_style",
+                            "label": "Background Style",
+                            "name": "background_style",
+                            "type": "select",
+                            "instructions": "Most sections use \"Default\" (the dark textured smarter_bg.png overlay seen throughout the site). Use \"None\" for plain white/transparent sections (e.g. Debit Card's \"Your Key to Everyday Savings\"). Use \"Custom Image\" for text-only sections with their own full background image (e.g. \"Start Saving Today\").",
+                            "choices": { "default": "Default (dark textured background)", "none": "None (no background overlay)", "custom": "Custom Background Image" },
+                            "default_value": "default",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_smarter_bg_image",
+                            "label": "Background Image (Desktop)",
+                            "name": "bg_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_smarter_bg_style",
+                                        "operator": "==",
+                                        "value": "custom"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_smarter_bg_image_mobile",
+                            "label": "Background Image (Mobile)",
+                            "name": "bg_image_mobile",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "instructions": "Optional — shown below 768px instead of the desktop image above (e.g. debit_saving-mb.png). Leave blank to reuse the desktop image on mobile too.",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_smarter_bg_style",
+                                        "operator": "==",
+                                        "value": "custom"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_smarter_grid_left",
+                            "label": "Left Grid Decoration",
+                            "name": "grid_left",
+                            "type": "select",
+                            "choices": { "none": "None", "bottom_left": "Bottom Left", "top_left": "Top Left", "center_left": "Center Left" },
+                            "default_value": "none",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_smarter_grid_right",
+                            "label": "Right Grid Decoration",
+                            "name": "grid_right",
+                            "type": "select",
+                            "choices": { "none": "None", "top_right": "Top Right", "bottom_right": "Bottom Right" },
+                            "default_value": "none",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_smarter_buttons",
+                            "label": "Buttons",
+                            "name": "buttons",
+                            "type": "repeater",
+                            "layout": "table",
+                            "button_label": "Add Button",
+                            "min": 0,
+                            "max": 2,
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_smarter_btn_label",
+                                    "label": "Label",
+                                    "name": "label",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "field_aik_smarter_btn_link",
+                                    "label": "Link",
+                                    "name": "link",
+                                    "type": "url"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_smarter_extra_class",
+                            "label": "Extra CSS Class (advanced)",
+                            "name": "extra_class",
+                            "type": "text",
+                            "instructions": "Optional. Only set this if design/QA asks for a specific per-page style hook (mirrors modifier classes like debit_custom_smarter-sec from the original design)."
+                        }
+                    ]
+                },
+                "layout_aik_driven_ethics": {
+                    "key": "layout_aik_driven_ethics",
+                    "name": "driven_ethics",
+                    "label": "Driven by Ethics Banner",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_driven_label1",
+                            "label": "Label 1",
+                            "name": "label_1",
+                            "type": "text",
+                            "default_value": "Driven by",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_driven_heading1",
+                            "label": "Heading 1",
+                            "name": "heading_1",
+                            "type": "text",
+                            "default_value": "Ethics",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_driven_label2",
+                            "label": "Label 2",
+                            "name": "label_2",
+                            "type": "text",
+                            "default_value": "Led by",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_driven_heading2",
+                            "label": "Heading 2",
+                            "name": "heading_2",
+                            "type": "text",
+                            "default_value": "Innovation.",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_driven_bg_image",
+                            "label": "Background Image",
+                            "name": "bg_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "large"
+                        }
+                    ]
+                },
+                "layout_aik_testimonials": {
+                    "key": "layout_aik_testimonials",
+                    "name": "testimonials",
+                    "label": "Testimonials Slider",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_testi_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "Trusted by **Thousands**, **Perfected** for You."
+                        },
+                        {
+                            "key": "field_aik_testi_description",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "rows": 3
+                        },
+                        {
+                            "key": "field_aik_testi_items",
+                            "label": "Testimonials",
+                            "name": "testimonials",
+                            "type": "relationship",
+                            "post_type": [ "testimonial" ],
+                            "filters": [ "search" ],
+                            "return_format": "id",
+                            "min": 0,
+                            "max": 0,
+                            "instructions": "Pick and order the testimonials to show. Manage testimonial content under the Testimonials menu."
+                        }
+                    ]
+                },
+                "layout_aik_app_download": {
+                    "key": "layout_aik_app_download",
+                    "name": "app_download",
+                    "label": "App Download",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_appdl_heading1",
+                            "label": "Heading Line 1",
+                            "name": "heading_line_1",
+                            "type": "text",
+                            "default_value": "Download",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_appdl_heading2",
+                            "label": "Heading Line 2",
+                            "name": "heading_line_2",
+                            "type": "text",
+                            "default_value": "App Now",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_appdl_logo",
+                            "label": "Logo Image",
+                            "name": "logo_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_aik_appdl_qr",
+                            "label": "QR Code Image",
+                            "name": "qr_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_aik_appdl_bg",
+                            "label": "Background Image",
+                            "name": "bg_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "large"
+                        }
+                    ]
+                },
+                "layout_aik_news": {
+                    "key": "layout_aik_news",
+                    "name": "news",
+                    "label": "Media News",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_news_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "default_value": "Our Media News"
+                        },
+                        {
+                            "key": "field_aik_news_description",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "rows": 2
+                        },
+                        {
+                            "key": "field_aik_news_category",
+                            "label": "News Category",
+                            "name": "category",
+                            "type": "taxonomy",
+                            "taxonomy": "category",
+                            "field_type": "select",
+                            "return_format": "id",
+                            "allow_null": 1,
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_news_count",
+                            "label": "Number of Posts",
+                            "name": "count",
+                            "type": "number",
+                            "default_value": 3,
+                            "wrapper": { "width": "50" }
+                        }
+                    ]
+                },
+                "layout_aik_steps": {
+                    "key": "layout_aik_steps",
+                    "name": "steps",
+                    "label": "Steps (How-To / Order Process)",
+                    "display": "block",
+                    "instructions": "Numbered step cards (e.g. \"How to Order Your aik Card\") — a fixed set of steps you enter directly, not real WordPress Posts. Don't use the News layout for this; News pulls from Posts and renders date/Read More/See More, which doesn't match this section's design.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_steps_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "How to **Order** Your **aik Card**"
+                        },
+                        {
+                            "key": "field_aik_steps_description",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "rows": 2
+                        },
+                        {
+                            "key": "field_aik_steps_list",
+                            "label": "Steps",
+                            "name": "steps_list",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Step",
+                            "min": 0,
+                            "max": 0,
+                            "instructions": "Renders as numbered cards (01, 02, 03…) in a 3-column row, alternating the accent color every other card — matches the original design automatically, nothing to set per-step for that.",
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_steps_item_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "type": "image",
+                                    "return_format": "array",
+                                    "preview_size": "medium",
+                                    "wrapper": { "width": "25" }
+                                },
+                                {
+                                    "key": "field_aik_steps_item_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "wrapper": { "width": "35" }
+                                },
+                                {
+                                    "key": "field_aik_steps_item_desc",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": { "width": "40" }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "layout_aik_pif_form": {
+                    "key": "layout_aik_pif_form",
+                    "name": "pif_form",
+                    "label": "Partner Inquiry Form",
+                    "display": "block",
+                    "instructions": "Renders the fixed Partner Inquiry Form (name/email/mobile/company/service/message) — only the heading and subtext are editable here; submissions are handled by inc/forms.php and stored under Partner Inquiries.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_pif_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "Ready to **Transform** Your **Financial** Operations?"
+                        },
+                        {
+                            "key": "field_aik_pif_subtext",
+                            "label": "Subtext",
+                            "name": "subtext",
+                            "type": "textarea",
+                            "rows": 3,
+                            "default_value": "Take control of your data, simplify your integrations, and see what a dedicated open banking vertical can do for your organization. Partner with aik Connect today to build the future of your corporate business infrastructure."
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Flexible Content builder for all front-end pages. Each layout renders via template-parts/blocks/{layout-name}.php."
+}

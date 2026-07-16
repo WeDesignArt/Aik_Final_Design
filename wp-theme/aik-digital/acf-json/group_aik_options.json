@@ -1,0 +1,139 @@
+{
+    "key": "group_aik_options",
+    "title": "Footer & Social Settings",
+    "fields": [
+        {
+            "key": "field_aik_footer_about_text",
+            "label": "About Company Text",
+            "name": "footer_about_text",
+            "type": "textarea",
+            "rows": 4
+        },
+        {
+            "key": "field_aik_footer_quick_links",
+            "label": "Quick Links",
+            "name": "footer_quick_links",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add Link",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_aik_qlink_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text"
+                },
+                {
+                    "key": "field_aik_qlink_link",
+                    "label": "URL",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_aik_footer_feature_links",
+            "label": "Feature Links",
+            "name": "footer_feature_links",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add Link",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_aik_flink_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text"
+                },
+                {
+                    "key": "field_aik_flink_link",
+                    "label": "URL",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_aik_footer_useful_links",
+            "label": "Useful Links",
+            "name": "footer_useful_links",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add Link",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_aik_ulink_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text"
+                },
+                {
+                    "key": "field_aik_ulink_link",
+                    "label": "URL",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_aik_social_facebook_url",
+            "label": "Facebook URL",
+            "name": "social_facebook_url",
+            "type": "url"
+        },
+        {
+            "key": "field_aik_social_twitter_url",
+            "label": "Twitter / X URL",
+            "name": "social_twitter_url",
+            "type": "url"
+        },
+        {
+            "key": "field_aik_social_instagram_url",
+            "label": "Instagram URL",
+            "name": "social_instagram_url",
+            "type": "url"
+        },
+        {
+            "key": "field_aik_app_google_play_url",
+            "label": "Google Play URL",
+            "name": "app_google_play_url",
+            "type": "url"
+        },
+        {
+            "key": "field_aik_app_apple_store_url",
+            "label": "Apple App Store URL",
+            "name": "app_apple_store_url",
+            "type": "url"
+        },
+        {
+            "key": "field_aik_footer_copyright_text",
+            "label": "Copyright Name",
+            "name": "footer_copyright_text",
+            "type": "text",
+            "default_value": "aik Bankislami"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "aik-theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Site-wide footer content, social links and app store links used by footer.php."
+}

@@ -20,6 +20,314 @@
 }
 
 
+/* overlap the section above it (e.g. banner_section) */
+.section-overlap {
+  position: relative;
+  z-index: 2;
+     top: -135px;  /* jitna overlap chahiye, utna adjust karein (px) */
+  background-color: #fff;
+  padding: 50px 0;
+}
+
+/* banner ko niche stack rakhne k liye */
+.banner_section {
+  position: relative;
+  z-index: 1;
+}
+
+.grid-top-right_aik_connect {
+    top: -48px;
+    right: 0;
+    bottom: auto;
+}
+
+.grid-center-left_aik_connect {
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    left: 70px;
+}
+
+
+
+/* connect-new-welcome */
+
+  .aik-welcome-section{
+    position: relative;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  /* keeps the whole section at the same proportions as the reference design (986:410) */
+  .aik-welcome-inner{
+    position: relative;
+    width: 100%;
+    padding-top: 41.6%; /* aspect-ratio trick so everything scales together, responsively */
+  }
+
+  .aik-welcome-inner.container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .aik-welcome-bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .aik-welcome-bg img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .aik-welcome-text{
+    position: absolute;
+    left: 20%;
+    top: 32%;
+    z-index: 2;
+    font-family:  Outfit, sans-serif;
+    font-weight: 800;
+    line-height: 1.18;
+  }
+
+  .aik-welcome-text .line1{
+    color: var(--aik-green);
+    font-size: 6rem;
+    font-weight: 800;
+   
+  }
+
+  .aik-welcome-text .line2{
+    color:var(--aik-yellow);
+    font-size: 6rem;
+    font-weight: 800;
+   
+  }
+
+  .aik-welcome-right{
+    position: absolute;
+    left: 66%;
+    top: 63%;
+    width: 23%;
+    z-index: 2;
+    font-family: Outfit, sans-serif;
+  }
+
+  .aik-welcome-right h3{
+    color: #111;
+    font-weight: 800;
+    font-size: 1.2rem;
+    
+    margin-bottom: 0.9em;
+    line-height: 1.25;
+  }
+
+  .aik-welcome-right p{
+    color: #333;
+    font-weight: 400;
+    font-size: 1rem
+    line-height: 1.55;
+    margin: 0;
+  }
+
+
+
+
+
+/* Connect _ new Download Section */
+  .aik-download-section{
+    position: relative;
+    width: 100%;
+    background: #fff; /* section is white - the teal graphic is only a band inside it */
+    overflow: hidden;
+    padding: 1% 0;
+  }
+
+  /* keeps the whole section at the same proportions as the original design (370:200) */
+  .aik-download-inner{
+    position: relative;
+    width: 100%;
+    padding-top: 54.05%; /* aspect-ratio trick so everything scales together, responsively */
+  }
+
+  /* container-fluid adds side padding by default in Bootstrap - remove it here so the
+     absolutely-positioned children line up edge-to-edge exactly like the reference design */
+  .aik-download-inner.container-fluid{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* teal/green gradient graphic is only a horizontal band, not the full section height -
+     this is what was showing "halved" before, since it was being force-covered on a much taller box */
+  .aik-bg-band{
+    position: absolute;
+    left: 0;
+    top: 12%;
+    width: 100%;
+    height: 50%;
+    z-index: 1;
+  }
+
+  .aik-bg-band img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* phone + yellow vector graphic, sized/positioned to match the reference exactly */
+.aik-phone-vector {
+    position: absolute;
+    left: -10%;
+    top: 3%;
+    width: 90%;
+    z-index: 2;
+}
+
+  .aik-phone-vector img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .aik-download-text{
+    position: absolute;
+    top: 35%;
+    left: 44%;
+    font-family: Outfit, sans-serif;   
+    z-index: 3;
+    white-space: nowrap;
+    font-size: 4.7rem;
+    line-height: 0.9;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+
+  }
+
+.aik-qrcode {
+    position: absolute;
+    top: 25%;
+    left: 60%;
+    width: 8%;
+    aspect-ratio: 1 / 1;
+    z-index: 3;
+}
+
+  .aik-qrcode img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+.aik-appnow-row {
+    position: absolute;
+    top: 41%;
+    left: 48%;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    z-index: 3;
+}
+
+
+  .aik-appnow-row img{
+    
+    height: auto;
+    display: block;
+  }
+
+  .aik-appnow-row span{
+    color: #fff;
+    font-family: Outfit, sans-serif;   
+    white-space: nowrap;
+    font-size: 4.7rem;
+    line-height: 0.9;
+    font-weight: 800;
+    color: #fff;
+
+}
+  
+
+
+
+/* ---------- why choose ---------- */
+
+  .why-section{padding:70px 0 90px;text-align:center;}
+  .why-section h2{
+    font-size:64px;
+    font-weight:800;
+    color:var(--aik-green);
+    margin:0 0 60px;
+  }
+  .why-section h2 span{color:var(--aik-yellow);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:50px;
+  }
+  .why-card .icon-circle{
+    width:96px;height:96px;
+    border-radius:50%;
+    background:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 22px;
+  }
+  .why-card .icon-circle svg{width:44px;height:44px;stroke:var(--teal-dark);fill:none;stroke-width:1.6;}
+  .why-card h4{
+    font-size:24px;
+    font-weight:700;
+    margin:0 0 14px;
+    color:var(--ink);
+    line-height:1.3;
+  }
+  .why-card p{
+    font-size:16px;
+    line-height:1.7;
+    color:var(--gray-text);
+    /* max-width:320px; */
+    margin:0 auto;
+
+     
+  }
+
+  .new_connect_sec .smarter-sec__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    top: 10%;
+    /* max-width: 393px; */
+}
+
+.new_connect_sec .smarter-sec__heading{
+    color: var(--aik-green) !important;
+}
+
+.new_connect_sec .smarter-sec__desc{
+  color: #000 !important;
+}
+
+.bannner_section{
+  width: 100%;
+  height: 100%;
+}
+
+.banner_section .banner img{
+  width: 100%;
+  height: 100%;
+}
 
 
 /* connect_custom_why-chose-sec */
@@ -3635,10 +3943,10 @@ header .logo {
 ========================================== */
 
 .pif-section {
-  background: #fff;
-  padding: 100px 0;
+  /* background: #fff; */
+  padding: 0 0 100px;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .pif-header {
@@ -3708,11 +4016,10 @@ header .logo {
 }
 
 .pif-field input[type="text"],
-.pif-field input[type="email"],
-.pif-field input[type="tel"] {
+.pif-field input[type="email"] {
   width: 100%;
   height: 52px;
-  border: none;
+  border: 1px solid var(--aik-green);
   border-radius: 50px;
   outline: none;
   padding: 0 24px;
@@ -3721,9 +4028,22 @@ header .logo {
   color: #333;
   background: #fff;
 }
-.pif-field input[type="text"],
-.pif-field input[type="email"]{
-   border: 1px solid var(--aik-green);
+
+/* Mobile number's input sits inside the .pif-phone pill — the pill itself
+   carries the border, not this input, so it doesn't get a second border
+   glued to the "PK +92" prefix. */
+.pif-phone input[type="tel"] {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 24px 0 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: #333;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .pif-field input::placeholder,
@@ -3733,7 +4053,7 @@ header .logo {
 
 .pif-field textarea {
   width: 100%;
-  border: none;
+  border: 1px solid var(--aik-green);
   border-radius: 20px;
   outline: none;
   padding: 18px 24px;
@@ -3743,7 +4063,6 @@ header .logo {
   background: #fff;
   resize: vertical;
   min-height: 130px;
-  border: 1px solid var(--aik-green);
 }
 
 /* Phone field with PK +92 prefix */
@@ -3765,11 +4084,6 @@ header .logo {
   border-right: 1px solid #e2e2e2;
 }
 
-.pif-phone input[type="tel"] {
-  border-radius: 0;
-  padding-left: 16px;
-}
-
 /* Select */
 .pif-select {
   position: relative;
@@ -3778,7 +4092,7 @@ header .logo {
 .pif-select select {
   width: 100%;
   height: 52px;
-  border: none;
+  border: 1px solid var(--aik-green);
   border-radius: 50px;
   outline: none;
   padding: 0 45px 0 24px;
@@ -3789,7 +4103,6 @@ header .logo {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-   border: 1px solid var(--aik-green);
 }
 
 .pif-select select:invalid {
