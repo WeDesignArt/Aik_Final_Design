@@ -121,18 +121,15 @@
   }
 
   .aik-welcome-right h3{
-    color: #111;
     font-weight: 800;
-    font-size: 1.2rem;
-    
     margin-bottom: 0.9em;
     line-height: 1.25;
   }
 
   .aik-welcome-right p{
-    color: #333;
-    font-weight: 400;
-    font-size: 1rem
+    /* color: #333; */
+    /* font-weight: 400; */
+    font-size: 1rem;
     line-height: 1.55;
     margin: 0;
   }
@@ -147,7 +144,7 @@
     width: 100%;
     background: #fff; /* section is white - the teal graphic is only a band inside it */
     overflow: hidden;
-    padding: 1% 0;
+      padding: 0 0 1%;
   }
 
   /* keeps the whole section at the same proportions as the original design (370:200) */
@@ -214,9 +211,9 @@
 
 .aik-qrcode {
     position: absolute;
-    top: 25%;
-    left: 60%;
-    width: 8%;
+    top: 23%;
+    left: 59%;
+    width: 9%;
     aspect-ratio: 1 / 1;
     z-index: 3;
 }
@@ -298,8 +295,7 @@
 
      
   }
-
-  .new_connect_sec .smarter-sec__inner {
+.new_connect_sec .smarter-sec__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -307,17 +303,27 @@
     position: absolute;
     z-index: 2;
     width: 100%;
-    top: 10%;
+    top: 24%;
     /* max-width: 393px; */
+    left: 20%;
 }
 
 .new_connect_sec .smarter-sec__heading{
     color: var(--aik-green) !important;
 }
 
+.new_connect_sec .smarter-sec__heading span {
+    color: #fff !important;
+}
 .new_connect_sec .smarter-sec__desc{
   color: #000 !important;
 }
+
+.new_connect_sec .smarter-sec__desc_custom {
+  max-width: 408px !important;
+  font-size: 20px;
+}
+
 
 .bannner_section{
   width: 100%;
@@ -348,6 +354,84 @@
 }
 
 
+@media (max-width: 1920px) {
+.aik-welcome-text {
+    position: absolute;
+    left: 14%;
+    top: 32%;
+  }
+
+
+  .aik-welcome-right {
+    left: 64%;
+    top: 63%;
+    width: 30%;
+}
+
+.new_connect_sec .smarter-sec__inner{
+    left: 12%;
+}
+
+.aik-phone-vector {
+    left: -15%;
+    top: -2%;
+    width: 100%;
+}
+
+.aik-qrcode {
+    top: 24%;
+    left: 64%;
+}
+
+}
+@media (max-width: 1367px) {
+
+  .aik-welcome-text .line1 {
+    font-size: 5rem;
+}
+.aik-welcome-text .line2 {
+   font-size: 5rem;
+}
+.new_connect_sec .smarter-sec__heading {
+    font-size: 3rem;
+}
+
+.new_connect_sec .smarter-sec__desc_custom {
+    font-size: 2rem;
+}
+
+
+.aik-welcome-section {
+    height: 100vh;
+}
+
+.aik-welcome-bg {
+    top: 82px;
+}
+
+.aik-welcome-right h3 {
+    font-size: 20px;
+}
+
+.aik-welcome-right p {
+    font-size: 0.7rem;
+}
+
+.new_connect_sec .smarter-sec__desc_custom {
+    max-width: 235px !important;
+    font-size: 0.8rem;
+}
+  
+.aik-download-text {
+    font-size: 3.5rem;
+    line-height: 0.5;
+}
+.aik-appnow-row span {
+    font-size: 3.5rem;
+}
+
+}
+
 /* debit card section */
 
 .debit_hero_item{
@@ -377,6 +461,118 @@
 
 }
 
+
+@media (max-width: 575px) {
+  
+
+.new_connect_sec .smarter-sec__heading {
+    font-size: 3rem;
+}
+
+.new_connect_sec .smarter-sec__desc_custom {
+    font-size: 2rem;
+}
+
+
+.aik-welcome-section {
+    height: 100vh;
+}
+
+.aik-welcome-bg {
+    top: 82px;
+}
+
+.aik-welcome-right h3 {
+    font-size: 20px;
+}
+
+.aik-welcome-right p {
+    font-size: 1rem;
+}
+
+.new_connect_sec .smarter-sec__desc_custom {
+    max-width: 235px !important;
+    font-size: 1rem;
+}
+  
+.aik-download-text {
+    font-size: 3.5rem;
+    line-height: 0.5;
+}
+.aik-appnow-row span {
+    font-size: 3.5rem;
+}
+.why-grid {
+    grid: none;
+}
+
+    .new_connect_sec .smarter-sec__inner {
+          position: initial;
+    text-align: center;
+}
+
+    .new_connect_sec .smarter-sec__desc_custom {
+        max-width: 479px !important;
+    }
+
+    .debit_new_main{
+        padding: 0 !important;
+    }
+
+
+
+
+
+
+    .aik-welcome-section_mb .aik-welcome-right {
+        left: 3%;
+        top: 130%;
+        width: 95%;
+        text-align: center;
+    }
+.aik-welcome-section_mb      .aik-welcome-text {
+        position: absolute;
+        left: 11%;
+        top: 4%;
+    }
+.aik-welcome-section_mb   .aik-welcome-text .line1 {
+    font-size: 3.3rem;
+}
+.aik-welcome-section_mb  .aik-welcome-text .line2 {
+    font-size: 3.3rem;
+}
+
+.aik-welcome-section_mb  .aik-welcome-inner {
+      padding-top: 5%;
+}
+
+
+
+  .aik-welcome-text_mb{
+        text-align: center;
+  }
+
+  .aik-welcome-text_mb .line1{
+    color: var(--aik-green);
+    font-size: 3.3rem;
+    font-weight: 800;
+   
+  }
+
+  .aik-welcome-text_mb .line2{
+    color:var(--aik-yellow);
+    font-size: 3.3rem;
+    font-weight: 800;
+   
+  }
+
+.aik-welcome-section_mb .aik-welcome-bg {
+        top: 278px;
+        height: auto;
+    }
+
+
+
 /* Business Home about section custom */
 
 
@@ -386,6 +582,10 @@
         align-content: center !important;
 }
 
+
+
+
+}
 
 
 
@@ -457,7 +657,68 @@
   .debit-hero-caption h1 {
     font-size: 3rem;
   }
+
+
+  .aik-download-section_mb{
+    height: 60vh;
+
+  }
+
+
+      .aik-download-section_mb .aik-phone-vector {
+        left: 0%;
+        top: -2%;
+        width: 100%;
+    }
+ .aik-download-section_mb .aik-bg-band {
+    position: absolute;
+    left: 0;
+    top: 133%;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
+
+.aik-download-section_mb    .aik-qrcode {
+        top: 140%;
+        left: 65%;
+            width: 25%;
+    }
+    .aik-download-section_mb .aik-download-text {
+        font-size: 3rem;
+        line-height: 0.5;
+        top: 165%;
+        left: 8%;
+    }
+    .aik-download-section_mb  .aik-appnow-row {
+    position: absolute;
+    top: 193%;
+    left: 12%;
+  }
+
+
+
+}
+
+@media (max-width: 413px) {
+    .debit_hero_item {
+        min-height: 78vh !important;
+    }
+}
+
+
+@media (max-width: 361px) {
+    .debit_hero_item {
+        min-height: 84vh !important;
+        
+    }
+        .debit-hero-caption h1 {
+        font-size: 2.5rem;
+    }
+}
+
+
+
 
 .debit_custom_smarter-sec h2 {
   color: var(--aik-green) !important;
@@ -3941,13 +4202,23 @@ header .logo {
 /* ==========================================
    PARTNER INQUIRY FORM (connect.html)
 ========================================== */
+.new_connect_pif_section{
+  background: transparent !important;
+  padding: 0 !important;
+  position: relative;
+  overflow:visible !important;
+}
+  
 
-.pif-section {
-  /* background: #fff; */
+
+.pif-section  {
+  background: #fff; 
   padding: 0 0 100px;
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
+
+
 
 .pif-header {
   /* max-width: 720px; */
