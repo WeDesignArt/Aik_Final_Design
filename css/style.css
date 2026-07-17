@@ -372,11 +372,11 @@
     left: 12%;
 }
 
-.aik-phone-vector {
-    left: -15%;
-    top: -2%;
-    width: 100%;
-}
+    .aik-phone-vector {
+        left: -7%;
+        top: -2%;
+        width: 94%;
+    }
 
 .aik-qrcode {
     top: 24%;
