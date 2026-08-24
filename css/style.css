@@ -147,11 +147,19 @@
       padding: 0 0 1%;
   }
 
-  /* keeps the whole section at the same proportions as the original design (370:200) */
+  /* keeps the whole section at the same proportions as the original design (370:200).
+     Capped at 1920px and centered: past that, on this edge-to-edge .container-fluid,
+     height would keep growing (unbounded, tied to full viewport width) while the phone
+     graphic ran out of room to grow with it, leaving an empty gap below it. Uses
+     aspect-ratio (computed from this element's own width) instead of the old
+     padding-top-% hack (computed from the *containing block's* width, i.e. the parent —
+     so it would have ignored this same max-width cap and kept growing anyway). */
   .aik-download-inner{
     position: relative;
     width: 100%;
-    padding-top: 54.05%; /* aspect-ratio trick so everything scales together, responsively */
+    max-width: 1920px;
+    margin: 0 auto;
+    aspect-ratio: 370 / 200;
   }
 
   /* container-fluid adds side padding by default in Bootstrap - remove it here so the
@@ -168,7 +176,7 @@
     left: 0;
     top: 12%;
     width: 100%;
-    height: 50%;
+    height: 40%;
     z-index: 1;
   }
 
@@ -182,9 +190,12 @@
   /* phone + yellow vector graphic, sized/positioned to match the reference exactly */
 .aik-phone-vector {
     position: absolute;
-    left: -10%;
-    top: 3%;
-    width: 90%;
+    left: 22%;
+    top: 0%;
+    width: 78%; /* scales with the container instead of capping at the image's
+      natural pixel size (1427px) — without this, the phone stopped growing
+      past ~1830px viewport width while the section kept getting taller,
+      leaving an increasing empty gap below it on wide screens */
     z-index: 2;
 }
 
@@ -194,11 +205,11 @@
     display: block;
   }
 
-  .aik-download-text{
+.aik-download-text {
     position: absolute;
-    top: 35%;
-    left: 44%;
-    font-family: Outfit, sans-serif;   
+    top: 27%;
+    left: 45%;
+    font-family: Outfit, sans-serif;
     z-index: 3;
     white-space: nowrap;
     font-size: 4.7rem;
@@ -206,13 +217,12 @@
     font-weight: 800;
     color: #fff;
     margin: 0;
-
-  }
+}
 
 .aik-qrcode {
     position: absolute;
-    top: 23%;
-    left: 59%;
+    top: 15%;
+    left: 60%;
     width: 9%;
     aspect-ratio: 1 / 1;
     z-index: 3;
@@ -227,14 +237,13 @@
 
 .aik-appnow-row {
     position: absolute;
-    top: 41%;
+    top: 34%;
     left: 48%;
     display: flex;
     align-items: center;
     gap: 0.5em;
     z-index: 3;
 }
-
 
   .aik-appnow-row img{
     
@@ -372,19 +381,38 @@
     left: 12%;
 }
 
-    .aik-phone-vector {
-        left: -7%;
-        top: -2%;
-        width: 94%;
+.aik-phone-vector {
+        left: 15%;
+        top: 10%;
+        width: 70%;
     }
 
-.aik-qrcode {
-    top: 24%;
-    left: 64%;
+    .aik-download-text {
+    top: 44%;
+    left: 44%;
+  }
+
+  .aik-appnow-row {
+    top: 51%;
+    left: 46%;
+  }
+
+    .aik-bg-band{
+        position: absolute;
+    left: 0;
+    top: 28%;
+    width: 100%;
+    height: 40%;
+    z-index: 1;
 }
 
+    .aik-qrcode {
+        top: 33%;
+        left: 64%;
+    }
+
 }
-@media (max-width: 1367px) {
+@media (max-width: 1699px) {
 
   .aik-welcome-text .line1 {
     font-size: 5rem;
@@ -430,7 +458,91 @@
     font-size: 3.5rem;
 }
 
+    .aik-qrcode {
+        top: 31%;
+        left: 61%;
+    }
+
+
 }
+
+@media (max-width: 1450px) {
+.aik-welcome-text {
+    position: absolute;
+    left: 14%;
+    top: 32%;
+  }
+
+
+  .aik-welcome-right {
+    left: 64%;
+    top: 63%;
+    width: 30%;
+}
+
+.new_connect_sec .smarter-sec__inner{
+    left: 12%;
+}
+
+.aik-phone-vector {
+        left: 15%;
+        top: 10%;
+        width: 70%;
+    }
+
+    .aik-download-text {
+    top: 44%;
+    left: 44%;
+  }
+
+  .aik-appnow-row {
+    top: 51%;
+    left: 46%;
+  }
+
+    .aik-bg-band{
+        position: absolute;
+    left: 0;
+    top: 28%;
+    width: 100%;
+    height: 40%;
+    z-index: 1;
+}
+
+    .aik-qrcode {
+        top: 33%;
+        left: 64%;
+    }
+
+}
+@media (max-width: 1300px) {
+    .aik-download-text {
+        font-size: 3.2rem;
+        line-height: 0.5;
+    }
+      .aik-appnow-row span {
+    font-size: 3.2rem;
+}
+  }
+@media (max-width: 1025px) {
+  .aik-download-text {
+        font-size: 2.5rem;
+      }
+      .aik-appnow-row span {
+    font-size: 2.5rem;
+  }
+  .aik-appnow-row {
+        left: 44%;
+    }
+
+
+  
+}
+
+.qr_mb img {
+  width: 70%;
+}
+
 
 /* debit card section */
 
@@ -2392,6 +2504,10 @@ footer.aik-footer {
 
 
 .smarter-sec__right img {
+  width: 100%;
+}
+
+.smarter-sec__right video {
   width: 100%;
 }
 
@@ -4388,6 +4504,162 @@ header .logo {
   color: var(--aik-green);
   pointer-events: none;
   font-size: 14px;
+}
+
+/* Interested Services — multi-select with removable tags */
+.pif-multiselect {
+  position: relative;
+}
+
+.pif-multiselect__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 52px;
+  width: 100%;
+  border: 1px solid var(--aik-green);
+  border-radius: 26px;
+  outline: none;
+  padding: 8px 45px 8px 20px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.pif-multiselect__control i {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--aik-green);
+  pointer-events: none;
+  font-size: 14px;
+  transition: transform .2s ease;
+}
+
+.pif-multiselect.is-open .pif-multiselect__control i {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.pif-multiselect__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.pif-multiselect__placeholder {
+  color: #a9a9a9;
+  font-size: 15px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.pif-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #d8e2e1;
+  border-radius: 20px;
+  padding: 4px 10px 4px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--aik-green);
+  font-family: 'Outfit', sans-serif;
+}
+
+.pif-tag__icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pif-tag__remove {
+  border: none;
+  background: transparent;
+  color: var(--aik-green);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  opacity: .6;
+}
+
+.pif-tag__remove:hover {
+  opacity: 1;
+}
+
+.pif-multiselect__menu {
+  position: fixed;
+  background: #fff;
+  border: 1px solid var(--aik-green);
+  border-radius: 16px;
+  padding: 8px;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  max-height: 260px;
+  /* overflow-y: auto; */
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  z-index: 9999;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+  display: none;
+}
+
+.pif-multiselect__menu.is-open {
+  display: block;
+}
+
+.pif-multiselect__menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pif-multiselect__menu::-webkit-scrollbar-thumb {
+  background: rgba(6, 82, 88, .35);
+  border-radius: 8px;
+}
+
+.pif-multiselect__menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pif-multiselect__menu li {
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pif-multiselect__menu li:hover {
+  background: #f5f7f6;
+}
+
+.pif-multiselect__menu li.is-selected {
+  background: rgba(6, 82, 88, .08);
+  color: var(--aik-green);
+  font-weight: 600;
+}
+
+.pif-multiselect__menu li.is-selected::after {
+  content: "\2713";
+  color: var(--aik-green);
+}
+
+.pif-field.is-invalid .pif-multiselect__control {
+  box-shadow: 0 0 0 2px #b3261e;
 }
 
 /* Field-level error messages */

@@ -131,7 +131,7 @@
 
 .debit-hero-caption h1 {
   color: #fff;
-  font-size: 4rem;
+  font-size: 5.5rem;
   margin: 0;
 }
 
@@ -144,6 +144,8 @@
     font-size: 2.75rem;
   }
 }
+
+
 
 @media (max-width: 575px) {
   .debit-hero-caption h1 {
@@ -1822,8 +1824,22 @@ footer.aik-footer {
 
 
 
-.smarter-sec__right img {
+.smarter-sec__right img,
+.smarter-sec__right video {
   width: 100%;
+}
+
+/* Full-Width Video section — deliberately no .container, so the video
+   spans edge-to-edge at the section's full width. */
+.full-width-video-sec {
+  width: 100%;
+  line-height: 0;
+}
+
+.full-width-video-sec video {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .smarter-sec__bg {
@@ -1905,6 +1921,106 @@ font-weight: 700;
 font-size: 17px;
 }
 
+/* Background Style "None" (plain white section) — auto-applied by the
+   template when that's selected. The base heading/desc/list colors above
+   are white for the dark textured background used everywhere else, which
+   is invisible on white; the yellow accent spans (heading **word** spans
+   and list item-heading spans) stay yellow since that already reads fine
+   on white (e.g. Tijarat's "Merchant App" heading). */
+.smarter-sec--on-white .smarter-sec__heading {
+  color: var(--aik-green);
+}
+
+.smarter-sec--on-white .smarter-sec__desc,
+.smarter-sec--on-white .smarter-sec__desc li {
+  color: #333;
+}
+
+.smarter-sec--on-white .smarter-sec__desc,
+.smarter-sec--on-white .smarter-sec__desc li span {
+  color: #000;
+}
+
+.smarter-sec--on-white .smarter-sec__desc li::marker {
+    color: #000;
+    font-size: 1.2rem;
+}
+
+/* Icon Grid Items — optional row of icon + label items below the
+   Description/Bullet List (e.g. Deen page's Azaan Alerts / Qibla Direction
+   row). Fixed 5-column grid so a partial last row stays left-aligned
+   instead of being centered/stretched, matching the reference design. */
+.smarter-sec__icons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px 20px;
+  margin: 0 0 40px;
+}
+
+.smarter-sec__icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.smarter-sec__icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.smarter-sec__icon-img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.smarter-sec__icon-label {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.smarter-sec--on-white .smarter-sec__icon-label {
+  color: #333;
+}
+
+@media (max-width: 991px) {
+  .smarter-sec__icons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .smarter-sec__icons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 14px;
+  }
+
+  .smarter-sec__icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+  }
+
+  .smarter-sec__icon-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .smarter-sec__icon-label {
+    font-size: 11.5px;
+  }
+}
+
 
 .smarter-sec__btns {
   display: flex;
@@ -1926,6 +2042,19 @@ font-size: 17px;
   color: var(--primary_color) !important;
 }
 
+/* Solid button variant — add "solid-btn-sec" to the Smarter Section's
+   Extra CSS Class field for sections with Background Style "None"/plain
+   white. The default glass effect above (10% white fill) is meant for the
+   dark textured smarter_bg.png overlay and is invisible on a white
+   background, leaving only the round arrow icon visible. */
+.solid-btn-sec .smarter-sec__btn {
+  background-color: var(--primary_color) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid transparent !important;
+  color: #fff !important;
+}
+
 .smarter-sec__right {
   flex: 1;
   display: flex;
@@ -1933,7 +2062,8 @@ font-size: 17px;
   align-items: flex-end;
 }
 
-.smarter-sec__right img {
+.smarter-sec__right img,
+.smarter-sec__right video {
   display: block;
 
 }
@@ -2131,6 +2261,224 @@ font-size: 17px;
 
 
 
+
+/* ==========================================
+   APP DOWNLOAD — BAND DESIGN (desktop) +
+   stacked mobile layout, ported from
+   index.html's .aik-download-section /
+   .app-dl-section pairing (download_band.php)
+========================================== */
+
+.aik-download-section {
+  position: relative;
+  width: 100%;
+  background: #fff; /* section is white - the teal graphic is only a band inside it */
+  overflow: hidden;
+  padding: 0 0 1%;
+}
+
+/* keeps the whole section at the same proportions as the original design (370:200) */
+.aik-download-inner {
+  position: relative;
+  width: 100%;
+  padding-top: 54.05%; /* aspect-ratio trick so everything scales together, responsively */
+}
+
+/* container-fluid adds side padding by default in Bootstrap - remove it here so the
+   absolutely-positioned children line up edge-to-edge exactly like the reference design */
+.aik-download-inner.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* teal/green gradient graphic is only a horizontal band, not the full section height */
+.aik-bg-band {
+  position: absolute;
+  left: 0;
+  top: 12%;
+  width: 100%;
+  height: 40%;
+  z-index: 1;
+}
+
+.aik-bg-band img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aik-phone-vector {
+  position: absolute;
+  left: 22%;
+  top: 0%;
+  z-index: 2;
+}
+
+.aik-phone-vector img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.aik-download-text {
+  position: absolute;
+  top: 27%;
+  left: 45%;
+  font-family: Outfit, sans-serif;
+  z-index: 3;
+  white-space: nowrap;
+  font-size: 4.7rem;
+  line-height: 0.9;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.aik-qrcode {
+  position: absolute;
+  top: 15%;
+  left: 60%;
+  width: 9%;
+  aspect-ratio: 1 / 1;
+  z-index: 3;
+}
+
+.aik-qrcode img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.aik-appnow-row {
+  position: absolute;
+  top: 34%;
+  left: 48%;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  z-index: 3;
+}
+
+.aik-appnow-row img {
+  height: auto;
+  display: block;
+}
+
+.aik-appnow-row span {
+  color: #fff;
+  font-family: Outfit, sans-serif;
+  white-space: nowrap;
+  font-size: 4.7rem;
+  line-height: 0.9;
+  font-weight: 800;
+}
+
+.qr_mb img {
+  width: 70%;
+}
+
+@media (max-width: 1920px) {
+  .aik-phone-vector {
+    left: 15%;
+    top: 10%;
+    width: 70%;
+  }
+
+  .aik-download-text {
+    top: 44%;
+    left: 44%;
+  }
+
+  .aik-appnow-row {
+    top: 51%;
+    left: 46%;
+  }
+
+  .aik-bg-band {
+    left: 0;
+    top: 28%;
+    width: 100%;
+    height: 40%;
+  }
+
+  .aik-qrcode {
+    top: 33%;
+    left: 64%;
+  }
+}
+
+@media (max-width: 1699px) {
+  .aik-download-text {
+    font-size: 3.5rem;
+    line-height: 0.5;
+  }
+
+  .aik-appnow-row span {
+    font-size: 3.5rem;
+  }
+
+  .aik-qrcode {
+    top: 31%;
+    left: 61%;
+  }
+}
+
+@media (max-width: 1450px) {
+  .aik-phone-vector {
+    left: 15%;
+    top: 10%;
+    width: 70%;
+  }
+
+  .aik-download-text {
+    top: 44%;
+    left: 44%;
+  }
+
+  .aik-appnow-row {
+    top: 51%;
+    left: 46%;
+  }
+
+  .aik-bg-band {
+    left: 0;
+    top: 28%;
+    width: 100%;
+    height: 40%;
+  }
+
+  .aik-qrcode {
+    top: 33%;
+    left: 64%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .aik-download-text {
+    font-size: 3.2rem;
+    line-height: 0.5;
+  }
+
+  .aik-appnow-row span {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 1025px) {
+  .aik-download-text {
+    font-size: 2.5rem;
+  }
+
+  .aik-appnow-row span {
+    font-size: 2.5rem;
+  }
+
+  .aik-appnow-row {
+    left: 44%;
+  }
+}
 
 /* ==========================================
    APP DOWNLOAD SECTION
@@ -2731,7 +3079,8 @@ font-size: 17px;
 
 
 
-  .smarter-sec__right img {
+  .smarter-sec__right img,
+  .smarter-sec__right video {
     max-width: 500px;
     /* <--- Yahan se phone ki width control / kam kar sakte hain */
   }

@@ -297,16 +297,23 @@
               </div>
 
               <div class="pif-field pif-field--full">
-                <label for="pifService"><strong>Select Service</strong> <span class="pif-req">*</span></label>
-                <div class="pif-select">
-                  <select id="pifService" name="service">
-                    <option value="" disabled selected hidden>Select Service</option>
-                    <option value="account-integration">Account Integration</option>
-                    <option value="payment-apis">Payment APIs</option>
-                    <option value="data-sharing">Data Sharing</option>
-                    <option value="other">Other</option>
-                  </select>
-                  <i class="bi bi-chevron-down"></i>
+                <label for="pifServiceControl"><strong>Interested Services</strong> <span class="pif-req">*</span></label>
+                <div class="pif-multiselect" id="pifServiceSelect">
+                  <div class="pif-multiselect__control" id="pifServiceControl" tabindex="0" role="combobox" aria-haspopup="listbox" aria-expanded="false">
+                    <div class="pif-multiselect__tags" id="pifServiceTags">
+                      <span class="pif-multiselect__placeholder">Select Service</span>
+                    </div>
+                    <i class="bi bi-chevron-down"></i>
+                  </div>
+                  <ul class="pif-multiselect__menu" id="pifServiceMenu" role="listbox" aria-multiselectable="true">
+                    <li role="option" data-value="account-opening">Account Opening</li>
+                    <li role="option" data-value="account-linking">Account Linking</li>
+                    <li role="option" data-value="aik-to-aik-fund-transfer">aik-to-aik Fund Transfer</li>
+                    <li role="option" data-value="debit-credit-use-case">Debit & Credit Use Case</li>
+                    <li role="option" data-value="dynamic-qr-code">Dynamic QR (DQRC)</li>
+                    <li role="option" data-value="static-qr-code">Static QR (SQRC)</li>
+                  </ul>
+                  <input type="hidden" id="pifService" name="service" value="">
                 </div>
                 <span class="pif-error"></span>
               </div>
@@ -705,6 +712,137 @@
       var alertBox = form.querySelector(".pif-alert");
       var agreeError = form.querySelector(".pif-agree-error");
 
+      // Interested Services — multi-select with removable tags
+      var resetServiceSelect = function () {};
+      var serviceSelect = document.getElementById("pifServiceSelect");
+      var serviceControl = document.getElementById("pifServiceControl");
+      var serviceTags = document.getElementById("pifServiceTags");
+      var serviceMenu = document.getElementById("pifServiceMenu");
+      var serviceInput = document.getElementById("pifService");
+
+      if (serviceSelect && serviceControl && serviceTags && serviceMenu && serviceInput) {
+        var selectedServices = [];
+
+        function renderServiceTags() {
+          serviceTags.innerHTML = "";
+
+          if (!selectedServices.length) {
+            var placeholder = document.createElement("span");
+            placeholder.className = "pif-multiselect__placeholder";
+            placeholder.textContent = "Select Service";
+            serviceTags.appendChild(placeholder);
+          } else {
+            selectedServices.forEach(function (service) {
+              var tag = document.createElement("span");
+              tag.className = "pif-tag";
+              tag.setAttribute("data-value", service.value);
+
+              var icon = document.createElement("img");
+              icon.className = "pif-tag__icon";
+              icon.src = "images/form-logo.png";
+              icon.alt = "";
+              tag.appendChild(icon);
+
+              var label = document.createElement("span");
+              label.className = "pif-tag__label";
+              label.textContent = service.label;
+              tag.appendChild(label);
+
+              var remove = document.createElement("button");
+              remove.type = "button";
+              remove.className = "pif-tag__remove";
+              remove.setAttribute("aria-label", "Remove " + service.label);
+              remove.innerHTML = "&times;";
+              remove.addEventListener("click", function (e) {
+                e.stopPropagation();
+                toggleService(service.value, service.label);
+              });
+              tag.appendChild(remove);
+
+              serviceTags.appendChild(tag);
+            });
+          }
+
+          serviceInput.value = selectedServices.map(function (s) { return s.value; }).join(",");
+          serviceInput.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+
+        function toggleService(value, label) {
+          var index = selectedServices.findIndex(function (s) { return s.value === value; });
+          var option = serviceMenu.querySelector('li[data-value="' + value + '"]');
+
+          if (index > -1) {
+            selectedServices.splice(index, 1);
+            if (option) option.classList.remove("is-selected");
+          } else {
+            selectedServices.push({ value: value, label: label });
+            if (option) option.classList.add("is-selected");
+          }
+
+          renderServiceTags();
+        }
+
+        // Menu is reparented to <body> and positioned with `fixed` coords so
+        // it can never be clipped by an ancestor's `overflow: hidden` (the
+        // form card/section both clip overflow for their background art).
+        function positionServiceMenu() {
+          var rect = serviceControl.getBoundingClientRect();
+          serviceMenu.style.position = "fixed";
+          serviceMenu.style.left = rect.left + "px";
+          serviceMenu.style.top = (rect.bottom + 8) + "px";
+          serviceMenu.style.width = rect.width + "px";
+        }
+
+        function openServiceMenu() {
+          document.body.appendChild(serviceMenu);
+          positionServiceMenu();
+          serviceSelect.classList.add("is-open");
+          serviceMenu.classList.add("is-open");
+          serviceControl.setAttribute("aria-expanded", "true");
+          window.addEventListener("scroll", positionServiceMenu, true);
+          window.addEventListener("resize", positionServiceMenu);
+        }
+
+        function closeServiceMenu() {
+          serviceSelect.classList.remove("is-open");
+          serviceMenu.classList.remove("is-open");
+          serviceControl.setAttribute("aria-expanded", "false");
+          window.removeEventListener("scroll", positionServiceMenu, true);
+          window.removeEventListener("resize", positionServiceMenu);
+        }
+
+        serviceControl.addEventListener("click", function () {
+          serviceMenu.classList.contains("is-open") ? closeServiceMenu() : openServiceMenu();
+        });
+
+        serviceControl.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            serviceMenu.classList.contains("is-open") ? closeServiceMenu() : openServiceMenu();
+          } else if (e.key === "Escape") {
+            closeServiceMenu();
+          }
+        });
+
+        Array.prototype.forEach.call(serviceMenu.querySelectorAll("li[data-value]"), function (option) {
+          option.addEventListener("click", function () {
+            toggleService(option.getAttribute("data-value"), option.textContent.trim());
+          });
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!serviceSelect.contains(e.target) && !serviceMenu.contains(e.target)) closeServiceMenu();
+        });
+
+        resetServiceSelect = function () {
+          selectedServices = [];
+          Array.prototype.forEach.call(serviceMenu.querySelectorAll("li.is-selected"), function (option) {
+            option.classList.remove("is-selected");
+          });
+          renderServiceTags();
+        };
+      }
+
       var validators = {
         pifName: function (v) {
           return v.trim().length > 0 ? "" : "Please enter your name.";
@@ -801,6 +939,7 @@
         alertBox.textContent = "Thank you! Your inquiry has been submitted successfully. Our team will get in touch with you shortly.";
         alertBox.className = "pif-alert is-success";
         form.reset();
+        resetServiceSelect();
         Object.keys(validators).forEach(function (id) {
           var input = document.getElementById(id);
           if (input) setFieldState(input, "");

@@ -376,18 +376,85 @@
                             ]
                         },
                         {
+                            "key": "field_aik_smarter_icon_items",
+                            "label": "Icon Grid Items",
+                            "name": "icon_items",
+                            "type": "repeater",
+                            "layout": "table",
+                            "button_label": "Add Icon Item",
+                            "min": 0,
+                            "max": 0,
+                            "instructions": "Optional row of icon + label items shown below the Description/Bullet List (e.g. Deen page's Azaan Alerts / Qibla Direction / Digital Quran row). Wraps 5-per-row on desktop and fewer per row automatically on smaller screens.",
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_smarter_icon_item_image",
+                                    "label": "Icon",
+                                    "name": "icon_image",
+                                    "type": "image",
+                                    "return_format": "array",
+                                    "preview_size": "thumbnail",
+                                    "wrapper": { "width": "40" }
+                                },
+                                {
+                                    "key": "field_aik_smarter_icon_item_label",
+                                    "label": "Label",
+                                    "name": "icon_label",
+                                    "type": "text",
+                                    "wrapper": { "width": "60" }
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_smarter_media_type",
+                            "label": "Media Type",
+                            "name": "media_type",
+                            "type": "select",
+                            "instructions": "Choose whether the side column below shows the Image or the Video field.",
+                            "choices": { "image": "Image", "video": "Video" },
+                            "default_value": "image",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
                             "key": "field_aik_smarter_image",
                             "label": "Image",
                             "name": "image",
                             "type": "image",
                             "return_format": "array",
-                            "preview_size": "medium"
+                            "preview_size": "medium",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_smarter_media_type",
+                                        "operator": "==",
+                                        "value": "image"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_smarter_video",
+                            "label": "Video",
+                            "name": "video",
+                            "type": "file",
+                            "instructions": "Self-hosted video file (mp4/webm/mov). Plays muted, autoplay, looped, with no controls — matches the site's decorative video treatment.",
+                            "return_format": "array",
+                            "mime_types": "mp4,webm,mov",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_smarter_media_type",
+                                        "operator": "==",
+                                        "value": "video"
+                                    }
+                                ]
+                            ]
                         },
                         {
                             "key": "field_aik_smarter_image_position",
-                            "label": "Image Position",
+                            "label": "Image/Video Position",
                             "name": "image_position",
                             "type": "select",
+                            "instructions": "Applies to whichever media type is selected above.",
                             "choices": { "right": "Right", "left": "Left" },
                             "default_value": "right",
                             "wrapper": { "width": "50" }
@@ -485,6 +552,25 @@
                             "name": "extra_class",
                             "type": "text",
                             "instructions": "Optional. Only set this if design/QA asks for a specific per-page style hook (mirrors modifier classes like debit_custom_smarter-sec from the original design)."
+                        }
+                    ]
+                },
+                "layout_aik_full_width_video": {
+                    "key": "layout_aik_full_width_video",
+                    "name": "full_width_video",
+                    "label": "Full-Width Video (edge-to-edge, no container)",
+                    "display": "block",
+                    "instructions": "A standalone video section with no side padding/container — the video always spans the full page width, unlike the Smarter Section's Video option which sits inside the boxed layout next to text.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_fwv_video",
+                            "label": "Video",
+                            "name": "video",
+                            "type": "file",
+                            "instructions": "Self-hosted video file (mp4/webm/mov). Plays muted, autoplay, looped, with no controls.",
+                            "required": 1,
+                            "return_format": "array",
+                            "mime_types": "mp4,webm,mov"
                         }
                     ]
                 },
@@ -617,6 +703,82 @@
                             "type": "image",
                             "return_format": "array",
                             "preview_size": "large"
+                        }
+                    ]
+                },
+                "layout_aik_download_band": {
+                    "key": "layout_aik_download_band",
+                    "name": "download_band",
+                    "label": "App Download (Band Design + Mobile)",
+                    "display": "block",
+                    "instructions": "Newer 'App Download' design (the wide decorative-band layout from index.html) — a separate layout from the original 'App Download' above so existing pages using that one aren't affected. Renders a desktop version and a mobile version from the same fields; only one shows per screen size.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_dlband_heading1",
+                            "label": "Heading Line 1",
+                            "name": "heading_line_1",
+                            "type": "text",
+                            "default_value": "Download",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_dlband_heading2",
+                            "label": "Heading Line 2",
+                            "name": "heading_line_2",
+                            "type": "text",
+                            "default_value": "App Now",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_dlband_logo",
+                            "label": "Logo Image",
+                            "name": "logo_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_aik_dlband_qr",
+                            "label": "QR Code Image",
+                            "name": "qr_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_aik_dlband_phone",
+                            "label": "Phone Image (Desktop)",
+                            "name": "phone_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_aik_dlband_phone_mobile",
+                            "label": "Phone Image (Mobile)",
+                            "name": "phone_image_mobile",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "instructions": "Optional — leave blank to reuse the desktop Phone Image on mobile too."
+                        },
+                        {
+                            "key": "field_aik_dlband_bg_band",
+                            "label": "Background Band Image (Desktop)",
+                            "name": "bg_band_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "large",
+                            "instructions": "The decorative teal band graphic behind the phone/QR on desktop. Leave blank to use the theme default."
+                        },
+                        {
+                            "key": "field_aik_dlband_bg_mobile",
+                            "label": "Background Image (Mobile)",
+                            "name": "bg_image_mobile",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "large",
+                            "instructions": "Full-bleed background for the stacked mobile layout. Leave blank to use the theme default."
                         }
                     ]
                 },

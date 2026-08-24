@@ -1,8 +1,11 @@
 <?php
 /**
  * Default page template — renders the "page_sections" Flexible Content
- * field. Falls back to the classic editor content if a page has no
- * sections yet (e.g. right after creating it).
+ * field, then the classic/block editor content below it (if any was
+ * typed). The two aren't mutually exclusive: a page can have just a Hero
+ * section (e.g. for the banner + Personal/Business toggle) with the actual
+ * body text written normally in the editor — e.g. Privacy Policy, Terms —
+ * instead of needing a dedicated Flexible Content layout for plain text.
  */
 
 get_header();
@@ -11,16 +14,18 @@ get_header();
       <?php
       if ( have_rows( 'page_sections' ) ) {
 		aik_render_page_sections();
-	  } else {
-		while ( have_posts() ) :
-			the_post();
+	  }
+
+	  while ( have_posts() ) :
+		the_post();
+		if ( trim( get_the_content() ) ) :
 			?>
         <div class="container py-5">
           <?php the_content(); ?>
         </div>
 			<?php
-		endwhile;
-	  }
+		endif;
+	  endwhile;
 	  ?>
     </main>
 <?php

@@ -1,6 +1,86 @@
+Perfect — FileZilla se sirf 3 files upload karni hain (poora theme dobara zip karne ki zarurat nahi). Yahan exact steps hain:
+
+FileZilla se deploy karne ka tareeqa
+1. Connect karo
+FileZilla khol kar apne hosting ke FTP/SFTP credentials se connect karo (jo already saved hain).
+
+2. Remote side par sahi folder par jao
+Server par is path tak navigate karo:
+
+
+/public_html/wp-content/themes/aik-digital/
+(exact path host ke hisaab se thora different ho sakta ha — public_html ki jagah www ya kuch aur bhi ho sakta ha, lekin wp-content/themes/aik-digital/ hamesha yahi rahega.)
+
+3. Local side par ye folder khol lo
+
+
+C:\Users\shahrukh\Desktop\aik\2026-v2\wp-theme\aik-digital\
+4. Sirf ye 3 files upload/overwrite karo (poori theme nahi, sirf ye jo change hui hain):
+
+Local file	Remote destination
+template-parts\blocks\smarter_section.php	wp-content/themes/aik-digital/template-parts/blocks/smarter_section.php =DOne
+css\style.css	wp-content/themes/aik-digital/css/style.css
+acf-json\group_aik_page_sections.json	wp-content/themes/aik-digital/acf-json/group_aik_page_sections.json
+Har file ko drag-drop karo apni matching remote folder mein — FileZilla puchega "Target file already exists", to Overwrite select kar lena (agar sab ek sath drag kar rahe ho to "Overwrite All" tick kar dena).
+
+5. Wapis wp-admin mein jao aur ACF fields ko sync karo
+
+Custom Fields → Field Groups → "Page Sections" kholo.
+Agar "Sync available" ka notice dikhe, us par click karo — ye json file ko WordPress mein le aayega, tabhi Media Type / Video fields editor mein nazar aayenge.
+6. Cache clear karo
+Live page ko Ctrl+F5 (hard refresh) se dekho taake nayi CSS load ho. Agar koi caching plugin (WP Rocket, LiteSpeed, etc.) laga ha to uska cache bhi clear kar dena.
+
+Uske baad wahi steps follow karo jo humne pehle likhe thay — Tijarat page → us Smarter Section ko expand karo → Media Type: Video → mp4 upload karo → Update.
+
+Chaho to mei ye FileZilla-specific steps bhi CONTENT-GUIDE.md mein add kar dun taake aage bhi yaad rahe?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # aik digital — WordPress Content Entry Guide
 
 This is the page-by-page recipe for rebuilding each of the 10 static pages inside WordPress once the `aik-digital` theme (and ACF Pro) is active. For every page: create a new **Page**, set its title/slug to match the original file, then in the block editor add a **Page Sections** Flexible Content row for each section listed below, in the order given, and fill in the fields shown.
+
+## 0. How to Make a Change (Quick Workflow)
+
+This is the everyday workflow for editing a page that already exists — keep coming back to this section whenever you forget the steps.
+
+1. **Log in** to `/wp-admin` and go to **Pages** → find the page (e.g. "Tijarat") → **Edit**.
+2. Scroll down past the title to the **Page Sections** field — this is a stack of rows, one per section on that page, in the same top-to-bottom order they appear on the live page.
+3. Each row's header names its layout (e.g. "Smarter Section (Feature/Spend/Why-Choose block)") and usually previews the Heading text, so you can match it to what you see on the live page. Click a row's header to expand/collapse it.
+4. **To change existing content:** expand the row, find the field that matches what needs to change (Heading, Description, Image, Buttons, etc. — see the field notes below and the per-page recipes further down for what each one does), edit it, then collapse the row again if you like.
+5. **To add a brand new section:** scroll to the bottom of the Page Sections field and click **Add Row**, pick the layout type from the popup (the same layout names used throughout this guide — Hero, Smarter Section, Bento Grid, Testimonials, Steps, Driven Ethics, News, etc.), then fill its fields following the closest matching example below.
+6. **To reorder or remove a section:** each row has drag handles / up-down and duplicate/trash icons in its header — drag to reorder, use the trash icon to delete a row. There's no undo once you click Update, so double-check before deleting.
+7. When you're done, click **Update** (top right) and open the live page in a new tab to confirm it looks right. If your host/plugin setup has a caching plugin (e.g. WP Rocket, LiteSpeed Cache, W3 Total Cache), clear its cache too — otherwise you may still see the old version.
+8. **If a field mentioned in this guide doesn't show up in the editor** (e.g. a newly added field like Smarter Section's Media Type/Video), the field definitions on disk are newer than what WordPress has cached. Go to **Custom Fields → Field Groups**, open the "Page Sections" group — if WordPress shows a **Sync available** notice, click it. This only needs a developer/code deploy to have happened first; it doesn't create or change any page content, it just refreshes which fields are available to fill in.
+
+### Worked example: turning on the Video option we just added
+
+This walks through exactly where to click, using the real case this field was built for — putting `images/vdo/aik tijarat without logo.mp4` into the Tijarat page's "Ultimate Merchant App for SMEs" section instead of its current image.
+
+1. Deploy/pull the latest theme code to the site first (this is a developer step — the `media_type`/`video` fields and the CSS for them only exist once the updated `smarter_section.php`, `group_aik_page_sections.json`, and `style.css` files are on the server). Nothing below works until this has happened.
+2. **Pages → Tijarat → Edit.**
+3. In **Page Sections**, find the Smarter Section row whose heading preview reads "The Ultimate **Merchant App** for SMEs" and expand it.
+4. If you don't see a **Media Type** field yet, go do step 8 above (Custom Fields → Field Groups → Sync on "Page Sections"), then come back and reload this Edit Page screen.
+5. Set **Media Type** to `Video`. The **Image** field disappears and a **Video** field takes its place (they're the same slot — only one shows at a time).
+6. Click into the **Video** field → **Add Video** → upload `aik tijarat without logo.mp4` from your computer into the Media Library (the file currently sits in the project's `images/vdo/` folder — download/copy it from there if you don't have it locally).
+7. Leave **Image/Video Position** as `Left` — that's unchanged from what this section already uses for the image today.
+8. Click **Update**, then open the live Tijarat page and confirm the video plays automatically (muted, looped, no controls) where the image used to be.
+
+The same 5 steps (4–8) apply to **any** Smarter Section on any page, not just this one — switch Media Type to Video, upload the file, keep the position, Update.
 
 Notes that apply everywhere:
 - Any field value written as `Spend **Smarter,** the **Halal** Way` means: type it exactly like that (with the `**`) — the theme automatically turns `**word**` into the yellow/highlighted span, so don't manually add HTML.
@@ -11,8 +91,14 @@ Notes that apply everywhere:
 - The Hero layout has 3 **Hero Style** options — always set this correctly or the page gets the wrong hero markup: `Standard` (Home only — heading + app mockup + pills), `Business` (Business page only — adds Subheading + 2 buttons), `Inner Page` (every other page — Debit Card, Deen, Payroll, Safa, Tijarat, Aghaaz, What's New, Connect — a shorter hero with just a centered heading over the background image). Inner Page also has an optional **Mobile Background Image** field; leave it blank to fall back to `bg-1.png` like the original site does on every one of these pages.
 - Smarter Section has a **Bullet List Items** repeater (Item Heading + Item Text pairs) — use it instead of Description whenever a section says *"styled as a 'why choose' list"* or *"Key Features"* (marked below with a table of items to enter). It renders as a bulleted list with each item's heading highlighted in yellow, matching the original design — don't type the whole thing into the plain Description field, that only renders as a flat paragraph with the list formatting lost. Don't type a trailing colon on the heading, it's added automatically.
 - **Extra CSS Class** accepts multiple space-separated classes (e.g. `why-choose-sec debit_custom_why-choose-sec`) — type them exactly like that, with a space between.
+- Smarter Section's **Media Type** select (Image / Video) controls whether the side column shows the Image field or the Video field below it — upload an mp4/webm/mov to Video when you want a video instead of an image. The **Image/Video Position** select (Left / Right) applies to whichever one is active.
+- Smarter Section's **Buttons** render with a translucent "glass" style by default (white 10% fill, blurred) with a solid yellow round-arrow icon — this only reads correctly over the dark textured background (`Background Style: Default`). On a section with `Background Style: None` (plain white), that glass fill is invisible against the white page and only the round arrow icon shows up. If you're adding Buttons to a white-background section, also add `solid-btn-sec` to that section's **Extra CSS Class** field — it swaps the button back to a solid teal pill with a visible label.
 - Smarter Section's **Background Style** defaults to `Default` (the dark textured overlay seen on most sections). Only the sections explicitly marked `Background Style: None` or `Background Style: Custom Background Image` below need that field touched — everywhere else, leave it on the default.
+- Heading/Description/Bullet List text is white by default (readable on the dark textured background). Setting **Background Style: None** automatically switches that text to dark (green heading, dark grey description/list) so it stays readable on the plain white section — you don't need to add any extra class for this, it's automatic based on the Background Style field alone.
 - Smarter Section also has **Left Grid Decoration** / **Right Grid Decoration** selects (None / corner positions) for the small decorative grid graphics some sections have in the corners — only set these where explicitly noted below; most sections don't use them. These aren't fully audited for every section on every page yet — if a section in the original design has a `grid-left`/`grid-right` graphic that looks off after publishing, match its corner to what you see in the static `.html` file and set the corresponding select field.
+- There's also a separate **Full-Width Video** layout (pick it from the "Add Row" popup like any other layout) for a video that needs to span edge-to-edge across the full page width — unlike Smarter Section's Video option, which sits inside the boxed layout next to text. It has one field: **Video** (upload the mp4/webm/mov) — no heading, no container, just the video full-bleed.
+- Smarter Section also has an **Icon Grid Items** repeater (Icon + Label pairs) for a row of small icon-and-caption items below the Description/Bullet List — e.g. Deen page's "Azaan Alerts / Qibla Direction / Digital Quran / Digital Tasbeeh / Islamic Calendar" row. Add as many rows as needed; it wraps 5-per-row on desktop, 4 on tablet, 3 on mobile, with a leftover partial row staying left-aligned rather than centered. Optional — leave empty if a section doesn't need it.
+- There are now **two** "App Download" layouts — pick the right one when adding a row: **App Download** is the original design (used on Home, Business, What's New, Connect per the recipes below — don't change which one those use). **App Download (Band Design + Mobile)** is the newer wide decorative-band design from `index.html`'s Home page redesign — it renders a desktop band layout and a stacked mobile layout from the same fields (Heading Line 1/2, Logo, QR Code, Phone Image desktop/mobile, Background Band Image, Background Image Mobile), only one shows per screen size automatically.
 
 ---
 

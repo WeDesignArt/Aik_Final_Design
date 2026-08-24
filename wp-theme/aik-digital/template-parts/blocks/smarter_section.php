@@ -8,7 +8,10 @@
 $heading         = get_sub_field( 'heading' );
 $description     = get_sub_field( 'description' );
 $list_items      = get_sub_field( 'list_items' );
+$icon_items      = get_sub_field( 'icon_items' );
+$media_type      = get_sub_field( 'media_type' ) ?: 'image';
 $image           = get_sub_field( 'image' );
+$video           = get_sub_field( 'video' );
 $image_pos       = get_sub_field( 'image_position' );
 $bg_style        = get_sub_field( 'background_style' );
 $bg_image        = get_sub_field( 'bg_image' );
@@ -19,6 +22,13 @@ $buttons         = get_sub_field( 'buttons' );
 $extra_class     = get_sub_field( 'extra_class' );
 
 $section_class = 'smarter-sec';
+if ( 'none' === $bg_style ) {
+	// Heading/Description/List text defaults to white for the dark textured
+	// background used everywhere else — on a plain white section that's
+	// invisible, so switch it to dark text automatically here instead of
+	// relying on every white-background section remembering a manual class.
+	$section_class .= ' smarter-sec--on-white';
+}
 if ( $extra_class ) {
 	// Multiple space-separated classes (e.g. "why-choose-sec debit_custom_why-choose-sec")
 	// must be sanitized one at a time — sanitize_html_class() strips spaces if run on
@@ -60,6 +70,16 @@ $grid_right_modifiers = array(
               <?php elseif ( $description ) : ?>
               <p class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="200"><?php echo aik_nl2br( $description ); ?></p>
               <?php endif; ?>
+              <?php if ( ! empty( $icon_items ) ) : ?>
+              <div class="smarter-sec__icons" data-aos="fade-up" data-aos-delay="300">
+                <?php foreach ( $icon_items as $icon_item ) : ?>
+                <div class="smarter-sec__icon-item">
+                  <span class="smarter-sec__icon-box"><?php aik_the_acf_image( $icon_item['icon_image'], 'smarter-sec__icon-img' ); ?></span>
+                  <span class="smarter-sec__icon-label"><?php echo esc_html( $icon_item['icon_label'] ); ?></span>
+                </div>
+                <?php endforeach; ?>
+              </div>
+              <?php endif; ?>
               <?php if ( ! empty( $buttons ) ) : ?>
               <div class="smarter-sec__btns" data-aos="fade-up" data-aos-delay="400">
                 <?php foreach ( $buttons as $btn ) : ?>
@@ -68,7 +88,11 @@ $grid_right_modifiers = array(
               </div>
               <?php endif; ?>
             </div>
-            <?php if ( ! empty( $image['url'] ) ) : ?>
+            <?php if ( 'video' === $media_type && ! empty( $video['url'] ) ) : ?>
+            <div class="smarter-sec__right<?php echo esc_attr( $right_order_class ); ?>">
+              <video src="<?php echo esc_url( $video['url'] ); ?>" autoplay muted loop playsinline data-aos="fade-left" data-aos-delay="300"></video>
+            </div>
+            <?php elseif ( 'image' === $media_type && ! empty( $image['url'] ) ) : ?>
             <div class="smarter-sec__right<?php echo esc_attr( $right_order_class ); ?>">
               <img src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo esc_attr( $image['alt'] ? $image['alt'] : $heading ); ?>" data-aos="fade-left" data-aos-delay="300">
             </div>
