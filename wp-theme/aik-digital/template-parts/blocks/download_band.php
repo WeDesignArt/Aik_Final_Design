@@ -25,11 +25,10 @@ $bg_band_url      = ! empty( $bg_band['url'] ) ? $bg_band['url'] : AIK_THEME_URI
 $bg_mobile_url    = ! empty( $bg_mobile['url'] ) ? $bg_mobile['url'] : AIK_THEME_URI . '/images/mob-app__section_bg.jpg';
 ?>
       <section class="aik-download-section d-none d-md-block">
+        <div class="aik-bg-band">
+          <img src="<?php echo esc_url( $bg_band_url ); ?>" alt="">
+        </div>
         <div class="container-fluid aik-download-inner">
-
-          <div class="aik-bg-band">
-            <img src="<?php echo esc_url( $bg_band_url ); ?>" alt="">
-          </div>
 
           <div class="aik-phone-vector">
             <img src="<?php echo esc_url( $phone_url ); ?>" alt="aik app phone mockup">

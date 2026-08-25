@@ -4,6 +4,27 @@
    Colors: yellow #f5ce1a | green #065258
    ============================================================ */
 
+
+/* Additional CSS */
+
+/* page.php */
+
+
+.page_content p{
+	font-size: 18px;
+}
+
+.page_content p strong{
+	font-size: 20px;
+}
+
+.smarter-sec__inner .note .smarter-sec__desc_note {
+	color: #005257;
+}
+
+
+
+
 /* ── CSS Variables ────────────────────────────────────────── */
 :root {
   --aik-yellow: #f5ce1a;
@@ -20,329 +41,6 @@
 }
 
 
-/* overlap the section above it (e.g. banner_section) */
-.section-overlap {
-  position: relative;
-  z-index: 2;
-     top: -135px;  /* jitna overlap chahiye, utna adjust karein (px) */
-  background-color: #fff;
-  padding: 50px 0;
-}
-
-/* banner ko niche stack rakhne k liye */
-.banner_section {
-  position: relative;
-  z-index: 1;
-}
-
-.grid-top-right_aik_connect {
-    top: -48px;
-    right: 0;
-    bottom: auto;
-}
-
-.grid-center-left_aik_connect {
-    top: 50%;
-    bottom: auto;
-    transform: translateY(-50%);
-    left: 70px;
-}
-
-
-
-/* connect-new-welcome */
-
-  .aik-welcome-section{
-    position: relative;
-    width: 100%;
-    background: #fff;
-    overflow: hidden;
-  }
-
-  /* keeps the whole section at the same proportions as the reference design (986:410) */
-  .aik-welcome-inner{
-    position: relative;
-    width: 100%;
-    padding-top: 41.6%; /* aspect-ratio trick so everything scales together, responsively */
-  }
-
-  .aik-welcome-inner.container-fluid{
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .aik-welcome-bg{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-  }
-
-  .aik-welcome-bg img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-
-  .aik-welcome-text{
-    position: absolute;
-    left: 20%;
-    top: 32%;
-    z-index: 2;
-    font-family:  Outfit, sans-serif;
-    font-weight: 800;
-    line-height: 1.18;
-  }
-
-  .aik-welcome-text .line1{
-    color: var(--aik-green);
-    font-size: 6rem;
-    font-weight: 800;
-   
-  }
-
-  .aik-welcome-text .line2{
-    color:var(--aik-yellow);
-    font-size: 6rem;
-    font-weight: 800;
-   
-  }
-
-  .aik-welcome-right{
-    position: absolute;
-    left: 66%;
-    top: 63%;
-    width: 23%;
-    z-index: 2;
-    font-family: Outfit, sans-serif;
-  }
-
-  .aik-welcome-right h3{
-    font-weight: 800;
-    margin-bottom: 0.9em;
-    line-height: 1.25;
-  }
-
-  .aik-welcome-right p{
-    /* color: #333; */
-    /* font-weight: 400; */
-    font-size: 1rem;
-    line-height: 1.55;
-    margin: 0;
-  }
-
-
-
-
-
-/* Connect _ new Download Section */
-  .aik-download-section{
-    position: relative;
-    width: 100%;
-    background: #fff; /* section is white - the teal graphic is only a band inside it */
-    overflow: hidden;
-      padding: 0 0 1%;
-  }
-
-  /* keeps the whole section at the same proportions as the original design (370:200).
-     Capped at 1920px and centered: past that, on this edge-to-edge .container-fluid,
-     height would keep growing (unbounded, tied to full viewport width) while the phone
-     graphic ran out of room to grow with it, leaving an empty gap below it. Uses
-     aspect-ratio (computed from this element's own width) instead of the old
-     padding-top-% hack (computed from the *containing block's* width, i.e. the parent —
-     so it would have ignored this same max-width cap and kept growing anyway). */
-  .aik-download-inner{
-    position: relative;
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    aspect-ratio: 370 / 200;
-  }
-
-  /* container-fluid adds side padding by default in Bootstrap - remove it here so the
-     absolutely-positioned children line up edge-to-edge exactly like the reference design */
-  .aik-download-inner.container-fluid{
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* teal/green gradient graphic is only a horizontal band, not the full section height -
-     this is what was showing "halved" before, since it was being force-covered on a much taller box */
-  .aik-bg-band{
-    position: absolute;
-    left: 0;
-    top: 12%;
-    width: 100%;
-    height: 40%;
-    z-index: 1;
-  }
-
-  .aik-bg-band img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* phone + yellow vector graphic, sized/positioned to match the reference exactly */
-.aik-phone-vector {
-    position: absolute;
-    left: 22%;
-    top: 0%;
-    width: 78%; /* scales with the container instead of capping at the image's
-      natural pixel size (1427px) — without this, the phone stopped growing
-      past ~1830px viewport width while the section kept getting taller,
-      leaving an increasing empty gap below it on wide screens */
-    z-index: 2;
-}
-
-  .aik-phone-vector img{
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-.aik-download-text {
-    position: absolute;
-    top: 27%;
-    left: 45%;
-    font-family: Outfit, sans-serif;
-    z-index: 3;
-    white-space: nowrap;
-    font-size: 4.7rem;
-    line-height: 0.9;
-    font-weight: 800;
-    color: #fff;
-    margin: 0;
-}
-
-.aik-qrcode {
-    position: absolute;
-    top: 15%;
-    left: 60%;
-    width: 9%;
-    aspect-ratio: 1 / 1;
-    z-index: 3;
-}
-
-  .aik-qrcode img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-
-.aik-appnow-row {
-    position: absolute;
-    top: 34%;
-    left: 48%;
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    z-index: 3;
-}
-
-  .aik-appnow-row img{
-    
-    height: auto;
-    display: block;
-  }
-
-  .aik-appnow-row span{
-    color: #fff;
-    font-family: Outfit, sans-serif;   
-    white-space: nowrap;
-    font-size: 4.7rem;
-    line-height: 0.9;
-    font-weight: 800;
-    color: #fff;
-
-}
-  
-
-
-
-/* ---------- why choose ---------- */
-
-  .why-section{padding:70px 0 90px;text-align:center;}
-  .why-section h2{
-    font-size:64px;
-    font-weight:800;
-    color:var(--aik-green);
-    margin:0 0 60px;
-  }
-  .why-section h2 span{color:var(--aik-yellow);}
-  .why-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:50px;
-  }
-  .why-card .icon-circle{
-    width:96px;height:96px;
-    border-radius:50%;
-    background:var(--gold);
-    display:flex;align-items:center;justify-content:center;
-    margin:0 auto 22px;
-  }
-  .why-card .icon-circle svg{width:44px;height:44px;stroke:var(--teal-dark);fill:none;stroke-width:1.6;}
-  .why-card h4{
-    font-size:24px;
-    font-weight:700;
-    margin:0 0 14px;
-    color:var(--ink);
-    line-height:1.3;
-  }
-  .why-card p{
-    font-size:16px;
-    line-height:1.7;
-    color:var(--gray-text);
-    /* max-width:320px; */
-    margin:0 auto;
-
-     
-  }
-.new_connect_sec .smarter-sec__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    top: 24%;
-    /* max-width: 393px; */
-    left: 20%;
-}
-
-.new_connect_sec .smarter-sec__heading{
-    color: var(--aik-green) !important;
-}
-
-.new_connect_sec .smarter-sec__heading span {
-    color: #fff !important;
-}
-.new_connect_sec .smarter-sec__desc{
-  color: #000 !important;
-}
-
-.new_connect_sec .smarter-sec__desc_custom {
-  max-width: 408px !important;
-  font-size: 20px;
-}
-
-
-.bannner_section{
-  width: 100%;
-  height: 100%;
-}
-
-.banner_section .banner img{
-  width: 100%;
-  height: 100%;
-}
 
 
 /* connect_custom_why-chose-sec */
@@ -360,187 +58,6 @@
 .connect_smarter-sec .smarter-sec__left,.connect_smarter-sec .smarter-sec__desc {
       max-width: 700px !important;
       
-}
-
-
-@media (max-width: 1920px) {
-.aik-welcome-text {
-    position: absolute;
-    left: 14%;
-    top: 32%;
-  }
-
-
-  .aik-welcome-right {
-    left: 64%;
-    top: 63%;
-    width: 30%;
-}
-
-.new_connect_sec .smarter-sec__inner{
-    left: 12%;
-}
-
-.aik-phone-vector {
-        left: 15%;
-        top: 10%;
-        width: 70%;
-    }
-
-    .aik-download-text {
-    top: 44%;
-    left: 44%;
-  }
-
-  .aik-appnow-row {
-    top: 51%;
-    left: 46%;
-  }
-
-    .aik-bg-band{
-        position: absolute;
-    left: 0;
-    top: 28%;
-    width: 100%;
-    height: 40%;
-    z-index: 1;
-}
-
-    .aik-qrcode {
-        top: 33%;
-        left: 64%;
-    }
-
-}
-@media (max-width: 1699px) {
-
-  .aik-welcome-text .line1 {
-    font-size: 5rem;
-}
-.aik-welcome-text .line2 {
-   font-size: 5rem;
-}
-.new_connect_sec .smarter-sec__heading {
-    font-size: 3rem;
-}
-
-.new_connect_sec .smarter-sec__desc_custom {
-    font-size: 2rem;
-}
-
-
-.aik-welcome-section {
-    height: 100vh;
-}
-
-.aik-welcome-bg {
-    top: 82px;
-}
-
-.aik-welcome-right h3 {
-    font-size: 20px;
-}
-
-.aik-welcome-right p {
-    font-size: 0.7rem;
-}
-
-.new_connect_sec .smarter-sec__desc_custom {
-    max-width: 235px !important;
-    font-size: 0.8rem;
-}
-  
-.aik-download-text {
-    font-size: 3.5rem;
-    line-height: 0.5;
-}
-.aik-appnow-row span {
-    font-size: 3.5rem;
-}
-
-    .aik-qrcode {
-        top: 31%;
-        left: 61%;
-    }
-
-
-}
-
-@media (max-width: 1450px) {
-.aik-welcome-text {
-    position: absolute;
-    left: 14%;
-    top: 32%;
-  }
-
-
-  .aik-welcome-right {
-    left: 64%;
-    top: 63%;
-    width: 30%;
-}
-
-.new_connect_sec .smarter-sec__inner{
-    left: 12%;
-}
-
-.aik-phone-vector {
-        left: 15%;
-        top: 10%;
-        width: 70%;
-    }
-
-    .aik-download-text {
-    top: 44%;
-    left: 44%;
-  }
-
-  .aik-appnow-row {
-    top: 51%;
-    left: 46%;
-  }
-
-    .aik-bg-band{
-        position: absolute;
-    left: 0;
-    top: 28%;
-    width: 100%;
-    height: 40%;
-    z-index: 1;
-}
-
-    .aik-qrcode {
-        top: 33%;
-        left: 64%;
-    }
-
-}
-@media (max-width: 1300px) {
-    .aik-download-text {
-        font-size: 3.2rem;
-        line-height: 0.5;
-    }
-      .aik-appnow-row span {
-    font-size: 3.2rem;
-}
-  }
-@media (max-width: 1025px) {
-  .aik-download-text {
-        font-size: 2.5rem;
-      }
-      .aik-appnow-row span {
-    font-size: 2.5rem;
-  }
-  .aik-appnow-row {
-        left: 44%;
-    }
-
-
-  
-}
-
-.qr_mb img {
-  width: 70%;
 }
 
 
@@ -573,118 +90,6 @@
 
 }
 
-
-@media (max-width: 575px) {
-  
-
-.new_connect_sec .smarter-sec__heading {
-    font-size: 3rem;
-}
-
-.new_connect_sec .smarter-sec__desc_custom {
-    font-size: 2rem;
-}
-
-
-.aik-welcome-section {
-    height: 100vh;
-}
-
-.aik-welcome-bg {
-    top: 82px;
-}
-
-.aik-welcome-right h3 {
-    font-size: 20px;
-}
-
-.aik-welcome-right p {
-    font-size: 1rem;
-}
-
-.new_connect_sec .smarter-sec__desc_custom {
-    max-width: 235px !important;
-    font-size: 1rem;
-}
-  
-.aik-download-text {
-    font-size: 3.5rem;
-    line-height: 0.5;
-}
-.aik-appnow-row span {
-    font-size: 3.5rem;
-}
-.why-grid {
-    grid: none;
-}
-
-    .new_connect_sec .smarter-sec__inner {
-          position: initial;
-    text-align: center;
-}
-
-    .new_connect_sec .smarter-sec__desc_custom {
-        max-width: 479px !important;
-    }
-
-    .debit_new_main{
-        padding: 0 !important;
-    }
-
-
-
-
-
-
-    .aik-welcome-section_mb .aik-welcome-right {
-        left: 3%;
-        top: 130%;
-        width: 95%;
-        text-align: center;
-    }
-.aik-welcome-section_mb      .aik-welcome-text {
-        position: absolute;
-        left: 11%;
-        top: 4%;
-    }
-.aik-welcome-section_mb   .aik-welcome-text .line1 {
-    font-size: 3.3rem;
-}
-.aik-welcome-section_mb  .aik-welcome-text .line2 {
-    font-size: 3.3rem;
-}
-
-.aik-welcome-section_mb  .aik-welcome-inner {
-      padding-top: 5%;
-}
-
-
-
-  .aik-welcome-text_mb{
-        text-align: center;
-  }
-
-  .aik-welcome-text_mb .line1{
-    color: var(--aik-green);
-    font-size: 3.3rem;
-    font-weight: 800;
-   
-  }
-
-  .aik-welcome-text_mb .line2{
-    color:var(--aik-yellow);
-    font-size: 3.3rem;
-    font-weight: 800;
-   
-  }
-
-.aik-welcome-section_mb .aik-welcome-bg {
-        top: 278px;
-        height: auto;
-    }
-
-
-
 /* Business Home about section custom */
 
 
@@ -694,10 +99,6 @@
         align-content: center !important;
 }
 
-
-
-
-}
 
 
 
@@ -751,7 +152,7 @@
 
 .debit-hero-caption h1 {
   color: #fff;
-  font-size: 4rem;
+  font-size: 5.5rem;
   margin: 0;
 }
 
@@ -769,74 +170,13 @@
   .debit-hero-caption h1 {
     font-size: 3rem;
   }
-
-
-  .aik-download-section_mb{
-    height: 60vh;
-
-  }
-
-
-      .aik-download-section_mb .aik-phone-vector {
-        left: 0%;
-        top: -2%;
-        width: 100%;
-    }
- .aik-download-section_mb .aik-bg-band {
-    position: absolute;
-    left: 0;
-    top: 133%;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
 }
-
-.aik-download-section_mb    .aik-qrcode {
-        top: 140%;
-        left: 65%;
-            width: 25%;
-    }
-    .aik-download-section_mb .aik-download-text {
-        font-size: 3rem;
-        line-height: 0.5;
-        top: 165%;
-        left: 8%;
-    }
-    .aik-download-section_mb  .aik-appnow-row {
-    position: absolute;
-    top: 193%;
-    left: 12%;
-  }
-
-
-
-}
-
-@media (max-width: 413px) {
-    .debit_hero_item {
-        min-height: 78vh !important;
-    }
-}
-
-
-@media (max-width: 361px) {
-    .debit_hero_item {
-        min-height: 84vh !important;
-        
-    }
-        .debit-hero-caption h1 {
-        font-size: 2.5rem;
-    }
-}
-
-
-
 
 .debit_custom_smarter-sec h2 {
   color: var(--aik-green) !important;
 }
 .debit_custom_smarter-sec p{
-  color: #000 !important;
+  color: #000 ;
 }
 
 
@@ -982,7 +322,7 @@ footer.aik-footer {
 /* Title */
 .aik-newsletter__text h2 {
   color: #fff;
-  font-size: clamp(26px, 2.8vw, 38px);
+  font-size: 3rem;
   font-weight: 800;
   line-height: 1.18;
   margin: 0;
@@ -2503,12 +1843,22 @@ footer.aik-footer {
 
 
 
-.smarter-sec__right img {
+.smarter-sec__right img,
+.smarter-sec__right video {
   width: 100%;
 }
 
-.smarter-sec__right video {
+/* Full-Width Video section — deliberately no .container, so the video
+   spans edge-to-edge at the section's full width. */
+.full-width-video-sec {
   width: 100%;
+  line-height: 0;
+}
+
+.full-width-video-sec video {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .smarter-sec__bg {
@@ -2567,6 +1917,15 @@ footer.aik-footer {
      max-width: 720px !important;
 }
 
+/* AGHAAZ AND DEBIT CARD */
+.debit_custom_why-choose-sec .smarter-sec__left {
+	 max-width: 570px !important;
+}
+
+.debit_custom_why-choose-sec .smarter-sec__desc {
+	max-width:530px !important;
+}	
+
 
 
 .deen-sec .smarter-sec__left {
@@ -2590,6 +1949,106 @@ font-weight: 700;
 font-size: 17px;
 }
 
+/* Background Style "None" (plain white section) — auto-applied by the
+   template when that's selected. The base heading/desc/list colors above
+   are white for the dark textured background used everywhere else, which
+   is invisible on white; the yellow accent spans (heading **word** spans
+   and list item-heading spans) stay yellow since that already reads fine
+   on white (e.g. Tijarat's "Merchant App" heading). */
+.smarter-sec--on-white .smarter-sec__heading {
+  color: var(--aik-green);
+}
+
+.smarter-sec--on-white .smarter-sec__desc,
+.smarter-sec--on-white .smarter-sec__desc li {
+  color: #333;
+}
+
+.smarter-sec--on-white .smarter-sec__desc,
+.smarter-sec--on-white .smarter-sec__desc li span {
+  color: #000;
+}
+
+.smarter-sec--on-white .smarter-sec__desc li::marker {
+    color: #000;
+    font-size: 1.2rem;
+}
+
+/* Icon Grid Items — optional row of icon + label items below the
+   Description/Bullet List (e.g. Deen page's Azaan Alerts / Qibla Direction
+   row). Fixed 5-column grid so a partial last row stays left-aligned
+   instead of being centered/stretched, matching the reference design. */
+.smarter-sec__icons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px 20px;
+  margin: 0 0 40px;
+}
+
+.smarter-sec__icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.smarter-sec__icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.smarter-sec__icon-img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.smarter-sec__icon-label {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.smarter-sec--on-white .smarter-sec__icon-label {
+  color: #333;
+}
+
+@media (max-width: 991px) {
+  .smarter-sec__icons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .smarter-sec__icons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 14px;
+  }
+
+  .smarter-sec__icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+  }
+
+  .smarter-sec__icon-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .smarter-sec__icon-label {
+    font-size: 11.5px;
+  }
+}
+
 
 .smarter-sec__btns {
   display: flex;
@@ -2611,6 +2070,19 @@ font-size: 17px;
   color: var(--primary_color) !important;
 }
 
+/* Solid button variant — add "solid-btn-sec" to the Smarter Section's
+   Extra CSS Class field for sections with Background Style "None"/plain
+   white. The default glass effect above (10% white fill) is meant for the
+   dark textured smarter_bg.png overlay and is invisible on a white
+   background, leaving only the round arrow icon visible. */
+.solid-btn-sec .smarter-sec__btn {
+  background-color: var(--primary_color) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid transparent !important;
+  color: #fff !important;
+}
+
 .smarter-sec__right {
   flex: 1;
   display: flex;
@@ -2618,7 +2090,8 @@ font-size: 17px;
   align-items: flex-end;
 }
 
-.smarter-sec__right img {
+.smarter-sec__right img,
+.smarter-sec__right video {
   display: block;
 
 }
@@ -2813,6 +2286,243 @@ font-size: 17px;
 
 }
 
+
+
+/* ==========================================
+   APP DOWNLOAD — BAND DESIGN (desktop) +
+   stacked mobile layout, ported from
+   index.html's .aik-download-section /
+   .app-dl-section pairing (download_band.php)
+========================================== */
+
+.aik-download-section {
+  position: relative;
+  width: 100%;
+  background: #fff; /* section is white - the teal graphic is only a band inside it */
+  overflow: hidden;
+  padding: 0 0 1%;
+}
+
+/* keeps the whole section at the same proportions as the original design (370:200).
+   Capped at 1920px and centered: past that, on this edge-to-edge .container-fluid,
+   height would keep growing (unbounded, tied to full viewport width) while the phone
+   graphic ran out of room to grow with it, leaving an empty gap below it. Uses
+   aspect-ratio (computed from this element's own width) instead of the old
+   padding-top-% hack (computed from the *containing block's* width, i.e. the parent —
+   so it would have ignored this same max-width cap and kept growing anyway). */
+.aik-download-inner {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  aspect-ratio: 370 / 200;
+}
+
+/* container-fluid adds side padding by default in Bootstrap - remove it here so the
+   absolutely-positioned children line up edge-to-edge exactly like the reference design */
+.aik-download-inner.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* teal/green gradient graphic is only a horizontal band, not the full section height.
+   It's a sibling of .aik-download-inner (not nested inside it), so it needs the same
+   1920px cap + centering repeated here — otherwise past 1920px the band stays full
+   section-width while the phone/text/QR (inside the capped, centered .aik-download-inner)
+   no longer line up with it. */
+.aik-bg-band {
+  position: absolute;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  top: 14%;
+  width: 100%;
+  /* max-width: 1920px; */
+  height: 52%;
+  z-index: 1;
+}
+
+.aik-bg-band img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.aik-phone-vector {
+  position: absolute;
+  left: 10%;
+  top: 0%;
+  width: 78%; /* scales with the container instead of capping at the image's
+    natural pixel size (1427px) — without this, the phone stopped growing
+    past ~1830px viewport width while the section kept getting taller,
+    leaving an increasing empty gap below it on wide screens */
+  z-index: 2;
+}
+
+.aik-phone-vector img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.aik-download-text {
+  position: absolute;
+  top: 35%;
+  left: 43%;
+  font-family: Outfit, sans-serif;
+  z-index: 3;
+  white-space: nowrap;
+  font-size: 4.7rem;
+  line-height: 0.9;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.aik-qrcode {
+  position: absolute;
+  top: 24%;
+  left: 62%;
+  width: 9%;
+  aspect-ratio: 1 / 1;
+  z-index: 3;
+}
+
+.aik-qrcode img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.aik-appnow-row {
+  position: absolute;
+  top: 43%;
+  left: 46%;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  z-index: 3;
+}
+
+.aik-appnow-row img {
+  height: auto;
+  display: block;
+}
+
+.aik-appnow-row span {
+  color: #fff;
+  font-family: Outfit, sans-serif;
+  white-space: nowrap;
+  font-size: 4.7rem;
+  line-height: 0.9;
+  font-weight: 800;
+}
+
+.qr_mb img {
+  width: 70%;
+}
+
+@media (max-width: 1920px) {
+  .aik-phone-vector {
+    left: 15%;
+    top: 10%;
+    width: 70%;
+  }
+
+  .aik-download-text {
+    top: 44%;
+    left: 44%;
+  }
+
+  .aik-appnow-row {
+    top: 51%;
+    left: 46%;
+  }
+
+  .aik-bg-band {
+    left: 0;
+    top: 28%;
+    width: 100%;
+    height: 40%;
+  }
+
+  .aik-qrcode {
+    top: 33%;
+    left: 64%;
+  }
+}
+
+@media (max-width: 1699px) {
+  .aik-download-text {
+    font-size: 3.5rem;
+    line-height: 0.5;
+  }
+
+  .aik-appnow-row span {
+    font-size: 3.5rem;
+  }
+
+  .aik-qrcode {
+    top: 31%;
+    left: 61%;
+  }
+}
+
+@media (max-width: 1450px) {
+  .aik-phone-vector {
+    left: 15%;
+    top: 10%;
+    width: 70%;
+  }
+
+  .aik-download-text {
+    top: 44%;
+    left: 44%;
+  }
+
+  .aik-appnow-row {
+    top: 51%;
+    left: 46%;
+  }
+
+  .aik-bg-band {
+    left: 0;
+    top: 28%;
+    width: 100%;
+    height: 40%;
+  }
+
+  .aik-qrcode {
+    top: 33%;
+    left: 64%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .aik-download-text {
+    font-size: 3.2rem;
+    line-height: 0.5;
+  }
+
+  .aik-appnow-row span {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 1025px) {
+  .aik-download-text {
+    font-size: 2.5rem;
+  }
+
+  .aik-appnow-row span {
+    font-size: 2.5rem;
+  }
+
+  .aik-appnow-row {
+    left: 44%;
+  }
+}
 
 
 
@@ -3416,7 +3126,8 @@ font-size: 17px;
 
 
 
-  .smarter-sec__right img {
+  .smarter-sec__right img,
+  .smarter-sec__right video {
     max-width: 500px;
     /* <--- Yahan se phone ki width control / kam kar sakte hain */
   }
@@ -4318,23 +4029,13 @@ header .logo {
 /* ==========================================
    PARTNER INQUIRY FORM (connect.html)
 ========================================== */
-.new_connect_pif_section{
-  background: transparent !important;
-  padding: 0 !important;
-  position: relative;
-  overflow:visible !important;
-}
-  
 
-
-.pif-section  {
-  background: #fff; 
-  padding: 0 0 100px;
+.pif-section {
+  background: #fff;
+  padding: 100px 0;
   position: relative;
   overflow: hidden;
 }
-
-
 
 .pif-header {
   /* max-width: 720px; */
@@ -4403,10 +4104,11 @@ header .logo {
 }
 
 .pif-field input[type="text"],
-.pif-field input[type="email"] {
+.pif-field input[type="email"],
+.pif-field input[type="tel"] {
   width: 100%;
   height: 52px;
-  border: 1px solid var(--aik-green);
+  border: none;
   border-radius: 50px;
   outline: none;
   padding: 0 24px;
@@ -4415,22 +4117,9 @@ header .logo {
   color: #333;
   background: #fff;
 }
-
-/* Mobile number's input sits inside the .pif-phone pill — the pill itself
-   carries the border, not this input, so it doesn't get a second border
-   glued to the "PK +92" prefix. */
-.pif-phone input[type="tel"] {
-  width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  padding: 0 24px 0 16px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  color: #333;
-  background: transparent;
-  appearance: none;
-  -webkit-appearance: none;
+.pif-field input[type="text"],
+.pif-field input[type="email"]{
+   border: 1px solid var(--aik-green);
 }
 
 .pif-field input::placeholder,
@@ -4440,7 +4129,7 @@ header .logo {
 
 .pif-field textarea {
   width: 100%;
-  border: 1px solid var(--aik-green);
+  border: none;
   border-radius: 20px;
   outline: none;
   padding: 18px 24px;
@@ -4450,6 +4139,7 @@ header .logo {
   background: #fff;
   resize: vertical;
   min-height: 130px;
+  border: 1px solid var(--aik-green);
 }
 
 /* Phone field with PK +92 prefix */
@@ -4471,6 +4161,11 @@ header .logo {
   border-right: 1px solid #e2e2e2;
 }
 
+.pif-phone input[type="tel"] {
+  border-radius: 0;
+  padding-left: 16px;
+}
+
 /* Select */
 .pif-select {
   position: relative;
@@ -4479,7 +4174,7 @@ header .logo {
 .pif-select select {
   width: 100%;
   height: 52px;
-  border: 1px solid var(--aik-green);
+  border: none;
   border-radius: 50px;
   outline: none;
   padding: 0 45px 0 24px;
@@ -4490,6 +4185,7 @@ header .logo {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
+   border: 1px solid var(--aik-green);
 }
 
 .pif-select select:invalid {
@@ -4504,162 +4200,6 @@ header .logo {
   color: var(--aik-green);
   pointer-events: none;
   font-size: 14px;
-}
-
-/* Interested Services — multi-select with removable tags */
-.pif-multiselect {
-  position: relative;
-}
-
-.pif-multiselect__control {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  min-height: 52px;
-  width: 100%;
-  border: 1px solid var(--aik-green);
-  border-radius: 26px;
-  outline: none;
-  padding: 8px 45px 8px 20px;
-  background: #fff;
-  cursor: pointer;
-}
-
-.pif-multiselect__control i {
-  position: absolute;
-  right: 22px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--aik-green);
-  pointer-events: none;
-  font-size: 14px;
-  transition: transform .2s ease;
-}
-
-.pif-multiselect.is-open .pif-multiselect__control i {
-  transform: translateY(-50%) rotate(180deg);
-}
-
-.pif-multiselect__tags {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  flex: 1;
-}
-
-.pif-multiselect__placeholder {
-  color: #a9a9a9;
-  font-size: 15px;
-  font-family: 'Outfit', sans-serif;
-}
-
-.pif-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: #fff;
-  border: 1px solid #d8e2e1;
-  border-radius: 20px;
-  padding: 4px 10px 4px 6px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--aik-green);
-  font-family: 'Outfit', sans-serif;
-}
-
-.pif-tag__icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.pif-tag__remove {
-  border: none;
-  background: transparent;
-  color: var(--aik-green);
-  font-size: 16px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  opacity: .6;
-}
-
-.pif-tag__remove:hover {
-  opacity: 1;
-}
-
-.pif-multiselect__menu {
-  position: fixed;
-  background: #fff;
-  border: 1px solid var(--aik-green);
-  border-radius: 16px;
-  padding: 8px;
-  margin: 0;
-  list-style: none;
-  box-sizing: border-box;
-  max-height: 260px;
-  /* overflow-y: auto; */
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  z-index: 9999;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
-  display: none;
-}
-
-.pif-multiselect__menu.is-open {
-  display: block;
-}
-
-.pif-multiselect__menu::-webkit-scrollbar {
-  width: 8px;
-}
-
-.pif-multiselect__menu::-webkit-scrollbar-thumb {
-  background: rgba(6, 82, 88, .35);
-  border-radius: 8px;
-}
-
-.pif-multiselect__menu::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.pif-multiselect__menu li {
-  padding: 10px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  font-family: 'Outfit', sans-serif;
-  color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.pif-multiselect__menu li:hover {
-  background: #f5f7f6;
-}
-
-.pif-multiselect__menu li.is-selected {
-  background: rgba(6, 82, 88, .08);
-  color: var(--aik-green);
-  font-weight: 600;
-}
-
-.pif-multiselect__menu li.is-selected::after {
-  content: "\2713";
-  color: var(--aik-green);
-}
-
-.pif-field.is-invalid .pif-multiselect__control {
-  box-shadow: 0 0 0 2px #b3261e;
 }
 
 /* Field-level error messages */
