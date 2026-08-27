@@ -3,20 +3,28 @@
  * Layout: bento_grid
  */
 
-$heading     = get_sub_field( 'heading' );
-$cards       = get_sub_field( 'cards' );
-$custom_grid = get_sub_field( 'custom_grid' );
+$heading      = get_sub_field( 'heading' );
+$cards        = get_sub_field( 'cards' );
+$custom_grid  = get_sub_field( 'custom_grid' );
+$card_pattern = get_sub_field( 'card_pattern' ) ?: 'big_first';
+$show_button  = get_sub_field( 'show_button' );
+$button_label = get_sub_field( 'button_label' );
+$button_link  = get_sub_field( 'button_link' );
 
 /**
  * main.css lays this grid out with fixed grid-column spans keyed to these
  * exact modifier classes (.bento-card--transfers{grid-column:span 6} etc.)
  * — a plain .bento-card with no modifier gets no span and collapses to a
  * single narrow column. There's no per-card "layout" field in ACF for this,
- * so we cycle through the 6 original slugs by position; keep cards in the
- * original 6-card order (Transfers/Airtime/Deen/Debit/Bill/Takaful) for the
- * grid to look right, since that's what the CSS spans were designed for.
+ * so we cycle through 4 slugs by position: transfers/airtime are the "big"
+ * pair (span 6, 580px tall) and deen/debit are the "small" pair (span 7+5,
+ * 380px tall) — cycling 2 big, 2 small, 2 big, 2 small (or the reverse, per
+ * Card Size Pattern) for however many cards there are. (bill/takaful exist
+ * as identical-looking alternates but aren't needed for the pattern itself.)
  */
-$slugs = array( 'transfers', 'airtime', 'deen', 'debit', 'bill', 'takaful' );
+$slugs = ( 'small_first' === $card_pattern )
+	? array( 'deen', 'debit', 'transfers', 'airtime' )
+	: array( 'transfers', 'airtime', 'deen', 'debit' );
 ?>
       <section class="bento-grid-section overflow-hidden">
         <div class="container">
@@ -31,8 +39,10 @@ $slugs = array( 'transfers', 'airtime', 'deen', 'debit', 'bill', 'takaful' );
 				if ( $custom_grid && 'deen' === $slug ) {
 					$card_classes .= ' retention';
 				}
+				$card_tag  = ! empty( $card['link'] ) ? 'a' : 'div';
+				$card_href = ! empty( $card['link'] ) ? ' href="' . esc_url( $card['link'] ) . '"' : '';
 				?>
-            <div class="<?php echo esc_attr( $card_classes ); ?>" data-aos="fade-up" data-aos-delay="<?php echo esc_attr( $i * 100 ); ?>">
+            <<?php echo $card_tag; ?> class="<?php echo esc_attr( $card_classes ); ?>"<?php echo $card_href; // phpcs:ignore -- trusted, built entirely from esc_url() above. ?> data-aos="fade-up" data-aos-delay="<?php echo esc_attr( $i * 100 ); ?>">
               <div class="bento-card__inner">
                 <?php if ( ! empty( $card['icon']['url'] ) ) : ?>
                 <div class="bento-card__icon bento-card__icon--top-left">
@@ -49,9 +59,14 @@ $slugs = array( 'transfers', 'airtime', 'deen', 'debit', 'bill', 'takaful' );
                   <p class="bento-card__desc"><?php echo aik_nl2br( $card['description'] ); ?></p>
                 </div>
               </div>
-            </div>
+            </<?php echo $card_tag; ?>>
             <?php endforeach; ?>
           </div>
+          <?php if ( $show_button && $button_label ) : ?>
+          <div class="bento-grid-btn text-center">
+            <a href="<?php echo esc_url( $button_link ? $button_link : '#' ); ?>" class="btn btn_fill"><?php echo esc_html( $button_label ); ?></a>
+          </div>
+          <?php endif; ?>
           <?php endif; ?>
         </div>
       </section>

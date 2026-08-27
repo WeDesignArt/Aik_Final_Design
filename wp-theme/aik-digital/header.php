@@ -55,6 +55,8 @@
           <div class="logo_wrapper"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/logo-aik.svg" alt="AIK"></div>
         </a>
         <div class="nav_wrapper me-4">
+          <a href="https://aikconnect.aikdigital.co/" target="_blank" class="header-connect-btn d-none d-md-inline-flex">aik connect</a>
+
           <div class="search_holder d-none d-md-block">
             <form action="<?php echo esc_url( home_url( '/' ) ); ?>">
               <input id="search" name="s" type="text" placeholder="Search">
@@ -76,6 +78,22 @@
         </div>
       </div>
     </header>
+
+    <?php
+	// Same options-page fields the footer's social icons use, so both stay
+	// in sync — set once in Theme Settings, not duplicated per-template.
+	$aik_social_facebook  = get_field( 'social_facebook_url', 'option' );
+	$aik_social_twitter   = get_field( 'social_twitter_url', 'option' );
+	$aik_social_instagram = get_field( 'social_instagram_url', 'option' );
+	$aik_social_whatsapp  = get_field( 'social_whatsapp_url', 'option' );
+	?>
+    <div class="aik-social-float">
+      <a href="<?php echo esc_url( $aik_social_facebook ? $aik_social_facebook : 'https://www.facebook.com/profile.php?id=61570502862817' ); ?>" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="<?php echo esc_url( $aik_social_twitter ? $aik_social_twitter : '#' ); ?>" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+      <a href="<?php echo esc_url( $aik_social_instagram ? $aik_social_instagram : 'https://www.instagram.com/aikofficial1/' ); ?>" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="<?php echo esc_url( $aik_social_whatsapp ? $aik_social_whatsapp : '#' ); ?>" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      <a href="javascript:void(0);" aria-label="Chat with us"><i class="bi bi-robot"></i></a>
+    </div>
 
     <!-- ============================================================
          SEARCH DRAWER

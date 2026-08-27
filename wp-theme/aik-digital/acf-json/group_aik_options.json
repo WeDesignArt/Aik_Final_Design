@@ -100,6 +100,13 @@
             "type": "url"
         },
         {
+            "key": "field_aik_social_whatsapp_url",
+            "label": "WhatsApp URL",
+            "name": "social_whatsapp_url",
+            "type": "url",
+            "instructions": "Used by the floating social icons (bottom-right of every page), e.g. https://wa.me/92XXXXXXXXXX"
+        },
+        {
             "key": "field_aik_app_google_play_url",
             "label": "Google Play URL",
             "name": "app_google_play_url",

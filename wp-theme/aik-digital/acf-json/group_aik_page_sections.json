@@ -277,6 +277,19 @@
                             "ui": 1
                         },
                         {
+                            "key": "field_aik_bento_card_pattern",
+                            "label": "Card Size Pattern",
+                            "name": "card_pattern",
+                            "type": "select",
+                            "instructions": "Cards repeat in pairs — this sets which size comes first, repeating every 4 cards (1&2, 5&6, ... vs 3&4, 7&8, ...).",
+                            "choices": {
+                                "big_first": "2 Big cards, then 2 Small",
+                                "small_first": "2 Small cards, then 2 Big"
+                            },
+                            "default_value": "big_first",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
                             "key": "field_aik_bento_cards",
                             "label": "Cards",
                             "name": "cards",
@@ -318,7 +331,57 @@
                                     "type": "textarea",
                                     "rows": 2,
                                     "wrapper": { "width": "100" }
+                                },
+                                {
+                                    "key": "field_aik_bento_card_link",
+                                    "label": "Link",
+                                    "name": "link",
+                                    "type": "url",
+                                    "instructions": "Optional. If set, the whole card becomes clickable.",
+                                    "wrapper": { "width": "100" }
                                 }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_bento_show_button",
+                            "label": "Show Button",
+                            "name": "show_button",
+                            "type": "true_false",
+                            "instructions": "Adds a single button centered below the card grid (e.g. \"See More\").",
+                            "default_value": 0,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_aik_bento_button_label",
+                            "label": "Button Label",
+                            "name": "button_label",
+                            "type": "text",
+                            "default_value": "See More",
+                            "wrapper": { "width": "50" },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_bento_show_button",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_bento_button_link",
+                            "label": "Button Link",
+                            "name": "button_link",
+                            "type": "url",
+                            "wrapper": { "width": "50" },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_bento_show_button",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
                             ]
                         }
                     ]
@@ -714,6 +777,31 @@
                     "instructions": "Newer 'App Download' design (the wide decorative-band layout from index.html) — a separate layout from the original 'App Download' above so existing pages using that one aren't affected. Renders a desktop version and a mobile version from the same fields; only one shows per screen size.",
                     "sub_fields": [
                         {
+                            "key": "field_aik_dlband_show_help",
+                            "label": "Show Help Search",
+                            "name": "show_help_search",
+                            "type": "true_false",
+                            "instructions": "Adds a \"How May We Help You?\" heading + search bar directly above the download band, sharing its background with no gap (e.g. index.html's Home page). The search submits to the site's built-in WordPress search.",
+                            "default_value": 0,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_aik_dlband_help_heading",
+                            "label": "Help Search Heading",
+                            "name": "help_heading",
+                            "type": "text",
+                            "default_value": "How May We Help You?",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_dlband_show_help",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
                             "key": "field_aik_dlband_heading1",
                             "label": "Heading Line 1",
                             "name": "heading_line_1",
@@ -882,6 +970,89 @@
                                     "rows": 2,
                                     "wrapper": { "width": "40" }
                                 }
+                            ]
+                        }
+                    ]
+                },
+                "layout_aik_faq": {
+                    "key": "layout_aik_faq",
+                    "name": "faq",
+                    "label": "FAQs (Accordion)",
+                    "display": "block",
+                    "instructions": "A collapsible question/answer list. The first item is open by default; clicking a question opens it and closes whichever one was open.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_faq_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "default_value": "Frequently Asked Questions"
+                        },
+                        {
+                            "key": "field_aik_faq_items",
+                            "label": "Questions",
+                            "name": "items",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Question",
+                            "min": 1,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_faq_item_question",
+                                    "label": "Question",
+                                    "name": "question",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "field_aik_faq_item_answer",
+                                    "label": "Answer",
+                                    "name": "answer",
+                                    "type": "textarea",
+                                    "rows": 2
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_faq_show_button",
+                            "label": "Show Button",
+                            "name": "show_button",
+                            "type": "true_false",
+                            "instructions": "Optional \"See More\" button centered below the list.",
+                            "default_value": 0,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_aik_faq_button_label",
+                            "label": "Button Label",
+                            "name": "button_label",
+                            "type": "text",
+                            "default_value": "See More",
+                            "wrapper": { "width": "50" },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_faq_show_button",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_faq_button_link",
+                            "label": "Button Link",
+                            "name": "button_link",
+                            "type": "url",
+                            "wrapper": { "width": "50" },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_faq_show_button",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
                             ]
                         }
                     ]

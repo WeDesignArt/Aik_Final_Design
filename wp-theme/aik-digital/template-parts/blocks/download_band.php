@@ -8,6 +8,8 @@
  * so pages already using that one keep their existing design.
  */
 
+$show_help    = get_sub_field( 'show_help_search' );
+$help_heading = get_sub_field( 'help_heading' );
 $heading_1    = get_sub_field( 'heading_line_1' );
 $heading_2    = get_sub_field( 'heading_line_2' );
 $logo         = get_sub_field( 'logo_image' );
@@ -24,6 +26,17 @@ $phone_mobile_url = ! empty( $phone_mobile['url'] ) ? $phone_mobile['url'] : ( !
 $bg_band_url      = ! empty( $bg_band['url'] ) ? $bg_band['url'] : AIK_THEME_URI . '/images/aik_connect_download_bg.png';
 $bg_mobile_url    = ! empty( $bg_mobile['url'] ) ? $bg_mobile['url'] : AIK_THEME_URI . '/images/mob-app__section_bg.jpg';
 ?>
+      <?php if ( $show_help ) : ?>
+      <section class="aik-download-help">
+        <div class="container">
+          <h2 class="aik-download-help__heading"><?php echo esc_html( $help_heading ); ?></h2>
+          <form class="aik-download-help__search" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+            <input type="text" name="s" placeholder="Search" autocomplete="off">
+            <button type="submit" aria-label="Search"><i class="bi bi-send"></i></button>
+          </form>
+        </div>
+      </section>
+      <?php endif; ?>
       <section class="aik-download-section d-none d-md-block">
         <div class="aik-bg-band">
           <img src="<?php echo esc_url( $bg_band_url ); ?>" alt="">

@@ -7,6 +7,83 @@
 
 /* Additional CSS */
 
+/* main.css sets align-items/justify-content on .nav_wrapper but never
+   display:flex, so those properties were no-ops — harmless before since
+   .search_holder / .header-actions were mutually exclusive by breakpoint
+   (only one visible block-level child at a time). Adding a new always-visible
+   sibling (.header-connect-btn) exposed it: without display:flex, that block
+   sibling was dropping to its own line instead of sitting next to the search
+   icon. */
+.nav_wrapper {
+  display: flex;
+}
+
+/* Header "aik connect" pill button */
+.header-connect-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--aik-yellow);
+  color: var(--aik-green);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 10px 22px;
+  margin-right: 12px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.25s ease;
+}
+
+.header-connect-btn:hover {
+  background-color: #ddb800;
+  color: var(--aik-green);
+}
+
+/* Floating social icons — fixed to the right edge, sitewide */
+.aik-social-float {
+  position: fixed;
+  right: 20px;
+  bottom: 100px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.aik-social-float a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: var(--aik-yellow);
+  color: var(--aik-green);
+  font-size: 18px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.aik-social-float a:hover {
+  background-color: #ddb800;
+  transform: translateX(-3px);
+}
+
+@media (max-width: 767px) {
+  .aik-social-float {
+    right: 12px;
+    bottom: 16px;
+  }
+
+  .aik-social-float a {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+}
+
 /* page.php */
 
 
@@ -129,6 +206,155 @@
 .bento-card--transfers,.bento-card--airtime, .bento-card--takaful, .bento-card--bill {
 
     height: 580px !important;
+}
+
+/* Card becomes an <a> tag when a Link is set (bento_grid.php) — <a> is
+   inline by default, which ignores the width/height main.css sets on
+   .bento-card, so it needs an explicit block display here. */
+.bento-card {
+  display: block;
+  text-decoration: none;
+}
+
+/* Icon badge content (main.css sizes the circular .bento-card__icon badge
+   itself at a fixed 80x80px) — the icon graphic inside it had no sizing or
+   centering rules at all, so it fell back to each SVG's own native size,
+   landing off-center or overflowing the badge depending on the icon.
+   Sized as a % of the badge so it scales with it instead of a fixed px
+   value, and centered with flex regardless of the SVG's native size. */
+.bento-icon-wrapper,
+.bento-shape-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55%;
+  height: 55%;
+}
+
+.bento-icon-wrapper img,
+.bento-shape-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* "See More" button below the grid */
+.bento-grid-btn {
+  margin-top: 40px;
+}
+
+
+/* ==========================================
+   FAQ ACCORDION
+========================================== */
+
+.aik-faq {
+  background: #fff;
+  padding: 90px 0;
+}
+
+.aik-faq__heading {
+  text-align: center;
+  color: var(--aik-green);
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0 0 50px;
+}
+
+.aik-faq__item {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.aik-faq__item:first-child {
+  border-top: 1px solid #e5e5e5;
+}
+
+.aik-faq__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.aik-faq__question {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--aik-green);
+}
+
+.aik-faq__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--aik-green);
+  color: #fff;
+  font-size: 16px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.aik-faq__arrow i {
+  transition: transform 0.3s ease;
+}
+
+.aik-faq__item.is-open .aik-faq__arrow {
+  background: var(--aik-yellow);
+  color: var(--aik-green);
+}
+
+.aik-faq__item.is-open .aik-faq__arrow i {
+  transform: rotate(90deg);
+}
+
+.aik-faq__answer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
+}
+
+.aik-faq__item.is-open .aik-faq__answer {
+  max-height: 300px;
+}
+
+.aik-faq__answer p {
+  margin: 0 0 24px;
+  padding-right: 60px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.aik-faq__btn {
+  margin-top: 40px;
+}
+
+@media (max-width: 575px) {
+  .aik-faq {
+    padding: 60px 0;
+  }
+
+  .aik-faq__heading {
+    font-size: 1.75rem;
+    margin-bottom: 30px;
+  }
+
+  .aik-faq__question {
+    font-size: 15px;
+  }
+
+  .aik-faq__answer p {
+    padding-right: 0;
+  }
 }
 
 
@@ -2288,6 +2514,84 @@ font-size: 17px;
 
 
 
+/* "How May We Help You?" search prompt — sits directly above the App
+   Download band/mobile card, sharing its white background with no gap so
+   the two blend into one continuous section. */
+.aik-download-help {
+  background: #fff;
+  text-align: center;
+  padding: 80px 0 40px;
+}
+
+.aik-download-help__heading {
+  color: var(--aik-green);
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0 0 28px;
+}
+
+.aik-download-help__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 550px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1.5px solid var(--aik-green);
+  border-radius: 50px;
+  padding: 6px 6px 6px 24px;
+  transition: border-color 0.25s ease;
+}
+
+.aik-download-help__search:focus-within {
+  border-color: var(--aik-green);
+}
+
+.aik-download-help__search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: #333;
+}
+
+.aik-download-help__search input::placeholder {
+  color: #b0b0b0;
+}
+
+.aik-download-help__search button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: var(--aik-green);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.aik-download-help__search button:hover {
+  background-color: #053f44;
+}
+
+@media (max-width: 575px) {
+  .aik-download-help {
+    padding: 48px 0 32px;
+  }
+
+  .aik-download-help__heading {
+    font-size: 1.75rem;
+  }
+}
+
 /* ==========================================
    APP DOWNLOAD — BAND DESIGN (desktop) +
    stacked mobile layout, ported from
@@ -2313,7 +2617,7 @@ font-size: 17px;
 .aik-download-inner {
   position: relative;
   width: 100%;
-  /* max-width: 1920px; */
+  max-width: 1920px;
   margin: 0 auto;
   aspect-ratio: 370 / 200;
 }
@@ -2336,7 +2640,7 @@ font-size: 17px;
   /* transform: translateX(-50%); */
   top: 14%;
   width: 100%;
-  max-width: 1920px;
+  /* max-width: 1920px; */
   height: 52%;
   z-index: 1;
 }
