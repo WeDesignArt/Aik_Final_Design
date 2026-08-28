@@ -907,7 +907,8 @@
                             "label": "Number of Posts",
                             "name": "count",
                             "type": "number",
-                            "default_value": 3,
+                            "instructions": "Leave blank (or 0) to show every post automatically — no need to update this each time a new one is published. Set a number only if you want to cap the preview to fewer posts than actually exist.",
+                            "default_value": "",
                             "wrapper": { "width": "50" }
                         }
                     ]

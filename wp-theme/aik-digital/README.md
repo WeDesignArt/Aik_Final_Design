@@ -15,7 +15,7 @@ Custom WordPress theme built from the static aik digital site, driven by **ACF P
 5. **Appearance → Menus** — create a menu, add your pages, assign it to the "Primary Menu" location.
 6. **Theme Settings** (in the wp-admin sidebar) — fill in footer About text, Quick/Feature/Useful links, social URLs, app store URLs, copyright name.
 7. Create the 10 pages and populate their **Page Sections** field following `wp-theme/CONTENT-GUIDE.md` in this repo.
-8. **Settings → Reading** — set "Your homepage displays" to a static page, and choose the Home page as the front page.
+8. **Settings → Reading** — set "Your homepage displays" to **A static page**, set **Homepage** to the Home page. Also set **Posts page** to a page for the "Media News" listing (create a blank Page for this first — e.g. titled "Media News" — its content is ignored, only its URL is used; the listing itself is rendered by `home.php`, styled as a 4-column grid). Leaving "Posts page" unset means there's no clean URL for it at all, and any "See More" link pointing at it will just go back to whatever page it's on.
 9. **Posts → Categories** — add a "News" category, then publish news posts into it (used by the News section's query).
 10. **Testimonials** (wp-admin sidebar) — add the 5 testimonial posts listed in `CONTENT-GUIDE.md`.
 

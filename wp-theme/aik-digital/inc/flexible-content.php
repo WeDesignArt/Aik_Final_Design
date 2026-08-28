@@ -59,6 +59,25 @@ function aik_nl2br( $text ) {
 }
 
 /**
+ * URL of the "Media News" listing (Settings → Reading → Posts page).
+ *
+ * get_post_type_archive_link( 'post' ) looks like the obvious function for
+ * this but only works for custom post types registered with has_archive —
+ * the built-in 'post' type never has one, so it silently returns false,
+ * esc_url() turns that into "", and the link ends up pointing at whatever
+ * page it's rendered on (harmless while the front page itself was showing
+ * latest posts, but breaks — links back to itself — once a static front
+ * page is set with a separate Posts page).
+ */
+function aik_news_index_url() {
+	$posts_page_id = (int) get_option( 'page_for_posts' );
+	if ( $posts_page_id ) {
+		return get_permalink( $posts_page_id );
+	}
+	return home_url( '/' );
+}
+
+/**
  * Small helper: echo an ACF image field (array format) as an <img>, with a
  * graceful no-op if the field is empty — every block template uses this
  * instead of repeating the same isset()/esc checks.

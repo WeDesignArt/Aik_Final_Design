@@ -18,6 +18,39 @@
   display: flex;
 }
 
+.nav_wrapper a {
+	 color: var(--aik-green);
+}
+
+/* Header logo — true center, independent of sibling widths.
+   .header_row centers the logo via flex justify-content:space-between
+   (main.css), which only lands on the page's actual center when
+   .menu_block (left) and .nav_wrapper (right) are equal width. Adding
+   .header-connect-btn made the right side wider than the left hamburger
+   icon, visibly pushing the logo off-center toward the left. Absolute
+   positioning at 50% decouples it from both siblings entirely. */
+.header_row {
+  position: relative;
+}
+
+header .logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+/* Personal / Business hero tabs — main.css centers this at left:51%
+   (slightly off true center) with only a 6px gap between the two links,
+   which reads as glued together. Nudged to exact 50% and given more
+   breathing room so the page's true center falls in the gap between the
+   two words instead of on one of them. */
+.app_link_holder {
+  left: 50%;
+  gap: 36px;
+}
+
 /* Header "aik connect" pill button */
 .header-connect-btn {
   display: inline-flex;
@@ -167,6 +200,19 @@
 
 }
 
+/* Business hero — .business_hero .mobile_track has an unscoped width:380px
+   in main.css that outranks (specificity) the theme's own
+   @media(max-width:1366px){.mobile_track{width:350px}} breakpoint rule, so
+   the phone mockup never actually shrinks at 1366px like every other tier
+   does — it overflows past the fold instead. Narrowing it here (image
+   scales proportionally, height:auto) keeps it, and the two floating pills
+   anchored to it by percentage, inside the viewport. */
+@media (max-width: 1366px) {
+  .business_hero .mobile_track {
+    width: 300px;
+  }
+}
+
 /* Business Home about section custom */
 
 
@@ -183,6 +229,10 @@
 
 
 /* Bento Cards Custom */
+
+    .section_title_heading  span{
+      color: var(--aik-yellow);
+    }
 
 .bento-grid-section {
   padding: 0 0 80px !important;
@@ -1608,6 +1658,135 @@ footer.aik-footer {
 .md-news-section .grid-left,
 .md-news-section .grid-right {
   z-index: 0;
+}
+
+/* Our Media News swiper — nav buttons use their own class rather than
+   Swiper's default .swiper-button-prev/-next, so nothing here touches
+   Swiper's own classes (keeps this scoped to just this carousel instance,
+   not every .swiper on the page). */
+.md-news-swiper-wrap {
+  position: relative;
+  padding: 0 60px;
+}
+
+.md-news-swiper__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--aik-green, #065258);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.md-news-swiper__nav:hover {
+  background-color: #053f44;
+}
+
+/* Swiper adds this class to nextEl/prevEl when there's nothing left to page
+   to (e.g. all posts already fit on screen at once) — hidden rather than
+   dimmed, since a half-transparent button that does nothing when clicked
+   reads as broken. */
+.md-news-swiper__nav.swiper-button-disabled {
+  display: none;
+}
+
+.md-news-swiper__nav--prev {
+  left: 0;
+}
+
+.md-news-swiper__nav--next {
+  right: 0;
+}
+
+@media (max-width: 575px) {
+  .md-news-swiper-wrap {
+    padding: 0 40px;
+  }
+
+  .md-news-swiper__nav {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+}
+
+/* ==========================================
+   MEDIA NEWS ARCHIVE (archive.php / home.php)
+   Cards reuse the homepage's .news-single dark
+   glass-overlay style (main.css) — this block
+   only supplies the grid layout + pagination.
+========================================== */
+
+.news-archive-section {
+  padding: 80px 0 100px;
+  background: #fff;
+}
+
+.news-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.news-archive-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.news-archive-pagination .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.news-archive-pagination .page-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 8px;
+  border-radius: 50%;
+  color: var(--aik-green);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.news-archive-pagination .page-numbers:hover {
+  background-color: rgba(6, 82, 88, 0.08);
+}
+
+.news-archive-pagination .page-numbers.current {
+  background-color: var(--aik-green, #065258);
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .news-archive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .news-archive-section {
+    padding: 50px 0 60px;
+  }
+
+  .news-archive-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 
@@ -3586,6 +3765,7 @@ font-size: 17px;
   
          padding-bottom: 50px;
     }
+
 
         .smarter-sec__heading {
 

@@ -320,3 +320,65 @@ const testimonialSwiper = new Swiper("#testimonialSwiper", {
     },
   },
 });
+
+// Media News — prev/next nav buttons use their own class (.md-news-swiper__nav--prev/--next)
+// instead of Swiper's default .swiper-button-prev/-next, so no CSS is ever
+// written against Swiper's own classes.
+//
+// Initialized on window "load" (not immediately at script-parse time) so
+// Swiper measures slide widths only after post thumbnails have finished
+// loading and the layout has settled — with exactly enough posts to fill
+// slidesPerView (e.g. 3 posts at slidesPerView:3) there's nothing to slide
+// to, so a premature/wrong width measurement stays invisible; add a 4th
+// post and it suddenly needs to actually translate the wrapper, which is
+// when a stale measurement shows up as overlapping/misaligned slides.
+// observer/observeParents make Swiper re-measure automatically if the
+// container's size still changes after that (AOS animations, late-loading
+// images) as extra insurance on top of waiting for "load".
+function aikInitMdNewsSwiper() {
+  if ( ! document.getElementById( "mdNewsSwiper" ) ) return;
+
+  const mdNewsSwiper = new Swiper("#mdNewsSwiper", {
+    slidesPerView: 3,
+    spaceBetween: 24,
+    observer: true,
+    observeParents: true,
+
+    navigation: {
+      nextEl: ".md-news-swiper__nav--next",
+      prevEl: ".md-news-swiper__nav--prev",
+    },
+
+    breakpoints: {
+      // Mobile
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 16,
+      },
+
+      // Tablet
+      576: {
+        slidesPerView: 1.2,
+        spaceBetween: 20,
+      },
+
+      // Small Laptop
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+
+      // Desktop
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 28,
+      },
+    },
+  });
+}
+
+if ( document.readyState === "complete" ) {
+  aikInitMdNewsSwiper();
+} else {
+  window.addEventListener( "load", aikInitMdNewsSwiper );
+}

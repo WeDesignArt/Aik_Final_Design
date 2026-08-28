@@ -81,13 +81,13 @@ $is_inner      = ( 'inner' === $hero_style );
             <section class="mobile_track">
               <div class="scroll_mobile"><img src="<?php echo esc_url( $mobile_url ); ?>" alt="mobile" data-aos="fade-left" data-aos-delay="200"></div>
               <?php if ( $pill_1_text ) : ?>
-              <div class="mobile_pill pill_top_right" data-aos="zoom-in" data-aos-delay="300">
+              <div class="mobile_pill pill_top_right" data-aos="zoom-in" data-aos-delay="300" data-aos-offset="0">
                 <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_1_icon['url'] ) ? $pill_1_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
                 <div class="mobile_pill_text"><?php echo esc_html( $pill_1_text ); ?></div>
               </div>
               <?php endif; ?>
               <?php if ( $pill_2_text ) : ?>
-              <div class="mobile_pill pill_bottom_left" data-aos="zoom-in" data-aos-delay="400">
+              <div class="mobile_pill pill_bottom_left" data-aos="zoom-in" data-aos-delay="400" data-aos-offset="0">
                 <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_2_icon['url'] ) ? $pill_2_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
                 <div class="mobile_pill_text"><?php echo esc_html( $pill_2_text ); ?></div>
               </div>
@@ -128,13 +128,13 @@ $is_inner      = ( 'inner' === $hero_style );
             <section class="mobile_track">
               <div class="scroll_mobile"><img src="<?php echo esc_url( $mobile_url ); ?>" alt="mobile" data-aos="fade-left" data-aos-delay="300"></div>
               <?php if ( $pill_1_text ) : ?>
-              <div class="mobile_pill pill_left" data-aos="zoom-in" data-aos-delay="400">
+              <div class="mobile_pill pill_left" data-aos="zoom-in" data-aos-delay="400" data-aos-offset="0">
                 <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_1_icon['url'] ) ? $pill_1_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
                 <div class="mobile_pill_text"><?php echo esc_html( $pill_1_text ); ?></div>
               </div>
               <?php endif; ?>
               <?php if ( $pill_2_text ) : ?>
-              <div class="mobile_pill pill_right" data-aos="zoom-in" data-aos-delay="500">
+              <div class="mobile_pill pill_right" data-aos="zoom-in" data-aos-delay="500" data-aos-offset="0">
                 <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_2_icon['url'] ) ? $pill_2_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
                 <div class="mobile_pill_text"><?php echo esc_html( $pill_2_text ); ?></div>
               </div>
