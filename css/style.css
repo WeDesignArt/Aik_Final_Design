@@ -14,6 +14,23 @@
    sibling (.header-connect-btn) exposed it: without display:flex, that block
    sibling was dropping to its own line instead of sitting next to the search
    icon. */
+
+          .aik_landing_top {
+        pointer-events: none;
+       }
+
+
+   @media screen and (max-width: 1366px) {
+    .logo_arch {
+        top: 65%;
+        width: 600px;
+    }
+        .mobile_track {
+        width: 300px;
+        top: 173px;
+    }
+}
+
 .nav_wrapper {
   display: flex;
 }
@@ -2642,6 +2659,129 @@ font-size: 17px;
 .connect-sec-custom .smarter-sec__right {
   flex: 1;
   align-items: flex-end;
+}
+
+/* ==========================================
+   WE'RE HERE TO HELP (contact.html)
+   Standalone component, deliberately NOT built on .smarter-sec — that
+   block already juggles heading/description/list/icon-grid/media/button
+   variants and is crowded enough; this repeating info-card layout gets
+   its own namespace instead of becoming a 5th variant on top of it.
+   No hero sits above this section on contact.html, so it carries its
+   own top spacing instead of relying on a preceding hero_wrapper.
+========================================== */
+
+.help-sec {
+  position: relative;
+  overflow: hidden;
+  padding: 200px 0 0;
+}
+
+.help-sec__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.help-sec__left {
+  flex: 0 0 auto;
+  max-width: 700px;
+}
+
+.help-sec__heading {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--aik-green);
+  line-height: 1.1;
+  margin: 0 0 24px;
+}
+
+.help-sec__heading span {
+  color: var(--aik-yellow);
+}
+
+.help-sec__intro {
+  max-width: 420px;
+  margin: -16px 0 40px;
+  color: #000;
+}
+
+.help-sec__items {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 420px;
+}
+
+.help-sec__item-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--aik-green);
+  margin: 0 0 8px;
+}
+
+.help-sec__item-bold {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 4px;
+}
+
+.help-sec__item-bold a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.help-sec__item-desc {
+  color: rgba(0, 0, 0, 0.65);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.help-sec__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.help-sec__right img {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+  .help-sec__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .help-sec__left {
+    max-width: 100%;
+  }
+
+  .help-sec__intro,
+  .help-sec__items {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .help-sec__right {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .help-sec {
+    padding-top: 140px;
+  }
 }
 
 /* ==========================================

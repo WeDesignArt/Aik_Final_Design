@@ -1083,6 +1083,92 @@
                             "default_value": "Take control of your data, simplify your integrations, and see what a dedicated open banking vertical can do for your organization. Partner with aik Connect today to build the future of your corporate business infrastructure."
                         }
                     ]
+                },
+                "layout_aik_help_section": {
+                    "key": "layout_aik_help_section",
+                    "name": "help_section",
+                    "label": "We're Here to Help (contact info block)",
+                    "display": "block",
+                    "instructions": "Standalone contact/help block — heading, intro line, a list of Call Us/Email Us/Visit Us style info items, and an image on the right that bleeds to the section's bottom edge. Deliberately separate from Smarter Section rather than another variant on it.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_help_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "We're Here **to Help**"
+                        },
+                        {
+                            "key": "field_aik_help_intro",
+                            "label": "Intro Line",
+                            "name": "intro",
+                            "type": "textarea",
+                            "rows": 2,
+                            "default_value": "Have a question, need some help or want to know more about aik? Get in touch with us."
+                        },
+                        {
+                            "key": "field_aik_help_items",
+                            "label": "Info Items",
+                            "name": "items",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Info Item",
+                            "min": 0,
+                            "max": 0,
+                            "instructions": "e.g. Call Us / Email Us / Visit Us / Need Help With Something Specific?",
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_help_item_title",
+                                    "label": "Title",
+                                    "name": "item_title",
+                                    "type": "text",
+                                    "instructions": "Optional. Leave blank for an item that's just a bold line + description (e.g. \"Need Help With Something Specific?\").",
+                                    "wrapper": { "width": "50" }
+                                },
+                                {
+                                    "key": "field_aik_help_item_bold",
+                                    "label": "Bold Text",
+                                    "name": "item_bold",
+                                    "type": "text",
+                                    "instructions": "e.g. \"UAN: 111 245 475\", an email address, \"Head Office\".",
+                                    "wrapper": { "width": "50" }
+                                },
+                                {
+                                    "key": "field_aik_help_item_bold_link",
+                                    "label": "Bold Text Link",
+                                    "name": "item_bold_link",
+                                    "type": "url",
+                                    "instructions": "Optional. If set, the Bold Text above becomes a link (e.g. mailto:/tel: for Email Us/Call Us).",
+                                    "wrapper": { "width": "50" }
+                                },
+                                {
+                                    "key": "field_aik_help_item_desc",
+                                    "label": "Description",
+                                    "name": "item_desc",
+                                    "type": "textarea",
+                                    "rows": 2
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_help_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "instructions": "Right-side image — bleeds down to the section's bottom edge."
+                        },
+                        {
+                            "key": "field_aik_help_extra_class",
+                            "label": "Extra CSS Class (advanced)",
+                            "name": "extra_class",
+                            "type": "text",
+                            "instructions": "Optional. Only set this if design/QA asks for a specific per-page style hook."
+                        }
+                    ]
                 }
             }
         }

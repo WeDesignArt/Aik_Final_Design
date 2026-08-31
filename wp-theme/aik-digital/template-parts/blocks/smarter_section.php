@@ -68,7 +68,7 @@ $grid_right_modifiers = array(
                 <?php endforeach; ?>
               </ul>
               <?php elseif ( $description ) : ?>
-              <p class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="200"><?php echo aik_nl2br( $description ); ?></p>
+              <p class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="200"><?php echo aik_highlight( $description ); ?></p>
               <?php endif; ?>
               <?php if ( ! empty( $icon_items ) ) : ?>
               <div class="smarter-sec__icons" data-aos="fade-up" data-aos-delay="300">
