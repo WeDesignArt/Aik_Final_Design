@@ -5,6 +5,7 @@
  * in whatever order the Flexible Content field has them.
  */
 
+$top_image       = get_sub_field( 'top_image' );
 $heading         = get_sub_field( 'heading' );
 $description     = get_sub_field( 'description' );
 $list_items      = get_sub_field( 'list_items' );
@@ -19,6 +20,8 @@ $bg_image_mobile = get_sub_field( 'bg_image_mobile' );
 $grid_left       = get_sub_field( 'grid_left' );
 $grid_right      = get_sub_field( 'grid_right' );
 $buttons         = get_sub_field( 'buttons' );
+$show_notes      = get_sub_field( 'show_notes' );
+$notes           = get_sub_field( 'notes' );
 $extra_class     = get_sub_field( 'extra_class' );
 
 $section_class = 'smarter-sec';
@@ -60,15 +63,19 @@ $grid_right_modifiers = array(
         <div class="container">
           <div class="smarter-sec__inner">
             <div class="smarter-sec__left<?php echo esc_attr( $left_order_class ); ?>">
+              <?php if ( ! empty( $top_image['url'] ) ) : ?>
+              <div class="smarter-sec__top-logo" data-aos="fade-right"><img src="<?php echo esc_url( $top_image['url'] ); ?>" alt="<?php echo esc_attr( $top_image['alt'] ? $top_image['alt'] : '' ); ?>"></div>
+              <?php endif; ?>
               <h2 class="smarter-sec__heading" data-aos="fade-right"><?php echo aik_highlight( $heading ); ?></h2>
+              <?php if ( $description ) : ?>
+              <p class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="200"><?php echo aik_highlight( $description ); ?></p>
+              <?php endif; ?>
               <?php if ( ! empty( $list_items ) ) : ?>
-              <ul class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="200">
+              <ul class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="250">
                 <?php foreach ( $list_items as $item ) : ?>
-                <li><span><?php echo esc_html( $item['item_heading'] ); ?>:</span> <?php echo aik_nl2br( $item['item_text'] ); ?></li>
+                <li><?php if ( $item['item_heading'] ) : ?><span><?php echo esc_html( $item['item_heading'] ); ?>:</span> <?php endif; ?><?php echo aik_nl2br( $item['item_text'] ); ?></li>
                 <?php endforeach; ?>
               </ul>
-              <?php elseif ( $description ) : ?>
-              <p class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="200"><?php echo aik_highlight( $description ); ?></p>
               <?php endif; ?>
               <?php if ( ! empty( $icon_items ) ) : ?>
               <div class="smarter-sec__icons" data-aos="fade-up" data-aos-delay="300">
@@ -84,6 +91,13 @@ $grid_right_modifiers = array(
               <div class="smarter-sec__btns" data-aos="fade-up" data-aos-delay="400">
                 <?php foreach ( $buttons as $btn ) : ?>
                   <a href="<?php echo esc_url( $btn['link'] ? $btn['link'] : '#' ); ?>" class="btn btn_fill smarter-sec__btn"><?php echo esc_html( $btn['label'] ); ?></a>
+                <?php endforeach; ?>
+              </div>
+              <?php endif; ?>
+              <?php if ( $show_notes && ! empty( $notes ) ) : ?>
+              <div class="note" data-aos="fade-up" data-aos-delay="450">
+                <?php foreach ( $notes as $note ) : ?>
+                <p class="smarter-sec__desc_note"><?php if ( $note['note_heading'] ) : ?><strong><?php echo esc_html( $note['note_heading'] ); ?>:</strong> <?php endif; ?><?php echo aik_nl2br( $note['note_text'] ); ?></p>
                 <?php endforeach; ?>
               </div>
               <?php endif; ?>

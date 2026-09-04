@@ -27,7 +27,7 @@ if ( empty( $items ) ) {
                 <span class="aik-faq__arrow"><i class="bi bi-arrow-right"></i></span>
               </button>
               <div class="aik-faq__answer">
-                <p><?php echo aik_nl2br( $item['answer'] ); ?></p>
+                <?php echo apply_filters( 'the_content', $item['answer'] ); // phpcs:ignore -- WYSIWYG field, same filter chain the_content() uses (wpautop, shortcodes, etc.). ?>
               </div>
             </div>
             <?php endforeach; ?>

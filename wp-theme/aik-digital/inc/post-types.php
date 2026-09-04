@@ -48,6 +48,25 @@ function aik_register_post_types() {
 			'map_meta_cap' => true,
 		)
 	);
+
+	register_post_type(
+		'feedback_entry',
+		array(
+			'labels'       => array(
+				'name'          => __( 'Feedback', 'aik-digital' ),
+				'singular_name' => __( 'Feedback Entry', 'aik-digital' ),
+			),
+			'public'       => false,
+			'show_ui'      => true,
+			'show_in_menu' => true,
+			'menu_icon'    => 'dashicons-testimonial',
+			'supports'     => array( 'title' ),
+			'capabilities' => array(
+				'create_posts' => 'do_not_allow', // Submitted only via the front-end form handler.
+			),
+			'map_meta_cap' => true,
+		)
+	);
 }
 add_action( 'init', 'aik_register_post_types' );
 
@@ -83,3 +102,36 @@ function aik_partner_inquiry_meta_box() {
 	);
 }
 add_action( 'add_meta_boxes', 'aik_partner_inquiry_meta_box' );
+
+/**
+ * Show the Feedback Form submission details on the post edit screen, since
+ * the CPT only has a title.
+ */
+function aik_feedback_entry_meta_box() {
+	add_meta_box(
+		'aik_feedback_entry_details',
+		__( 'Feedback Details', 'aik-digital' ),
+		function ( $post ) {
+			$fields = array(
+				'email'      => 'Email',
+				'mobile'     => 'Mobile',
+				'product'    => 'Product',
+				'query_type' => 'Query Type',
+				'message'    => 'Message',
+			);
+			echo '<table class="widefat"><tbody>';
+			foreach ( $fields as $key => $label ) {
+				printf(
+					'<tr><th style="width:120px;text-align:left;">%1$s</th><td>%2$s</td></tr>',
+					esc_html( $label ),
+					esc_html( get_post_meta( $post->ID, $key, true ) )
+				);
+			}
+			echo '</tbody></table>';
+		},
+		'feedback_entry',
+		'normal',
+		'high'
+	);
+}
+add_action( 'add_meta_boxes', 'aik_feedback_entry_meta_box' );

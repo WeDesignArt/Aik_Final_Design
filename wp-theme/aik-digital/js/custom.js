@@ -383,3 +383,48 @@ if ( document.readyState === "complete" ) {
 } else {
   window.addEventListener( "load", aikInitMdNewsSwiper );
 }
+
+// "Explore Our Feature Suite" slider — one slide fully visible at a time,
+// autoplays every 7s, drag/swipe with mouse or touch, mousewheel also
+// steps a slide (mousewheel module is already part of the bundled
+// vendor.js Swiper build, same as the other Swiper instances on this
+// page). The feature_suite ACF layout can be added more than once per
+// page, each rendering its own #featureSuiteSwiper{N} id and scoped
+// .feature-suite-swiper__pagination inside it — looping over every
+// .feature-suite-swiper on the page (rather than one hard-coded id, like
+// aikInitMdNewsSwiper uses) initializes each instance independently with
+// its own pagination instead of every instance fighting over one.
+function aikInitFeatureSuiteSwipers() {
+  document.querySelectorAll( ".feature-suite-swiper" ).forEach( function ( el ) {
+    new Swiper( el, {
+      slidesPerView: 1,
+      loop: true,
+      observer: true,
+      observeParents: true,
+      grabCursor: true,
+
+      autoplay: {
+        delay: 7000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+
+      mousewheel: {
+        forceToAxis: true,
+      },
+
+      speed: 700,
+
+      pagination: {
+        el: el.querySelector( ".feature-suite-swiper__pagination" ),
+        clickable: true,
+      },
+    } );
+  } );
+}
+
+if ( document.readyState === "complete" ) {
+  aikInitFeatureSuiteSwipers();
+} else {
+  window.addEventListener( "load", aikInitFeatureSuiteSwipers );
+}

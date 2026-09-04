@@ -94,3 +94,4 @@ require_once AIK_THEME_DIR . '/inc/post-types.php';
 require_once AIK_THEME_DIR . '/inc/nav-menu-fallback.php';
 require_once AIK_THEME_DIR . '/inc/flexible-content.php';
 require_once AIK_THEME_DIR . '/inc/forms.php';
+require_once AIK_THEME_DIR . '/inc/search.php';

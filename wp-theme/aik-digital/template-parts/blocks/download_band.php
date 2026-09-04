@@ -32,7 +32,7 @@ $bg_mobile_url    = ! empty( $bg_mobile['url'] ) ? $bg_mobile['url'] : AIK_THEME
           <h2 class="aik-download-help__heading"><?php echo esc_html( $help_heading ); ?></h2>
           <form class="aik-download-help__search" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
             <input type="text" name="s" placeholder="Search" autocomplete="off">
-            <button type="submit" aria-label="Search"><i class="bi bi-send"></i></button>
+            <button type="submit" aria-label="Search"><img src="https://wordpress-732216-6548062.cloudwaysapps.com/wp-content/uploads/2026/09/icon_submit.png" alt=""></button>
           </form>
         </div>
       </section>

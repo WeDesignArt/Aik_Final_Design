@@ -21,7 +21,7 @@ $btn_2_text        = get_sub_field( 'button_2_text' );
 $btn_2_link        = get_sub_field( 'button_2_link' );
 $mobile_bg_image   = get_sub_field( 'mobile_bg_image' );
 
-$bg_url        = ! empty( $bg_image['url'] ) ? $bg_image['url'] : AIK_THEME_URI . '/images/bg-1.png';
+$bg_url        = ! empty( $bg_image['url'] ) ? $bg_image['url'] : AIK_THEME_URI . '/images/hero_banner.png';
 $mobile_url    = ! empty( $mobile_image['url'] ) ? $mobile_image['url'] : AIK_THEME_URI . '/images/hero-app-mobile.png';
 $mobile_bg_url = ! empty( $mobile_bg_image['url'] ) ? $mobile_bg_image['url'] : AIK_THEME_URI . '/images/bg-1.png';
 $is_business   = ( 'business' === $hero_style );

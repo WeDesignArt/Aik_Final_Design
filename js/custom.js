@@ -382,3 +382,45 @@ if ( document.readyState === "complete" ) {
 } else {
   window.addEventListener( "load", aikInitMdNewsSwiper );
 }
+
+// "Explore Our Feature Suite" slider — one slide fully visible at a time,
+// autoplays every 7s, drag/swipe with mouse or touch, mousewheel also
+// steps a slide (mousewheel module is already part of the bundled
+// vendor.js Swiper build, same as the other Swiper instances on this
+// page). Same window "load" + observer pattern as aikInitMdNewsSwiper for
+// the same reason — measuring slide width before images/AOS have settled
+// is invisible with few slides and only shows up as broken later.
+function aikInitFeatureSuiteSwiper() {
+  if ( ! document.getElementById( "featureSuiteSwiper" ) ) return;
+
+  new Swiper( "#featureSuiteSwiper", {
+    slidesPerView: 1,
+    loop: true,
+    observer: true,
+    observeParents: true,
+    grabCursor: true,
+
+    autoplay: {
+      delay: 7000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+
+    mousewheel: {
+      forceToAxis: true,
+    },
+
+    speed: 700,
+
+    pagination: {
+      el: ".feature-suite-swiper__pagination",
+      clickable: true,
+    },
+  } );
+}
+
+if ( document.readyState === "complete" ) {
+  aikInitFeatureSuiteSwiper();
+} else {
+  window.addEventListener( "load", aikInitFeatureSuiteSwiper );
+}

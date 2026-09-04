@@ -145,8 +145,20 @@ header .logo {
 	font-size: 20px;
 }
 
+.smarter-sec__inner .note {
+	margin-top: 24px;
+	max-width: 420px;
+}
+
 .smarter-sec__inner .note .smarter-sec__desc_note {
 	color: #005257;
+	font-size: 13px;
+	line-height: 1.6;
+	margin: 0 0 8px;
+}
+
+.smarter-sec__inner .note .smarter-sec__desc_note:last-child {
+	margin-bottom: 0;
 }
 
 
@@ -391,15 +403,40 @@ header .logo {
 }
 
 .aik-faq__item.is-open .aik-faq__answer {
-  max-height: 300px;
+  /* Bumped up from 300px so a paragraph + a short bullet list doesn't
+     get clipped now that answers can carry bold/lists/links. Still a
+     fixed cap (same max-height transition technique used by the mobile
+     footer accordion elsewhere on the site) — raise further if needed. */
+  max-height: 600px;
 }
 
-.aik-faq__answer p {
+.aik-faq__answer p,
+.aik-faq__answer ul,
+.aik-faq__answer ol {
   margin: 0 0 24px;
   padding-right: 60px;
   font-size: 15px;
   line-height: 1.7;
   color: #444;
+}
+
+.aik-faq__answer ul,
+.aik-faq__answer ol {
+  padding-left: 20px;
+}
+
+.aik-faq__answer li {
+  margin-bottom: 8px;
+}
+
+.aik-faq__answer li::marker {
+  color: var(--aik-yellow);
+}
+
+.aik-faq__answer a {
+  color: var(--aik-green);
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .aik-faq__btn {
@@ -420,7 +457,9 @@ header .logo {
     font-size: 15px;
   }
 
-  .aik-faq__answer p {
+  .aik-faq__answer p,
+  .aik-faq__answer ul,
+  .aik-faq__answer ol {
     padding-right: 0;
   }
 }
@@ -2564,12 +2603,28 @@ font-size: 17px;
 
 /* Glass effect – overrides btn_fill defaults */
 .smarter-sec__btn {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  /* Was a white-tinted glass (rgba(255,255,255,.1)) — reads fine on the
+     dark teal top of the gradient bg, but on the lighter yellow-green
+     bottom (where "Physical Card"/"Virtual Card" actually sit) it's
+     nearly invisible, just a faint outline. A dark tint instead stays
+     visibly darker than the bg at every point in the gradient. */
+  background-color: rgba(0, 0, 0, 0.32) !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
   color: #fff !important;
   font-size: 1rem !important;
+  /* main.css hard-codes .btn_fill to width:194px, which only ever
+     coincidentally worked: the arrow (::after) is position:absolute;
+     right:-2px, so it's NOT a flex sibling of the label text at all —
+     it just floats on top of the button's rightmost ~50px, entirely
+     outside the gap:20px flex spacing. width:auto + enough right
+     padding to actually clear the 52px circle fixes both short and
+     long labels the same way (already fixed on the WP theme copy —
+     ported here since this static file never got it). */
+  width: auto !important;
+  padding: 10px 70px 10px 10px !important;
+  white-space: nowrap !important;
 }
 
 .smarter-sec__btn:after {
@@ -2785,6 +2840,380 @@ font-size: 17px;
 }
 
 /* ==========================================
+   EXPLORE OUR FEATURE SUITE (feature-suite.html)
+   Standalone component (own .feature-suite-* namespace, same reasoning
+   as .help-sec) — an autoplaying content/image slider. Each slide's
+   content/image side is swapped with the "feature-suite-slide--reverse"
+   modifier class, which just flips flex-direction — the DOM order of
+   content vs. media stays identical for both variants, so a WP template
+   never needs to reorder markup, only add/omit one class.
+========================================== */
+
+.feature-suite-sec {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  /* Plain fallback color, not a hardcoded gradient — the Background Image
+     field is the intended way to art-direct this section (it's meant to
+     carry its own designed gradient/texture/decoration as one image, the
+     same way the slide photos already carry their own shape baked in). */
+  background-color: var(--aik-green);
+  color: #fff;
+}
+
+.feature-suite-sec__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.feature-suite-sec__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feature-suite-sec__heading {
+  text-align: center;
+  font-size: clamp(1.9rem, 3.8vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.feature-suite-sec__heading span {
+  color: var(--aik-yellow);
+}
+
+.feature-suite-swiper {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Cross-slide vertical centering — two main.css defaults fight this and
+   both have to be overridden together:
+   1) .swiper-wrapper{align-items:flex-start} — without stretch, a shorter
+      slide just sits pinned to the top of the wrapper (which is already
+      as tall as the tallest slide) instead of filling it.
+   2) .swiper-slide{height:100%} — align-items:stretch alone still isn't
+      enough: stretch only ever engages when an item's height computes to
+      the literal keyword auto. main.css's 100% is a *value*, not auto —
+      and since nothing definite is up the ancestor chain for it to
+      resolve against, it silently falls back to content-sizing instead
+      of stretching, with no visible sign anything is "wrong" in devtools.
+   Both overridden together, .feature-suite-slide's existing height:100%
+   then has a real stretched box to fill, and align-items:center on it
+   centers correctly regardless of which slide is shorter. */
+.feature-suite-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+.feature-suite-swiper .swiper-slide {
+  height: auto !important;
+}
+
+.feature-suite-slide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  min-height: 420px;
+  /* Swiper stretches every .swiper-slide to match the tallest slide's
+     content (default behavior at a fixed slidesPerView, no autoHeight).
+     Without height:100% here, this inner element only ever sits at its
+     own natural content height — align-items:center then centers it
+     within that short box, not within the taller stretched .swiper-slide,
+     so a shorter slide reads as pinned to the top instead of centered
+     whenever any OTHER slide has more content. */
+  height: 100%;
+}
+
+.feature-suite-slide--reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-suite-slide__content {
+  flex: 0 0 auto;
+  max-width: 460px;
+}
+
+.feature-suite-slide__title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.feature-suite-slide__title span {
+  color: var(--aik-yellow);
+}
+
+.feature-suite-slide__tagline {
+  color: var(--aik-yellow);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  margin: 0 0 16px;
+}
+
+.feature-suite-slide__desc {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  margin: 0 0 24px;
+}
+
+.feature-suite-slide__list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.feature-suite-slide__list li {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.feature-suite-slide__list li::marker {
+  color: var(--aik-yellow);
+}
+
+.feature-suite-slide__list li span {
+  color: var(--aik-yellow);
+  font-weight: 700;
+}
+
+.feature-suite-slide__media {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+}
+
+.feature-suite-slide__media img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  max-width: 82%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.feature-suite-swiper__pagination {
+  position: relative !important;
+  margin-top: 48px !important;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.feature-suite-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff !important;
+  opacity: 0.5 !important;
+  transition: opacity 0.25s ease;
+}
+
+.feature-suite-swiper .swiper-pagination-bullet-active {
+  background: var(--aik-yellow) !important;
+  opacity: 1 !important;
+}
+
+/* "White" Background Style — swaps the dark-green defaults (white
+   heading/title, yellow tagline, light desc/list text) for green/dark
+   equivalents so the section reads correctly on a plain white
+   background. Highlighted **words** (heading/title spans) stay yellow
+   either way — same convention as .smarter-sec--on-white. */
+.feature-suite-sec--white {
+  background-color: #fff;
+  color: #333;
+}
+
+.feature-suite-sec--white .feature-suite-sec__heading,
+.feature-suite-sec--white .feature-suite-slide__title {
+  color: var(--aik-green);
+}
+
+.feature-suite-sec--white .feature-suite-slide__tagline {
+  color: var(--aik-green);
+}
+
+.feature-suite-sec--white .feature-suite-slide__desc,
+.feature-suite-sec--white .feature-suite-slide__list li {
+  color: #444;
+}
+
+.feature-suite-sec--white .feature-suite-slide__list li span {
+  color: var(--aik-green);
+}
+
+.feature-suite-sec--white .feature-suite-swiper .swiper-pagination-bullet {
+  background: var(--aik-green) !important;
+}
+
+@media (max-width: 991px) {
+  .feature-suite-slide,
+  .feature-suite-slide--reverse {
+    flex-direction: column-reverse;
+    gap: 32px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .feature-suite-slide__content {
+    max-width: 100%;
+  }
+
+  .feature-suite-slide__list {
+    text-align: left;
+  }
+
+  .feature-suite-slide__media {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 575px) {
+  .feature-suite-sec {
+    padding: 60px 0;
+  }
+
+  .feature-suite-sec__heading {
+    margin-bottom: 36px;
+  }
+
+  .feature-suite-slide__title {
+    font-size: 2rem;
+  }
+}
+
+/* ==========================================
+   EXPLORE AIK BEFORE YOU SIGN UP (explore-guest.html)
+   Standalone component (own .explore-sec* namespace, same reasoning as
+   .help-sec/.feature-suite-sec) — deliberately not a Smarter Section
+   variant.
+========================================== */
+
+.explore-sec {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  background: #fff;
+}
+
+.explore-sec__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.explore-sec__left {
+  flex: 0 0 auto;
+  max-width: 540px;
+}
+
+.explore-sec__heading {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--aik-green);
+  margin: 0 0 20px;
+}
+
+.explore-sec__heading span {
+  color: var(--aik-yellow);
+}
+
+.explore-sec__desc {
+  color: #444;
+  line-height: 1.7;
+  margin: 0 0 28px;
+}
+
+.explore-sec__subheading {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: var(--aik-green);
+  margin: 0 0 12px;
+}
+
+.explore-sec__list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0 0 28px;
+}
+
+.explore-sec__list li {
+  color: #444;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.explore-sec__btn {
+  display: inline-flex;
+  background-color: var(--aik-green) !important;
+  border: 1px solid transparent !important;
+  color: #fff !important;
+  font-size: 1rem !important;
+  width: auto !important;
+  padding: 10px 70px 10px 20px !important;
+  white-space: nowrap !important;
+}
+
+/* Closing Blocks repeater — spacing when more than one block is added */
+.explore-sec__closing + .explore-sec__closing {
+  margin-top: 28px;
+}
+
+.explore-sec__right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.explore-sec__right img {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+@media (max-width: 991px) {
+  .explore-sec__inner {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .explore-sec__left {
+    max-width: 100%;
+  }
+
+  .explore-sec__list {
+    text-align: left;
+  }
+}
+
+@media (max-width: 575px) {
+  .explore-sec {
+    padding: 60px 0;
+  }
+
+  .explore-sec__heading {
+    font-size: 2rem;
+  }
+}
+
+/* ==========================================
    DRIVEN INNOVATION SECTION
 ========================================== */
 
@@ -2983,6 +3412,12 @@ font-size: 17px;
 
 .aik-download-help__search button:hover {
   background-color: #053f44;
+}
+
+.aik-download-help__search button img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 @media (max-width: 575px) {
@@ -5126,6 +5561,344 @@ header .logo {
   }
 }
 
+/* ==========================================
+   SCHEDULE OF CHARGES (schedule-of-charges.html)
+   Cards deliberately REUSE the existing .news-single card classes
+   (main.css) — same card design as "Our Media News" — with a PDF icon
+   thumbnail (.soc-thumb) standing in for a post thumbnail image, sized
+   to the same 380px height main.css gives .news-single-media img. The
+   outer section/heading/grid get their own .soc-* namespace, same
+   reasoning as .help-sec/.feature-suite-sec/.explore-sec.
+========================================== */
+
+.soc-section {
+  padding: 90px 0 110px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.soc-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.soc-title {
+  font-size: clamp(1.7rem, 3.8vw, 3.75rem);
+  font-weight: 600;
+  color: var(--aik-green);
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+
+.soc-title span {
+  color: var(--aik-yellow);
+}
+
+.soc-subtitle {
+  margin: 0 auto;
+  max-width: 780px;
+  color: #444;
+}
+
+.soc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Stand-in for a post thumbnail — a large PDF icon on a solid teal
+   panel, same 380px height as .news-single-media img so the card shell
+   (glass content overlay, border-radius, etc.) is unaffected. */
+.soc-thumb {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 380px;
+  width: 100%;
+  background: var(--aik-green);
+}
+
+.soc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.soc-thumb--icon {
+  padding-top: 70px;
+}
+
+.soc-thumb i {
+  font-size: 72px;
+  color: var(--aik-yellow);
+}
+
+@media (max-width: 991px) {
+  .soc-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .soc-section {
+    padding: 50px 0 60px;
+  }
+
+  .soc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   YOUR FEEDBACK MATTER FORM (feedback-form.html)
+   Same visual language as the Partner Inquiry Form (.pif-*) — yellow
+   card, pill inputs, teal submit button — but its own component/prefix
+   (.fb-*), not a variant of it. No agree checkbox row, Product Name and
+   Query Type are native <select>s instead of a text field / multiselect.
+========================================== */
+
+.fb-section {
+  background: #fff;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.fb-header {
+  margin: 0 auto 50px;
+}
+
+.fb-heading {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--aik-green);
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+.fb-heading span {
+  color: var(--aik-yellow);
+}
+
+.fb-subtext {
+  font-size: 15px;
+  color: #444;
+  margin: 0;
+}
+
+.fb-card {
+  background: var(--aik-yellow);
+  border-radius: 30px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 55px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.fb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 24px;
+}
+
+.fb-field--full {
+  grid-column: 1 / -1;
+}
+
+.fb-field label {
+  display: block;
+  color: var(--aik-green);
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.fb-req {
+  color: var(--aik-green);
+}
+
+.fb-field input[type="text"],
+.fb-field input[type="email"],
+.fb-field input[type="tel"] {
+  width: 100%;
+  height: 52px;
+  border: 1px solid var(--aik-green);
+  border-radius: 50px;
+  outline: none;
+  padding: 0 24px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: #333;
+  background: #fff;
+}
+
+.fb-field input::placeholder,
+.fb-field textarea::placeholder {
+  color: #a9a9a9;
+}
+
+.fb-field textarea {
+  width: 100%;
+  border: 1px solid var(--aik-green);
+  border-radius: 20px;
+  outline: none;
+  padding: 18px 24px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: #333;
+  background: #fff;
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* Phone field with PK +92 prefix */
+.fb-phone {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 50px;
+  height: 52px;
+  overflow: hidden;
+  border: 1px solid var(--aik-green);
+}
+
+.fb-phone__code {
+  flex-shrink: 0;
+  padding: 0 16px 0 24px;
+  font-size: 15px;
+  color: #333;
+  border-right: 1px solid #e2e2e2;
+}
+
+.fb-phone input[type="tel"] {
+  border-radius: 0;
+  padding-left: 16px;
+}
+
+/* Select */
+.fb-select {
+  position: relative;
+}
+
+.fb-select select {
+  width: 100%;
+  height: 52px;
+  border: 1px solid var(--aik-green);
+  border-radius: 50px;
+  outline: none;
+  padding: 0 45px 0 24px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: #333;
+  background: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.fb-select select:invalid {
+  color: #a9a9a9;
+}
+
+.fb-select i {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--aik-green);
+  pointer-events: none;
+  font-size: 14px;
+}
+
+/* Field-level error messages */
+.fb-error {
+  display: none;
+  color: #b3261e;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-top: 6px;
+  padding-left: 6px;
+}
+
+.fb-field.is-invalid .fb-error {
+  display: block;
+}
+
+.fb-field.is-invalid input,
+.fb-field.is-invalid textarea,
+.fb-field.is-invalid .fb-select select,
+.fb-field.is-invalid .fb-phone {
+  box-shadow: 0 0 0 2px #b3261e;
+}
+
+.fb-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 36px;
+}
+
+.fb-alert {
+  display: none;
+  margin-top: 26px;
+  padding: 16px 22px;
+  border-radius: 14px;
+  font-size: 14.5px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.fb-alert.is-success {
+  display: block;
+  background: var(--aik-green);
+  color: #fff;
+}
+
+.fb-alert.is-error {
+  display: block;
+  background: #fff5f4;
+  color: #b3261e;
+  border: 1px solid #f3c9c5;
+}
+
+@media (max-width: 767px) {
+  .fb-section {
+    padding: 60px 0;
+  }
+
+  .fb-header {
+    margin-bottom: 32px;
+  }
+
+  .fb-heading {
+    font-size: 1.75rem;
+  }
+
+  .fb-card {
+    padding: 35px 22px;
+    border-radius: 20px;
+  }
+
+  .fb-grid {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .fb-footer {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .fb-card {
+    padding: 28px 16px;
+  }
+}
+
 /* Decorative grid position utilities — pair with .grid-left / .grid-right */
 
 .grid-center-left {
@@ -5244,4 +6017,309 @@ header .logo {
         object-fit: cover;
         top: 68%;
     }
+}
+
+/* ==========================================
+   SEND MONEY YOUR WAY (send-money.html)
+   Standalone component (.send-money-*) — solid green cards, no image,
+   just a centered title + description.
+========================================== */
+
+.send-money-sec {
+  padding: 90px 0 110px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.send-money-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.send-money-title {
+  font-size: clamp(1.9rem, 3.8vw, 3.75rem);
+  font-weight: 600;
+  color: var(--aik-green);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.send-money-title span {
+  color: var(--aik-yellow);
+}
+
+.send-money-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.send-money-card {
+  background: var(--aik-green);
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.send-money-card__title {
+  color: var(--aik-yellow);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  margin: 0 0 10px;
+}
+
+.send-money-card__desc {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .send-money-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .send-money-sec {
+    padding: 50px 0 60px;
+  }
+
+  .send-money-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .send-money-card {
+    padding: 26px 22px;
+  }
+}
+
+/* ==========================================
+   SEARCH RESULTS (search-results.html / search.php)
+   Standalone component (.search-result*) — deliberately NOT the
+   .news-single image card used on Media News/Schedule of Charges/Send
+   Money: search results mix Posts and Pages, and Pages generally don't
+   have a featured image, so a plain title + excerpt + Read More list
+   (no image dependency) is used instead. Pagination reuses the existing
+   .news-archive-pagination / .page-numbers styles as-is.
+========================================== */
+
+.search-results-sec {
+  padding: 70px 0 100px;
+  background: #fff;
+}
+
+.search-results-title {
+  max-width: 900px;
+  margin: 0 auto 36px;
+  color: var(--aik-green);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.search-results-title span {
+  color: var(--aik-yellow);
+}
+
+/* Same pill search bar as .aik-download-help__search (download_band
+   block) — own class since this page isn't that block, but identical
+   styling so it reads as the same search control site-wide. Lets a
+   visitor search again without going back to the header search icon. */
+.search-results-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 550px;
+  margin: 0 auto 44px;
+  background: #fff;
+  border: 1.5px solid var(--aik-green);
+  border-radius: 50px;
+  padding: 6px 6px 6px 24px;
+  transition: border-color 0.25s ease;
+}
+
+.search-results-form input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: #333;
+}
+
+.search-results-form input::placeholder {
+  color: #b0b0b0;
+}
+
+.search-results-form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: var(--aik-green);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.search-results-form button:hover {
+  background-color: #053f44;
+}
+
+.search-results-form button img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.search-result-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 32px 36px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.search-result-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.search-result-card__title a {
+  color: var(--aik-green);
+  text-decoration: none;
+}
+
+.search-result-card__title a:hover {
+  color: #ddb800;
+}
+
+.search-result-card__excerpt {
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.search-result-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--aik-green);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.search-result-card__link:hover {
+  text-decoration: underline;
+}
+
+.search-results-empty {
+  padding: 60px 0;
+  color: #555;
+  font-size: 16px;
+}
+
+@media (max-width: 575px) {
+  .search-results-sec {
+    padding: 40px 0 60px;
+  }
+
+  .search-results-title {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+
+  .search-results-form {
+    margin-bottom: 28px;
+    padding: 5px 5px 5px 20px;
+  }
+
+  .search-result-card {
+    padding: 24px 22px;
+    border-radius: 14px;
+  }
+
+  .search-result-card__title {
+    font-size: 1.25rem;
+  }
+}
+
+/* ==========================================
+   404 (404.html / 404.php)
+   Standalone component (.error-404-*) — no hero banner (same reasoning
+   as Search Results). Reuses .search-results-form (the pill search bar)
+   and .btn.btn_fill as-is, same controls used site-wide.
+========================================== */
+
+.error-404-sec {
+  padding: 120px 0 140px;
+  background: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.error-404__code {
+  font-size: clamp(6rem, 14vw, 11rem);
+  font-weight: 800;
+  color: var(--aik-green);
+  line-height: 1;
+  margin: 0;
+}
+
+.error-404__code span {
+  color: var(--aik-yellow);
+}
+
+.error-404__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--aik-green);
+  margin: 20px 0 12px;
+}
+
+.error-404__desc {
+  color: #555;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 36px;
+}
+
+.error-404-sec .search-results-form {
+  margin: 0 auto 32px;
+}
+
+.error-404__home-btn {
+  display: inline-flex;
+}
+
+@media (max-width: 575px) {
+  .error-404-sec {
+    padding: 70px 0 80px;
+  }
+
+  .error-404__title {
+    font-size: 1.5rem;
+  }
 }

@@ -37,6 +37,9 @@ function aik_render_page_sections( $post_id = null ) {
  * 'Spend <span>Smarter,</span> the <span>Halal</span> Way' so editors can
  * mark up highlighted words from a plain text/textarea field without a raw
  * HTML/WYSIWYG field (which would let them break the section markup).
+ * __word__ works the same way but for plain bold (<strong>) — no color
+ * change, so it reads as bold black or bold white depending on whatever
+ * color the surrounding text already is.
  *
  * Also converts a plain Enter/newline (typed in a textarea field) into
  * <br> — matches how "Your Key to<br>Everyday Savings" is written in the
@@ -45,6 +48,7 @@ function aik_render_page_sections( $post_id = null ) {
 function aik_highlight( $text ) {
 	$text = esc_html( (string) $text );
 	$text = preg_replace( '/\*\*(.+?)\*\*/', '<span>$1</span>', $text );
+	$text = preg_replace( '/__(.+?)__/', '<strong>$1</strong>', $text );
 	return nl2br( $text, false );
 }
 

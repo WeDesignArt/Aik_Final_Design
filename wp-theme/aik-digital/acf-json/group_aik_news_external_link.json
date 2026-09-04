@@ -1,0 +1,30 @@
+{
+    "key": "group_aik_news_external_link",
+    "title": "News External Link",
+    "fields": [
+        {
+            "key": "field_aik_news_external_link",
+            "label": "External Link",
+            "name": "external_link",
+            "type": "url",
+            "instructions": "Optional. If set, this news card links out to this URL (opens in a new tab) instead of the internal post page — use this for press coverage hosted elsewhere. Leave blank and the card simply won't be clickable (title/image stay plain text/image, no \"Read More\" button)."
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Shown on every regular Post (Media News uses core Posts) so an editor can point a news card to an external article instead of the internal post page."
+}

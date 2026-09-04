@@ -42,16 +42,25 @@ $news_archive_title = is_category() ? single_cat_title( '', false ) : 'Media New
 			while ( have_posts() ) :
 				the_post();
 				?>
+            <?php $external_link = get_field( 'external_link' ); ?>
             <article class="news-single mb-3">
               <?php if ( has_post_thumbnail() ) : ?>
-              <div class="news-single-media"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'medium_large' ); ?></a></div>
+              <div class="news-single-media">
+                <?php if ( $external_link ) : ?>
+                <a href="<?php echo esc_url( $external_link ); ?>" target="_blank" rel="noopener noreferrer"><?php the_post_thumbnail( 'medium_large' ); ?></a>
+                <?php else : ?>
+                <?php the_post_thumbnail( 'medium_large' ); ?>
+                <?php endif; ?>
+              </div>
               <?php endif; ?>
               <div class="news-single-content">
                 <div class="news-single-meta d-flex align-items-center py-3 gap-2"><i class="bi bi-calendar"></i>
                   <span class="data text-white"><?php the_date(); ?></span>
                 </div>
-                <h2 class="news-single-content-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                <a href="<?php the_permalink(); ?>" class="btn read-btn">Read More <i class="ri-arrow-right-line"></i></a>
+                <h2 class="news-single-content-title"><?php if ( $external_link ) : ?><a href="<?php echo esc_url( $external_link ); ?>" target="_blank" rel="noopener noreferrer"><?php the_title(); ?></a><?php else : ?><?php the_title(); ?><?php endif; ?></h2>
+                <?php if ( $external_link ) : ?>
+                <a href="<?php echo esc_url( $external_link ); ?>" target="_blank" rel="noopener noreferrer" class="btn read-btn">Read More <i class="ri-arrow-right-line"></i></a>
+                <?php endif; ?>
               </div>
             </article>
             <?php endwhile; ?>

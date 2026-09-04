@@ -394,6 +394,15 @@
                     "instructions": "The main reusable content block — add this as many times as needed per page, in any order, for hero-style feature/benefit sections.",
                     "sub_fields": [
                         {
+                            "key": "field_aik_smarter_top_image",
+                            "label": "Top Logo/Image (optional)",
+                            "name": "top_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "thumbnail",
+                            "instructions": "Optional small logo/image shown above the Heading (e.g. the aik Tijarat logo). Leave blank for sections that don't need one."
+                        },
+                        {
                             "key": "field_aik_smarter_heading",
                             "label": "Heading",
                             "name": "heading",
@@ -408,7 +417,7 @@
                             "name": "description",
                             "type": "textarea",
                             "rows": 3,
-                            "instructions": "Plain paragraph. Leave blank if you're using Bullet List Items below instead (e.g. \"Why Choose\" / \"Key Features\" style sections) — when List Items has entries, it's used instead of this."
+                            "instructions": "Plain paragraph, optional. Shown above Bullet List Items if both are filled in — e.g. an intro line before a \"Why Choose\" / \"Key Features\" list. Leave blank for list-only sections. Wrap words in **double asterisks** to highlight them in yellow, or __double underscores__ for plain bold (no color change), same as the Heading field."
                         },
                         {
                             "key": "field_aik_smarter_list_items",
@@ -419,7 +428,7 @@
                             "button_label": "Add List Item",
                             "min": 0,
                             "max": 0,
-                            "instructions": "Use this instead of Description for \"Why Choose\" / \"Key Features\" style sections — renders as a bulleted list with the item heading highlighted in yellow, e.g. \"Instant Savings at Checkout: There is no need to wait...\". Don't type a trailing colon in the heading, it's added automatically.",
+                            "instructions": "For \"Why Choose\" / \"Key Features\" style sections — renders as a bulleted list with the item heading highlighted in yellow, e.g. \"Instant Savings at Checkout: There is no need to wait...\", shown below Description if that's also filled in. Don't type a trailing colon in the heading, it's added automatically. Leave Item Heading blank for a plain bullet (e.g. just \"Cash flow\") with no yellow label or colon.",
                             "sub_fields": [
                                 {
                                     "key": "field_aik_smarter_list_item_heading",
@@ -606,6 +615,54 @@
                                     "label": "Link",
                                     "name": "link",
                                     "type": "url"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_smarter_show_notes",
+                            "label": "Show Notes",
+                            "name": "show_notes",
+                            "type": "true_false",
+                            "instructions": "Small callout line(s) below the buttons, e.g. a disclaimer or caveat — each with its own optional heading (e.g. \"Note\").",
+                            "default_value": 0,
+                            "ui": 1
+                        },
+                        {
+                            "key": "field_aik_smarter_notes",
+                            "label": "Notes",
+                            "name": "notes",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Note",
+                            "min": 0,
+                            "max": 0,
+                            "instructions": "Add as many as needed — each renders as its own line, e.g. \"Note: ...\".",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_smarter_show_notes",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ],
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_smarter_note_heading",
+                                    "label": "Note Heading",
+                                    "name": "note_heading",
+                                    "type": "text",
+                                    "instructions": "Optional label, e.g. \"Note\". Don't type a trailing colon, it's added automatically.",
+                                    "default_value": "Note",
+                                    "wrapper": { "width": "30" }
+                                },
+                                {
+                                    "key": "field_aik_smarter_note_text",
+                                    "label": "Note Text",
+                                    "name": "note_text",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": { "width": "70" }
                                 }
                             ]
                         },
@@ -937,6 +994,26 @@
                             "rows": 2
                         },
                         {
+                            "key": "field_aik_steps_columns",
+                            "label": "Cards Per Row",
+                            "name": "columns",
+                            "type": "select",
+                            "instructions": "How many step cards sit side by side on desktop.",
+                            "choices": { "3": "3 in a row", "4": "4 in a row" },
+                            "default_value": "3",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_steps_text_color",
+                            "label": "Title/Description Text Color",
+                            "name": "text_color",
+                            "type": "select",
+                            "instructions": "\"Default\" keeps the alternating yellow/green title color per card. \"White\" makes every card's title and description white instead. The numbered badge is unaffected either way.",
+                            "choices": { "default": "Default (alternating yellow/green)", "white": "White" },
+                            "default_value": "default",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
                             "key": "field_aik_steps_list",
                             "label": "Steps",
                             "name": "steps_list",
@@ -945,7 +1022,7 @@
                             "button_label": "Add Step",
                             "min": 0,
                             "max": 0,
-                            "instructions": "Renders as numbered cards (01, 02, 03…) in a 3-column row, alternating the accent color every other card — matches the original design automatically, nothing to set per-step for that.",
+                            "instructions": "Renders as numbered cards (01, 02, 03…) in a row (see Cards Per Row above), alternating the accent color every other card — matches the original design automatically, nothing to set per-step for that.",
                             "sub_fields": [
                                 {
                                     "key": "field_aik_steps_item_image",
@@ -1009,8 +1086,12 @@
                                     "key": "field_aik_faq_item_answer",
                                     "label": "Answer",
                                     "name": "answer",
-                                    "type": "textarea",
-                                    "rows": 2
+                                    "type": "wysiwyg",
+                                    "instructions": "Use the toolbar for bold text, bullet/numbered lists and links (select text, click the link icon).",
+                                    "tabs": "visual",
+                                    "toolbar": "basic",
+                                    "media_upload": 0,
+                                    "delay": 1
                                 }
                             ]
                         },
@@ -1084,6 +1165,97 @@
                         }
                     ]
                 },
+                "layout_aik_feedback_form": {
+                    "key": "layout_aik_feedback_form",
+                    "name": "feedback_form",
+                    "label": "Feedback Form",
+                    "display": "block",
+                    "instructions": "Renders the fixed Feedback Form (name/email/mobile/product/query type/message) — only the heading and subtext are editable here; submissions are handled by inc/forms.php and stored under Feedback. Same visual language as the Partner Inquiry Form but a separate component.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_fb_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "Your **feedback** matter!"
+                        },
+                        {
+                            "key": "field_aik_fb_subtext",
+                            "label": "Subtext",
+                            "name": "subtext",
+                            "type": "textarea",
+                            "rows": 2,
+                            "default_value": "We're eager to hear from you and address any queries you may have."
+                        }
+                    ]
+                },
+                "layout_aik_schedule_of_charges": {
+                    "key": "layout_aik_schedule_of_charges",
+                    "name": "schedule_of_charges",
+                    "label": "Schedule of Charges (PDF library)",
+                    "display": "block",
+                    "instructions": "Document library grid, 3 cards per row — cards reuse the same .news-single design as \"Our Media News\" (main.css), with a PDF icon in place of a post thumbnail. Add one row per document; each is a real PDF upload.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_soc_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "Schedule of **Charges**"
+                        },
+                        {
+                            "key": "field_aik_soc_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "type": "textarea",
+                            "rows": 2,
+                            "default_value": "Download the latest fee and charges schedule for aik digital's accounts and services."
+                        },
+                        {
+                            "key": "field_aik_soc_documents",
+                            "label": "Documents",
+                            "name": "documents",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Document",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_soc_doc_thumbnail",
+                                    "label": "Thumbnail Image",
+                                    "name": "thumbnail",
+                                    "type": "image",
+                                    "return_format": "array",
+                                    "preview_size": "medium",
+                                    "instructions": "Optional. Leave blank to show a plain PDF icon instead.",
+                                    "wrapper": { "width": "100" }
+                                },
+                                {
+                                    "key": "field_aik_soc_doc_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "e.g. \"Schedule of Charges — Personal Banking\".",
+                                    "wrapper": { "width": "50" }
+                                },
+                                {
+                                    "key": "field_aik_soc_doc_file",
+                                    "label": "PDF File",
+                                    "name": "file",
+                                    "type": "file",
+                                    "return_format": "array",
+                                    "mime_types": "pdf",
+                                    "wrapper": { "width": "50" }
+                                }
+                            ]
+                        }
+                    ]
+                },
                 "layout_aik_help_section": {
                     "key": "layout_aik_help_section",
                     "name": "help_section",
@@ -1139,8 +1311,8 @@
                                     "key": "field_aik_help_item_bold_link",
                                     "label": "Bold Text Link",
                                     "name": "item_bold_link",
-                                    "type": "url",
-                                    "instructions": "Optional. If set, the Bold Text above becomes a link (e.g. mailto:/tel: for Email Us/Call Us).",
+                                    "type": "text",
+                                    "instructions": "Optional. If set, the Bold Text above becomes a link — e.g. mailto:support@aikdigital.io or tel:111245475. (A plain Text field, not ACF's URL field, since ACF's URL field rejects mailto:/tel: links.)",
                                     "wrapper": { "width": "50" }
                                 },
                                 {
@@ -1167,6 +1339,293 @@
                             "name": "extra_class",
                             "type": "text",
                             "instructions": "Optional. Only set this if design/QA asks for a specific per-page style hook."
+                        }
+                    ]
+                },
+                "layout_aik_feature_suite": {
+                    "key": "layout_aik_feature_suite",
+                    "name": "feature_suite",
+                    "label": "Feature Suite Slider",
+                    "display": "block",
+                    "instructions": "Autoplaying content/image slider (e.g. \"Explore Our Feature Suite\"). Standalone component, its own layout rather than a Smarter Section variant. Each slide can independently put its image on the left or right.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_fs_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "Explore Our **Feature Suite**"
+                        },
+                        {
+                            "key": "field_aik_fs_background_style",
+                            "label": "Background Style",
+                            "name": "background_style",
+                            "type": "select",
+                            "instructions": "\"Default\" is the dark green section (heading/tagline/text in white and yellow). \"White\" switches to a plain white background with the heading/tagline/text in green instead — highlighted **words** stay yellow either way.",
+                            "choices": { "default": "Default (dark green background)", "white": "White (plain white background)" },
+                            "default_value": "default",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
+                            "key": "field_aik_fs_bg_image",
+                            "label": "Background Image",
+                            "name": "background_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium",
+                            "instructions": "Optional. Full-bleed background for the whole section (gradient/texture/decoration all baked into one image). Leave blank for a plain dark green background. Only used with the \"Default\" Background Style above.",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_fs_background_style",
+                                        "operator": "==",
+                                        "value": "default"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_fs_slides",
+                            "label": "Slides",
+                            "name": "slides",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Slide",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_fs_slide_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "instructions": "Wrap highlighted words in **double asterisks**, e.g. \"RAAST **QR** Payments\"."
+                                },
+                                {
+                                    "key": "field_aik_fs_slide_tagline",
+                                    "label": "Tagline",
+                                    "name": "tagline",
+                                    "type": "text",
+                                    "instructions": "Short yellow highlight line under the title, e.g. \"Say Goodbye to Cash: Accept RAAST QR Payments Instantly\"."
+                                },
+                                {
+                                    "key": "field_aik_fs_slide_desc",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "rows": 2
+                                },
+                                {
+                                    "key": "field_aik_fs_slide_list",
+                                    "label": "Bullet List Items",
+                                    "name": "list_items",
+                                    "type": "repeater",
+                                    "layout": "block",
+                                    "button_label": "Add List Item",
+                                    "min": 0,
+                                    "max": 0,
+                                    "instructions": "Optional. Item Heading renders bold/yellow, e.g. \"Scan to Pay: Let customers make lightning-fast payments...\". Don't type a trailing colon, it's added automatically.",
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_aik_fs_slide_list_item_heading",
+                                            "label": "Item Heading",
+                                            "name": "item_heading",
+                                            "type": "text",
+                                            "wrapper": { "width": "35" }
+                                        },
+                                        {
+                                            "key": "field_aik_fs_slide_list_item_text",
+                                            "label": "Item Text",
+                                            "name": "item_text",
+                                            "type": "textarea",
+                                            "rows": 2,
+                                            "wrapper": { "width": "65" }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "key": "field_aik_fs_slide_image",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "type": "image",
+                                    "return_format": "array",
+                                    "preview_size": "medium",
+                                    "wrapper": { "width": "50" }
+                                },
+                                {
+                                    "key": "field_aik_fs_slide_layout",
+                                    "label": "Layout",
+                                    "name": "layout_position",
+                                    "type": "select",
+                                    "choices": { "content_left": "Content Left / Image Right", "content_right": "Content Right / Image Left" },
+                                    "default_value": "content_left",
+                                    "wrapper": { "width": "50" }
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_fs_extra_class",
+                            "label": "Extra CSS Class (advanced)",
+                            "name": "extra_class",
+                            "type": "text",
+                            "instructions": "Optional. Only set this if design/QA asks for a specific per-page style hook."
+                        }
+                    ]
+                },
+                "layout_aik_explore_guest": {
+                    "key": "layout_aik_explore_guest",
+                    "name": "explore_guest",
+                    "label": "Explore aik Before You Sign Up",
+                    "display": "block",
+                    "instructions": "Standalone content/image block (e.g. \"Explore aik Before You Sign Up\") — heading, description, a subheading + bullet list, a second subheading, a button, and an image on the right. Deliberately separate from Smarter Section rather than another variant on it.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_eg_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**. A manual Enter creates a line break — e.g. \"Explore aik Before\\n**You Sign Up**\" puts the second line entirely in yellow.",
+                            "default_value": "Explore aik Before\n**You Sign Up**"
+                        },
+                        {
+                            "key": "field_aik_eg_description",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "textarea",
+                            "rows": 3
+                        },
+                        {
+                            "key": "field_aik_eg_subheading_1",
+                            "label": "Subheading 1",
+                            "name": "subheading_1",
+                            "type": "text",
+                            "default_value": "Explore before you bank"
+                        },
+                        {
+                            "key": "field_aik_eg_list_items",
+                            "label": "Bullet List Items",
+                            "name": "list_items",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add List Item",
+                            "min": 0,
+                            "max": 0,
+                            "instructions": "Plain bulleted list — no bold label, just the item text.",
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_eg_list_item_text",
+                                    "label": "Item Text",
+                                    "name": "item_text",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_eg_closing_blocks",
+                            "label": "Closing Blocks",
+                            "name": "closing_blocks",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Block",
+                            "min": 0,
+                            "max": 0,
+                            "instructions": "One or more title + description + button blocks, shown below the Bullet List (e.g. \"Experience aik. Join when you're ready.\" + an \"Explore as a Guest\" button). Add more than one if this section needs a second closing block later.",
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_eg_cb_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "default_value": "Experience aik. Join when you're ready.",
+                                    "wrapper": { "width": "100" }
+                                },
+                                {
+                                    "key": "field_aik_eg_cb_description",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": { "width": "100" }
+                                },
+                                {
+                                    "key": "field_aik_eg_cb_btn_label",
+                                    "label": "Button Label",
+                                    "name": "button_label",
+                                    "type": "text",
+                                    "default_value": "Explore as a Guest",
+                                    "wrapper": { "width": "50" }
+                                },
+                                {
+                                    "key": "field_aik_eg_cb_btn_link",
+                                    "label": "Button Link",
+                                    "name": "button_link",
+                                    "type": "url",
+                                    "wrapper": { "width": "50" }
+                                }
+                            ]
+                        },
+                        {
+                            "key": "field_aik_eg_image",
+                            "label": "Image",
+                            "name": "image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_aik_eg_extra_class",
+                            "label": "Extra CSS Class (advanced)",
+                            "name": "extra_class",
+                            "type": "text",
+                            "instructions": "Optional. Only set this if design/QA asks for a specific per-page style hook."
+                        }
+                    ]
+                },
+                "layout_aik_send_money": {
+                    "key": "layout_aik_send_money",
+                    "name": "send_money",
+                    "label": "Send Money Your Way (solid card grid)",
+                    "display": "block",
+                    "instructions": "Standalone component (own .send-money-* namespace) — a centered heading above a grid of solid green cards, 3 per row, each just a title + description (no image). Not connected to News posts in any way.",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_sm_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "default_value": "**Send Money** Your Way"
+                        },
+                        {
+                            "key": "field_aik_sm_cards",
+                            "label": "Cards",
+                            "name": "cards",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Card",
+                            "min": 0,
+                            "max": 0,
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_sm_card_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "wrapper": { "width": "50" }
+                                },
+                                {
+                                    "key": "field_aik_sm_card_desc",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": { "width": "50" }
+                                }
+                            ]
                         }
                     ]
                 }
