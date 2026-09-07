@@ -6,6 +6,17 @@
  * provider was specified, so all three just email the site admin; Partner
  * Inquiry / Feedback submissions are additionally saved as their own CPT
  * posts so they show up in wp-admin even if the email doesn't land.
+ *
+ * Partner Inquiry and Feedback are also checked against Google reCAPTCHA
+ * v3 (see inc/recaptcha.php) — a no-op until that file's keys are filled
+ * in, so this works today and just starts enforcing once configured.
+ *
+ * Both of those two are submitted via fetch() (see js/custom.js's
+ * aikBindAjaxForm) instead of a normal browser POST, so their handlers
+ * respond with wp_send_json_success()/wp_send_json_error() instead of
+ * redirecting — there's no page reload, the JS swaps the form for the
+ * returned message in place. wp_send_json_*() calls die() itself, so
+ * nothing after those calls in either function ever runs.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -30,14 +41,16 @@ add_action( 'admin_post_nopriv_aik_newsletter_subscribe', 'aik_handle_newsletter
 add_action( 'admin_post_aik_newsletter_subscribe', 'aik_handle_newsletter_subscribe' );
 
 function aik_handle_partner_inquiry() {
-	$redirect = wp_get_referer() ? wp_get_referer() : home_url( '/' );
-
 	if (
 		! isset( $_POST['aik_partner_inquiry_nonce'] ) ||
 		! wp_verify_nonce( wp_unslash( $_POST['aik_partner_inquiry_nonce'] ), 'aik_partner_inquiry' )
 	) {
-		wp_safe_redirect( add_query_arg( 'pif_sent', '0', $redirect ) );
-		exit;
+		wp_send_json_error( array( 'message' => 'Security check failed — please refresh the page and try again.' ) );
+	}
+
+	$recaptcha_token = isset( $_POST['g-recaptcha-response'] ) ? sanitize_text_field( wp_unslash( $_POST['g-recaptcha-response'] ) ) : '';
+	if ( ! aik_verify_recaptcha( $recaptcha_token ) ) {
+		wp_send_json_error( array( 'message' => 'Verification failed — please try again.' ) );
 	}
 
 	$name    = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
@@ -49,8 +62,7 @@ function aik_handle_partner_inquiry() {
 	$agree   = ! empty( $_POST['agree'] );
 
 	if ( ! $name || ! is_email( $email ) || ! $mobile || ! $company || ! $service || ! $agree ) {
-		wp_safe_redirect( add_query_arg( 'pif_sent', '0', $redirect ) );
-		exit;
+		wp_send_json_error( array( 'message' => 'Please fill in all required fields.' ) );
 	}
 
 	$post_id = wp_insert_post(
@@ -75,21 +87,22 @@ function aik_handle_partner_inquiry() {
 		"Name: {$name}\nEmail: {$email}\nMobile: {$mobile}\nCompany: {$company}\nService: {$service}\nMessage: {$message}"
 	);
 
-	wp_safe_redirect( add_query_arg( 'pif_sent', '1', $redirect ) );
-	exit;
+	wp_send_json_success( array( 'message' => "Thanks — we'll be in touch shortly." ) );
 }
 add_action( 'admin_post_nopriv_aik_partner_inquiry', 'aik_handle_partner_inquiry' );
 add_action( 'admin_post_aik_partner_inquiry', 'aik_handle_partner_inquiry' );
 
 function aik_handle_feedback_form() {
-	$redirect = wp_get_referer() ? wp_get_referer() : home_url( '/' );
-
 	if (
 		! isset( $_POST['aik_feedback_form_nonce'] ) ||
 		! wp_verify_nonce( wp_unslash( $_POST['aik_feedback_form_nonce'] ), 'aik_feedback_form' )
 	) {
-		wp_safe_redirect( add_query_arg( 'fb_sent', '0', $redirect ) );
-		exit;
+		wp_send_json_error( array( 'message' => 'Security check failed — please refresh the page and try again.' ) );
+	}
+
+	$recaptcha_token = isset( $_POST['g-recaptcha-response'] ) ? sanitize_text_field( wp_unslash( $_POST['g-recaptcha-response'] ) ) : '';
+	if ( ! aik_verify_recaptcha( $recaptcha_token ) ) {
+		wp_send_json_error( array( 'message' => 'Verification failed — please try again.' ) );
 	}
 
 	$name       = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
@@ -100,8 +113,7 @@ function aik_handle_feedback_form() {
 	$message    = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
 
 	if ( ! $name || ! is_email( $email ) || ! $mobile || ! $product ) {
-		wp_safe_redirect( add_query_arg( 'fb_sent', '0', $redirect ) );
-		exit;
+		wp_send_json_error( array( 'message' => 'Please fill in all required fields.' ) );
 	}
 
 	$post_id = wp_insert_post(
@@ -126,8 +138,7 @@ function aik_handle_feedback_form() {
 		"Name: {$name}\nEmail: {$email}\nMobile: {$mobile}\nProduct: {$product}\nQuery Type: {$query_type}\nMessage: {$message}"
 	);
 
-	wp_safe_redirect( add_query_arg( 'fb_sent', '1', $redirect ) );
-	exit;
+	wp_send_json_success( array( 'message' => 'Thank you for your feedback! Our team will get back to you shortly.' ) );
 }
 add_action( 'admin_post_nopriv_aik_feedback_form', 'aik_handle_feedback_form' );
 add_action( 'admin_post_aik_feedback_form', 'aik_handle_feedback_form' );

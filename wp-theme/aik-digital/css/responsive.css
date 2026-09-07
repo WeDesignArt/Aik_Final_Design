@@ -1,0 +1,68 @@
+.nofound {
+  min-height: 40vh;
+}
+
+.nofound_nav .btn_fill {
+  padding-right: 40px;
+}
+
+@media (max-width: 767.98px) {
+  .home_about_section_content_title {
+    font-size: 1.8rem !important;
+  }
+
+  .home_about_section_content p {
+    width: 80%;
+  }
+
+  .btn_fill {
+    z-index: 2;
+  }
+
+  .btn_fill::after {
+    height: 52px;
+    margin-right: 0;
+    width: 52px;
+  }
+
+
+  .bento-grid .bento-card--transfers,
+  .bento-grid .bento-card--airtime,
+  .bento-grid .bento-card--takaful,
+  .bento-grid .bento-card--bill {
+    height: 400px !important;
+  }
+
+  .app-dl-logo {
+    text-align: center;
+  }
+
+  .app-dl-logo img {
+    display: inline-block;
+  }
+
+  .news-single {
+    min-height: 320px;
+  }
+
+  .news-single-content {
+    height: 50%;
+  }
+
+  .custom_size .hero_btn_group {
+    flex-direction: column;
+  }
+
+  .bento-card--deen.retention {
+    min-height: 400px;
+  }
+
+  .debit_custom_smarter-sec ul,
+  .deen-sec .smarter-sec__left ul {
+    text-align: left;
+  }
+
+  .nofound {
+    height: auto;
+  }
+}

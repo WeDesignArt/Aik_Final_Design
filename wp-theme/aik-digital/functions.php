@@ -22,7 +22,8 @@ function aik_setup() {
 
 	register_nav_menus(
 		array(
-			'primary' => __( 'Primary Menu', 'aik-digital' ),
+			'primary'  => __( 'Primary Menu (Personal)', 'aik-digital' ),
+			'business' => __( 'Business Menu', 'aik-digital' ),
 		)
 	);
 }
@@ -39,6 +40,7 @@ function aik_enqueue_assets() {
 	wp_enqueue_style( 'aik-google-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap', array(), null );
 	wp_enqueue_style( 'aik-main', AIK_THEME_URI . '/css/main.css', array(), AIK_THEME_VERSION );
 	wp_enqueue_style( 'aik-style', AIK_THEME_URI . '/css/style.css', array( 'aik-main' ), AIK_THEME_VERSION );
+	wp_enqueue_style( 'aik-responsive', AIK_THEME_URI . '/css/responsive.css', array( 'aik-main' ), AIK_THEME_VERSION );
 
 	// The theme ships its own jQuery build (matching the original static site);
 	// drop WP's bundled copy on the front end to avoid loading it twice.
@@ -91,7 +93,9 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 }
 
 require_once AIK_THEME_DIR . '/inc/post-types.php';
+require_once AIK_THEME_DIR . '/inc/leads-export.php';
 require_once AIK_THEME_DIR . '/inc/nav-menu-fallback.php';
 require_once AIK_THEME_DIR . '/inc/flexible-content.php';
+require_once AIK_THEME_DIR . '/inc/recaptcha.php';
 require_once AIK_THEME_DIR . '/inc/forms.php';
 require_once AIK_THEME_DIR . '/inc/search.php';

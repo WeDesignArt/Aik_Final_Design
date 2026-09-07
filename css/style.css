@@ -5121,16 +5121,22 @@ header .logo {
   content: none;
 }
 
-#menu.menuNav > li.has-children > a .aik-menu-arrow {
+#menu.menuNav > li.has-children > a .aik-menu-arrow,
+#menu.menuNav li.in-dropdown > a .aik-menu-arrow {
   color: var(--aik-yellow);
   font-size: 0.7em;
-  margin-left: 8px;
   display: inline-block;
   transition: transform 0.4s ease;
   vertical-align: middle;
+  /* Padding (not a bigger font-size) enlarges the tap target without
+     changing how big the arrow itself looks — it's the only thing left
+     that opens the submenu, since the link text now navigates instead. */
+  padding: 10px;
+  margin: -10px -10px -10px 8px;
 }
 
-#menu.menuNav > li.has-children.active > a .aik-menu-arrow {
+#menu.menuNav > li.has-children.active > a .aik-menu-arrow,
+#menu.menuNav li.in-dropdown.active > a .aik-menu-arrow {
   transform: rotate(180deg);
 }
 
@@ -5442,40 +5448,6 @@ header .logo {
   display: block;
 }
 
-.pif-submit {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  background: var(--aik-green);
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 6px 8px 6px 28px;
-  height: 52px;
-  cursor: pointer;
-  transition: background-color 0.25s ease;
-}
-
-.pif-submit:hover {
-  background-color: #053f44;
-}
-
-.pif-submit__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #fff;
-  color: var(--aik-green);
-  font-size: 16px;
-}
-
 /* Success / general alert */
 .pif-alert {
   display: none;
@@ -5487,8 +5459,14 @@ header .logo {
   text-align: center;
 }
 
+/* On success the form's fields are hidden entirely, so the alert becomes
+   the only thing left in the card — sized to read as a proper "thank
+   you" message filling that space, not a small strip. */
 .pif-alert.is-success {
   display: block;
+  margin-top: 0;
+  padding: 48px 24px;
+  font-size: 17px;
   background: var(--aik-green);
   color: #fff;
 }
@@ -5535,9 +5513,8 @@ header .logo {
     order: 2;
   }
 
-  .pif-submit {
+  .pif-footer .btn_fill {
     order: 1;
-    justify-content: space-between;
     width: 50%;
   }
 }
@@ -5852,8 +5829,14 @@ header .logo {
   text-align: center;
 }
 
+/* On success the form's fields are hidden entirely, so the alert becomes
+   the only thing left in the card — sized to read as a proper "thank
+   you" message filling that space, not a small strip. */
 .fb-alert.is-success {
   display: block;
+  margin-top: 0;
+  padding: 48px 24px;
+  font-size: 17px;
   background: var(--aik-green);
   color: #fff;
 }

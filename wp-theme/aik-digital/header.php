@@ -55,7 +55,7 @@
           <div class="logo_wrapper"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/logo-aik.svg" alt="AIK"></div>
         </a>
         <div class="nav_wrapper me-4">
-          <a href="https://aikconnect.aikdigital.co/" target="_blank" class="header-connect-btn d-none d-md-inline-flex">aik connect</a>
+          <a href="https://wordpress-732216-6548062.cloudwaysapps.com/aik-connect/" target="_blank" class="header-connect-btn d-none d-md-inline-flex">aik connect</a>
 
           <div class="search_holder d-none d-md-block">
             <form action="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -120,9 +120,17 @@
     <div class="off_canvas">
       <div class="off_canvas_wrapper">
         <?php
+        // Which off-canvas menu shows depends on the current page's "Menu
+        // Section" field (acf-json/group_aik_page_menu.json) — set to
+        // "Business" on pages under the Business side of the site. Anything
+        // that isn't a Page (posts, archives, search, 404…) always falls
+        // back to the Personal menu, same as before this ever existed.
+        $aik_menu_section  = is_page() ? get_field( 'menu_section' ) : 'personal';
+        $aik_menu_location = ( 'business' === $aik_menu_section ) ? 'business' : 'primary';
+
         wp_nav_menu(
 			array(
-				'theme_location' => 'primary',
+				'theme_location' => $aik_menu_location,
 				'menu_id'        => 'menu',
 				'menu_class'     => 'menuNav',
 				'container'      => false,

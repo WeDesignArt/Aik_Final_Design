@@ -1,0 +1,33 @@
+{
+    "key": "group_aik_page_menu",
+    "title": "Menu Section",
+    "fields": [
+        {
+            "key": "field_aik_page_menu_section",
+            "label": "Menu Section",
+            "name": "menu_section",
+            "type": "select",
+            "instructions": "Which off-canvas (hamburger) menu shows on this page — set to \"Business\" for pages on the Business side of the site (Merchant Solutions, Enterprise, Payroll Solutions, etc.), matching the header's own Personal/Business toggle. Each menu is managed separately under Appearance → Menus (\"Primary Menu (Personal)\" / \"Business Menu\").",
+            "choices": { "personal": "Personal", "business": "Business" },
+            "default_value": "personal",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Controls which of the two off-canvas nav menus (Personal / Business) renders on this page."
+}

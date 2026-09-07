@@ -428,3 +428,101 @@ if ( document.readyState === "complete" ) {
 } else {
   window.addEventListener( "load", aikInitFeatureSuiteSwipers );
 }
+
+// ========================================
+// AJAX FORM SUBMISSIONS (Partner Inquiry / Feedback)
+// Submits via fetch() instead of a normal browser POST, so there's no
+// page reload — the button shows a loading state, then the success/error
+// message replaces the form's fields in the same spot (no more tiny alert
+// text buried under the button). inc/recaptcha.php's aik_recaptcha_script()
+// tags the <form> with data-recaptcha-site-key/-field when reCAPTCHA v3 is
+// configured; a fresh token is fetched right before each submit if so.
+// Both handlers in inc/forms.php respond with wp_send_json_success()/
+// wp_send_json_error(), i.e. {success:true|false, data:{message:"..."}}.
+// ========================================
+function aikGetRecaptchaToken( form ) {
+  var siteKey = form.dataset.recaptchaSiteKey;
+  if ( ! siteKey || typeof grecaptcha === "undefined" ) {
+    return Promise.resolve( "" );
+  }
+  return new Promise( function ( resolve ) {
+    grecaptcha.ready( function () {
+      grecaptcha.execute( siteKey, { action: "submit" } ).then( resolve );
+    } );
+  } );
+}
+
+function aikBindAjaxForm( formId, alertClass, fieldsClass ) {
+  var form = document.getElementById( formId );
+  if ( ! form ) return;
+
+  var alertBox = form.querySelector( "." + alertClass );
+  var fieldsWrap = form.querySelector( "." + fieldsClass );
+  var submitBtn = form.querySelector( 'button[type="submit"]' );
+  var submitLabel = submitBtn ? submitBtn.textContent : "";
+
+  function showAlert( message, isSuccess ) {
+    if ( ! alertBox ) return;
+    alertBox.textContent = message;
+    alertBox.className = alertClass + " " + ( isSuccess ? "is-success" : "is-error" );
+  }
+
+  function resetButton() {
+    if ( ! submitBtn ) return;
+    submitBtn.disabled = false;
+    submitBtn.textContent = submitLabel;
+  }
+
+  form.addEventListener( "submit", function ( e ) {
+    e.preventDefault();
+
+    // Native "required"/type validation still applies — submit was always
+    // prevented above so the browser never got a chance to check on its
+    // own, checkValidity()+reportValidity() run that same check by hand
+    // and show the normal validation bubble UI on whatever's invalid.
+    if ( ! form.checkValidity() ) {
+      form.reportValidity();
+      return;
+    }
+
+    if ( submitBtn ) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+    }
+
+    aikGetRecaptchaToken( form ).then( function ( token ) {
+      var recaptchaFieldId = form.dataset.recaptchaField;
+      if ( recaptchaFieldId ) {
+        var recaptchaField = document.getElementById( recaptchaFieldId );
+        if ( recaptchaField ) recaptchaField.value = token;
+      }
+
+      fetch( form.getAttribute( "action" ), {
+        method: "POST",
+        body: new FormData( form ),
+        credentials: "same-origin",
+      } )
+        .then( function ( response ) {
+          return response.json();
+        } )
+        .then( function ( json ) {
+          var message = json.data && json.data.message ? json.data.message : "";
+          showAlert( message, !! json.success );
+          if ( json.success ) {
+            if ( fieldsWrap ) fieldsWrap.style.display = "none";
+          } else {
+            resetButton();
+          }
+        } )
+        .catch( function () {
+          showAlert( "Something went wrong, please try again.", false );
+          resetButton();
+        } );
+    } );
+  } );
+}
+
+document.addEventListener( "DOMContentLoaded", function () {
+  aikBindAjaxForm( "partnerInquiryForm", "pif-alert", "pif-card__fields" );
+  aikBindAjaxForm( "feedbackForm", "fb-alert", "fb-card__fields" );
+} );

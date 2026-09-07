@@ -41,6 +41,22 @@ jQuery(document).ready(function ($) {
     .children("ul")
     .addClass("in-dropdown");
 
+  // WordPress-configured menu items (e.g. "Personal – Home", "aik Connect")
+  // only get an arrow icon if the editor happened to type one into the menu
+  // label by hand — the static fallback markup (inc/nav-menu-fallback.php)
+  // has one baked into "Features" for exactly that reason. Adding it here
+  // instead means every parent item gets the same visual affordance
+  // automatically, regardless of how the menu is set up in Appearance >
+  // Menus. Covers both top-level (.has-children) and nested (.in-dropdown)
+  // parents — the click handler below only toggles from a click on this
+  // icon specifically, so the arrow is the only way left to expand a
+  // submenu once its own link text is a real, independently clickable page.
+  $("#menu.menuNav > li.has-children > a, #menu.menuNav li.in-dropdown > a").each(function () {
+    if (!$(this).find(".aik-menu-arrow").length) {
+      $(this).append('<i class="bi bi-chevron-down aik-menu-arrow"></i>');
+    }
+  });
+
   // 5. Optimized Mobile Menu Trigger
   const offCanvas = $(".off_canvas");
   const menuTrigger = $(".offset_menu_trigger");
@@ -60,6 +76,15 @@ jQuery(document).ready(function ($) {
 
   // 6. Smooth GSAP Accordion (Replaces jQuery slideToggle)
   $(".has-children, .in-dropdown").on("click", function (e) {
+    // Only the arrow icon toggles the accordion — a parent item's own link
+    // text (e.g. "aik Connect", "Personal – Home") is often a real,
+    // independently clickable page in its own right, not just a container
+    // for its sub-items, so clicking the text has to still navigate there
+    // normally instead of only ever expanding/collapsing.
+    if (!$(e.target).closest(".aik-menu-arrow").length) {
+      return;
+    }
+    e.preventDefault();
     e.stopPropagation();
     const submenu = $(this).children("ul");
     const isOpen = $(this).hasClass("active");
