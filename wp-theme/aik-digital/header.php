@@ -15,6 +15,9 @@
   <meta name="theme-color" content="#065258">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Powers the small animated bot icon in .aik-chat-float (bottom-right
+       floating button) — a plain custom element, no build step needed. -->
+  <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.28/dist/dotlottie-wc.js"></script>
   <?php wp_head(); ?>
 </head>
 
@@ -83,16 +86,32 @@
 	// Same options-page fields the footer's social icons use, so both stay
 	// in sync — set once in Theme Settings, not duplicated per-template.
 	$aik_social_facebook  = get_field( 'social_facebook_url', 'option' );
-	$aik_social_twitter   = get_field( 'social_twitter_url', 'option' );
+// 	$aik_social_twitter   = get_field( 'social_twitter_url', 'option' );
 	$aik_social_instagram = get_field( 'social_instagram_url', 'option' );
-	$aik_social_whatsapp  = get_field( 'social_whatsapp_url', 'option' );
+// 	$aik_social_whatsapp  = get_field( 'social_whatsapp_url', 'option' );
+	$aik_social_youtube   = get_field( 'social_youtube_url', 'option' );
+	$aik_social_tiktok    = get_field( 'social_tiktok_url', 'option' );
+	$aik_social_linkedin  = get_field( 'social_linkedin_url', 'option' );
 	?>
     <div class="aik-social-float">
-      <a href="<?php echo esc_url( $aik_social_facebook ? $aik_social_facebook : 'https://www.facebook.com/profile.php?id=61570502862817' ); ?>" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-      <a href="<?php echo esc_url( $aik_social_twitter ? $aik_social_twitter : '#' ); ?>" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-      <a href="<?php echo esc_url( $aik_social_instagram ? $aik_social_instagram : 'https://www.instagram.com/aikofficial1/' ); ?>" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-      <a href="<?php echo esc_url( $aik_social_whatsapp ? $aik_social_whatsapp : '#' ); ?>" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-      <a href="javascript:void(0);" aria-label="Chat with us"><i class="bi bi-robot"></i></a>
+      <a href="<?php echo esc_url( $aik_social_facebook ? $aik_social_facebook : 'https://www.facebook.com/aikbyBankIslami/' ); ?>" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+<!--       <a href="<?php echo esc_url( $aik_social_twitter ? $aik_social_twitter : '#' ); ?>" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a> -->
+      <a href="<?php echo esc_url( $aik_social_instagram ? $aik_social_instagram : 'https://www.instagram.com/aik_digital/' ); ?>" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+<!--       <a href="<?php echo esc_url( $aik_social_whatsapp ? $aik_social_whatsapp : '#' ); ?>" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a> -->
+      <a href="<?php echo esc_url( $aik_social_youtube ? $aik_social_youtube : 'https://www.youtube.com/@aikdigital1' ); ?>" target="_blank" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+      <a href="<?php echo esc_url( $aik_social_tiktok ? $aik_social_tiktok : 'https://www.tiktok.com/@aikbybankislami/' ); ?>" target="_blank" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+      <a href="<?php echo esc_url( $aik_social_linkedin ? $aik_social_linkedin : 'https://www.linkedin.com/company/aikbybankislami/' ); ?>" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    </div>
+    <!-- Same right-edge column as .aik-social-float, but its own fixed
+         element flush against the bottom of the viewport (not stacked in
+         the flex group above) — so the other icons keep their existing
+         position while this one alone sits at the very bottom. Links to
+         the search page for now since there's no chatbot yet. -->
+    <div class="aik-chat-float">
+      <a href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" aria-label="Search">
+        <!-- <i class="bi bi-robot"></i> -->
+        <dotlottie-wc src="https://lottie.host/8f1423fa-2a10-42d8-ac5d-cbbfe29ff00e/xoIr1NQi1t.json" autoplay loop class="aik-chat-float__lottie"></dotlottie-wc>
+      </a>
     </div>
 
     <!-- ============================================================

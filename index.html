@@ -10,6 +10,9 @@
   <meta name="theme-color" content="#065258">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Powers the small animated bot icon in .aik-chat-float (bottom-right
+       floating button) — a plain custom element, no build step needed. -->
+  <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.28/dist/dotlottie-wc.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css?cb=1781771517554">
   <link rel="stylesheet" href="css/style.css">
@@ -99,7 +102,16 @@
       <a href="javascript:void(0);" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
       <a href="https://www.instagram.com/aikofficial1/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
       <a href="javascript:void(0);" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-      <a href="javascript:void(0);" aria-label="Chat with us"><i class="bi bi-robot"></i></a>
+    </div>
+    <!-- Same right-edge column as .aik-social-float, but its own fixed
+         element flush against the bottom of the viewport (not stacked in
+         the flex group above) — so the other icons keep their existing
+         position while this one alone sits at the very bottom. -->
+    <div class="aik-chat-float">
+      <a href="search-results.html" aria-label="Search">
+        <!-- <i class="bi bi-robot"></i> -->
+        <dotlottie-wc src="https://lottie.host/8f1423fa-2a10-42d8-ac5d-cbbfe29ff00e/xoIr1NQi1t.json" autoplay loop class="aik-chat-float__lottie"></dotlottie-wc>
+      </a>
     </div>
 
     <!-- ============================================================

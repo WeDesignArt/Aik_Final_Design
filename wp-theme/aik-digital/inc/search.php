@@ -38,7 +38,14 @@ function aik_flatten_field_text( $value ) {
 			return '';
 		}
 		$parts = array();
-		foreach ( $value as $item ) {
+		foreach ( $value as $key => $item ) {
+			// Every Flexible Content layout block carries its own layout
+			// slug (e.g. "hero", "smarter_section") under this key — it's
+			// internal bookkeeping, not page copy, so it must never leak
+			// into the search excerpt.
+			if ( 'acf_fc_layout' === $key ) {
+				continue;
+			}
 			$parts[] = aik_flatten_field_text( $item );
 		}
 		return implode( ' ', array_filter( $parts ) );
@@ -71,6 +78,43 @@ function aik_sync_search_excerpt( $post_id ) {
 			'post_excerpt' => $text,
 		)
 	);
+}
+
+/**
+ * One-time cleanup: every Page's post_excerpt was already populated by the
+ * buggy version of aik_flatten_field_text() above (it was leaking each
+ * layout's internal "acf_fc_layout" slug — "hero", "smarter_section", etc.
+ * — into the flattened text). Re-flatten every Page once so the bad text
+ * already stored in the database gets replaced, without requiring the
+ * client to manually re-save each page in wp-admin. Runs once, then
+ * never again (guarded by the option below).
+ */
+add_action( 'admin_init', 'aik_resync_all_search_excerpts_once' );
+function aik_resync_all_search_excerpts_once() {
+	if ( get_option( 'aik_search_excerpt_resynced_v2' ) ) {
+		return;
+	}
+
+	$pages = get_posts(
+		array(
+			'post_type'      => 'page',
+			'post_status'    => 'any',
+			'posts_per_page' => -1,
+			'fields'         => 'ids',
+		)
+	);
+
+	foreach ( $pages as $page_id ) {
+		$text = aik_flatten_field_text( get_field( 'page_sections', $page_id ) );
+		wp_update_post(
+			array(
+				'ID'           => $page_id,
+				'post_excerpt' => $text,
+			)
+		);
+	}
+
+	update_option( 'aik_search_excerpt_resynced_v2', 1 );
 }
 
 /**

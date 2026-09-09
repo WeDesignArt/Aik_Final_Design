@@ -85,7 +85,8 @@
             "key": "field_aik_social_facebook_url",
             "label": "Facebook URL",
             "name": "social_facebook_url",
-            "type": "url"
+            "type": "url",
+            "default_value": "https://www.facebook.com/aikbyBankIslami/"
         },
         {
             "key": "field_aik_social_twitter_url",
@@ -97,7 +98,8 @@
             "key": "field_aik_social_instagram_url",
             "label": "Instagram URL",
             "name": "social_instagram_url",
-            "type": "url"
+            "type": "url",
+            "default_value": "https://www.instagram.com/aik_digital/"
         },
         {
             "key": "field_aik_social_whatsapp_url",
@@ -105,6 +107,27 @@
             "name": "social_whatsapp_url",
             "type": "url",
             "instructions": "Used by the floating social icons (bottom-right of every page), e.g. https://wa.me/92XXXXXXXXXX"
+        },
+        {
+            "key": "field_aik_social_youtube_url",
+            "label": "YouTube URL",
+            "name": "social_youtube_url",
+            "type": "url",
+            "default_value": "https://www.youtube.com/@aikdigital1"
+        },
+        {
+            "key": "field_aik_social_tiktok_url",
+            "label": "TikTok URL",
+            "name": "social_tiktok_url",
+            "type": "url",
+            "default_value": "https://www.tiktok.com/@aikbybankislami/"
+        },
+        {
+            "key": "field_aik_social_linkedin_url",
+            "label": "LinkedIn URL",
+            "name": "social_linkedin_url",
+            "type": "url",
+            "default_value": "https://www.linkedin.com/company/aikbybankislami/"
         },
         {
             "key": "field_aik_app_google_play_url",

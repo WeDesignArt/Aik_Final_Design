@@ -102,7 +102,8 @@ header .logo {
   gap: 10px;
 }
 
-.aik-social-float a {
+.aik-social-float a,
+.aik-chat-float a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,9 +117,30 @@ header .logo {
   transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
-.aik-social-float a:hover {
+.aik-social-float a:hover,
+.aik-chat-float a:hover {
   background-color: #ddb800;
   transform: translateX(-3px);
+}
+
+/* Same column as .aik-social-float, right at the viewport's bottom edge
+   instead of stacked in that flex group — so it doesn't shift when the
+   number of social icons above it changes, and reads as its own pinned
+   "always here" action rather than one more item in the social list. */
+.aik-chat-float {
+  position: fixed;
+  right: 20px;
+  bottom: 0;
+  z-index: 999;
+}
+
+/* The <dotlottie-wc> canvas would otherwise swallow the click before it
+   reaches the surrounding <a> — keep it purely decorative. */
+.aik-chat-float__lottie {
+  width: 34px;
+  height: 34px;
+  display: block;
+  pointer-events: none;
 }
 
 @media (max-width: 767px) {
@@ -127,10 +149,20 @@ header .logo {
     bottom: 16px;
   }
 
-  .aik-social-float a {
+  .aik-chat-float {
+    right: 12px;
+  }
+
+  .aik-social-float a,
+  .aik-chat-float a {
     width: 36px;
     height: 36px;
     font-size: 15px;
+  }
+
+  .aik-chat-float__lottie {
+    width: 28px;
+    height: 28px;
   }
 }
 

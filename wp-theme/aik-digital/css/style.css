@@ -15,6 +15,60 @@
    sibling was dropping to its own line instead of sitting next to the search
    icon. */
 
+@media (max-width: 767.98px) {
+ .page-id-560 .custom-smarter-sec {
+       height: 56vh;
+        
+    }
+	
+	.page-id-201 .mb_customize {
+		height: 1250px;
+	 	padding: 75px 0 0px;	
+	}
+	
+	
+	
+	
+	
+	
+}
+
+ 
+
+
+
+.aik-footer__grid{
+	align-items:baseline;
+}
+
+/* .aik-footer__grid {
+	align-items: center;
+} */
+.custom_column .aik-footer__links {
+	column-count: 2;
+	
+}
+/* 
+.custom_column {
+	    width: 306px;
+} */
+
+@media (max-width: 768px){
+	.custom_column {
+	    width: auto;
+}
+	
+}
+
+
+
+
+
+.pif-footer .btn_fill:after {
+    background-color: #fff;
+    color: var(--aik-green);
+}
+
 .padding_custom{
 	padding: 100px 0 0 !important;
 }
@@ -75,10 +129,10 @@
     width: 95%;
 }
 
-.news-single-media img {
+/* .news-single-media img {
     height: 100%;
     width: 100%;
-}
+} */
 
    @media screen and (max-width: 1366px) {
     .business_hero .mobile_track {
@@ -247,14 +301,29 @@ header .logo {
 .aik-social-float {
   position: fixed;
   right: 20px;
-  bottom: 100px;
+  bottom: 150px;
   z-index: 999;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.aik-social-float a {
+
+.aik-chat-float a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+/*   width: 60px;
+  height: 60px; */
+  border-radius: 50%;
+/*   background-color: var(--aik-yellow);
+  color: var(--aik-green);
+  font-size: 18px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); */
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.aik-social-float a{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -273,6 +342,26 @@ header .logo {
   transform: translateX(-3px);
 }
 
+/* Same column as .aik-social-float, right at the viewport's bottom edge
+   instead of stacked in that flex group — so it doesn't shift when the
+   number of social icons above it changes, and reads as its own pinned
+   "always here" action rather than one more item in the social list. */
+.aik-chat-float {
+  position: fixed;
+  right: 20px;
+  bottom: 5px;
+  z-index: 999;
+}
+
+/* The <dotlottie-wc> canvas would otherwise swallow the click before it
+   reaches the surrounding <a> — keep it purely decorative. */
+.aik-chat-float__lottie {
+  width: 100px;
+  height: 100px;
+  display: block;
+  pointer-events: none;
+}
+
 @media (max-width: 767px) {
 
 
@@ -288,13 +377,22 @@ header .logo {
 
   .aik-social-float {
     right: 12px;
-    bottom: 16px;
+    bottom: 75px;
+  }
+
+  .aik-chat-float {
+    right: 12px;
   }
 
   .aik-social-float a {
     width: 36px;
     height: 36px;
     font-size: 15px;
+  }
+
+  .aik-chat-float__lottie {
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -956,9 +1054,10 @@ footer.aik-footer {
 
 .aik-footer__grid {
   display: grid;
-  /* gap: 40px; */
-  gap: 100px;
-  grid-template-columns: 2.2fr 1fr 1.3fr 1fr 1.5fr;
+  gap: 40px;
+  /* gap: 100px; */
+/*   grid-template-columns: 2.2fr 1fr 1.3fr 1fr 1.5fr; */
+	grid-template-columns: 4.2fr 3fr 7.3fr 2fr;
 }
 
 @media (max-width: 1199.98px) {
@@ -4742,7 +4841,7 @@ font-variation-settings: "wght" 700;
 
     .business_hero .mobile_track {
         right: 23%;
-        top: 65%;
+        top: 69%;
     }
 
     .custom_size{
