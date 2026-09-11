@@ -31,7 +31,7 @@ get_header();
                     <?php endif; ?>
                     <div class="news-single-content">
                       <div class="news-single-meta d-flex align-items-center py-3 gap-2"><i class="bi bi-calendar"></i>
-                        <span class="data text-white"><?php the_date(); ?></span>
+                        <span class="data text-white"><?php echo esc_html( get_the_date() ); ?></span>
                       </div>
                       <h2 class="news-single-content-title"><?php if ( $external_link ) : ?><a href="<?php echo esc_url( $external_link ); ?>" target="_blank" rel="noopener noreferrer"><?php the_title(); ?></a><?php else : ?><?php the_title(); ?><?php endif; ?></h2>
                       <?php if ( $external_link ) : ?>

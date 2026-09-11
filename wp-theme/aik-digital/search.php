@@ -30,7 +30,7 @@ get_header();
               </picture>
             </div>
             <div class="debit-hero-caption">
-              <h1> <span>Search</span></h1>
+              <h1> <span>How May We Help You?</span></h1>
             </div>
           </article>
         </section>

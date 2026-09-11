@@ -12,7 +12,7 @@
  * so a post looks identical whether it's in the homepage preview or here.
  */
 
-$news_archive_title = is_category() ? single_cat_title( '', false ) : 'Media News';
+$news_archive_title = is_category() ? single_cat_title( '', false ) : '**News** & Media';
 ?>
       <section class="home_hero_wrapper index_custom clearfix position-relative bg_primary">
         <section class="home_hero_slider custom_adjustment aik_landing overflow-hidden">
@@ -28,7 +28,7 @@ $news_archive_title = is_category() ? single_cat_title( '', false ) : 'Media New
               </picture>
             </div>
             <div class="debit-hero-caption">
-              <h1><?php echo esc_html( $news_archive_title ); ?></h1>
+              <h1><?php echo aik_highlight( $news_archive_title ); ?></h1>
             </div>
           </article>
         </section>
@@ -55,7 +55,7 @@ $news_archive_title = is_category() ? single_cat_title( '', false ) : 'Media New
               <?php endif; ?>
               <div class="news-single-content">
                 <div class="news-single-meta d-flex align-items-center py-3 gap-2"><i class="bi bi-calendar"></i>
-                  <span class="data text-white"><?php the_date(); ?></span>
+                  <span class="data text-white"><?php echo esc_html( get_the_date() ); ?></span>
                 </div>
                 <h2 class="news-single-content-title"><?php if ( $external_link ) : ?><a href="<?php echo esc_url( $external_link ); ?>" target="_blank" rel="noopener noreferrer"><?php the_title(); ?></a><?php else : ?><?php the_title(); ?><?php endif; ?></h2>
                 <?php if ( $external_link ) : ?>

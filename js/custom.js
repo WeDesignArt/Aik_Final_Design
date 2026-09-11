@@ -343,6 +343,13 @@ function aikInitMdNewsSwiper() {
     spaceBetween: 24,
     observer: true,
     observeParents: true,
+    loop: true,
+
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
 
     navigation: {
       nextEl: ".md-news-swiper__nav--next",

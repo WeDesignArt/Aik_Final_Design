@@ -1,161 +1,162 @@
 <?php
 /**
- * Header: <head>, preloader, top nav, search drawer, off-canvas menu.
- * Mirrors the original static markup 1:1 so css/main.css and css/style.css
- * apply unmodified.
+ * Layout: hero
  */
+
+$heading           = get_sub_field( 'heading' );
+$bg_image          = get_sub_field( 'bg_image' );
+$mobile_image      = get_sub_field( 'mobile_image' );
+$pill_1_icon       = get_sub_field( 'pill_1_icon' );
+$pill_1_text       = get_sub_field( 'pill_1_text' );
+$pill_2_icon       = get_sub_field( 'pill_2_icon' );
+$pill_2_text       = get_sub_field( 'pill_2_text' );
+$show_interest     = get_sub_field( 'show_no_interest_banner' );
+$interest_image    = get_sub_field( 'no_interest_image' );
+
+$hero_style        = get_sub_field( 'hero_style' ); // 'standard' | 'business' | 'inner'
+$subheading        = get_sub_field( 'subheading' );
+$btn_1_text        = get_sub_field( 'button_1_text' );
+$btn_1_link        = get_sub_field( 'button_1_link' );
+$btn_2_text        = get_sub_field( 'button_2_text' );
+$btn_2_link        = get_sub_field( 'button_2_link' );
+$mobile_bg_image   = get_sub_field( 'mobile_bg_image' );
+
+$bg_url        = ! empty( $bg_image['url'] ) ? $bg_image['url'] : AIK_THEME_URI . '/images/hero_banner.png';
+$mobile_url    = ! empty( $mobile_image['url'] ) ? $mobile_image['url'] : AIK_THEME_URI . '/images/hero-app-mobile.png';
+$mobile_bg_url = ! empty( $mobile_bg_image['url'] ) ? $mobile_bg_image['url'] : AIK_THEME_URI . '/images/bg-1.png';
+$is_business   = ( 'business' === $hero_style );
+$is_inner      = ( 'inner' === $hero_style );
+
+// Which side of the site the current page belongs to (its own "Menu
+// Section" field, not this block's hero_style) — drives the Personal/
+// Business toggle below, same logic as header.php's own copy of it.
+$aik_menu_section     = is_page() ? get_field( 'menu_section' ) : null;
+$aik_personal_active  = esc_attr( 'business' === $aik_menu_section ? '' : ( $aik_menu_section ? 'active' : '' ) );
+$aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : '' );
 ?>
-<!DOCTYPE html>
-<html class="no-js" <?php language_attributes(); ?>>
-
-<head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
-  <meta name="theme-color" content="#065258">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Powers the small animated bot icon in .aik-chat-float (bottom-right
-       floating button) — a plain custom element, no build step needed. -->
-  <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.28/dist/dotlottie-wc.js"></script>
-  <?php wp_head(); ?>
-</head>
-
-<body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-  <div class="preloader">
-    <div class="preloader-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 119 81.9">
-        <defs>
-          <style>
-            .cls-1 { fill: #fff }
-            .cls-2 { fill: #f5ce1a }
-          </style>
-        </defs>
-        <path class="cls-1" d="M70.3,4.4h13.3v38.4l14.2-14.2h18.8l-19.1,18.1,20.8,20.9h-19.4l-15.2-16.3v16.3h-13.3V4.4h0Z" />
-        <path class="cls-1" d="M51.2,26.9v40.7h13.6V17.7c-3.9,3.8-8.5,6.9-13.6,9.2Z" />
-        <path class="cls-1" d="M17,27.5C7.5,29.3.8,37.4.8,47.8s8.6,20.6,20.2,20.6,8.7-1.5,11.6-4.1v3.3h13V28.9c-3.9,1.1-8.4,1.2-12.7,1.2s-.4,0-.6,0v2.7s-5.2-6.9-15.3-5.2ZM23.7,56.5c-5.1,0-8.8-3.6-8.8-8.7s3.7-8.7,8.9-8.7,8.7,3.6,8.7,8.7-3.5,8.7-8.8,8.7h0Z" />
-        <path class="cls-2" d="M54.3,1.3c-4.8,6.4-12.4,10.5-21,10.5s-2.3,0-3.4-.2l-3.7,13.5c2.3.4,4.6.6,7.1.6,13.5,0,25.4-6.6,32.7-16.8l-11.7-7.5h0Z" />
-        <path class="cls-1" d="M53.7,79.8v-.3c.2-.1.4-.3.5-.4,0-.2,0-.4,0-.7,0-.6,0-1.7,0-3.2s0-1.1,0-2c0-.7,0-1.1,0-1.2,0,0,0-.1,0-.1,0,0-.4-.1-.9-.1v-.5c0,0,.2,0,.3,0h.8c.3,0,.6,0,1,0s.7,0,1,0c.6,0,1,0,1.1,0,.7,0,1.2,0,1.5.2s.6.3.8.6.3.6.3.9,0,.7-.3,1-.4.5-.7.7c-.2.1-.6.2-1.2.4.7,0,1.3.2,1.5.4.3.1.5.4.7.7.2.3.3.7.3,1s0,.8-.3,1.1c-.2.3-.4.6-.7.8-.3.2-.6.4-1,.6s-.8.2-1.4.2h-2c-.3,0-.8,0-1.3,0h0,0ZM56,74.8h.4c.3,0,.5,0,.8,0,.2,0,.4-.1.6-.2s.3-.3.4-.5c0-.2.1-.5.1-.8s0-.5-.2-.7c-.1-.2-.3-.4-.4-.4-.2,0-.5-.1-.8-.1s-.5,0-.7,0c0,.3,0,.6,0,1v.9s0,.9,0,.9h0ZM56,79.1c.1,0,.4,0,.8,0s.9-.2,1.2-.5c.3-.3.5-.8.5-1.4s0-.8-.2-1.1c-.2-.3-.4-.5-.6-.6-.3-.1-.6-.2-1.1-.2s-.3,0-.5,0v3.5s0,0,0,.2h0Z" />
-        <path class="cls-1" d="M67,79.3v.5c-.5,0-.9,0-1.2,0s-.7,0-1,0h0c0,0,0-.9,0-.9-.1,0-.6.4-1.3,1-.2,0-.4,0-.5,0-.4,0-.8-.1-1-.4-.2-.3-.4-.6-.4-1.1s0-.6.2-.8c.1-.2.2-.4.4-.5.1,0,.3-.2.6-.3.6-.2,1.3-.4,2.1-.5,0-.5,0-.8-.3-1.1-.2-.3-.5-.4-1-.4s-.3,0-.5,0c0,0-.2,0-.2.1l-.3.6h-.4c0,0,0-.9,0-.9.3-.2.6-.4.9-.5.3-.2.5-.2.6-.3.2,0,.4,0,.6,0,.4,0,.8,0,1.1.2s.5.3.6.5c.1.2.2.4.3.6s0,.4,0,.8,0,.5,0,1c0,.4,0,.7,0,.9,0,.7,0,1.2,0,1.3,0,0,0,.1,0,.1,0,0,.3,0,.6,0h0ZM64.7,76.8c-.3,0-.7.2-.9.3-.3.1-.5.2-.6.4-.1.2-.2.3-.2.6s0,.5.2.6.3.2.5.2.4,0,.6-.2c.2-.1.3-.2.4-.4v-1.5h0s0,0,0,0Z" />
-        <path class="cls-1" d="M74.6,79.3v.5c-.6,0-1,0-1.4,0s-.8,0-1,0h-.1c0-.2,0-.5,0-1.2v-1s0-.5,0-.5c0-.7,0-1.2,0-1.4s-.2-.4-.3-.5-.4-.2-.7-.2-.5,0-.7.2-.3.3-.4.4c0,0,0,.4,0,1v1c0,.3,0,.7,0,1.1,0,.2,0,.3,0,.4,0,0,0,0,0,0,0,0,.1,0,.3,0,0,0,.2,0,.5,0v.5c-.4,0-1,0-1.6,0s-1.3,0-1.7,0v-.5c.3,0,.5,0,.7,0,0,0,0,0,.1-.1,0,0,0-.2,0-.4v-.5c0-.1,0-.3,0-.6v-.8c0-.4,0-.8,0-1.3,0-.3,0-.4,0-.4,0,0,0,0-.1,0,0,0-.3,0-.7,0v-.5c.7-.1,1.2-.2,1.5-.3.2,0,.5-.2.8-.3h.2v1.1l1.1-.9c.1,0,.2,0,.3-.1s.2,0,.4,0c.4,0,.8,0,1,.1.2,0,.4.2.6.4.2.2.3.4.3.6,0,.2,0,.5,0,.9s0,.8,0,.9c0,0,0,.1,0,.2v.6c0,.7,0,1.1,0,1.3s0,.3.1.3c0,0,.2,0,.4,0,0,0,.2,0,.3,0h0,0Z" />
-        <path class="cls-1" d="M82.4,79.3v.5c-.2,0-.5,0-1.1,0s-.9,0-1.1,0c-.2-.4-.6-.9-1.3-1.6-.6-.7-1-1.1-1.1-1.2,0,0,0,0-.1,0v.6c0,.3,0,.7,0,1.2,0,.2,0,.4,0,.4,0,0,0,0,0,0,0,0,.1,0,.2,0,0,0,.2,0,.6,0v.5c-.5,0-1,0-1.6,0s-1.2,0-1.8,0v-.5c.4,0,.6,0,.6,0,0,0,.1,0,.1,0,0,0,0,0,0-.1,0-.1,0-.5,0-1,0-.7,0-1.4,0-1.9v-2c0-.7,0-1.2,0-1.8,0-.3,0-.4,0-.5,0,0,0,0,0,0,0,0-.1,0-.2,0,0,0-.2,0-.5,0v-.5c.6,0,1-.1,1.2-.2s.6-.2,1.1-.3h.1c0,0,0,1.4,0,1.4,0,.7,0,1.5,0,2.2v2.2c.1,0,.3-.2.4-.4.4-.3.7-.6.9-.8,0,0,.2-.2.5-.5.2-.2.4-.4.5-.6v-.3c.4,0,.7,0,1.1,0,.2,0,.4,0,.8,0v.5h-.6c0,0-.1,0-.2.1-.1,0-.3.2-.6.4-.4.3-.6.5-.6.5s-.1.1-.2.2l-.5.5c.4.4,1,1.1,1.8,2.1.5.5.8.9.9.9,0,0,.2,0,.4,0h0Z" />
-        <path class="cls-1" d="M87,71.2v.5c-.4,0-.7,0-.7,0,0,0-.1,0-.2,0s0,0,0,.1c0,0,0,.2,0,.4,0,.1,0,.3,0,.6,0,1,0,1.5,0,1.6v3.6c0,.4,0,.7,0,.8,0,0,0,.1,0,.1s0,0,.2,0,.3,0,.7,0v.5c-.7,0-1.4,0-2.1,0s-1.2,0-1.7,0v-.5c.4,0,.7,0,.7,0,0,0,.1,0,.2,0,0,0,0,0,0,0,0,0,0-.2,0-.6,0-.5,0-.9,0-1.4v-2.5c0-.8,0-1.3,0-1.6,0-.5,0-.8,0-1,0,0,0,0,0-.1s0,0-.1,0-.3,0-.8,0v-.5c.5,0,1.1,0,1.8,0s1.4,0,2.1,0h0Z" />
-        <path class="cls-1" d="M88,77.8h.5c0,.5,0,.7,0,.9.2.2.4.4.6.5.2.1.5.2.8.2s.7,0,.9-.3c.2-.2.3-.4.3-.7s0-.3,0-.4-.2-.2-.4-.3c-.2,0-.5-.1-.9-.2-.4,0-.8-.2-1-.3-.2-.1-.4-.3-.5-.5-.1-.2-.2-.5-.2-.8,0-.6.2-1,.6-1.4.4-.4,1-.6,1.8-.6s.6,0,.9,0,.5.1.7.3h0c0,.2,0,.3,0,.5s0,.5,0,1h-.5c0,0,0-.1,0-.2,0-.2,0-.4,0-.5-.1-.2-.3-.3-.5-.4-.2,0-.4-.1-.6-.1s-.6,0-.8.2c-.2.2-.3.3-.3.6s0,.4.1.5c0,.1.2.2.4.2.2,0,.5.1.9.2s.8.2.9.2c.2,0,.4.2.5.3s.2.3.3.5c0,.2.1.4.1.6,0,.6-.2,1.1-.7,1.5s-1.1.6-2,.6-.6,0-.8,0c-.3,0-.6-.1-1-.3h0c0-.4,0-.6,0-.8v-1s0,0,0,0h0Z" />
-        <path class="cls-1" d="M96.7,79.3v.5c-.5,0-1,0-1.6,0s-1.2,0-1.9,0v-.5c.4,0,.6,0,.7,0,0,0,.1,0,.1,0s0,0,0-.1c0-.1,0-.5,0-1.2,0-.6,0-1.2,0-1.7v-2c0-.6,0-1.2,0-1.7,0-.3,0-.5,0-.5,0,0,0,0,0,0,0,0-.1,0-.2,0,0,0-.2,0-.5,0v-.4c.5,0,.9-.1,1.2-.2s.7-.2,1.2-.3h.1c0,0,0,1.3,0,1.3,0,.7,0,1.5,0,2.5v1.6c0,.6,0,1,0,1.3,0,.7,0,1.2,0,1.3,0,.2,0,.2,0,.3,0,0,0,0,0,0,0,0,0,0,.2,0,0,0,.2,0,.6,0h0Z" />
-        <path class="cls-1" d="M103,79.3v.5c-.5,0-.9,0-1.2,0s-.7,0-1,0h0c0,0,0-.9,0-.9-.1,0-.6.4-1.3,1-.2,0-.4,0-.5,0-.4,0-.8-.1-1-.4-.2-.3-.4-.6-.4-1.1s0-.6.2-.8c.1-.2.2-.4.4-.5.1,0,.3-.2.6-.3.6-.2,1.3-.4,2.1-.5,0-.5,0-.8-.3-1.1-.2-.3-.5-.4-1-.4s-.3,0-.5,0c0,0-.2,0-.2.1l-.3.6h-.4c0,0,0-.9,0-.9.3-.2.6-.4.9-.5s.5-.2.6-.3c.2,0,.4,0,.6,0,.4,0,.8,0,1.1.2.3.1.5.3.6.5.1.2.2.4.3.6s0,.4,0,.8,0,.5,0,1c0,.4,0,.7,0,.9,0,.7,0,1.2,0,1.3,0,0,0,.1,0,.1,0,0,.3,0,.6,0h0,0ZM100.7,76.8c-.3,0-.7.2-.9.3-.3.1-.5.2-.6.4-.1.2-.2.3-.2.6s0,.5.2.6c.1.1.3.2.5.2s.4,0,.6-.2c.2-.1.3-.2.4-.4v-1.5s0,0,0,0Z" />
-        <path class="cls-1" d="M103.6,79.8v-.5c.3,0,.5,0,.7,0,0,0,0,0,.1-.1,0,0,0-.2,0-.4v-.5c0-.1,0-.3,0-.6v-.8c0-.4,0-.8,0-1.3,0-.3,0-.4,0-.4s0,0-.1,0c0,0-.3,0-.7,0v-.5c.7-.1,1.2-.2,1.5-.3.2,0,.5-.2.8-.3h.2v1.1l1.1-.9c.1,0,.2,0,.3-.1,0,0,.2,0,.4,0,.5,0,.9,0,1.1.2s.5.4.6.8l1.1-.9c.1,0,.2,0,.3-.1s.2,0,.4,0c.4,0,.7,0,.9.1.2,0,.4.2.6.4s.2.4.3.5c0,.2,0,.5,0,.9s0,.7,0,.9c0,0,0,.1,0,.2v.6c0,.6,0,1.1,0,1.2s0,.3.1.3c0,0,.2,0,.4,0,0,0,.2,0,.3,0v.5c-.6,0-1,0-1.4,0s-.8,0-1,0h0c0-.1,0-1.2,0-1.2,0-.4,0-.8,0-1.2v-.5c0-.7,0-1.2,0-1.4,0-.2-.2-.3-.3-.4-.2-.1-.3-.2-.6-.2s-.5,0-.7.2-.3.3-.3.4c0,.1,0,.3,0,.6v2.1s0,.5,0,.5c0,.2,0,.3,0,.3,0,0,0,0,.1.1,0,0,.1,0,.2,0,.2,0,.4,0,.5,0v.5c-.4,0-.9,0-1.6,0s-1.3,0-1.7,0v-.5c0,0,.2,0,.3,0,.2,0,.3,0,.3,0,0,0,0,0,.1-.2,0,0,0-.3,0-.6v-1.1s0-.9,0-.9c0-.4,0-.7,0-.9s-.2-.3-.3-.4c-.2-.1-.4-.2-.6-.2s-.5,0-.7.2c-.2.1-.3.3-.4.4,0,0,0,.4,0,1v1.1c0,.5,0,1,0,1.3,0,.2,0,.3,0,.3,0,0,0,0,.2,0,0,0,.2,0,.6,0v.5c-.4,0-1,0-1.6,0s-1.2,0-1.7,0h0Z" />
-        <path class="cls-1" d="M114.8,79.8v-.5c.5,0,.7,0,.8-.1,0,0,.1-.1.1-.2,0-.2,0-.8,0-1.7s0-2,0-2.2c0,0,0-.1,0-.2,0,0-.4,0-.8,0v-.5c.6,0,1.1-.1,1.4-.2.3,0,.7-.2,1-.3h.1c0,.7,0,1.3,0,1.9v2.1c0,.7,0,1.1,0,1.3,0,0,0,.1,0,.1.1,0,.4,0,.8.1v.5c-.6,0-1.2,0-1.9,0s-1.1,0-1.5,0h0ZM116.4,70.9c.3,0,.5,0,.7.3s.3.4.3.7,0,.5-.3.7-.4.3-.7.3-.5,0-.7-.3-.3-.4-.3-.7,0-.5.3-.7.4-.3.7-.3Z" />
-      </svg></div>
-    <div class="grid-left"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/left-grid-white.png" alt="gride-img"></div>
-    <div class="grid-right"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/right-grid-white.png" alt="gride-img"></div>
-  </div>
-  <div class="main_holder site-content">
-    <header class="header">
-      <div class="header_row">
-        <div class="menu_block"><a href="javascript:void(0);"
-            class="offset_menu_trigger"><span><small></small></span></a></div>
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
-          <div class="logo_wrapper"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/logo-aik.svg" alt="AIK"></div>
-        </a>
-        <div class="nav_wrapper me-4">
-          <a href="https://wordpress-732216-6548062.cloudwaysapps.com/aik-connect/" target="_blank" class="header-connect-btn d-none d-md-inline-flex">aik connect</a>
-
-          <div class="search_holder d-none d-md-block">
-            <form action="<?php echo esc_url( home_url( '/' ) ); ?>">
-              <input id="search" name="s" type="text" placeholder="Search">
-              <button id="search_submit" type="submit"><i class="bi bi-search"></i></button>
-            </form>
+<?php if ( $is_inner ) : ?>
+      <section class="home_hero_wrapper index_custom clearfix position-relative bg_primary">
+        <section class="home_hero_slider custom_adjustment aik_landing overflow-hidden">
+          <div class="app_link_holder">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span>Personal</span> </a>
+            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span>Business</span> </a>
           </div>
-
-          <div class="header-actions search_mobile d-md-none d-block">
-            <button class="search-btn" aria-label="Search">
-              <i class="bi bi-search"></i>
-            </button>
+          <article class="hero_item debit_hero_item">
+            <div class="hero_img">
+              <picture>
+                <source media="(min-width: 575px)" srcset="<?php echo esc_url( $bg_url ); ?>">
+                <img src="<?php echo esc_url( $mobile_bg_url ); ?>" alt="slide">
+              </picture>
+            </div>
+            <div class="debit-hero-caption">
+              <h1><?php echo aik_highlight( $heading ); ?></h1>
+            </div>
+          </article>
+        </section>
+      </section>
+<?php elseif ( $is_business ) : ?>
+      <section class="home_hero_wrapper clearfix position-relative bg_primary">
+        <section class="home_hero_slider custom_size aik_landing overflow-hidden business_hero">
+          <div class="app_link_holder">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span>Personal</span> </a>
+            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span>Business</span> </a>
           </div>
-
-          <a href="javascript:void(0);" class="d-none">اردو</a>
-          <div class="app_link_holder d-none">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="active"><i class="bi bi-person-fill"></i> <span>Personal</span> </a>
-            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>"><i class="bi bi-briefcase-fill"></i> <span>Business</span></a>
+          <article class="hero_item">
+            <div class="hero_img">
+              <picture>
+                <source media="(min-width: 575px)" srcset="<?php echo esc_url( $bg_url ); ?>">
+                <img src="<?php echo esc_url( $bg_url ); ?>" alt="slide">
+              </picture>
+            </div>
+            <div class="logo_arch"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/logo-arch.svg" alt="arch" data-aos="zoom-in"></div>
+            <section class="hero_main_text">
+              <h1 class="hero_main_text_title home_main_title" data-aos="fade-right"><?php echo aik_highlight( $heading ); ?></h1>
+              <?php if ( $subheading ) : ?>
+              <p class="hero_main_text_desc" data-aos="fade-up"><?php echo aik_nl2br( $subheading ); ?></p>
+              <?php endif; ?>
+              <?php if ( $btn_1_text || $btn_2_text ) : ?>
+              <div class="hero_btn_group d-flex align-items-center gap-3" data-aos="fade-up" data-aos-delay="100">
+                <?php if ( $btn_1_text ) : ?>
+                <a href="<?php echo esc_url( $btn_1_link ? $btn_1_link : 'javascript:void(0);' ); ?>" class="btn btn_fill"><?php echo esc_html( $btn_1_text ); ?></a>
+                <?php endif; ?>
+                <?php if ( $btn_2_text ) : ?>
+                <a href="<?php echo esc_url( $btn_2_link ? $btn_2_link : 'javascript:void(0);' ); ?>" class="btn btn_fill"><?php echo esc_html( $btn_2_text ); ?></a>
+                <?php endif; ?>
+              </div>
+              <?php endif; ?>
+            </section>
+            <section class="mobile_track">
+              <div class="scroll_mobile"><img src="<?php echo esc_url( $mobile_url ); ?>" alt="mobile" data-aos="fade-left" data-aos-delay="200"></div>
+              <?php if ( $pill_1_text ) : ?>
+              <div class="mobile_pill pill_top_right" data-aos="zoom-in" data-aos-delay="300" data-aos-offset="0">
+                <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_1_icon['url'] ) ? $pill_1_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
+                <div class="mobile_pill_text"><?php echo esc_html( $pill_1_text ); ?></div>
+              </div>
+              <?php endif; ?>
+              <?php if ( $pill_2_text ) : ?>
+              <div class="mobile_pill pill_bottom_left" data-aos="zoom-in" data-aos-delay="400" data-aos-offset="0">
+                <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_2_icon['url'] ) ? $pill_2_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
+                <div class="mobile_pill_text"><?php echo esc_html( $pill_2_text ); ?></div>
+              </div>
+              <?php endif; ?>
+            </section>
+            <?php if ( $show_interest && ! empty( $interest_image['url'] ) ) : ?>
+            <section class="interest_section clearfix clear ps-5">
+              <div class="container-fluid">
+                <div class="interest_row w-100 d-flex justify-content-between align-items-center">
+                  <div class="interest_text"><img src="<?php echo esc_url( $interest_image['url'] ); ?>" alt="no interest"></div>
+                </div>
+              </div>
+            </section>
+            <?php endif; ?>
+          </article>
+        </section>
+      </section>
+<?php else : ?>
+      <section class="home_hero_wrapper index_custom clearfix position-relative bg_primary">
+        <section class="home_hero_slider custom_adjustment aik_landing overflow-hidden">
+          <div class="app_link_holder">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span>Personal</span> </a>
+            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span>Business</span> </a>
           </div>
-        </div>
-      </div>
-    </header>
-
-    <?php
-	// Same options-page fields the footer's social icons use, so both stay
-	// in sync — set once in Theme Settings, not duplicated per-template.
-	$aik_social_facebook  = get_field( 'social_facebook_url', 'option' );
-// 	$aik_social_twitter   = get_field( 'social_twitter_url', 'option' );
-	$aik_social_instagram = get_field( 'social_instagram_url', 'option' );
-// 	$aik_social_whatsapp  = get_field( 'social_whatsapp_url', 'option' );
-	$aik_social_youtube   = get_field( 'social_youtube_url', 'option' );
-	$aik_social_tiktok    = get_field( 'social_tiktok_url', 'option' );
-	$aik_social_linkedin  = get_field( 'social_linkedin_url', 'option' );
-	?>
-    <div class="aik-social-float">
-      <a href="<?php echo esc_url( $aik_social_facebook ? $aik_social_facebook : 'https://www.facebook.com/aikbyBankIslami/' ); ?>" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-<!--       <a href="<?php echo esc_url( $aik_social_twitter ? $aik_social_twitter : '#' ); ?>" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a> -->
-      <a href="<?php echo esc_url( $aik_social_instagram ? $aik_social_instagram : 'https://www.instagram.com/aik_digital/' ); ?>" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-<!--       <a href="<?php echo esc_url( $aik_social_whatsapp ? $aik_social_whatsapp : '#' ); ?>" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a> -->
-      <a href="<?php echo esc_url( $aik_social_youtube ? $aik_social_youtube : 'https://www.youtube.com/@aikdigital1' ); ?>" target="_blank" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-      <a href="<?php echo esc_url( $aik_social_tiktok ? $aik_social_tiktok : 'https://www.tiktok.com/@aikbybankislami/' ); ?>" target="_blank" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-      <a href="<?php echo esc_url( $aik_social_linkedin ? $aik_social_linkedin : 'https://www.linkedin.com/company/aikbybankislami/' ); ?>" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-    </div>
-    <!-- Same right-edge column as .aik-social-float, but its own fixed
-         element flush against the bottom of the viewport (not stacked in
-         the flex group above) — so the other icons keep their existing
-         position while this one alone sits at the very bottom. Links to
-         the search page for now since there's no chatbot yet. -->
-    <div class="aik-chat-float">
-      <a href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" aria-label="Search">
-        <!-- <i class="bi bi-robot"></i> -->
-        <dotlottie-wc src="https://lottie.host/8f1423fa-2a10-42d8-ac5d-cbbfe29ff00e/xoIr1NQi1t.json" autoplay loop class="aik-chat-float__lottie"></dotlottie-wc>
-      </a>
-    </div>
-
-    <!-- ============================================================
-         SEARCH DRAWER
-    ============================================================ -->
-    <div class="srch-overlay" id="searchOverlay" role="dialog" aria-label="Search" aria-modal="true">
-      <div class="srch-backdrop" id="searchBackdrop"></div>
-      <div class="srch-drawer">
-        <div class="container">
-          <div class="srch-drawer-header">
-            <p class="srch-label">What are you looking for?</p>
-            <button class="srch-close" id="searchClose" aria-label="Close search">
-              <i class="bi bi-x-lg"></i>
-            </button>
-          </div>
-          <form action="<?php echo esc_url( home_url( '/' ) ); ?>" class="srch-input-wrap">
-            <i class="bi bi-search srch-input-icon"></i>
-            <input type="search" class="srch-input" id="searchInput" name="s" placeholder="Search AIK Digital…" autocomplete="off" spellcheck="false">
-            <button type="submit" class="srch-submit-btn">Search</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <div class="off_canvas">
-      <div class="off_canvas_wrapper">
-        <?php
-        // Which off-canvas menu shows depends on the current page's "Menu
-        // Section" field (acf-json/group_aik_page_menu.json) — set to
-        // "Business" on pages under the Business side of the site. Anything
-        // that isn't a Page (posts, archives, search, 404…) always falls
-        // back to the Personal menu, same as before this ever existed.
-        $aik_menu_section  = is_page() ? get_field( 'menu_section' ) : 'personal';
-        $aik_menu_location = ( 'business' === $aik_menu_section ) ? 'business' : 'primary';
-
-        wp_nav_menu(
-			array(
-				'theme_location' => $aik_menu_location,
-				'menu_id'        => 'menu',
-				'menu_class'     => 'menuNav',
-				'container'      => false,
-				'fallback_cb'    => 'aik_nav_menu_fallback',
-			)
-		);
-		?>
-      </div>
-    </div>
+          <article class="hero_item">
+            <div class="hero_img">
+              <picture>
+                <source media="(min-width: 575px)" srcset="<?php echo esc_url( $bg_url ); ?>">
+                <img src="<?php echo esc_url( $bg_url ); ?>" alt="slide">
+              </picture>
+            </div>
+            <div class="logo_arch"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/logo-arch.svg" alt="arch" data-aos="zoom-in"></div>
+            <section class="aik_landing_top">
+              <div class="left_text_block" data-aos="fade-right" data-aos-delay="200">
+                <h2><?php echo aik_highlight( $heading ); ?></h2>
+              </div>
+            </section>
+            <section class="mobile_track">
+              <div class="scroll_mobile"><img src="<?php echo esc_url( $mobile_url ); ?>" alt="mobile" data-aos="fade-left" data-aos-delay="300"></div>
+              <?php if ( $pill_1_text ) : ?>
+              <div class="mobile_pill pill_left" data-aos="zoom-in" data-aos-delay="400" data-aos-offset="0">
+                <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_1_icon['url'] ) ? $pill_1_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
+                <div class="mobile_pill_text"><?php echo esc_html( $pill_1_text ); ?></div>
+              </div>
+              <?php endif; ?>
+              <?php if ( $pill_2_text ) : ?>
+              <div class="mobile_pill pill_right" data-aos="zoom-in" data-aos-delay="500" data-aos-offset="0">
+                <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_2_icon['url'] ) ? $pill_2_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
+                <div class="mobile_pill_text"><?php echo esc_html( $pill_2_text ); ?></div>
+              </div>
+              <?php endif; ?>
+            </section>
+            <?php if ( $show_interest && ! empty( $interest_image['url'] ) ) : ?>
+            <section class="interest_section custom_interest_section clearfix clear">
+              <div class="conta1iner">
+                <div class="interest_row w-100 d-flex justify-content-between align-items-center">
+                  <div class="interest_text"><img src="<?php echo esc_url( $interest_image['url'] ); ?>" alt="no interest"></div>
+                </div>
+              </div>
+            </section>
+            <?php endif; ?>
+          </article>
+        </section>
+      </section>
+<?php endif; ?>

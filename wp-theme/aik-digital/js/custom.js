@@ -344,6 +344,13 @@ function aikInitMdNewsSwiper() {
     spaceBetween: 24,
     observer: true,
     observeParents: true,
+    loop: true,
+
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
 
     navigation: {
       nextEl: ".md-news-swiper__nav--next",
@@ -414,6 +421,25 @@ function aikInitFeatureSuiteSwipers() {
       },
 
       speed: 700,
+
+      // Desktop keeps every slide stretched to a shared height (matches
+      // .feature-suite-slide's flex/align-items:center CSS, so a shorter
+      // slide's content still sits centered in a uniform-height box). On
+      // mobile that same fixed height is just the tallest slide's height
+      // applied to ALL of them — a short slide shows a big empty gap
+      // below its content and pushes the next section down with it.
+      // autoHeight makes the slider container resize to match only the
+      // currently active slide, which is what removes that gap; it's
+      // scoped to <769px (same breakpoint the CSS already uses) so
+      // desktop's intentional uniform-height look is untouched.
+      breakpoints: {
+        0: {
+          autoHeight: true,
+        },
+        769: {
+          autoHeight: false,
+        },
+      },
 
       pagination: {
         el: el.querySelector( ".feature-suite-swiper__pagination" ),

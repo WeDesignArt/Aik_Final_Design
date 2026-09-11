@@ -1,84 +1,23 @@
-/* ============================================================
-   AIK Footer — css/style.css
-   All footer styles live here. Do NOT modify main.css.
-   Colors: yellow #f5ce1a | green #065258
-   ============================================================ */
+/* ======================================================================
 
+   AIK STYLE.CSS -- reorganized (section-by-section, one @media per condition per section)
 
-/* Additional CSS */
-
-/* main.css sets align-items/justify-content on .nav_wrapper but never
-   display:flex, so those properties were no-ops — harmless before since
-   .search_holder / .header-actions were mutually exclusive by breakpoint
-   (only one visible block-level child at a time). Adding a new always-visible
-   sibling (.header-connect-btn) exposed it: without display:flex, that block
-   sibling was dropping to its own line instead of sitting next to the search
-   icon. */
-
-@media (max-width: 767.98px) {
- .page-id-560 .custom-smarter-sec {
-       height: 56vh;
-        
-    }
-	
-	.page-id-201 .mb_customize {
-		height: 1250px;
-	 	padding: 75px 0 0px;	
-	}
-	
-	
-	
-	
-	
-	
-}
-
- 
+   ====================================================================== */
 
 
 
-.aik-footer__grid{
-	align-items:baseline;
-}
+/* ==============================================================
+   SECTION: Root & Utilities
+   ============================================================== */
 
-/* .aik-footer__grid {
-	align-items: center;
-} */
+
 .custom_column .aik-footer__links {
-	column-count: 2;
-	
-}
-/* 
-.custom_column {
-	    width: 306px;
-} */
-
-@media (max-width: 768px){
-	.custom_column {
-	    width: auto;
-}
-	
+  column-count: 2;
 }
 
-
-
-
-
-.pif-footer .btn_fill:after {
-    background-color: #fff;
-    color: var(--aik-green);
+.padding_custom {
+  padding: 100px 0 0 !important;
 }
-
-.padding_custom{
-	padding: 100px 0 0 !important;
-}
-
-@media (max-width: 768px) {
-.padding_custom     .explore-sec__inner {
-         flex-direction: column;
-}
-}
-
 
 .page_content h1,
 .page_content h2,
@@ -86,155 +25,99 @@
 .page_content h4,
 .page_content h5,
 .page_content h6 {
-    color: var(--aik-green);
-    font-weight: 700;
+  color: var(--aik-green);
+  font-weight: 700;
 }
 
 .page_content .btn_fill {
-    width: 420px;
-}
-
-
-.fb-footer .btn_fill:after {
-	background-color: #fff;
-	color: var(--aik-green);
-}
-
-
-.business_hero .hero_main_text .btn_fill {
-	    padding: 13px 70px 13px 30px;
-		font-size: 1rem;
-}
-
-
-.news-single .read-btn {
-    bottom: 5px;
-    padding: 0;
-    position: absolute;
-}
-
-
-.news-single-content {
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(13px) saturate(1.5);
-    border: 1px solid hsla(0, 0%, 100%, .2);
-    border-radius: 20px;
-    bottom: 12px;
-    color: #fff;
-    height: 45%;
-    left: 50%;
-    padding: 12px 20px;
-    position: absolute;
-    transform: translateX(-50%);
-    width: 95%;
-}
-
-/* .news-single-media img {
-    height: 100%;
-    width: 100%;
-} */
-
-   @media screen and (max-width: 1366px) {
-    .business_hero .mobile_track {
-        right: 15%;
-        top: 70px;
-    }
-	
-	    .mobile_track .mobile_pill {
-        padding: 6px;
-        width: 300px;
-    }
-}
-
-
-
-
-
-
-.aik_landing_top .left_text_block h2 {
-	font-size: 5rem;
-}
-
-@media (max-width: 1925px) {
-.aik_landing_top .left_text_block h2 {
-	font-size: 3.5rem;
-}
-}
-@media (max-width: 1690px) {
-.aik_landing_top .left_text_block h2 {
-	font-size: 3rem;
-	}
-	
-	.aik_landing_top {
-		    top: 27%;
-		
-	}
-	.logo_arch {
-    left: 54%;
-	top: 62%;
-}
-
-.mobile_track {
-    left: 50%;
-    top: 161px;
-}
-	
-}
-
-
-
-   .home_about_section_content_title {
-     color: #005257;
-   }
-
-.interest_section .interest_text {
-	padding-left: 10px;
-}
-
-.home_about_section_content p {
-    font-size: 1.125rem;
-    margin: 1vw auto;
-    width: 50%;
+  width: 400px;
 }
 
 .btn_fill {
-	font-size: 1rem;
-	padding: 13px 70px 13px 30px;
+  font-size: 1rem;
+  padding: 13px 70px 13px 30px;
 }
 
-   .container_content{
-    max-width: 1740px;
-    margin: auto ;
-    width: 90%;
-   }
-
-   .md-news{
-    position: relative;
-    z-index: 1;
-   }
-
-
-
-/* ============================================================
-   Hero section / Landing page - Custom styles
-   ============================================================ */
-
-       .aik_landing_top {
-        pointer-events: none;
-       }
-
-   @media screen and (max-width: 1366px) {
-    .logo_arch {
-        top: 65%;
-        width: 600px;
-    }
-        .mobile_track {
-        width: 300px;
-        top: 173px;
-    }
-
-  
+.container_content {
+  max-width: 1740px;
+  margin: auto;
+  width: 90%;
 }
+
+.page_content p {
+  font-size: 18px;
+}
+
+.page_content p strong {
+  font-size: 20px;
+}
+
+:root {
+  --aik-yellow: #f5ce1a;
+  --aik-green: #065258;
+}
+
+.grid-center-left {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+.grid-top-right {
+  top: 0;
+  right: 0;
+  bottom: auto;
+}
+
+.grid-top-left {
+  top: 0;
+  left: 0;
+  bottom: auto;
+}
+
+.grid-bottom-right {
+  bottom: 0;
+  right: 0;
+  top: auto;
+}
+
+@media (max-width: 1367px) {
+  .display-3 {
+    font-size: 3rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom_column {
+    width: auto;
+  }
+
+  .padding_custom     .explore-sec__inner {
+    flex-direction: column;
+  }
+
+  .page_content .privacy_btn {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .page-id-560 .custom-smarter-sec {
+    height: 56vh;
+  }
+
+  .page-id-201 .mb_customize {
+    height: 1250px;
+    padding: 75px 0 0px;
+  }
+}
+
+
+/* ==============================================================
+   SECTION: Header & Navigation
+   ============================================================== */
 
 
 .nav_wrapper {
@@ -242,16 +125,9 @@
 }
 
 .nav_wrapper a {
-	 color: var(--aik-green);
+  color: var(--aik-green);
 }
 
-/* Header logo — true center, independent of sibling widths.
-   .header_row centers the logo via flex justify-content:space-between
-   (main.css), which only lands on the page's actual center when
-   .menu_block (left) and .nav_wrapper (right) are equal width. Adding
-   .header-connect-btn made the right side wider than the left hamburger
-   icon, visibly pushing the logo off-center toward the left. Absolute
-   positioning at 50% decouples it from both siblings entirely. */
 .header_row {
   position: relative;
 }
@@ -264,24 +140,13 @@ header .logo {
   margin: 0;
 }
 
-/* Personal / Business hero tabs — main.css centers this at left:51%
-   (slightly off true center) with only a 6px gap between the two links,
-   which reads as glued together. Nudged to exact 50% and given more
-   breathing room so the page's true center falls in the gap between the
-   two words instead of on one of them. */
-.app_link_holder {
-  left: 50%;
-  gap: 36px;
-}
-
-/* Header "aik connect" pill button */
 .header-connect-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background-color: var(--aik-yellow);
   color: var(--aik-green);
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 14px;
   font-weight: 600;
   border-radius: 50px;
@@ -297,7 +162,90 @@ header .logo {
   color: var(--aik-green);
 }
 
-/* Floating social icons — fixed to the right edge, sitewide */
+#menu.menuNav > li.has-children > ul.children {
+  display: block;
+  height: 0;
+  overflow: hidden;
+  list-style: square;
+  /* color: var(--aik-yellow) !important; */
+  color: #fff !important;
+  list-style-position: inside;
+}
+
+#menu.menuNav > li.has-children:hover {
+  color: #fff;
+}
+
+#menu.menuNav > li.has-children > ul.children li a {
+  color: var(--aik-yellow);
+}
+
+#menu.menuNav > li.has-children:after {
+  content: none;
+}
+
+#menu.menuNav > li.has-children > a .aik-menu-arrow,
+#menu.menuNav li.in-dropdown > a .aik-menu-arrow {
+  color: var(--aik-yellow);
+  font-size: 0.7em;
+  display: inline-block;
+  transition: transform 0.4s ease;
+  vertical-align: middle;
+  /* Padding (not a bigger font-size) enlarges the tap target without
+     changing how big the arrow itself looks — it's the only thing left
+     that opens the submenu, since the link text now navigates instead. */
+  padding: 10px;
+  margin: -10px -10px -10px 8px;
+}
+
+#menu.menuNav > li.has-children.active > a .aik-menu-arrow,
+#menu.menuNav li.in-dropdown.active > a .aik-menu-arrow {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 767.98px) {
+  .search_mobile {
+    align-items: center;
+    display: inline-flex;
+    height: 40px;
+    justify-content: center;
+    width: 40px;
+  }
+
+  .search_mobile button {
+    background-color: var(--secondary_color);
+    border: none;
+    border-radius: 50%;
+    color: var(--primary_color);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: inline-flex;
+    height: 100%;
+    inset: 0;
+    transition: opacity .4s ease;
+    width: 100%;
+    z-index: 2;
+  }
+
+  header .logo {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .search_holder {
+    display: block;
+    /* margin-top: 630px; */
+  }
+}
+
+
+/* ==============================================================
+   SECTION: Off-canvas Floating Buttons
+   ============================================================== */
+
+
 .aik-social-float {
   position: fixed;
   right: 20px;
@@ -308,22 +256,21 @@ header .logo {
   gap: 10px;
 }
 
-
 .aik-chat-float a {
   display: flex;
   align-items: center;
   justify-content: center;
-/*   width: 60px;
+  /*   width: 60px;
   height: 60px; */
   border-radius: 50%;
-/*   background-color: var(--aik-yellow);
+  /*   background-color: var(--aik-yellow);
   color: var(--aik-green);
   font-size: 18px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); */
   transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
-.aik-social-float a{
+.aik-social-float a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -342,10 +289,6 @@ header .logo {
   transform: translateX(-3px);
 }
 
-/* Same column as .aik-social-float, right at the viewport's bottom edge
-   instead of stacked in that flex group — so it doesn't shift when the
-   number of social icons above it changes, and reads as its own pinned
-   "always here" action rather than one more item in the social list. */
 .aik-chat-float {
   position: fixed;
   right: 20px;
@@ -353,8 +296,6 @@ header .logo {
   z-index: 999;
 }
 
-/* The <dotlottie-wc> canvas would otherwise swallow the click before it
-   reaches the surrounding <a> — keep it purely decorative. */
 .aik-chat-float__lottie {
   width: 100px;
   height: 100px;
@@ -363,18 +304,6 @@ header .logo {
 }
 
 @media (max-width: 767px) {
-
-
-  .app_link_holder {
-   
-    top: 85px;
-  }
-  .business_hero .hero_main_text_desc {
-    margin-bottom: 20px;
-  }
-
-
-
   .aik-social-float {
     right: 12px;
     bottom: 75px;
@@ -396,207 +325,1625 @@ header .logo {
   }
 }
 
-/* page.php */
+
+/* ==============================================================
+   SECTION: Search Drawer (site-wide overlay)
+   ============================================================== */
 
 
-.page_content p{
-	font-size: 18px;
+.srch-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-.page_content p strong{
-	font-size: 20px;
+.srch-overlay.is-open {
+  visibility: visible;
+  pointer-events: auto;
 }
 
-.smarter-sec__inner .note {
-	margin-top: 24px;
-	max-width: 420px;
+.srch-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 30, 40, 0.65);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  cursor: pointer;
 }
 
-.smarter-sec__inner .note .smarter-sec__desc_note {
-	color: #005257;
-	font-size: 13px;
-	line-height: 1.6;
-	margin: 0 0 8px;
+.srch-overlay.is-open .srch-backdrop {
+  opacity: 1;
 }
 
-.smarter-sec__inner .note .smarter-sec__desc_note:last-child {
-	margin-bottom: 0;
+.srch-drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  padding: 32px 0 44px;
+  transform: translateY(-100%);
+  transition: transform 0.44s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
+  z-index: 1;
+}
+
+.srch-overlay.is-open .srch-drawer {
+  transform: translateY(0);
+}
+
+.srch-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.srch-label {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+
+.srch-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: #f3f3f3;
+  border: none;
+  border-radius: 50%;
+  font-size: 17px;
+  color: #111;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s, transform 0.3s;
+}
+
+.srch-close:hover {
+  background: #065258;
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+.srch-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 2px solid #e5e5e5;
+  border-radius: 24px;
+  padding: 6px 6px 6px 22px;
+  gap: 12px;
+  margin-bottom: 28px;
+  transition: border-color 0.25s;
+}
+
+.srch-input-wrap:focus-within {
+  border-color: #065258;
+}
+
+.srch-input-icon {
+  font-size: 20px;
+  color: #b0b0b0;
+  flex-shrink: 0;
+  transition: color 0.25s;
+}
+
+.srch-input-wrap:focus-within .srch-input-icon {
+  color: #065258;
+}
+
+.srch-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #111;
+  background: transparent;
+  padding: 10px 0;
+}
+
+.srch-input::placeholder {
+  color: #c0c0c0;
+  font-weight: 400;
+}
+
+.srch-submit-btn {
+  background: var(--secondary_color);
+  color: var(--primary_color);
+  border: none;
+  border-radius: 50px;
+  padding: 13px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.srch-submit-btn:hover {
+  background: #043c41;
+  transform: scale(1.04);
+}
+
+.srch-popular {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.srch-popular-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+
+.srch-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.srch-tag {
+  display: inline-block;
+  padding: 7px 17px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.srch-tag:hover {
+  border-color: #065258;
+  color: #065258;
+  background: rgba(6, 82, 88, 0.06);
+}
+
+.srch-services {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.srch-service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  padding: 16px 22px;
+  border-radius: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  min-width: 96px;
+  text-align: center;
+}
+
+.srch-service-item:hover {
+  background: rgba(6, 82, 88, 0.07);
+}
+
+.srch-service-icon {
+  width: 52px;
+  height: 52px;
+  background: rgba(6, 82, 88, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  color: #065258;
+  transition: background 0.2s, color 0.2s;
+}
+
+.srch-service-item:hover .srch-service-icon {
+  background: #065258;
+  color: #ffffff;
+}
+
+.srch-service-item span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+@media (max-width: 767px) {
+  .srch-drawer {
+    padding: 20px 0 28px;
+  }
+
+  .srch-label {
+    font-size: 17px;
+  }
+
+  .srch-input-wrap {
+    padding: 4px 4px 4px 16px;
+    gap: 4px;
+    margin-bottom: 20px;
+  }
+
+  .srch-input {
+    font-size: 15px;
+    padding: 8px 0;
+  }
+
+  .srch-submit-btn {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  .srch-popular {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .srch-services {
+    gap: 4px;
+  }
+
+  .srch-service-item {
+    padding: 10px 12px;
+    min-width: 76px;
+  }
+
+  .srch-service-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .srch-service-item span {
+    font-size: 11px;
+  }
 }
 
 
+/* ==============================================================
+   SECTION: Hero (Personal / Business / Inner)
+   ============================================================== */
 
 
-/* ── CSS Variables ────────────────────────────────────────── */
-:root {
-  --aik-yellow: #f5ce1a;
-  --aik-green: #065258;
+.business_hero .hero_main_text .btn_fill {
+  padding: 13px 70px 13px 30px;
+  font-size: 1rem;
 }
 
-
-  
-
-/* connect-sec-custom */
-.connect-sec-custom{
-    padding: 100px 0 0;
-    min-height: auto !important;
+.aik_landing_top .left_text_block h2 {
+  font-size: 5rem;
 }
 
-
-
-
-/* connect_custom_why-chose-sec */
-
-
-.connect_custom_why-chose-sec {
-    padding: 100px 0;
-    min-height: auto !important;
+.interest_section .interest_text {
+  padding-left: 10px;
 }
 
-.connect_custom_why-chose-sec .smarter-sec__desc{
-  max-width: none;
-
-}
-.connect_smarter-sec .smarter-sec__left,.connect_smarter-sec .smarter-sec__desc {
-      max-width: 700px !important;
-      
+@media (max-width: 1690px) {
+  .aik_landing_top {
+    top: 27%;
+  }
 }
 
-
-/* debit card section */
-
-.debit_hero_item{
-
-    min-height:70vh !important;
+.aik_landing_top {
+  pointer-events: none;
 }
 
-/* laptop */
+.app_link_holder {
+  left: 50%;
+  gap: 36px;
+}
+
+.debit_hero_item {
+  min-height: 70vh !important;
+}
+
+.debit-hero-caption {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.debit-hero-caption h1 {
+  color: #fff;
+  font-size: 5.5rem;
+  margin: 0;
+}
+
+.debit-hero-caption h1 span {
+  color: var(--aik-yellow);
+}
+
+@media (max-width: 1925px) {
+  .aik_landing_top .left_text_block h2 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 1690px) {
+  .aik_landing_top .left_text_block h2 {
+    font-size: 3rem;
+  }
+
+  .logo_arch {
+    left: 54%;
+    top: 62%;
+  }
+
+  .mobile_track {
+    left: 50%;
+    top: 161px;
+  }
+}
+
 @media (max-width: 1367px) {
   .debit_hero_item {
     min-height: 80vh !important;
+  }
 }
 
-.debit_custom_smarter-sec .smarter-sec__desc {
-  max-width: none;
+@media screen and (max-width: 1366px) {
+  .business_hero .mobile_track {
+    right: 15%;
+    top: 70px;
+  }
+
+  .mobile_track .mobile_pill {
+    padding: 6px;
+    width: 300px;
+  }
+
+  .logo_arch {
+    top: 65%;
+    width: 600px;
+  }
+
+  .mobile_track {
+    width: 300px;
+    top: 173px;
+  }
 }
-    .display-3
 
- {
-        font-size: 3rem !important;
-    }
-
-    .bento-grid-section {
-    padding: 80px 0 !important;
-}
-
-
-}
-
-/* Business hero — .business_hero .mobile_track has an unscoped width:380px
-   in main.css that outranks (specificity) the theme's own
-   @media(max-width:1366px){.mobile_track{width:350px}} breakpoint rule, so
-   the phone mockup never actually shrinks at 1366px like every other tier
-   does — it overflows past the fold instead. Narrowing it here (image
-   scales proportionally, height:auto) keeps it, and the two floating pills
-   anchored to it by percentage, inside the viewport. */
 @media (max-width: 1366px) {
   .business_hero .mobile_track {
     width: 300px;
   }
 }
 
-/* Business Home about section custom */
+@media (min-width: 768px) and (max-width: 1366px) {
+  .aik_landing_top {
+    left: 50%;
+    top: 18%;
+    width: 100%;
+    text-align: center;
+  }
 
+  .aik_landing_top .left_text_block {
+    width: 100%;
+  }
 
-.home_about_section {
-    height: 100vh !important;
-    padding: 10% 0 !important;
-        align-content: center !important;
+  .aik_landing_top .left_text_block h2 {
+    font-size: clamp(1.75rem, 4.2vw, 3rem);
+  }
+
+  .mobile_track {
+    left: 50%;
+    top: 340px;
+    width: 340px;
+  }
+
+  .mobile_track .mobile_pill.pill_left {
+    left: -20%;
+    top: 240px;
+  }
+
+  .mobile_track .mobile_pill.pill_right {
+    right: -10%;
+    top: 340px;
+  }
+
+  .business_hero .app_link_holder {
+    position: relative;
+    z-index: 5;
+  }
+
+  .business_hero .mobile_track {
+    left: auto;
+    right: 8%;
+    top: 260px;
+    width: 260px;
+  }
+
+  .business_hero .mobile_track .pill_top_right {
+    right: -5%;
+    top: -30px;
+    max-width: 220px;
+  }
+
+  .business_hero .mobile_track .pill_bottom_left {
+    left: -30%;
+    bottom: 60%;
+  }
+
+  .business_hero .hero_btn_group {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .business_hero .hero_btn_group .btn_fill {
+    width: 248px !important;
+    font-size: 0.85rem;
+    padding: 8px 8px 8px 18px;
+    gap: 8px;
+    white-space: normal;
+    text-align: left;
+  }
+}
+
+@media (max-width: 991px) {
+  .debit-hero-caption h1 {
+    font-size: 2.75rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .aik_landing_top .left_text_block h2,
+  .aik_landing_top .right_text_block h2 {
+    font-size: 10vw;
+  }
+
+  .aik_landing_top {
+    /* align-items: flex-start; */
+    color: #fff;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    padding: 20px;
+    left: 50%;
+    top: 25%;
+    /* transform: translateX(-50%); */
+    width: 100%;
+    z-index: 3;
+    text-align: center;
+  }
+
+  .aik_landing_top .left_text_block {
+    width: 100%;
+  }
+
+  .mobile_track {
+    left: 55%;
+    top: 380px;
+  }
+
+  .mobile_track .mobile_pill.pill_left {
+    left: -13%;
+    top: 204px;
+  }
+
+  .mobile_track .mobile_pill.pill_left .mobile_pill_text {
+    padding-right: 0px;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .mobile_track .mobile_pill_icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobile_track .mobile_pill {
+    padding: 6px;
+    width: 226px;
+  }
+
+  .mobile_track .mobile_pill {
+    justify-content: center;
+  }
+
+  .mobile_track .mobile_pill.pill_right {
+    right: 0%;
+    top: 293px;
+  }
+
+  .business_hero .hero_main_text {
+    width: 100%;
+  }
+
+  .aik_landing .hero_main_text {
+    align-items: flex-start;
+    /* left: 0; */
+    justify-content: center;
+    /* right: auto; */
+  }
+
+  .hero_main_text {
+    align-items: flex-end;
+    justify-content: space-between;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    right: 4vw;
+    /* padding: 2vw 0 2vw 5vw; */
+    top: -44px;
+    width: 32%;
+    z-index: 1;
+  }
+
+  .aik_landing .hero_main_text_title {
+    font-size: 12vw;
+    letter-spacing: -1px;
+    margin-top: 0 !important;
+    width: 100%;
+    text-align: center;
+  }
+
+  .aik_landing .hero_main_text {
+    align-items: center !important;
+  }
+
+  .business_hero .hero_main_text p {
+    width: 80%;
+    text-align: center;
+  }
+
+  .business_hero .mobile_track {
+    left: auto;
+    width: 205px;
+  }
+
+  .business_hero .mobile_track {
+    right: 23%;
+    top: 69%;
+  }
+
+  .custom_size {
+    height: 1070px;
+    background-color: #dac10f;
+  }
+
+  .interest_section {
+    width: 100%;
+    /* top: 120px; */
+    bottom: -120px;
+  }
+
+  .custom_interest_section {
+    width: 100%;
+    bottom: 10px;
+    left: 60px;
+  }
+
+  .business_hero .mobile_track .pill_bottom_left {
+    bottom: 74%;
+    left: -52%;
+  }
+
+  .business_hero .mobile_track .pill_top_right {
+    right: -45%;
+    top: 55px;
+  }
+
+  .mobile_track .mobile_pill_text {
+    font-size: .775rem;
+    margin-left: 10px;
+  }
+
+  .custom_size .logo_arch {
+    top: 86%;
+    left: 60% !important;
+    width: 575px;
+  }
+
+  .custom_size .hero_main_text {
+    pointer-events: none;
+    padding: 0;
+  }
+
+  .business_hero .hero_main_text .btn_fill {
+    /* font-size: .875rem !important;
+     padding: 10px 40px 10px 19px !important;  */
+    width: 254px;
+  }
+}
+
+@media (max-width: 767px) {
+  .app_link_holder {
+    top: 85px;
+  }
+
+  .business_hero .hero_main_text_desc {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 575px) {
+  .debit-hero-caption h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 410px) {
+  .index_custom .interest_section {
+    bottom: -126px;
+    left: 28px;
+  }
+
+  .index_custom .logo_arch {
+    top: 79%;
+    width: 690px;
+  }
+
+  .hero_main_text {
+    top: 0px;
+  }
+
+  .interest_section {
+    bottom: -300px;
+    left: -13px;
+  }
+
+  .custom_size .logo_arch {
+    top: 111%;
+  }
+
+  .business_hero .mobile_track {
+    top: 80%;
+  }
+
+  .business_hero .mobile_track .pill_top_right {
+    top: 18px;
+  }
+
+  .business_hero .mobile_track .pill_bottom_left {
+    bottom: 74%;
+    left: -30%;
+  }
+
+  .mobile_track .mobile_pill.pill_left {
+    left: -3%;
+  }
+
+  .mobile_track .mobile_pill.pill_right {
+    right: 6%;
+  }
+}
+
+@media (max-width: 391px) {
+  .index_custom .logo_arch {
+    top: 70%;
+  }
+
+  .index_custom .interest_section {
+    bottom: -45px;
+  }
+}
+
+@media (max-width: 362px) {
+  .index_custom .interest_section {
+    bottom: -130px;
+  }
+}
+
+@media (max-width: 376px) {
+  .index_custom .interest_section {
+    bottom: -200px;
+  }
+
+  .index_custom .logo_arch {
+    top: 85%;
+  }
+
+  .aik_landing_top {
+    top: 35%;
+  }
+}
+
+@media (width: 393px) and (height: 873px) {
+  .hero_main_text {
+    top: -60px;
+  }
+
+  .business_hero .mobile_track {
+    top: 65%;
+  }
+
+  .custom_size .logo_arch {
+    top: 92%;
+  }
+
+  .interest_section {
+    bottom: -185px;
+  }
+
+  .index_custom .logo_arch {
+    top: 71%;
+  }
+
+  .custom_adjustment {
+    height: 900px;
+  }
+
+  .index_custom .interest_section {
+    bottom: -22px;
+    left: 50px;
+  }
 }
 
 
+/* ==============================================================
+   SECTION: Smarter Section (+ page variants) / Driven
+   ============================================================== */
 
 
+.smarter-sec__inner .note {
+  margin-top: 24px;
+  max-width: 420px;
+}
+
+.smarter-sec__inner .note .smarter-sec__desc_note {
+  color: #005257;
+  font-size: 16x;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.smarter-sec__inner .note .smarter-sec__desc_note:last-child {
+  margin-bottom: 0;
+}
+
+.connect-sec-custom {
+  padding: 100px 0 0;
+  min-height: auto !important;
+}
+
+.connect_custom_why-chose-sec {
+  padding: 100px 0;
+  min-height: auto !important;
+}
+
+.connect_custom_why-chose-sec .smarter-sec__desc {
+  max-width: none;
+}
+
+.connect_smarter-sec .smarter-sec__left,
+.connect_smarter-sec .smarter-sec__desc {
+  max-width: 700px !important;
+}
+
+.debit_custom_smarter-sec h2 {
+  color: var(--aik-green) !important;
+}
+
+.debit_custom_smarter-sec p {
+  color: #000;
+}
+
+.debit_custom_why-choose-sec {
+  min-height: auto !important;
+}
+
+.smarter-sec {
+  position: relative;
+  overflow: hidden;
+  /* padding: 100px 0; */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.smarter-sec__right img,
+.smarter-sec__right video {
+  width: 100%;
+}
+
+.full-width-video-sec {
+  width: 100%;
+  line-height: 0;
+}
+
+.full-width-video-sec video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.smarter-sec__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.smarter-sec__bg img {
+  width: 100%;
+  height: 100%;
+}
+
+.smarter-sec__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.smarter-sec__left {
+  flex: 0 0 auto;
+  max-width: 650px;
+  /* 	previously it was 550px */
+}
+
+.smarter-sec__top-logo {
+  margin: 0 0 20px;
+}
+
+@media (max-width: 768px) {
+  .smarter-sec__top-logo img {
+    margin: auto;
+  }
+}
+
+.smarter-sec__top-logo img {
+  display: block;
+  max-width: 220px;
+  height: auto;
+}
+
+.smarter-sec__heading {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0 0 24px;
+}
+
+.smarter-sec__heading span {
+  color: var(--aik-yellow);
+}
+
+.smarter-sec__desc {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  margin: 0 0 40px;
+  max-width: 500px;
+}
+
+@media (max-width: 1367px) {
+  .debit_custom_smarter-sec .smarter-sec__desc {
+    max-width: none;
+  }
+}
+
+.debit_custom_smarter-sec .smarter-sec__desc {
+  max-width: 600px !important;
+}
+
+.debit_custom_smarter-sec .smarter-sec__left {
+  max-width: 720px !important;
+}
+
+.debit_custom_why-choose-sec .smarter-sec__left {
+  max-width: 570px !important;
+}
+
+.debit_custom_why-choose-sec .smarter-sec__desc {
+  max-width: 530px !important;
+}
+
+.deen-sec .smarter-sec__left {
+  max-width: 665px !important;
+}
+
+.smarter-sec__desc li {
+  margin-bottom: 10px;
+}
+
+.smarter-sec__desc li::marker {
+  color: var(--aik-yellow);
+  /* Sirf bullets red hon gi */
+  font-size: 1.2rem;
+  /* Bullets ka size bhi bara kar sakte hain */
+}
+
+.smarter-sec__desc li span {
+  color: var(--aik-yellow);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.smarter-sec__desc span {
+  color: var(--aik-yellow);
+  font-weight: 700;
+  font-variation-settings: "wght" 700;
+}
+
+.smarter-sec--on-white .smarter-sec__heading {
+  color: var(--aik-green);
+}
+
+.smarter-sec--on-white .smarter-sec__desc,
+.smarter-sec--on-white .smarter-sec__desc li {
+  color: #333;
+}
+
+.smarter-sec--on-white .smarter-sec__desc,
+.smarter-sec--on-white .smarter-sec__desc li span,
+.smarter-sec--on-white .smarter-sec__desc span {
+  color: #000;
+}
+
+.smarter-sec--on-white .smarter-sec__desc li::marker {
+  color: #000;
+  font-size: 1.2rem;
+}
+
+.smarter-sec__icons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 28px 20px;
+  margin: 0 0 40px;
+}
+
+.smarter-sec__icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.smarter-sec__icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.smarter-sec__icon-img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.smarter-sec__icon-label {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #fff;
+}
+
+.smarter-sec--on-white .smarter-sec__icon-label {
+  color: #333;
+}
+
+.smarter-sec__btns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.smarter-sec__btn {
+  /* Was a white-tinted glass (rgba(255,255,255,.1)) — reads fine on the
+     dark teal top of a gradient bg, but on a lighter background (e.g.
+     the yellow-green bottom of Spend Smarter's gradient) it's nearly
+     invisible, just a faint outline. A dark tint instead stays visibly
+     darker than the bg at every point in the gradient. */
+  background-color: rgba(0, 0, 0, 0.32) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #fff !important;
+  font-size: 1rem !important;
+  /* main.css hard-codes .btn_fill to width:194px, which only ever
+     coincidentally worked: the arrow (::after) is position:absolute;
+     right:-2px, so it's NOT a flex sibling of the label text at all —
+     it just floats on top of the button's rightmost ~50px, entirely
+     outside the gap:20px flex spacing. main.css's own padding is only
+     10px 20px 10px 0, so nothing ever reserved room for that circle;
+     a short label inside the old fixed 194px box happened to leave
+     enough empty space to clear it, but a longer label (or width:auto
+     with the old padding) runs text straight under the circle. Auto
+     width + enough right padding to clear the circle (52px wide) plus a
+     visual gap fixes both short and long labels the same way. */
+  width: auto !important;
+  padding: 14px 70px 14px 30px !important;
+  white-space: nowrap !important;
+}
+
+.smarter-sec__btn:after {
+  color: var(--primary_color) !important;
+}
+
+.solid-btn-sec .smarter-sec__btn {
+  background-color: var(--primary_color) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid transparent !important;
+  color: #fff !important;
+}
+
+.smarter-sec__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.smarter-sec__right img,
+.smarter-sec__right video {
+  display: block;
+}
+
+.why-choose-sec {
+  align-items: flex-end;
+}
+
+.why-choose-sec .smarter-sec__inner {
+  padding-bottom: 0;
+}
+
+.why-choose-sec .smarter-sec__right {
+  align-items: flex-end;
+}
+
+.why-choose-sec .smarter-sec__right img {
+  display: block;
+  margin-bottom: 0;
+}
+
+.connect-sec-custom {
+  align-items: center;
+}
+
+.connect-sec-custom .container {
+  height: 100%;
+}
+
+.connect-sec-custom .smarter-sec__inner {
+  align-items: stretch;
+  height: 100%;
+}
+
+.connect-sec-custom .smarter-sec__left {
+  flex: 1;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px 0;
+}
+
+.connect-sec-custom .smarter-sec__desc {
+  max-width: none;
+}
+
+.connect-sec-custom .smarter-sec__right {
+  flex: 1;
+  align-items: flex-end;
+}
+
+.driven-sec {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.driven-sec__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.driven-sec__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.driven-sec__ethics-wrap {
+  align-self: stretch;
+}
+
+.driven-sec__driven {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 4px;
+  line-height: 1;
+}
+
+.driven-sec__ethics {
+  font-size: 7rem;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--aik-yellow);
+  line-height: 1;
+  margin: 0;
+}
+
+.driven-sec__tagline {
+  text-align: right;
+}
+
+.driven-sec__led {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+  text-align: left;
+}
+
+.driven-sec__driven {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.driven-sec__innovation {
+  font-size: 7rem;
+  font-weight: 800;
+  color: var(--aik-yellow);
+  line-height: 1;
+  margin: 0;
+  font-style: italic;
+}
+
+.driven-sec {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.driven-sec__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.driven-sec__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 991px) {
+  .driven-sec__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    min-height: auto;
+  }
+
+  .driven-sec__tagline {
+    text-align: left;
+  }
+}
+
+.driven-sec__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 0;
+}
+
+.driven-sec__ethics-wrap {
+  align-self: stretch;
+}
+
+.driven-sec__tagline {
+  text-align: right;
+}
+
+.smarter-sec__inner img {
+  width: 700px;
+}
+
+.deen-smarter-sec .smarter-sec__inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1450px) and (min-width: 1400px) and (max-width: 1440px) {
+  .debit_custom_smarter-sec .smarter-sec__left {
+    max-width: 600px !important;
+  }
+
+  .deen-sec .smarter-sec__left {
+    max-width: 600px !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .debit_custom_why-choose-sec {
+    padding: 75px 0 0 !important;
+  }
+}
+
+@media (max-width: 1450px) {
+  .debit_custom_why-choose-sec {
+    padding: 100px 0 0;
+  }
+
+  .debit_custom_why-choose-sec .smarter-sec__inner {
+    /*         align-items: flex-end; */
+    align-items: center;
+  }
+
+  .debit_custom_smarter-sec .smarter-sec__left {
+    max-width: 600px !important;
+  }
+}
+
+@media (max-width: 1399px) {
+  .smarter-sec__right img,
+  .smarter-sec__right video {
+    max-width: 500px;
+    /* <--- Yahan se phone ki width control / kam kar sakte hain */
+  }
+}
+
+@media (max-width: 1366px) {
+  .driven-sec__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 108%;
+    min-height: 100vh;
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .smarter-sec__icons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .smarter-sec__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .smarter-sec__left {
+    max-width: 100%;
+  }
+
+  .smarter-sec__desc {
+    max-width: 100%;
+  }
+
+  .smarter-sec__btns {
+    justify-content: center;
+  }
+
+  .smarter-sec__heading {
+    font-size: 42px;
+  }
+
+  .driven-sec__ethics {
+    font-size: 80px;
+  }
+
+  .driven-sec__led {
+    font-size: 36px;
+  }
+
+  .driven-sec__innovation {
+    font-size: 52px;
+  }
+
+  .smarter-sec__inner img {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .smarter-sec__heading {
+    font-size: 12vw !important;
+  }
+
+  .smarter-sec {
+    padding: 70px 0;
+  }
+
+  .driven-sec__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 90vh;
+    padding: 30px 0;
+  }
+
+  .driven-sec__led {
+    font-size: 4rem;
+    text-align: center;
+  }
+
+  .driven-sec__innovation {
+    font-size: 4.8rem;
+  }
+
+  .driven-sec__ethics-wrap {
+    text-align: center;
+  }
+
+  .smarter-sec {
+    padding: 75px 0;
+    align-items: start;
+    min-height: auto;
+  }
+
+  .connect-sec-custom {
+    padding: 75px 0 0 !important;
+    align-items: flex-end;
+  }
+}
+
+@media (max-width: 575px) {
+  .smarter-sec__icons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 14px;
+  }
+
+  .smarter-sec__icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+  }
+
+  .smarter-sec__icon-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .smarter-sec__icon-label {
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 410px) {
+  .driven-sec__innovation {
+    font-size: 4rem;
+  }
+}
+
+@media (width: 393px) and (height: 873px) {
+  .smarter-sec {
+    padding: 75px 0 0;
+  }
+}
 
 
+/* ==============================================================
+   SECTION: Debit Card -- Order Steps
+   ============================================================== */
 
-/* Bento Cards Custom */
 
-    .section_title_heading  span{
-      color: var(--aik-yellow);
-    }
+.order-steps .step-info {
+  height: auto;
+  min-height: unset;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 12px;
+  /* main.css's base .news-single-content background (a translucent white
+     glass tint) reads as darker or lighter card-to-card only by accident,
+     depending on how bright the photo behind it happens to be — not a
+     deliberate alternation. Setting an explicit dark/"light dark" pair
+     here, tied to the same odd/even --green modifier as the badge/text
+     colors, makes cards 1&3 vs 2&4 consistently alternate regardless of
+     the background image. step-info__num is untouched either way. */
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(10px) saturate(1.5);
+  height: 120px;
+  width: 400px;
+}
+
+.order-steps .step-info--green {
+  background: hsla(0, 0%, 100%, 0.009);
+}
+
+.order-steps .step-info__num {
+  flex: 0 0 auto;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--aik-yellow);
+  color: #065258;
+  font-family: "Outfit", sans-serif;
+  font-weight: 800;
+  font-size: 35px;
+  border-radius: 50%;
+  font-weight: 700;
+}
+
+.order-steps .step-info__body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.order-steps .step-info__title {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--aik-yellow);
+  margin: 0 0 4px;
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+.order-steps .step-info__desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  /* main.css clamps every <p> inside .news-single-content to 2 lines with
+     an ellipsis (meant for short news-card teasers) — this <p> shares
+     that class via .step-info, so a longer step description was getting
+     cut off mid-sentence. Same unset already used on .step-info__title
+     below. */
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+}
+
+.order-steps .step-info--green .step-info__num {
+  background: var(--aik-green);
+  color: var(--aik-yellow);
+}
+
+.step-info--green .step-info__num p {
+  color: var(--aik-green) !important;
+}
+
+.order-steps .step-info--green .step-info__title {
+  color: var(--aik-green);
+}
+
+.order-steps .step-info--green .step-info__desc {
+  color: var(--aik-green);
+}
+
+.order-steps .step-info--white-text .step-info__title,
+.order-steps .step-info--white-text .step-info__desc {
+  color: #fff !important;
+}
+
+@media (max-width: 1600px) {
+  .order-steps .step-info {
+    width: 325px;
+  }
+}
+
+@media (max-width: 1450px) {
+  .order-steps .step-info {
+    height: 150px;
+    width: 270px;
+  }
+}
+
+@media (max-width: 767px) {
+  .order-steps .step-info {
+    padding: 14px 18px;
+    gap: 10px;
+    width: 350px;
+  }
+
+  .order-steps .step-info__title {
+    font-size: 16px;
+  }
+}
+
+
+/* ==============================================================
+   SECTION: About / Bento Grid
+   ============================================================== */
+
+
+.home_about_section_content_title {
+  color: #005257;
+}
+
+.home_about_section_content p {
+  font-size: 1.125rem;
+  margin: 1vw auto;
+  width: 50%;
+}
+
+.home_about_section {
+  height: 100vh !important;
+  padding: 10% 0 !important;
+  align-content: center !important;
+}
+
+.section_title_heading  span {
+  color: var(--aik-yellow);
+}
+
+@media (max-width: 1367px) {
+  .bento-grid-section {
+    padding: 80px 0 !important;
+  }
+}
 
 .bento-grid-section {
   padding: 0 0 80px !important;
 }
 
 .bento-card__title {
-    
-    font-size: 40px !important;
-      white-space: nowrap;
+  font-size: 40px !important;
+  white-space: nowrap;
 }
 
 @media (max-width: 1601px) {
-	.bento-card__title {
-    
+  .bento-card__title {
     font-size: 36px !important;
-	    white-space: nowrap;
-}
-	
-}
-
-
-
-
-@media (max-width: 1367px) {
-    .bento-grid-section {
-        padding: 80px 0 !important;
-    }
+    white-space: nowrap;
+  }
 }
 
 .bento-card__title {
-    
-    font-size: 36px !important;
+  font-size: 36px !important;
 }
 
 .bento-card__content {
-      max-width: 100% !important;
+  max-width: 100% !important;
 }
 
-.bento-card--transfers,.bento-card--airtime, .bento-card--takaful, .bento-card--bill {
-
-    height: 580px !important;
+.bento-card--transfers,
+.bento-card--airtime,
+.bento-card--takaful,
+.bento-card--bill {
+  height: 580px !important;
 }
 
-@media (max-width: 768px) {
-	
-	.smarter-sec__top-logo img {
-	margin: auto;
-}
-	
-	
-	
-	
-.bento-card__title {
-    font-size: 30px !important;
-    white-space: break-spaces;
-}
-}
-
-
-/* Card becomes an <a> tag when a Link is set (bento_grid.php) — <a> is
-   inline by default, which ignores the width/height main.css sets on
-   .bento-card, so it needs an explicit block display here. */
 .bento-card {
   display: block;
   text-decoration: none;
 }
 
-/* Icon badge content (main.css sizes the circular .bento-card__icon badge
-   itself at a fixed 80x80px) — the icon graphic inside it had no sizing or
-   centering rules at all, so it fell back to each SVG's own native size,
-   landing off-center or overflowing the badge depending on the icon.
-   Sized as a % of the badge so it scales with it instead of a fixed px
-   value, and centered with flex regardless of the SVG's native size. */
 .bento-icon-wrapper,
 .bento-shape-wrapper {
   display: flex;
@@ -613,15 +1960,41 @@ header .logo {
   object-fit: contain;
 }
 
-/* "See More" button below the grid */
 .bento-grid-btn {
   margin-top: 40px;
 }
 
+@media (max-width: 1367px) {
+  .bento-grid-section {
+    padding: 80px 0 !important;
+  }
+}
 
-/* ==========================================
-   FAQ ACCORDION
-========================================== */
+@media (max-width: 768px) {
+  .bento-card__title {
+    font-size: 30px !important;
+    white-space: break-spaces;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .section_title_heading {
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 575px) {
+  .home_about_section {
+    height: auto !important;
+    padding: 25% 0 !important;
+  }
+}
+
+
+/* ==============================================================
+   SECTION: FAQ
+   ============================================================== */
+
 
 .aik-faq {
   background: #fff;
@@ -658,7 +2031,7 @@ header .logo {
 }
 
 .aik-faq__question {
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: var(--aik-green);
@@ -762,60 +2135,10 @@ header .logo {
 }
 
 
-/* ===================DEBIT CARD PAGE===================== */
+/* ==============================================================
+   SECTION: Payment Transaction
+   ============================================================== */
 
-/* Hero caption — own class, not reusing .mobile_track (that class
-   carries the phone-mockup's breakpoint width/position rules used
-   on index.html / business.html, which is what made this heading
-   jump around at different resolutions). Centered over .hero_img
-   with plain flex centering so it stays consistent at every size. */
-.debit-hero-caption {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  pointer-events: none;
-}
-
-.debit-hero-caption h1 {
-  color: #fff;
-  font-size: 5.5rem;
-  margin: 0;
-}
-
-.debit-hero-caption h1 span {
-  color: var(--aik-yellow);
-}
-
-@media (max-width: 991px) {
-  .debit-hero-caption h1 {
-    font-size: 2.75rem;
-  }
-}
-
-@media (max-width: 575px) {
-  .debit-hero-caption h1 {
-    font-size: 3rem;
-  }
-}
-
-.debit_custom_smarter-sec h2 {
-  color: var(--aik-green) !important;
-}
-.debit_custom_smarter-sec p{
-  color: #000 ;
-}
-
-
-/* Transaction Section */
-
-
-/* =========================
-   TRANSACTION SECTION FINAL
-========================= */
 
 .payment-transaction-sec {
   background-color: #002629;
@@ -825,7 +2148,6 @@ header .logo {
   overflow: hidden;
 }
 
-/* HEADER */
 .pt-header {
   max-width: 850px;
   margin: 0 auto 50px;
@@ -845,7 +2167,6 @@ header .logo {
   line-height: 1.7;
 }
 
-/* IMAGE CENTER */
 .pt-card_img {
   display: flex;
   justify-content: center;
@@ -858,7 +2179,6 @@ header .logo {
   width: 100%;
 }
 
-/* CTA BUTTONS */
 .pt-cta {
   margin-top: 40px;
   display: flex;
@@ -866,19 +2186,17 @@ header .logo {
   gap: 20px;
 }
 
-/* BUTTON BASE */
 .pt-btn {
   height: 52px;
   padding: 0 30px;
   border-radius: 50px;
   font-weight: 700;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   cursor: pointer;
   border: none;
   transition: all 0.3s ease;
 }
 
-/* YELLOW BUTTON */
 .pt-btn--primary {
   background: #F5CE1A;
   color: #002629;
@@ -888,7 +2206,6 @@ header .logo {
   background: #ddb800;
 }
 
-/* DARK BUTTON */
 .pt-btn--secondary {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
@@ -900,400 +2217,17 @@ header .logo {
 }
 
 
+/* ==============================================================
+   SECTION: Enterprise / Partner Deck (pe-)
+   ============================================================== */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ── Footer Shell ─────────────────────────────────────────── */
-footer.aik-footer {
-  background-color: var(--aik-green);
-  color: #fff;
-  float: left;
-  font-family: 'Outfit', sans-serif;
-  margin-top: 0;
-  width: 100%;
-}
-
-
-
-/* ════════════════════════════════════════════════════════════
-   NEWSLETTER STRIP
-   ════════════════════════════════════════════════════════════ */
-
-.aik-newsletter {
-  padding: 52px 0;
-}
-
-.aik-newsletter__wrap {
-  align-items: center;
-  display: flex;
-  gap: 40px;
-  justify-content: space-between;
-}
-
-@media (max-width: 991.98px) {
-  .aik-newsletter__wrap {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 28px;
-  }
-}
-
-/* Title */
-.aik-newsletter__text h2 {
-  color: #fff;
-  font-size: 3rem;
-  font-weight: 800;
-  line-height: 1.18;
-  margin: 0;
-}
-
-.aik-newsletter__text h2 span {
-  color: var(--aik-yellow);
-  display: block;
-}
-
-/* Form row */
-.aik-newsletter__form {
-  align-items: center;
-  display: flex;
-  flex-shrink: 0;
-  gap: 16px;
-}
-
-@media (max-width: 575.98px) {
-  .aik-newsletter__form {
-    flex-direction: column;
-    width: 100%;
-  }
-}
-
-/* Email input */
-.aik-newsletter__input {
-  background: #fff;
-  border: none;
-  border-radius: 50px;
-  color: #333;
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  height: 52px;
-  outline: none;
-  padding: 0 26px;
-  width: 290px;
-}
-
-.aik-newsletter__input::placeholder {
-  color: #b0b0b0;
-}
-
-@media (max-width: 575.98px) {
-  .aik-newsletter__input {
-    width: 100%;
-  }
-}
-
-/* Subscribe button */
-.aik-newsletter__btn {
-  align-items: center;
-  background-color: var(--aik-yellow);
-  border: none;
-  border-radius: 50px;
-  color: #065258;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  gap: 9px;
-  height: 52px;
-  padding: 0 45px;
-  transition: background-color 0.25s ease;
-  white-space: nowrap;
-}
-
-.aik-newsletter__btn:hover {
-  background-color: #ddb800;
-}
-
-@media (max-width: 575.98px) {
-  .aik-newsletter__btn {
-    justify-content: center;
-    width: 100%;
-  }
-}
-
-
-/* ════════════════════════════════════════════════════════════
-   HORIZONTAL RULE DIVIDER
-   ════════════════════════════════════════════════════════════ */
-
-.aik-footer__hr {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.50);
-  margin: 0;
-}
-
-
-/* ════════════════════════════════════════════════════════════
-   MAIN FOOTER BODY — 5-COLUMN GRID
-   ════════════════════════════════════════════════════════════ */
-
-.aik-footer__body {
-  padding: 56px 0 52px;
-}
-
-.aik-footer__grid {
-  display: grid;
-  gap: 40px;
-  /* gap: 100px; */
-/*   grid-template-columns: 2.2fr 1fr 1.3fr 1fr 1.5fr; */
-	grid-template-columns: 4.2fr 3fr 7.3fr 2fr;
-}
-
-@media (max-width: 1199.98px) {
-  .aik-footer__grid {
-    gap: 30px;
-    grid-template-columns: 1.8fr 1fr 1fr 1fr 1.4fr;
-  }
-}
-
-/* Tablet — 3-column, brand spans full row */
-@media (max-width: 991.98px) {
-  .aik-footer__grid {
-    gap: 36px 28px;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .aik-footer__col--brand {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 28px;
-    align-items: start;
-  }
-
-  .aik-footer__logo {
-    grid-row: 1 / 3;
-  }
-}
-
-/* Mobile — 2-column, brand & app span full */
-@media (max-width: 575.98px) {
-  .aik-footer__grid {
-    gap: 32px 16px;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .aik-footer__col--brand,
-  .aik-footer__col--app {
-    grid-column: 1 / -1;
-    display: block;
-  }
-}
-
-
-/* ── Column — Brand ───────────────────────────────────────── */
-
-.aik-footer__logo {
-  margin-bottom: 22px;
-}
-
-.aik-footer__logo img {
-  height: auto;
-  max-width: 170px;
-  width: 100%;
-}
-
-/* ── Column Heading ───────────────────────────────────────── */
-
-.aik-footer__heading {
-  color: var(--aik-yellow) !important;
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  margin-bottom: 20px;
-  margin-top: 0;
-}
-
-.aik-footer__heading--social {
-  margin-top: 28px;
-}
-
-/* ── About Description ────────────────────────────────────── */
-
-.aik-footer__desc {
-  color: rgba(255, 255, 255, 0.80);
-  font-size: 14px;
-  line-height: 1.75;
-  margin: 0;
-  max-width: 300px;
-}
-
-/* ── Nav Links ────────────────────────────────────────────── */
-
-.aik-footer__links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.aik-footer__links li {
-  margin-bottom: 13px;
-}
-
-.aik-footer__links li a {
-  color: rgba(255, 255, 255, 0.82);
-  display: inline-block;
-  font-size: 15px;
-  line-height: 1;
-  text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.aik-footer__links li a:hover {
-  color: var(--aik-yellow);
-  transform: translateX(5px);
-}
-
-/* ── App Store Badges ─────────────────────────────────────── */
-
-.aik-footer__badges {
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-  margin-bottom: 0;
-}
-
-.aik-footer__badge {
-  display: block;
-  transition: opacity 0.2s ease;
-}
-
-.aik-footer__badge:hover {
-  opacity: 0.85;
-}
-
-.aik-footer__badge img {
-  display: block;
-  height: auto;
-  max-width: 162px;
-  width: 100%;
-}
-
-
-
-/* ── Social Icons ─────────────────────────────────────────── */
-
-.aik-footer__social {
-  display: flex;
-  gap: 12px;
-}
-
-.aik-footer__social i {
-  color: #065258;
-}
-
-.aik-footer__social-btn {
-  align-items: center;
-  background-color: rgba(255, 255, 255);
-  border-radius: 50%;
-  color: #fff !important;
-  display: inline-flex;
-  font-size: 15px;
-  height: 30px;
-  justify-content: center;
-  text-decoration: none !important;
-  transition: background-color 0.25s ease, color 0.25s ease;
-  width: 30px;
-}
-
-.aik-footer__social-btn:hover {
-  background-color: var(--aik-yellow);
-  color: #1a1a1a !important;
-}
-
-
-/* ════════════════════════════════════════════════════════════
-   BOTTOM BAR
-   ════════════════════════════════════════════════════════════ */
-
-.aik-footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 20px 0;
-}
-
-.aik-footer__bottom-inner {
-  align-items: center;
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-}
-
-@media (max-width: 767.98px) {
-  .aik-footer__bottom-inner {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
-}
-
-/* Copyright text */
-.aik-footer__copy {
-  color: rgba(255, 255, 255, 0.70);
-  font-size: 13px;
-  margin: 0;
-}
-
-.aik-footer__copy>span {
-  color: var(--aik-yellow);
-  font-weight: 600;
-}
-
-/* Legal links */
-.aik-footer__legal {
-  align-items: center;
-  display: flex;
-  gap: 14px;
-}
-
-.aik-footer__legal a {
-  color: rgba(255, 255, 255, 0.70);
-  font-size: 13px;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.aik-footer__legal a:hover {
-  color: var(--aik-yellow);
-}
-
-.aik-footer__pipe {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 13px;
-}
-
-
-/* ============================================================
-   PAYMENT EXPERIENCE SECTION
-   ============================================================ */
 
 .pe-section {
   padding: 90px 0 110px;
   background: #fff;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
-/* ── Header ─────────────────────────────────────────────────── */
 .pe-header {
   text-align: center;
   margin-bottom: 52px;
@@ -1312,7 +2246,6 @@ footer.aik-footer {
   max-width: 1080px;
 }
 
-/* ── Deck container ─────────────────────────────────────────── */
 .pe-deck {
   display: flex;
   height: 620px;
@@ -1320,25 +2253,17 @@ footer.aik-footer {
   overflow: hidden;
 }
 
-/* ── Individual card ────────────────────────────────────────── */
-
-/* pointer-events  */
-/* pointer-events: pointer-events: none; means "ignore clicks on this element". */
-/* 1. Kill the card-level click trap on the active card */
 .pe-card--active {
   pointer-events: none;
 }
 
-/* 2. Restore clicks for everything inside the expanded content panel */
 .pe-card--active .pe-card__expanded {
   pointer-events: auto;
 }
 
-/* 3. Restore clicks for the − toggle button */
 .pe-card--active .pe-card__toggle {
   pointer-events: auto;
 }
-
 
 .pe-card {
   position: relative;
@@ -1357,7 +2282,6 @@ footer.aik-footer {
   /* right corners only — no gap with adjacent card */
 }
 
-/* odd cards = green, even cards = yellow */
 .pe-card:nth-child(odd) {
   background: #065258;
 }
@@ -1366,7 +2290,6 @@ footer.aik-footer {
   background: #F5CE1A;
 }
 
-/* ── Expanded content ───────────────────────────────────────── */
 .pe-card__expanded {
   position: absolute;
   inset: 0;
@@ -1382,7 +2305,6 @@ footer.aik-footer {
   justify-content: center;
 }
 
-/* odd (green) card defaults */
 .pe-card__heading {
   font-size: 3.8rem;
   font-weight: 800;
@@ -1395,7 +2317,6 @@ footer.aik-footer {
   font-size: 0.756rem;
   /* font-size: calc(0.8rem + 0.5vw); */
   color: rgba(255, 255, 255, 0.82);
-
   margin: 0 0 28px;
   flex: 1;
   overflow: hidden;
@@ -1412,7 +2333,7 @@ footer.aik-footer {
   padding: 10px 26px;
   background: #F5CE1A;
   color: #065258;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 700;
   font-size: 0.875rem;
   border-radius: 50px;
@@ -1444,7 +2365,6 @@ footer.aik-footer {
   pointer-events: none;
 }
 
-/* even (yellow) card — invert expanded colours */
 .pe-card:nth-child(even) .pe-card__heading {
   color: #065258;
 }
@@ -1463,7 +2383,6 @@ footer.aik-footer {
   color: #fff;
 }
 
-/* ── Collapsed label ────────────────────────────────────────── */
 .pe-card__collapsed {
   position: absolute;
   inset: 0;
@@ -1485,7 +2404,6 @@ footer.aik-footer {
   user-select: none;
 }
 
-/* label colour follows card background */
 .pe-card:nth-child(odd) .pe-card__label {
   color: #F5CE1A;
 }
@@ -1494,7 +2412,6 @@ footer.aik-footer {
   color: #065258;
 }
 
-/* ── Toggle button (+ / −) ──────────────────────────────────── */
 .pe-card__toggle {
   position: absolute;
   bottom: 22px;
@@ -1513,20 +2430,17 @@ footer.aik-footer {
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
-/* collapsed card: center horizontally inside narrow column */
 .pe-card--inactive .pe-card__toggle {
   right: auto;
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* odd (green) card → yellow button, black icon */
 .pe-card:nth-child(odd) .pe-card__toggle {
   background: #F5CE1A;
   color: #000;
 }
 
-/* even (yellow) card → green button, white icon */
 .pe-card:nth-child(even) .pe-card__toggle {
   background: #065258;
   color: #fff;
@@ -1544,7 +2458,6 @@ footer.aik-footer {
   transform: translateX(-50%) scale(1.1);
 }
 
-/* ── 1199px ─────────────────────────────────────────────────── */
 @media (max-width: 1199px) {
   .pe-deck {
     height: 440px;
@@ -1555,7 +2468,6 @@ footer.aik-footer {
   }
 }
 
-/* ── Mobile: vertical accordion (≤ 991px) ──────────────────── */
 @media (max-width: 991px) {
   .pe-section {
     padding: 60px 0 72px;
@@ -1567,7 +2479,6 @@ footer.aik-footer {
     border-radius: 14px;
   }
 
-  /* GSAP will set exact px; these are CSS fallbacks */
   .pe-card--inactive {
     height: 60px;
     border-radius: 0 0 8px 8px;
@@ -1579,7 +2490,6 @@ footer.aik-footer {
     border-radius: 0;
   }
 
-  /* collapsed label: horizontal, left-aligned */
   .pe-card__collapsed {
     flex-direction: row;
     /* override: horizontal strip on mobile */
@@ -1594,7 +2504,6 @@ footer.aik-footer {
     font-size: 1rem;
   }
 
-  /* toggle on collapsed: right side, vertically centred */
   .pe-card--inactive .pe-card__toggle {
     right: 16px;
     left: auto;
@@ -1607,7 +2516,6 @@ footer.aik-footer {
     transform: translateY(-50%) scale(1.1);
   }
 
-  /* toggle on active: bottom-right */
   .pe-card--active .pe-card__toggle {
     right: 20px;
     bottom: 20px;
@@ -1620,7 +2528,6 @@ footer.aik-footer {
     transform: scale(1.1);
   }
 
-  /* hide phone on mobile — give text full width */
   .pe-card__visual {
     display: none;
   }
@@ -1642,14 +2549,15 @@ footer.aik-footer {
 }
 
 
-/* ============================================================
-   TRUSTED PARTNERS MARQUEE
-   ============================================================ */
+/* ==============================================================
+   SECTION: Partners Marquee
+   ============================================================== */
+
 
 .partners-section {
   background: #FAFAFA;
   padding: 68px 0 76px;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 .partners-title {
@@ -1665,16 +2573,14 @@ footer.aik-footer {
   color: #F5CE1A;
 }
 
-/* ── marquee strip ──────────────────────────────────────────── */
 .partners-marquee {
   position: relative;
   overflow: hidden;
 }
 
-/* soft fade at edges */
 .partners-marquee::before,
 .partners-marquee::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -1700,11 +2606,9 @@ footer.aik-footer {
   padding: 10px 45px;
   width: max-content;
   will-change: transform;
-
 }
 
 .partner-logo {
-
   width: auto;
   /* max-width: 170px; */
   object-fit: contain;
@@ -1713,10 +2617,6 @@ footer.aik-footer {
   transition: filter 0.35s ease;
   cursor: default;
 }
-
-/* .partner-logo:hover {
-  filter: grayscale(0%) opacity(1);
-} */
 
 @media (max-width: 767px) {
   .partners-section {
@@ -1742,9 +2642,11 @@ footer.aik-footer {
   }
 }
 
-/* ============================================================
-  OUR CULTURE SECTION
-   ============================================================ */
+
+/* ==============================================================
+   SECTION: Our Culture
+   ============================================================== */
+
 
 .our-culture {
   padding: 90px 0 110px;
@@ -1756,14 +2658,12 @@ footer.aik-footer {
   justify-content: center;
 }
 
-
 .oc-header {
   font-size: clamp(3.125rem, 4vw, 3.75rem);
   font-weight: 600;
   color: #065258;
   line-height: 1.2;
 }
-
 
 .our-culture__gap {
   gap: 30px;
@@ -1772,17 +2672,44 @@ footer.aik-footer {
 .img-culture img {
   width: 100%;
   margin-bottom: 25px;
-
 }
 
 
-/* ============================================================
-  MEDIA & NEWS SECTION
-   ============================================================ */
+/* ==============================================================
+   SECTION: Media News (home block)
+   ============================================================== */
+
+
+.news-single .read-btn {
+  bottom: 5px;
+  padding: 0;
+  position: absolute;
+}
+
+.news-single-content {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(13px) saturate(1.5);
+  border: 1px solid hsla(0, 0%, 100%, .2);
+  border-radius: 20px;
+  bottom: 12px;
+  color: #fff;
+  height: 45%;
+  left: 50%;
+  padding: 12px 20px;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 95%;
+}
+
+.md-news {
+  position: relative;
+  z-index: 1;
+}
+
 .md-news-section {
   padding: 90px 0 110px;
   background: #fff;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 .md-news-header {
@@ -1797,6 +2724,7 @@ footer.aik-footer {
   line-height: 1.2;
   margin-bottom: 18px;
 }
+
 .md-news-title span {
   color: var(--aik-yellow);
 }
@@ -1806,18 +2734,6 @@ footer.aik-footer {
   max-width: 1080px;
 }
 
-/* Md-News Cards */
-
-/* =========================
-   MEDIA / NEWS BLUR CARDS
-========================= */
-
-/* .md-news {
-  padding: 100px 0;
-  background: #fff;
-} */
-
-/* CARD */
 .md-news__card {
   position: relative;
   border-radius: 20px;
@@ -1825,7 +2741,6 @@ footer.aik-footer {
   height: 330px;
 }
 
-/* IMAGE BLUR */
 .md-news__card img {
   width: 100%;
   height: 100%;
@@ -1834,47 +2749,36 @@ footer.aik-footer {
   transform: scale(1.1);
 }
 
-/* DARK OVERLAY */
 .md-news__overlay {
   position: absolute;
   inset: 0;
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 32px;
-  background: linear-gradient(to top,
-      rgba(0, 0, 0, 0.75),
-      rgba(0, 0, 0, 0.2),
-      transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2), transparent);
 }
 
-/* DATE */
 .md-news__date {
   display: flex;
   align-items: center;
   gap: 8px;
-
   font-size: 0.9375rem;
   /* 15px */
   font-weight: 400;
   color: #fff;
-
   margin-bottom: 10px;
 }
 
-/* TITLE */
 .md-news__title {
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 700;
   font-size: 1.5625rem;
   /* 25px */
   color: #fff;
-
   margin-bottom: 15px;
 }
 
-/* CTA */
 .md-news__link {
   color: #fff;
   font-size: 0.9rem;
@@ -1887,7 +2791,6 @@ footer.aik-footer {
   text-decoration: underline;
 }
 
-/* BUTTON (given class) */
 .md-news__btn {
   align-items: center;
   background-color: var(--aik-yellow);
@@ -1896,7 +2799,7 @@ footer.aik-footer {
   color: #065258;
   cursor: pointer;
   display: inline-flex;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 15px;
   font-weight: 600;
   gap: 9px;
@@ -1910,148 +2813,6 @@ footer.aik-footer {
   background-color: #ddb800;
 }
 
-/* RESPONSIVE */
-@media (max-width: 767px) {
-  .md-news__card {
-    height: 350px;
-  }
-
-  .md-news__title {
-    font-size: 1.3rem;
-  }
-}
-
-/* ==========================================
-   ORDER STEPS (debit-card.html "How to Order")
-   New class on top of .news-single-content so
-   other pages using that class stay untouched
-========================================== */
-
-.order-steps .step-info {
-  height: auto;
-  min-height: unset;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 14px;
-  padding: 18px 12px;
-  /* main.css's base .news-single-content background (a translucent white
-     glass tint) reads as darker or lighter card-to-card only by accident,
-     depending on how bright the photo behind it happens to be — not a
-     deliberate alternation. Setting an explicit dark/"light dark" pair
-     here, tied to the same odd/even --green modifier as the badge/text
-     colors, makes cards 1&3 vs 2&4 consistently alternate regardless of
-     the background image. step-info__num is untouched either way. */
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(20px) saturate(1.5);
-  -webkit-backdrop-filter: blur(10px) saturate(1.5);
-  height: 120px;
-  width: 400px;
-}
-
-@media (max-width: 1600px) {
-  .order-steps .step-info {
-    width: 325px;
-  }
-}
-
-@media (max-width: 1450px) {
-  .order-steps .step-info {
-    height: 150px;
-    width: 270px;
-  }
-}
-
-.order-steps .step-info--green {
-  background: hsla(0, 0%, 100%, 0.009);
-}
-
-.order-steps .step-info__num {
-    flex: 0 0 auto;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--aik-yellow);
-    color: #065258;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 35px;
-    border-radius: 50%;
-    font-weight: 700;
-
-}
-
-.order-steps .step-info__body {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.order-steps .step-info__title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--aik-yellow);
-  margin: 0 0 4px;
-  -webkit-line-clamp: unset;
-  line-clamp: unset;
-}
-
-.order-steps .step-info__desc {
-  font-size: 13px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
-  /* main.css clamps every <p> inside .news-single-content to 2 lines with
-     an ellipsis (meant for short news-card teasers) — this <p> shares
-     that class via .step-info, so a longer step description was getting
-     cut off mid-sentence. Same unset already used on .step-info__title
-     below. */
-  -webkit-line-clamp: unset;
-  line-clamp: unset;
-}
-
-@media (max-width: 767px) {
-  .order-steps .step-info {
-    padding: 14px 18px;
-    gap: 10px;
-    width: 350px;
-    
-  }
-
-  .order-steps .step-info__title {
-    font-size: 16px;
-  }
-}
-
-.order-steps .step-info--green .step-info__num {
-  background: var(--aik-green);
-  color: var(--aik-yellow);
-}
-
-.step-info--green .step-info__num p{
-  color: var(--aik-green) !important;
-}
-
-.order-steps .step-info--green .step-info__title {
-  color: var(--aik-green);
-}
-
-.order-steps .step-info--green .step-info__desc {
-  color: var(--aik-green);
-}
-
-/* "Title/Description Text Color: White" option (steps block) — overrides
-   the default alternating yellow/green title color with plain white for
-   every card, regardless of --green. step-info__num (the numbered badge)
-   is untouched, so it keeps alternating yellow/green either way. */
-.order-steps .step-info--white-text .step-info__title,
-.order-steps .step-info--white-text .step-info__desc {
-  color: #fff !important;
-}
-
-/* Keep decorative grid graphics behind the card content on this section */
 .md-news-section .container {
   position: relative;
   z-index: 2;
@@ -2062,10 +2823,6 @@ footer.aik-footer {
   z-index: 0;
 }
 
-/* Our Media News swiper — nav buttons use their own class rather than
-   Swiper's default .swiper-button-prev/-next, so nothing here touches
-   Swiper's own classes (keeps this scoped to just this carousel instance,
-   not every .swiper on the page). */
 .md-news-swiper-wrap {
   position: relative;
   padding: 0 50px;
@@ -2094,10 +2851,6 @@ footer.aik-footer {
   background-color: #053f44;
 }
 
-/* Swiper adds this class to nextEl/prevEl when there's nothing left to page
-   to (e.g. all posts already fit on screen at once) — hidden rather than
-   dimmed, since a half-transparent button that does nothing when clicked
-   reads as broken. */
 .md-news-swiper__nav.swiper-button-disabled {
   display: none;
 }
@@ -2108,6 +2861,22 @@ footer.aik-footer {
 
 .md-news-swiper__nav--next {
   right: 0;
+}
+
+@media (max-width: 767.98px) {
+  .md-news-title {
+    font-size: 9vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .md-news__card {
+    height: 350px;
+  }
+
+  .md-news__title {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 575px) {
@@ -2122,12 +2891,11 @@ footer.aik-footer {
   }
 }
 
-/* ==========================================
-   MEDIA NEWS ARCHIVE (archive.php / home.php)
-   Cards reuse the homepage's .news-single dark
-   glass-overlay style (main.css) — this block
-   only supplies the grid layout + pagination.
-========================================== */
+
+/* ==============================================================
+   SECTION: News Archive Page
+   ============================================================== */
+
 
 .news-archive-section {
   padding: 80px 0 100px;
@@ -2192,27 +2960,10 @@ footer.aik-footer {
 }
 
 
+/* ==============================================================
+   SECTION: Customer Feedback / Testimonials
+   ============================================================== */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================
-   CUSTOMER FEEDBACK FINAL
-========================= */
 
 .cf-section {
   padding: 100px 0;
@@ -2227,7 +2978,6 @@ footer.aik-footer {
   -webkit-background-clip: text;
   background-clip: text;
   background-color: #065258;
-
 }
 
 .cf-section h2 span {
@@ -2243,19 +2993,14 @@ footer.aik-footer {
   overflow: hidden;
   margin-top: 60px;
   position: relative;
-
 }
 
-/* TRACK CENTER ALIGN */
 .cf-track {
   display: flex;
   justify-content: center;
   gap: 30px;
 }
 
-/* ========================================
-       SWIPER WRAPPER
-    ======================================== */
 .cf-wrapper {
   padding: 20px 0 50px;
 }
@@ -2265,9 +3010,6 @@ footer.aik-footer {
   overflow: hidden;
 }
 
-/* ========================================
-       TESTIMONIAL CARD
-    ======================================== */
 .cf-card {
   background: rgb(6, 82, 88, 0.04);
   backdrop-filter: blur(6px);
@@ -2283,13 +3025,11 @@ footer.aik-footer {
   height: 320px;
 }
 
-
 .cf-card:hover {
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
   transform: translateY(-4px);
 }
 
-/* ---- Card Top: Name + Stars ---- */
 .cf-top {
   display: flex;
   justify-content: space-between;
@@ -2320,7 +3060,6 @@ footer.aik-footer {
   flex-shrink: 0;
 }
 
-/* ---- Card Title ---- */
 .cf-card h4 {
   font-size: 15px;
   font-weight: 700;
@@ -2329,16 +3068,12 @@ footer.aik-footer {
   line-height: 1.4;
 }
 
-/* ---- Card Body Text ---- */
 .cf-card p {
   font-size: 13.5px;
   color: #010101;
   line-height: 1.75;
 }
 
-/* ========================================
-       SWIPER DOTS / PAGINATION
-    ======================================== */
 .swiper-pagination {
   margin-top: 40px !important;
   position: relative !important;
@@ -2354,7 +3089,6 @@ footer.aik-footer {
   background: #065258 !important;
   /* Inactive dot color */
   opacity: 0.8 !important;
-
   transition: all 0.3s ease;
   cursor: pointer;
 }
@@ -2362,14 +3096,10 @@ footer.aik-footer {
 .cf-wrapper .swiper-pagination-bullet-active {
   background: #F5CE1A !important;
   opacity: 0.8 !important;
-
   width: 12px;
   height: 12px;
 }
 
-/* ========================================
-       RESPONSIVE
-    ======================================== */
 @media (max-width: 992px) {
   .cf-header h2 {
     font-size: 26px;
@@ -2377,15 +3107,6 @@ footer.aik-footer {
 }
 
 @media (max-width: 768px) {
-
-  .aik-footer__heading {
-    padding: 18px 0;
-  }
-
-  .aik-footer__copy>span {
-    color: #fff;
-  }
-  
   .cf-section {
     padding: 60px 0;
   }
@@ -2403,16 +3124,16 @@ footer.aik-footer {
   }
 }
 
-/* =========================================
-   THE MOBILE APP SECTION
-   ========================================= */
 
-/* Section — just outer vertical spacing, no background */
+/* ==============================================================
+   SECTION: Mobile App Section
+   ============================================================== */
+
+
 .mob-app__section {
   padding: 60px 0;
 }
 
-/* Rounded card — holds background, clips vector */
 .mob-app__card {
   background-color: #065258;
   border-radius: 53.08px;
@@ -2421,7 +3142,6 @@ footer.aik-footer {
   padding-top: 60px;
 }
 
-/* Right-side decorative vector */
 .mob-app__vector {
   position: absolute;
   top: 0;
@@ -2436,13 +3156,11 @@ footer.aik-footer {
   display: block;
 }
 
-/* Inner row — Bootstrap handles flex/columns, we just layer above vector */
 .mob-app__inner {
   position: relative;
   z-index: 2;
 }
 
-/* Phone image */
 .mob-app__img-wrap {
   display: flex;
   align-items: flex-end;
@@ -2454,7 +3172,6 @@ footer.aik-footer {
   max-width: 100%;
 }
 
-/* Content block */
 .mob-app__content {
   padding-bottom: 60px;
 }
@@ -2469,12 +3186,9 @@ footer.aik-footer {
 }
 
 .mob-app__heading span {
-
   color: #056B73;
-
 }
 
-/* App store badges */
 .mob-app__badges {
   display: flex;
   align-items: center;
@@ -2509,7 +3223,6 @@ footer.aik-footer {
   flex-shrink: 0;
 }
 
-/* Colored Google Play icon using brand gradient */
 .mob-app__badge--gplay .mob-app__badge-icon i {
   background: linear-gradient(135deg, #4285F4 0%, #34A853 35%, #FBBC04 65%, #EA4335 100%);
   -webkit-background-clip: text;
@@ -2558,9 +3271,6 @@ footer.aik-footer {
   opacity: 0.85;
 }
 
-/* ---- Responsive ---- */
-
-/* Tablet — Bootstrap stacks cols to 12 below lg (992px) */
 @media (max-width: 991px) {
   .mob-app__content {
     padding-bottom: 0;
@@ -2581,7 +3291,6 @@ footer.aik-footer {
   }
 }
 
-/* Mobile landscape / large phone */
 @media (max-width: 767px) {
   .mob-app__section {
     padding: 30px 0;
@@ -2599,7 +3308,6 @@ footer.aik-footer {
   }
 }
 
-/* Mobile portrait */
 @media (max-width: 575px) {
   .mob-app__section {
     padding: 20px 0;
@@ -2631,385 +3339,10 @@ footer.aik-footer {
 }
 
 
-/* ==========================================
-   SMARTER SECTION
-========================================== */
-.debit_custom_why-choose-sec{
-   min-height: auto !important;
-   
-}
+/* ==============================================================
+   SECTION: Help Section
+   ============================================================== */
 
-.smarter-sec {
-  position: relative;
-  overflow: hidden;
-  /* padding: 100px 0; */
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-
-
-.smarter-sec__right img,
-.smarter-sec__right video {
-  width: 100%;
-}
-
-/* Full-Width Video section — deliberately no .container, so the video
-   spans edge-to-edge at the section's full width. */
-.full-width-video-sec {
-  width: 100%;
-  line-height: 0;
-}
-
-.full-width-video-sec video {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.smarter-sec__bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-}
-
-.smarter-sec__bg img {
-  width: 100%;
-  height: 100%;
-}
-
-.smarter-sec__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
-.smarter-sec__left {
-  flex: 0 0 auto;
-  max-width: 650px;
-/* 	previously it was 550px */
-}
-
-/* Optional Top Logo/Image (e.g. aik Tijarat logo) shown above the heading */
-.smarter-sec__top-logo {
-  margin: 0 0 20px;
-}
-
-.smarter-sec__top-logo img {
-  display: block;
-  max-width: 220px;
-  height: auto;
-}
-
-.smarter-sec__heading {
-  font-size: 4rem;
-  font-weight: 800;
-  color: #fff;
-  line-height: 1.1;
-  margin: 0 0 24px;
-}
-
-.smarter-sec__heading span {
-  color: var(--aik-yellow);
-}
-
-.smarter-sec__desc {
-  font-size: 18px;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
-  margin: 0 0 40px;
-  max-width: 500px;
-}
-
-.debit_custom_smarter-sec .smarter-sec__desc {
-
-    max-width: 600px !important;
-}
-.debit_custom_smarter-sec .smarter-sec__left{
-     max-width: 720px !important;
-}
-
-/* AGHAAZ AND DEBIT CARD */
-.debit_custom_why-choose-sec .smarter-sec__left {
-	 max-width: 570px !important;
-}
-
-.debit_custom_why-choose-sec .smarter-sec__desc {
-	max-width:530px !important;
-}	
-
-
-
-.deen-sec .smarter-sec__left {
-  max-width: 665px !important;
-}
-
-
-.smarter-sec__desc li{
-  margin-bottom: 10px;
-}
-
-.smarter-sec__desc li::marker {
-  color: var(--aik-yellow); /* Sirf bullets red hon gi */
-  font-size: 1.2rem; /* Bullets ka size bhi bara kar sakte hain */
-}
-
-
-.smarter-sec__desc li span{
-color: var(--aik-yellow);
-font-weight: 700;
-font-size: 17px;
-}
-
-.smarter-sec__desc span {
-  color: var(--aik-yellow);
-  font-weight: 700;
-font-variation-settings: "wght" 700;
-}
-
-/* Background Style "None" (plain white section) — auto-applied by the
-   template when that's selected. The base heading/desc/list colors above
-   are white for the dark textured background used everywhere else, which
-   is invisible on white; the yellow accent spans (heading **word** spans
-   and list item-heading spans) stay yellow since that already reads fine
-   on white (e.g. Tijarat's "Merchant App" heading). */
-.smarter-sec--on-white .smarter-sec__heading {
-  color: var(--aik-green);
-}
-
-.smarter-sec--on-white .smarter-sec__desc,
-.smarter-sec--on-white .smarter-sec__desc li {
-  color: #333;
-}
-
-.smarter-sec--on-white .smarter-sec__desc,
-.smarter-sec--on-white .smarter-sec__desc li span,
-.smarter-sec--on-white .smarter-sec__desc span {
-  color: #000;
-}
-
-.smarter-sec--on-white .smarter-sec__desc li::marker {
-    color: #000;
-    font-size: 1.2rem;
-}
-
-/* Icon Grid Items — optional row of icon + label items below the
-   Description/Bullet List (e.g. Deen page's Azaan Alerts / Qibla Direction
-   row). Fixed 5-column grid so a partial last row stays left-aligned
-   instead of being centered/stretched, matching the reference design. */
-.smarter-sec__icons {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 28px 20px;
-  margin: 0 0 40px;
-}
-
-.smarter-sec__icon-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-}
-
-.smarter-sec__icon-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  background: #fff;
-}
-
-.smarter-sec__icon-img {
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-}
-
-.smarter-sec__icon-label {
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.3;
-  color: #fff;
-}
-
-.smarter-sec--on-white .smarter-sec__icon-label {
-  color: #333;
-}
-
-@media (max-width: 991px) {
-  .smarter-sec__icons {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 575px) {
-  .smarter-sec__icons {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px 14px;
-  }
-
-  .smarter-sec__icon-box {
-    width: 52px;
-    height: 52px;
-    border-radius: 12px;
-  }
-
-  .smarter-sec__icon-img {
-    width: 24px;
-    height: 24px;
-  }
-
-  .smarter-sec__icon-label {
-    font-size: 11.5px;
-  }
-}
-
-
-.smarter-sec__btns {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-/* Glass effect – overrides btn_fill defaults */
-.smarter-sec__btn {
-  /* Was a white-tinted glass (rgba(255,255,255,.1)) — reads fine on the
-     dark teal top of a gradient bg, but on a lighter background (e.g.
-     the yellow-green bottom of Spend Smarter's gradient) it's nearly
-     invisible, just a faint outline. A dark tint instead stays visibly
-     darker than the bg at every point in the gradient. */
-  background-color: rgba(0, 0, 0, 0.32) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  color: #fff !important;
-  font-size: 1rem !important;
-  /* main.css hard-codes .btn_fill to width:194px, which only ever
-     coincidentally worked: the arrow (::after) is position:absolute;
-     right:-2px, so it's NOT a flex sibling of the label text at all —
-     it just floats on top of the button's rightmost ~50px, entirely
-     outside the gap:20px flex spacing. main.css's own padding is only
-     10px 20px 10px 0, so nothing ever reserved room for that circle;
-     a short label inside the old fixed 194px box happened to leave
-     enough empty space to clear it, but a longer label (or width:auto
-     with the old padding) runs text straight under the circle. Auto
-     width + enough right padding to clear the circle (52px wide) plus a
-     visual gap fixes both short and long labels the same way. */
-  width: auto !important;
-  padding: 14px 70px 14px 30px !important;
-  white-space: nowrap !important;
-}
-
-.smarter-sec__btn:after {
-  color: var(--primary_color) !important;
-}
-
-/* Solid button variant — add "solid-btn-sec" to the Smarter Section's
-   Extra CSS Class field for sections with Background Style "None"/plain
-   white. The default glass effect above (10% white fill) is meant for the
-   dark textured smarter_bg.png overlay and is invisible on a white
-   background, leaving only the round arrow icon visible. */
-.solid-btn-sec .smarter-sec__btn {
-  background-color: var(--primary_color) !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: 1px solid transparent !important;
-  color: #fff !important;
-}
-
-.smarter-sec__right {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.smarter-sec__right img,
-.smarter-sec__right video {
-  display: block;
-
-}
-
-/* ==========================================
-   WHY CHOOSE THE AIK CARD (debit-card.html)
-   New class so it only affects this section
-   and doesn't touch other .smarter-sec usages
-========================================== */
-
-.why-choose-sec {
-  align-items: flex-end;
-}
-
-.why-choose-sec .smarter-sec__inner {
-  padding-bottom: 0;
-}
-
-.why-choose-sec .smarter-sec__right {
-  align-items: flex-end;
-}
-
-.why-choose-sec .smarter-sec__right img {
-  display: block;
-  margin-bottom: 0;
-}
-
-/* ==========================================
-   AIK CONNECT SECTION (connect.html)
-   Force equal 50/50 column split
-========================================== */
-
-.connect-sec-custom {
-  align-items: center
-}
-
-.connect-sec-custom .container {
-  height: 100%;
-}
-
-.connect-sec-custom .smarter-sec__inner {
-  align-items: stretch;
-  height: 100%;
-}
-
-.connect-sec-custom .smarter-sec__left {
-  flex: 1;
-  max-width: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 70px 0;
-}
-
-.connect-sec-custom .smarter-sec__desc {
-  max-width: none;
-}
-
-.connect-sec-custom .smarter-sec__right {
-  flex: 1;
-  align-items: flex-end;
-}
-
-/* ==========================================
-   WE'RE HERE TO HELP (help_section block)
-   Standalone component, deliberately NOT built on .smarter-sec — that
-   block already juggles heading/description/list/icon-grid/media/button
-   variants and is crowded enough; this repeating info-card layout gets
-   its own namespace instead of becoming a 5th variant on top of it.
-   No hero sits above this section when placed first on a page, so it
-   carries its own top spacing instead of relying on a preceding
-   hero_wrapper.
-========================================== */
 
 .help-sec {
   position: relative;
@@ -3124,15 +3457,11 @@ font-variation-settings: "wght" 700;
   }
 }
 
-/* ==========================================
-   EXPLORE OUR FEATURE SUITE (feature_suite block)
-   Standalone component (own .feature-suite-* namespace, same reasoning
-   as .help-sec) — an autoplaying content/image slider. Each slide's
-   content/image side is swapped with the "feature-suite-slide--reverse"
-   modifier class, which just flips flex-direction — the DOM order of
-   content vs. media stays identical for both variants, so the template
-   never needs to reorder markup, only add/omit one class.
-========================================== */
+
+/* ==============================================================
+   SECTION: Feature Suite Slider
+   ============================================================== */
+
 
 .feature-suite-sec {
   position: relative;
@@ -3178,20 +3507,6 @@ font-variation-settings: "wght" 700;
   overflow: hidden;
 }
 
-/* Cross-slide vertical centering — two main.css defaults fight this and
-   both have to be overridden together:
-   1) .swiper-wrapper{align-items:flex-start} — without stretch, a shorter
-      slide just sits pinned to the top of the wrapper (which is already
-      as tall as the tallest slide) instead of filling it.
-   2) .swiper-slide{height:100%} — align-items:stretch alone still isn't
-      enough: stretch only ever engages when an item's height computes to
-      the literal keyword auto. main.css's 100% is a *value*, not auto —
-      and since nothing definite is up the ancestor chain for it to
-      resolve against, it silently falls back to content-sizing instead
-      of stretching, with no visible sign anything is "wrong" in devtools.
-   Both overridden together, .feature-suite-slide's existing height:100%
-   then has a real stretched box to fill, and align-items:center on it
-   centers correctly regardless of which slide is shorter. */
 .feature-suite-swiper .swiper-wrapper {
   align-items: stretch;
 }
@@ -3240,7 +3555,7 @@ font-variation-settings: "wght" 700;
 .feature-suite-slide__tagline {
   color: var(--aik-yellow);
   font-weight: 700;
-  font-size: 1.0625rem;
+  font-size: 1.5rem;
   margin: 0 0 16px;
   font-variation-settings: "wght" 700;
 }
@@ -3270,7 +3585,7 @@ font-variation-settings: "wght" 700;
 .feature-suite-slide__list li span {
   color: var(--aik-yellow);
   font-weight: 700;
-    font-variation-settings: "wght" 700;
+  font-variation-settings: "wght" 700;
 }
 
 .feature-suite-slide__media {
@@ -3289,13 +3604,6 @@ font-variation-settings: "wght" 700;
   max-width: 82%;
   height: auto;
   margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-	.feature-suite-slide {
-
-    height: auto;
-	}
 }
 
 .feature-suite-swiper__pagination {
@@ -3320,11 +3628,6 @@ font-variation-settings: "wght" 700;
   opacity: 1 !important;
 }
 
-/* "White" Background Style — swaps the dark-green defaults (white
-   heading/title, yellow tagline, light desc/list text) for green/dark
-   equivalents so the section reads correctly on a plain white
-   background. Highlighted **words** (heading/title spans) stay yellow
-   either way — same convention as .smarter-sec--on-white. */
 .feature-suite-sec--white {
   background-color: #fff;
   color: #333;
@@ -3374,6 +3677,16 @@ font-variation-settings: "wght" 700;
   }
 }
 
+@media (max-width: 768px) {
+  .feature-suite-slide {
+    height: auto;
+  }
+
+  .feature-suite-swiper .swiper-wrapper {
+    align-items: flex-start;
+  }
+}
+
 @media (max-width: 575px) {
   .feature-suite-sec {
     padding: 60px 0;
@@ -3388,12 +3701,11 @@ font-variation-settings: "wght" 700;
   }
 }
 
-/* ==========================================
-   EXPLORE AIK BEFORE YOU SIGN UP (explore_guest block)
-   Standalone component (own .explore-sec* namespace, same reasoning as
-   .help-sec/.feature-suite-sec) — deliberately not a Smarter Section
-   variant.
-========================================== */
+
+/* ==============================================================
+   SECTION: Explore Section
+   ============================================================== */
+
 
 .explore-sec {
   position: relative;
@@ -3463,7 +3775,6 @@ font-variation-settings: "wght" 700;
   white-space: nowrap !important;
 }
 
-/* Closing Blocks repeater — spacing when more than one block is added */
 .explore-sec__closing + .explore-sec__closing {
   margin-top: 28px;
 }
@@ -3477,7 +3788,7 @@ font-variation-settings: "wght" 700;
 .explore-sec__right img {
   display: block;
   width: 100%;
-/*   max-width: 500px; */
+  /*   max-width: 500px; */
   height: auto;
 }
 
@@ -3507,142 +3818,12 @@ font-variation-settings: "wght" 700;
   }
 }
 
-/* ==========================================
-   DRIVEN INNOVATION SECTION
-========================================== */
 
-.driven-sec {
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.driven-sec__bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-}
-
-.driven-sec__bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+/* ==============================================================
+   SECTION: App Download Section(s)
+   ============================================================== */
 
 
-
-.driven-sec__ethics-wrap {
-  align-self: stretch;
-}
-
-.driven-sec__driven {
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  margin: 0 0 4px;
-  line-height: 1;
-}
-
-.driven-sec__ethics {
-  font-size: 7rem;
-  font-weight: 800;
-  font-style: italic;
-  color: var(--aik-yellow);
-  line-height: 1;
-  margin: 0;
-}
-
-.driven-sec__tagline {
-  text-align: right;
-}
-
-.driven-sec__led {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.1;
-  margin: 0;
-  text-align: left;
-}
-
-.driven-sec__driven {
-  font-size: 4rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.1;
-  margin: 0;
-}
-
-.driven-sec__innovation {
-  font-size: 7rem;
-  font-weight: 800;
-  color: var(--aik-yellow);
-  line-height: 1;
-  margin: 0;
-  font-style: italic;
-}
-
-/* ── Responsive ──────────────────────────── */
-
-@media (max-width: 991px) {
-
-  .smarter-sec__inner {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .smarter-sec__left {
-    max-width: 100%;
-  }
-
-  .smarter-sec__desc {
-    max-width: 100%;
-  }
-
-  .smarter-sec__btns {
-    justify-content: center;
-  }
-
-  .smarter-sec__heading {
-    font-size: 42px;
-  }
-
-  /* .smarter-sec__right img {
-    max-height: 400px;
-  } */
-
-  .driven-sec__inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
-    min-height: auto;
-  }
-
-  .driven-sec__ethics {
-    font-size: 80px;
-  }
-
-  .driven-sec__tagline {
-    text-align: left;
-  }
-
-  .driven-sec__led {
-    font-size: 36px;
-  }
-
-  .driven-sec__innovation {
-    font-size: 52px;
-  }
-
-}
-
-
-
-/* "How May We Help You?" search prompt — sits directly above the App
-   Download band/mobile card, sharing its white background with no gap so
-   the two blend into one continuous section. */
 .aik-download-help {
   background: #fff;
   text-align: center;
@@ -3679,7 +3860,7 @@ font-variation-settings: "wght" 700;
   border: none;
   outline: none;
   background: transparent;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 15px;
   color: #333;
 }
@@ -3714,38 +3895,15 @@ font-variation-settings: "wght" 700;
   object-fit: contain;
 }
 
-@media (max-width: 575px) {
-  .aik-download-help {
-    padding: 48px 0 32px;
-  }
-
-  .aik-download-help__heading {
-    font-size: 1.75rem;
-  }
-}
-
-/* ==========================================
-   APP DOWNLOAD — BAND DESIGN (desktop) +
-   stacked mobile layout, ported from
-   index.html's .aik-download-section /
-   .app-dl-section pairing (download_band.php)
-========================================== */
-
 .aik-download-section {
   position: relative;
   width: 100%;
-  background: #fff; /* section is white - the teal graphic is only a band inside it */
+  background: #fff;
+  /* section is white - the teal graphic is only a band inside it */
   overflow: hidden;
   padding: 0 0 1%;
 }
 
-/* keeps the whole section at the same proportions as the original design (370:200).
-   Capped at 1920px and centered: past that, on this edge-to-edge .container-fluid,
-   height would keep growing (unbounded, tied to full viewport width) while the phone
-   graphic ran out of room to grow with it, leaving an empty gap below it. Uses
-   aspect-ratio (computed from this element's own width) instead of the old
-   padding-top-% hack (computed from the *containing block's* width, i.e. the parent —
-   so it would have ignored this same max-width cap and kept growing anyway). */
 .aik-download-inner {
   position: relative;
   width: 100%;
@@ -3754,18 +3912,11 @@ font-variation-settings: "wght" 700;
   aspect-ratio: 370 / 200;
 }
 
-/* container-fluid adds side padding by default in Bootstrap - remove it here so the
-   absolutely-positioned children line up edge-to-edge exactly like the reference design */
 .aik-download-inner.container-fluid {
   padding-left: 0;
   padding-right: 0;
 }
 
-/* teal/green gradient graphic is only a horizontal band, not the full section height.
-   It's a sibling of .aik-download-inner (not nested inside it), so it needs the same
-   1920px cap + centering repeated here — otherwise past 1920px the band stays full
-   section-width while the phone/text/QR (inside the capped, centered .aik-download-inner)
-   no longer line up with it. */
 .aik-bg-band {
   position: absolute;
   /* left: 50%; */
@@ -3788,7 +3939,8 @@ font-variation-settings: "wght" 700;
   position: absolute;
   left: 10%;
   top: 0%;
-  width: 78%; /* scales with the container instead of capping at the image's
+  width: 78%;
+  /* scales with the container instead of capping at the image's
     natural pixel size (1427px) — without this, the phone stopped growing
     past ~1830px viewport width while the section kept getting taller,
     leaving an increasing empty gap below it on wide screens */
@@ -3859,6 +4011,384 @@ font-variation-settings: "wght" 700;
   width: 70%;
 }
 
+.app-dl-section {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0 0;
+  z-index: 1;
+  /* height: 100vh; */
+}
+
+.app-dl-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+}
+
+.app-dl-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-dl-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 5;
+}
+
+.app-dl-left {
+  flex: 0 0 auto;
+  max-width: 460px;
+}
+
+.app-dl-heading {
+  font-size: 4.7rem;
+  line-height: 0.9;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.app-dl-logo {
+  margin: 6px 0;
+}
+
+.app-dl-logo img {
+  display: block;
+  max-width: 270px;
+  height: auto;
+}
+
+.app-dl-btns {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.app-dl-btns img {
+  display: block;
+  height: 56px;
+  width: auto;
+}
+
+.app-dl-right {
+  flex: 0 0 auto;
+  align-self: flex-end;
+}
+
+.app-dl-right img {
+  display: block;
+  /* max-height: 680px; */
+  width: auto;
+}
+
+.app-dl-grid-bl {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.app-dl-grid-bl img {
+  display: block;
+}
+
+.app-dl-grid-tr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.app-dl-grid-tr img {
+  display: block;
+}
+
+.app-dl-diamond {
+  position: absolute;
+  /* inset: 0; */
+  z-index: 0;
+  pointer-events: none;
+  right: 76px;
+  /* bottom: 0; */
+  width: 85%;
+  /* height: 83%; */
+  object-fit: cover;
+  top: 2%;
+}
+
+.app-dl-diamond img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.driven-sec__banking {
+  font-size: 5rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.driven-sec__banking-text {
+  font-size: 3.8rem;
+  font-weight: 500;
+  /* font-style: italic; */
+  color: #fff;
+  line-height: 1;
+  margin: 0;
+}
+
+.custom-grid .bento-card--deen {
+  grid-column: span 12;
+  height: 380px;
+}
+
+.custom-driven-sec .driven-sec__banking-text {
+  font-size: 3.8rem;
+  font-weight: 300;
+  /* font-style: italic; */
+  color: #fff;
+  line-height: 1;
+  margin: 0;
+}
+
+.custom-driven-sec .driven-sec__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  min-height: 80vh;
+  padding: 100px 0;
+  gap: 380px;
+  /* <--- Yahan se dono text blocks ke darmiyan gap change kar sakte hain */
+}
+
+.custom-driven-sec .driven-sec__go {
+  font-size: 6.3rem;
+  font-weight: 700;
+  color: var(--aik-yellow);
+  line-height: 1.1;
+  margin: 0;
+  text-align: right;
+}
+
+.custom-driven-sec .driven-sec__ethics-wrap {
+  max-width: 600px;
+  /* <--- Yahan se top-left block ki width control/kam kar sakte hain (e.g. 500px, 450px) */
+  width: 100%;
+}
+
+.custom-driven-sec .driven-sec__driven {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 4px;
+  line-height: 1;
+}
+
+.custom-driven-sec .driven-sec__tagline {
+  text-align: left;
+}
+
+.custom-driven-sec .driven-sec__tap {
+  font-size: clamp(3rem, 5vw, 7rem);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+  margin: 0;
+  /* font-style: italic; */
+}
+
+.custom-app-dl-section .app-dl-section {
+  position: relative;
+  overflow: hidden;
+  padding: 90px 0 0;
+  z-index: 1;
+}
+
+.custom-app-dl-section .app-dl-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+}
+
+.custom-app-dl-section .app-dl-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-app-dl-section .app-dl-wrap {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  /* gap: 40px; */
+  position: relative;
+  z-index: 5;
+}
+
+.custom-app-dl-section .app-dl-left {
+  flex: 0 0 auto;
+  max-width: 460px;
+}
+
+.custom-app-dl-section .app-dl-heading {
+  font-size: 4.7rem;
+  line-height: 0.9;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.custom-app-dl-section .app-dl-logo {
+  margin: 6px 0;
+}
+
+.custom-app-dl-section .app-dl-logo img {
+  display: block;
+  /* max-width: 270px; */
+  /* height: auto; */
+}
+
+.custom-app-dl-section .app-dl-btns {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.custom-app-dl-section .app-dl-btns img {
+  display: block;
+  height: 56px;
+  width: auto;
+}
+
+.custom-app-dl-section .app-dl-right {
+  flex: 0 0 auto;
+  position: relative;
+  width: 550px;
+  height: 1015px;
+  align-self: flex-end;
+}
+
+.custom-app-dl-section .app-dl-right img {
+  display: block;
+  width: auto;
+}
+
+.custom-app-dl-section .app-dl-right .mobile-app {
+  position: absolute;
+  left: -162px;
+  bottom: 0;
+  height: 800px;
+  z-index: 2;
+}
+
+.custom-app-dl-section .app-dl-right .qr-code {
+  position: absolute;
+  right: -352px;
+  bottom: 37px;
+  height: 600px;
+  z-index: 1;
+}
+
+.custom-app-dl-section .app-dl-grid-bl {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.custom-app-dl-section .app-dl-grid-bl img {
+  display: block;
+}
+
+.custom-app-dl-section .app-dl-grid-tr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.custom-app-dl-section .app-dl-grid-tr img {
+  display: block;
+}
+
+.custom-app-dl-section .app-dl-diamond {
+  position: absolute;
+  /* inset: 0; */
+  z-index: 0;
+  pointer-events: none;
+  right: 118px;
+  /* bottom: 0; */
+  width: 85%;
+  /* height: 83%; */
+  object-fit: cover;
+  top: 15%;
+}
+
+.custom-app-dl-section .app-dl-diamond img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 1930px) {
+  .app-dl-diamond {
+    position: absolute;
+    /* inset: 0; */
+    z-index: 0;
+    pointer-events: none;
+    right: 20px;
+    /* bottom: 0; */
+    width: 95%;
+    /* height: 83%; */
+    object-fit: cover;
+    top: 11%;
+  }
+
+  .custom-app-dl-section .app-dl-right .mobile-app {
+    position: absolute;
+    left: -300px;
+    bottom: 0;
+    height: 885px;
+    z-index: 2;
+  }
+
+  .custom-app-dl-section .app-dl-right .qr-code {
+    position: absolute;
+    right: -284px;
+    bottom: 13px;
+    height: 677px;
+    z-index: 1;
+  }
+
+  .custom-app-dl-section .app-dl-diamond {
+    position: absolute;
+    /* inset: 0; */
+    z-index: 0;
+    pointer-events: none;
+    right: -145px;
+    /* bottom: 0; */
+    width: 108%;
+    /* height: 83%; */
+    object-fit: cover;
+    top: 18%;
+  }
+}
+
 @media (max-width: 1920px) {
   .aik-phone-vector {
     left: 15%;
@@ -3905,7 +4435,35 @@ font-variation-settings: "wght" 700;
   }
 }
 
+@media (max-width: 1399px) {
+  .app-dl-diamond {
+    position: absolute;
+    /* inset: 0; */
+    z-index: 0;
+    pointer-events: none;
+    right: -145px;
+    /* bottom: 0; */
+    width: 116%;
+    /* height: 83%; */
+    object-fit: cover;
+    top: 15%;
+  }
+}
+
 @media (max-width: 1450px) {
+  .app-dl-diamond {
+    position: absolute;
+    /* inset: 0; */
+    z-index: 0;
+    pointer-events: none;
+    right: -245px;
+    /* bottom: 0; */
+    width: 125%;
+    /* height: 83%; */
+    object-fit: cover;
+    top: 23%;
+  }
+
   .aik-phone-vector {
     left: 15%;
     top: 10%;
@@ -3935,701 +4493,7 @@ font-variation-settings: "wght" 700;
   }
 }
 
-@media (max-width: 1300px) {
-  .aik-download-text {
-    font-size: 3.2rem;
-    line-height: 0.5;
-  }
-
-  .aik-appnow-row span {
-    font-size: 3.2rem;
-  }
-}
-
-@media (max-width: 1025px) {
-  .aik-download-text {
-    font-size: 2.5rem;
-  }
-
-  .aik-appnow-row span {
-    font-size: 2.5rem;
-  }
-
-  .aik-appnow-row {
-    left: 44%;
-  }
-}
-
-
-
-
-/* ==========================================
-   APP DOWNLOAD SECTION
-========================================== */
-
-.app-dl-section {
-    position: relative;
-    overflow: hidden;
-    padding: 90px 0 0;
-    z-index: 1;
-    /* height: 100vh; */
-}
-
-/* Background */
-.app-dl-bg {
-  position: absolute;
-  inset: 0;
-  z-index: -5;
-}
-
-.app-dl-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Layout */
-.app-dl-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  position: relative;
-  z-index: 5;
-}
-
-/* Left Content */
-.app-dl-left {
-  flex: 0 0 auto;
-  max-width: 460px;
-}
-
-.app-dl-heading {
-  font-size: 4.7rem;
-  line-height: 0.9;
-  font-weight: 800;
-  color: #fff;
-  margin: 0;
-}
-
-.app-dl-logo {
-  margin: 6px 0;
-}
-
-.app-dl-logo img {
-  display: block;
-   max-width: 270px; 
-   height: auto; 
-}
-
-.app-dl-btns {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 40px;
-}
-
-.app-dl-btns img {
-  display: block;
-  height: 56px;
-  width: auto;
-}
-
-/* Right – Phone Mockup */
-.app-dl-right {
-  flex: 0 0 auto;
-  align-self: flex-end;
-}
-
-.app-dl-right img {
-  display: block;
-  /* max-height: 680px; */
-  width: auto;
-}
-
-/* Decoratives */
-.app-dl-grid-bl {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-.app-dl-grid-bl img {
-  display: block;
-}
-
-.app-dl-grid-tr {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -1;
-}
-
-.app-dl-grid-tr img {
-  display: block;
-}
-
-
-
-.app-dl-diamond {
-    position: absolute;
-    /* inset: 0; */
-    z-index: 0;
-    pointer-events: none;
-    right: 76px;
-    /* bottom: 0; */
-    width: 85%;
-    /* height: 83%; */
-    object-fit: cover;
-    top: 2%;
-}
-
-@media (max-width: 1930px) {
-    .app-dl-diamond {
-        position: absolute;
-        /* inset: 0; */
-        z-index: 0;
-        pointer-events: none;
-        right: 20px;
-        /* bottom: 0; */
-        width: 95%;
-        /* height: 83%; */
-        object-fit: cover;
-        top: 11%;
-    }
-}
-
-@media (max-width: 1399px) {
-
-  .app-dl-diamond {
-    position: absolute;
-    /* inset: 0; */
-    z-index: 0;
-    pointer-events: none;
-    right: -145px;
-    /* bottom: 0; */
-    width: 116%;
-    /* height: 83%; */
-    object-fit: cover;
-    top: 15%;
-  }
-}
-
-@media (max-width: 1450px) {
-  .app-dl-diamond {
-    position: absolute;
-    /* inset: 0; */
-    z-index: 0;
-    pointer-events: none;
-    right: -245px;
-    /* bottom: 0; */
-    width: 125%;
-    /* height: 83%; */
-    object-fit: cover;
-    top: 23%;
-  }
-}
-
-.app-dl-diamond img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media (max-width: 991px) {
-  .app-dl-wrap {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .app-dl-left {
-    max-width: 100%;
-  }
-
-  .app-dl-btns {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .app-dl-heading {
-    font-size: 65px;
-  }
-
-  .app-dl-right {
-    align-self: center;
-  }
-
-  .app-dl-right img {
-    max-height: 420px;
-  }
-}
-
-
-
-
-
-/* Business tap and go section */
-
-.driven-sec {
-  position: relative;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-.driven-sec__bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-}
-
-.driven-sec__bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.driven-sec__inner {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  width: 100%;
-  min-height: 100vh;
-  padding: 100px 0;
-}
-
-@media (max-width: 1366px) {
-  .driven-sec__inner {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 108%;
-    min-height: 100vh;
-    padding: 30px 0;
-  }
-}
-
-
-.driven-sec__ethics-wrap {
-  align-self: stretch;
-}
-
-
-
-
-.driven-sec__tagline {
-  text-align: right;
-}
-
-
-.driven-sec__banking {
-  font-size: 5rem;
-  font-weight: 600;
-  color: #fff;
-  line-height: 1.1;
-  margin: 0;
-}
-
-.driven-sec__banking-text {
-  font-size: 3.8rem;
-  font-weight: 500;
-  /* font-style: italic; */
-  color: #fff;
-  line-height: 1;
-  margin: 0;
-}
-
-
-
-
-.custom-grid .bento-card--deen {
-  grid-column: span 12;
-  height: 380px;
-}
-
-/* ======================================================================================= */
-
-.custom-driven-sec .driven-sec__banking-text {
-  font-size: 3.8rem;
-  font-weight: 300;
-  /* font-style: italic; */
-  color: #fff;
-  line-height: 1;
-  margin: 0;
-}
-
-
-.custom-driven-sec .driven-sec__inner {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-  min-height: 80vh;
-  padding: 100px 0;
-  gap: 380px;
-  /* <--- Yahan se dono text blocks ke darmiyan gap change kar sakte hain */
-}
-
-@media (min-width:2550px) {
-  .custom-driven-sec .driven-sec__inner {
-
-    gap: 615px;
-    /* <--- Yahan se dono text blocks ke darmiyan gap change kar sakte hain */
-  }
-
-}
-
-
-
-.custom-driven-sec .driven-sec__go {
-  font-size: 6.3rem;
-  font-weight: 700;
-  color: var(--aik-yellow);
-  line-height: 1.1;
-  margin: 0;
-  text-align: right;
-}
-
-
-.custom-driven-sec .driven-sec__ethics-wrap {
-  max-width: 600px;
-  /* <--- Yahan se top-left block ki width control/kam kar sakte hain (e.g. 500px, 450px) */
-  width: 100%;
-}
-
-.custom-driven-sec .driven-sec__driven {
-  font-size: 22px;
-  font-weight: 600;
-  color: #fff;
-  margin: 0 0 4px;
-  line-height: 1;
-}
-
-
-.custom-driven-sec .driven-sec__tagline {
-  text-align: left;
-}
-
-.custom-driven-sec .driven-sec__tap {
-  font-size: clamp(3rem, 5vw, 7rem);
-  font-weight: 600;
-  color: #fff;
-  line-height: 1;
-  margin: 0;
-  /* font-style: italic; */
-}
-
-
-/* ==========================================
-   APP DOWNLOAD SECTION
-========================================== */
-
-.custom-app-dl-section .app-dl-section {
-  position: relative;
-  overflow: hidden;
-  padding: 90px 0 0;
-  z-index: 1;
-}
-
-/* Background */
-.custom-app-dl-section .app-dl-bg {
-  position: absolute;
-  inset: 0;
-  z-index: -5;
-}
-
-.custom-app-dl-section .app-dl-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Layout */
-.custom-app-dl-section .app-dl-wrap {
-  display: flex;
-  align-items: center;
-  /* justify-content: space-between; */
-  /* gap: 40px; */
-  position: relative;
-  z-index: 5;
-}
-
-/* Left Content */
-.custom-app-dl-section .app-dl-left {
-  flex: 0 0 auto;
-  max-width: 460px;
-}
-
-.custom-app-dl-section .app-dl-heading {
-  font-size: 4.7rem;
-  line-height: 0.9;
-  font-weight: 800;
-  color: #fff;
-  margin: 0;
-}
-
-.custom-app-dl-section .app-dl-logo {
-  margin: 6px 0;
-}
-
-.custom-app-dl-section .app-dl-logo img {
-  display: block;
-  /* max-width: 270px; */
-  /* height: auto; */
-}
-
-.custom-app-dl-section .app-dl-btns {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 40px;
-}
-
-.custom-app-dl-section .app-dl-btns img {
-  display: block;
-  height: 56px;
-  width: auto;
-}
-
-/* Right – Phone Mockup */
-.custom-app-dl-section .app-dl-right {
-  flex: 0 0 auto;
-  position: relative;
-  width: 550px;
-  height: 1015px;
-  align-self: flex-end;
-}
-
-.custom-app-dl-section .app-dl-right img {
-  display: block;
-  width: auto;
-}
-
-.custom-app-dl-section .app-dl-right .mobile-app {
-  position: absolute;
-  left: -162px;
-  bottom: 0;
-  height: 800px;
-  z-index: 2;
-}
-
-.custom-app-dl-section .app-dl-right .qr-code {
-  position: absolute;
-  right: -352px;
-  bottom: 37px;
-  height: 600px;
-  z-index: 1;
-}
-
-
-
-@media (max-width: 1930px) {
-  .custom-app-dl-section .app-dl-right .mobile-app {
-    position: absolute;
-    left: -300px;
-    bottom: 0;
-    height: 885px;
-    z-index: 2;
-  }
-
-  .custom-app-dl-section .app-dl-right .qr-code {
-    position: absolute;
-    right: -284px;
-    bottom: 13px;
-    height: 677px;
-    z-index: 1;
-  }
-}
-
-@media (max-width: 991px) {
-  .custom-app-dl-section .app-dl-right {
-    width: 450px;
-    height: 480px;
-    align-self: center;
-    margin-top: 30px;
-  }
-
-  .custom-app-dl-section .app-dl-right .mobile-app {
-    height: 480px;
-    left: 30px;
-  }
-
-  .custom-app-dl-section .app-dl-right .qr-code {
-    height: 320px;
-    right: 0;
-  }
-}
-
-@media (max-width: 575px) {
-  .custom-app-dl-section .app-dl-right {
-    width: 320px;
-    height: 350px;
-  }
-
-  .custom-app-dl-section .app-dl-right .mobile-app {
-    height: 350px;
-    left: 0;
-  }
-
-  .custom-app-dl-section .app-dl-right .qr-code {
-    height: 220px;
-    right: 0;
-  }
-}
-
-/* Decoratives */
-.custom-app-dl-section .app-dl-grid-bl {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-.custom-app-dl-section .app-dl-grid-bl img {
-  display: block;
-}
-
-.custom-app-dl-section .app-dl-grid-tr {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -1;
-}
-
-.custom-app-dl-section .app-dl-grid-tr img {
-  display: block;
-}
-
-
-
-.custom-app-dl-section .app-dl-diamond {
-  position: absolute;
-  /* inset: 0; */
-  z-index: 0;
-  pointer-events: none;
-  right: 118px;
-  /* bottom: 0; */
-  width: 85%;
-  /* height: 83%; */
-  object-fit: cover;
-  top: 15%;
-}
-
-@media (max-width: 1930px) {
-  .custom-app-dl-section .app-dl-diamond {
-    position: absolute;
-    /* inset: 0; */
-    z-index: 0;
-    pointer-events: none;
-    right: -145px;
-    /* bottom: 0; */
-    width: 108%;
-    /* height: 83%; */
-    object-fit: cover;
-    top: 18%;
-  }
-}
-
-@media (max-width: 1399px) {
-
-  .custom-app-dl-section .app-dl-diamond {
-    position: absolute;
-    /* inset: 0; */
-    z-index: 0;
-    pointer-events: none;
-    right: -145px;
-    /* bottom: 0; */
-    width: 116%;
-    /* height: 83%; */
-    object-fit: cover;
-    top: 15%;
-  }
-
-
-
-  .smarter-sec__right img,
-  .smarter-sec__right video {
-    max-width: 500px;
-    /* <--- Yahan se phone ki width control / kam kar sakte hain */
-  }
-}
-
-@media (max-width: 1450px) {
-  .custom-app-dl-section .app-dl-diamond {
-    position: absolute;
-    /* inset: 0; */
-    z-index: 0;
-    pointer-events: none;
-    right: -245px;
-    /* bottom: 0; */
-    width: 125%;
-    /* height: 83%; */
-    object-fit: cover;
-    top: 25%;
-  }
-}
-
-.custom-app-dl-section .app-dl-diamond img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-
-
-
-@media (min-width: 2550px) {
-
-  .custom-app-dl-section .app-dl-right .mobile-app {
-    position: absolute;
-    left: -408px;
-    bottom: 0;
-    height: 100%;
-    z-index: 2;
-  }
-
-  .custom-app-dl-section .app-dl-right .qr-code {
-    position: absolute;
-    right: -440px;
-    bottom: -35px;
-    height: 85%;
-    z-index: 1;
-  }
-
-
-  .custom-app-dl-section .app-dl-diamond {
-    position: absolute;
-    /* inset: 0; */
-    z-index: 0;
-    pointer-events: none;
-    right: -253px;
-    /* bottom: 0; */
-    width: 100%;
-    /* height: 83%; */
-    object-fit: cover;
-    top: 7%;
-  }
-
-}
-
 @media (max-width:1651px) {
-
   .app-dl-diamond {
     position: absolute;
     /* inset: 0; */
@@ -4655,826 +4519,240 @@ font-variation-settings: "wght" 700;
     object-fit: cover;
     top: 27%;
   }
-
 }
 
+@media (max-width: 1399px) {
+  .custom-app-dl-section .app-dl-diamond {
+    position: absolute;
+    /* inset: 0; */
+    z-index: 0;
+    pointer-events: none;
+    right: -145px;
+    /* bottom: 0; */
+    width: 116%;
+    /* height: 83%; */
+    object-fit: cover;
+    top: 15%;
+  }
+}
 
-@media (max-width: 767.98px) {
-    .aik_landing_top .left_text_block h2, .aik_landing_top .right_text_block h2 {
-        font-size: 10vw;
-    }
-  .aik_landing_top {
-    /* align-items: flex-start; */
-    color: #fff;
-    /* display: flex; */
-    /* justify-content: space-between; */
-    padding: 20px;
-    left: 50%;
+@media (max-width: 1450px) {
+  .custom-app-dl-section .app-dl-diamond {
+    position: absolute;
+    /* inset: 0; */
+    z-index: 0;
+    pointer-events: none;
+    right: -245px;
+    /* bottom: 0; */
+    width: 125%;
+    /* height: 83%; */
+    object-fit: cover;
     top: 25%;
-    /* transform: translateX(-50%); */
-    width: 100%;
-    z-index: 3;
-    text-align: center;
-}
-    .aik_landing_top .left_text_block {
-        width: 100%;
-    }
-    .mobile_track {
-    left: 55%;
-    top: 380px;
-    }
-
-  .mobile_track .mobile_pill.pill_left {
-        left: -13%;
-        top: 204px;
-    }
-    .mobile_track .mobile_pill.pill_left .mobile_pill_text {
-    padding-right: 0px;
-    text-align: left;
-    padding-left: 10px;
+  }
 }
 
-.mobile_track .mobile_pill_icon {
-    width: 40px;
-    height: 40px;
- }
-
-     .mobile_track .mobile_pill {
-        padding: 6px;
-        width: 226px;
-    }
-
-    .mobile_track .mobile_pill {
-    justify-content: center;
-    }
-    
-
-    .mobile_track .mobile_pill.pill_right {
-        right: 0%;
-        top: 293px;
-    }
-
-    .section_title_heading {
-  
-         padding-bottom: 50px;
-    }
-
-
-        .smarter-sec__heading {
-
-        font-size: 12vw !important;
-    }
-
-
-  .smarter-sec {
-    padding: 70px 0;
+@media (max-width: 991px) {
+  .app-dl-right img {
+    max-height: 420px;
   }
 
- .driven-sec__inner {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        min-height: 90vh;
-        padding: 30px 0;
-    }
+  .app-dl-heading {
+    font-size: 65px;
+  }
 
-   
-    .driven-sec__led {
-        font-size: 4rem;
-        text-align: center;
-    }
-
-    .driven-sec__innovation {
-        font-size: 4.8rem;
-    }
-
-    .driven-sec__ethics-wrap {
-    text-align: center;
-}
-
-
-    .aik-newsletter__text h2{
-      font-size: 10vw;
-    }
-
-
-
-
-.search_mobile {
-    align-items: center;
-    display: inline-flex;
-    height: 40px;
-    justify-content: center;
-    width: 40px;
-}
-.search_mobile button{
-  background-color: var(--secondary_color);
-    border: none;
-    border-radius: 50%;
-    color: var(--primary_color);
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    display: inline-flex;
-    height: 100%;
-    inset: 0;
-    transition: opacity .4s ease;
-    width: 100%;
-    z-index: 2;
-}
-
-
-
-
-
-        .business_hero .hero_main_text {
-        width: 100%;
-    }
-    .aik_landing .hero_main_text {
-    align-items: flex-start;
-    /* left: 0; */
-    justify-content: center;
-    /* right: auto; */
-}
-
-
-
-.hero_main_text {
-    align-items: flex-end;
-    justify-content: space-between;
-    color: #fff;
-    display: flex;
+  .app-dl-wrap {
     flex-direction: column;
-    height: 100%;
-    right: 4vw;
-    /* padding: 2vw 0 2vw 5vw; */
-    top: -44px;
-    width: 32%;
-    z-index: 1;
-}
-
-
-    .aik_landing .hero_main_text_title {
-        font-size: 12vw;
-        letter-spacing: -1px;
-        margin-top: 0 !important;
-        width: 100%;
-        text-align: center;
-    }
-
-        .aik_landing .hero_main_text {
-        align-items: center !important;
-        }
-
-        .business_hero .hero_main_text p {
-        width: 80%;
-        text-align: center;
-    }
-
-    .business_hero .mobile_track {
-    left: auto;
-    width: 205px;
-}
-
-    .business_hero .mobile_track {
-        right: 23%;
-        top: 69%;
-    }
-
-    .custom_size{
-      height: 1070px;
-      background-color: #dac10f;
-    }
-
-    .interest_section {
-    width: 100%;
-    /* top: 120px; */
-    bottom: -120px;
-}
-
-    .custom_interest_section {
-    width: 100%;
-    bottom: 10px;
-    left: 60px;
-}
-
-.business_hero .mobile_track .pill_bottom_left {
-        bottom: 74%;
-        left: -52%;
-    }
-
-    .business_hero .mobile_track .pill_top_right {
-    right: -45%;
-    top: 55px;
-}
-
-    .mobile_track .mobile_pill_text {
-        font-size: .775rem;
-        margin-left: 10px;
-    }
-
-       .custom_size .logo_arch {
-        top: 86%;
-        left: 60% !important;
-        width: 575px;
-    }
-    .custom_size .hero_main_text {
-        pointer-events: none;
-        padding: 0;
-}
-
-.business_hero .hero_main_text .btn_fill {
-    /* font-size: .875rem !important;
-   padding: 10px 40px 10px 19px !important;  */
-   width: 254px;
-}
-
-
-.md-news-title {
-  font-size: 9vw;
-}
-header .logo {
-    justify-content: center;
-}
-.smarter-sec {
-  padding: 75px 0;
-  align-items: start;
-  min-height: auto;
-}
-
-.debit_custom_why-choose-sec{
-  padding: 75px 0 0 !important;
-}
-
-
-}
-@media (max-width: 767px) {
-  .search_holder {
-    display: block;
-    /* margin-top: 630px; */
+    align-items: center;
+    text-align: center;
   }
-  
-}
 
+  .app-dl-left {
+    max-width: 100%;
+  }
 
-@media (max-width: 410px) {
+  .app-dl-btns {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
+  .app-dl-right {
+    align-self: center;
+  }
 
-      /* .smarter-sec {
-        padding: 25px 0;
-    position: relative;
-    overflow: hidden;
-    min-height: 100vh;
-    display: flex;
-    align-items: start;
+  .custom-app-dl-section .app-dl-right {
+    width: 450px;
+    height: 480px;
+    align-self: center;
+    margin-top: 30px;
+  }
 
-    } */
+  .custom-app-dl-section .app-dl-right .mobile-app {
+    height: 480px;
+    left: 30px;
+  }
 
-/* .business_hero .hero_main_text .btn_fill {
-        font-size: 0.7rem !important;
-        padding-right: 34px !important;
-    } */
-
-    /* .custom_adjustment{
-      height: 900px;
-    } */
-    .index_custom .interest_section {
-        bottom: -126px;
-        left: 28px;
-    }
-    .index_custom .logo_arch {
-        top: 79%;
-        width: 690px;
-    }
-
-    .driven-sec__innovation {
-        font-size: 4rem;
-    }
-
-        .hero_main_text {
-        top: 0px;
-        }
-
-    .interest_section {
-        bottom: -300px;
-        left: -13px;
-    }
-
-        .custom_size .logo_arch {
-        top: 111%;}
-
-            .business_hero .mobile_track {
-        top: 80%;
-    }
-
-
-    .business_hero .mobile_track .pill_top_right {
-        top: 18px;
-    }
-
-        .business_hero .mobile_track .pill_bottom_left {
-        bottom: 74%;
-        left: -30%;
-      }
-
-      .mobile_track .mobile_pill.pill_left {
-        left: -3%;
-    }
-        .mobile_track .mobile_pill.pill_right {
-        right: 6%;
-        }
-
-
-}
-
-@media (width: 393px) and (height: 873px) {
-      .hero_main_text {
-        top: -60px;
-    }
-
-        .business_hero .mobile_track {
-        top: 65%;
-    }
-        .custom_size .logo_arch {
-        top: 92%;
-    }
-        .interest_section {
-        bottom: -185px;
-        }
-        .index_custom .logo_arch {
-        top: 71%;}
-
-            .custom_adjustment {
-        height: 900px;
-    }
-    .index_custom .interest_section {
-        bottom: -22px;
-        left: 50px;
-    }
-    .smarter-sec {
-        padding: 75px 0 0;
-    }
-
-
-}
-
-
-
-/* ============================================================
-   Search Drawer
-============================================================ */
-
-.srch-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 10000;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.srch-overlay.is-open {
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.srch-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(6, 30, 40, 0.65);
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    cursor: pointer;
-}
-
-.srch-overlay.is-open .srch-backdrop {
-    opacity: 1;
-}
-
-.srch-drawer {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .custom-app-dl-section .app-dl-right .qr-code {
+    height: 320px;
     right: 0;
-    background: #ffffff;
-    padding: 32px 0 44px;
-    transform: translateY(-100%);
-    transition: transform 0.44s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.18);
-    z-index: 1;
+  }
 }
 
-.srch-overlay.is-open .srch-drawer {
-    transform: translateY(0);
-}
-
-.srch-drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
-}
-
-.srch-label {
-    font-size: 22px;
-    font-weight: 700;
-    color: #111;
-    margin: 0;
-}
-
-.srch-close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    background: #f3f3f3;
-    border: none;
-    border-radius: 50%;
-    font-size: 17px;
-    color: #111;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background 0.2s, color 0.2s, transform 0.3s;
-}
-
-.srch-close:hover {
-    background: #065258;
-    color: #ffffff;
-    transform: rotate(90deg);
-}
-
-.srch-input-wrap {
-    display: flex;
-    align-items: center;
-    border: 2px solid #e5e5e5;
-    border-radius: 24px;
-    padding: 6px 6px 6px 22px;
-    gap: 12px;
-    margin-bottom: 28px;
-    transition: border-color 0.25s;
-}
-
-.srch-input-wrap:focus-within {
-    border-color: #065258;
-}
-
-.srch-input-icon {
-    font-size: 20px;
-    color: #b0b0b0;
-    flex-shrink: 0;
-    transition: color 0.25s;
-}
-
-.srch-input-wrap:focus-within .srch-input-icon {
-    color: #065258;
-}
-
-.srch-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 18px;
-    font-weight: 500;
-    color: #111;
-    background: transparent;
-    padding: 10px 0;
-}
-
-.srch-input::placeholder {
-    color: #c0c0c0;
-    font-weight: 400;
-}
-
-.srch-submit-btn {
-    background: var(--secondary_color);
-    color: var(--primary_color);
-    border: none;
-    border-radius: 50px;
-    padding: 13px 30px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: background 0.2s, transform 0.15s;
-}
-
-.srch-submit-btn:hover {
-    background: #043c41;
-    transform: scale(1.04);
-}
-
-.srch-popular {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-bottom: 32px;
-}
-
-.srch-popular-label {
-    font-size: 12px;
-    font-weight: 700;
-    color: #aaa;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    flex-shrink: 0;
-}
-
-.srch-tags {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.srch-tag {
-    display: inline-block;
-    padding: 7px 17px;
-    border: 1.5px solid #e0e0e0;
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #555;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s, background 0.2s;
-}
-
-.srch-tag:hover {
-    border-color: #065258;
-    color: #065258;
-    background: rgba(6, 82, 88, 0.06);
-}
-
-.srch-services {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.srch-service-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 9px;
-    padding: 16px 22px;
-    border-radius: 16px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s;
-    min-width: 96px;
-    text-align: center;
-}
-
-.srch-service-item:hover {
-    background: rgba(6, 82, 88, 0.07);
-}
-
-.srch-service-icon {
-    width: 52px;
-    height: 52px;
-    background: rgba(6, 82, 88, 0.1);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 21px;
-    color: #065258;
-    transition: background 0.2s, color 0.2s;
-}
-
-.srch-service-item:hover .srch-service-icon {
-    background: #065258;
-    color: #ffffff;
-}
-
-.srch-service-item span {
-    font-size: 13px;
-    font-weight: 600;
-    color: #333;
-}
-
-/* Mobile */
-@media (max-width: 767px) {
-    .srch-drawer {
-        padding: 20px 0 28px;
-    }
-    .srch-label {
-        font-size: 17px;
-    }
-    .srch-input-wrap {
-        padding: 4px 4px 4px 16px;
-        gap: 4px;
-        margin-bottom: 20px;
-    }
-    .srch-input {
-        font-size: 15px;
-        padding: 8px 0;
-    }
-    .srch-submit-btn {
-        padding: 10px 14px;
-        font-size: 12px;
-    }
-    .srch-popular {
-        gap: 8px;
-        margin-bottom: 20px;
-    }
-    .srch-services {
-        gap: 4px;
-    }
-    .srch-service-item {
-        padding: 10px 12px;
-        min-width: 76px;
-    }
-    .srch-service-icon {
-        width: 44px;
-        height: 44px;
-        font-size: 18px;
-    }
-    .srch-service-item span {
-        font-size: 11px;
-    }
-}
-
-
-/* ============================================================
-   MOBILE FOOTER ACCORDION  (≤ 767px)
-   ============================================================ */
-@media (max-width: 767.98px) {
-
-  /* Force single column stack */
-  .aik-footer__grid {
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
+@media (max-width: 1450px) {
+  .app-dl-right img {
+    max-height: 650px;
   }
 
-  /* Brand col — always visible, not collapsible */
-  .aik-footer__col--brand {
-    grid-column: 1 !important;
-    display: block !important;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    margin-bottom: 0;
+  .app-dl-heading {
+    font-size: 4rem;
   }
 
-  /* Every accordion col gets a bottom border */
-  .aik-footer__col:not(.aik-footer__col--brand):not(.aik-footer__col--app) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  .app-dl-logo img {
+    max-width: 220px;
   }
 
-  /* Heading row becomes a flex toggle trigger */
-  .aik-footer__col:not(.aik-footer__col--brand):not(.aik-footer__col--app) > .aik-footer__heading {
-    cursor: pointer;
-    user-select: none;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    margin-bottom: 0 !important;
-    padding: 18px 0;
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  /* Yellow circular arrow button */
-  .footer-acc-arrow {
-    width: 32px;
-    height: 32px;
-    background: var(--aik-yellow);
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: transform 0.35s ease;
-    color: var(--aik-green);
-    font-size: 17px;
+  .app-dl-diamond {
+    position: absolute;
+    /* inset: 0; */
+    z-index: 0;
     pointer-events: none;
+    right: -167px;
+    /* bottom: 0; */
+    width: 116%;
+    /* height: 83%; */
+    object-fit: cover;
+    top: 0%;
   }
 
-  /* Rotate arrow when open */
-  .aik-footer__col:not(.aik-footer__col--app).is-open > .aik-footer__heading .footer-acc-arrow {
-    transform: rotate(90deg);
-  }
-
-  /* Collapsible body — hidden by default */
-  .footer-acc-body {
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.4s ease;
-  }
-
-  .aik-footer__col:not(.aik-footer__col--app).is-open .footer-acc-body {
-    max-height: 600px;
-  }
-
-  /* Inner spacing when expanded */
-  .footer-acc-body .aik-footer__links {
-    padding-top: 10px;
-    padding-bottom: 14px;
-  }
-
-  .footer-acc-body .aik-footer__badges {
-    padding-top: 10px;
-  }
-
-  .footer-acc-body .aik-footer__heading--social {
-    margin-top: 18px;
-  }
-
-  .footer-acc-body .aik-footer__social {
-    margin-bottom: 14px;
+  .app-dl-diamond {
+    right: -167px;
+    top: 1%;
   }
 }
 
-/* ── Off-canvas menu — "Features" dropdown ───────────────── */
-/* main.css sets .children{display:none} permanently, but app.js's GSAP
-   accordion only animates height (no display toggle), so the submenu
-   stayed invisible on click. Force display:block and let height:0 +
-   overflow:hidden hold it collapsed until GSAP tweens the height open. */
-#menu.menuNav > li.has-children > ul.children {
-  display: block;
-  height: 0;
-  overflow: hidden;
-  list-style: square;
-  /* color: var(--aik-yellow) !important; */
-  color: #fff !important;
-  list-style-position: inside;
-}
-#menu.menuNav > li.has-children:hover{
-  color: #fff;
-  
-}
-
-#menu.menuNav > li.has-children > ul.children li a {
-  color: var(--aik-yellow);
-}
-
-/* Theme's default ::after chevron (main.css .has-children:after) is
-   --primary_color (#065258) on a #065258-tinted backdrop, so it's
-   invisible. Hide it and use an explicit, visible chevron instead. */
-#menu.menuNav > li.has-children:after {
-  content: none;
-}
-
-#menu.menuNav > li.has-children > a .aik-menu-arrow,
-#menu.menuNav li.in-dropdown > a .aik-menu-arrow {
-  color: var(--aik-yellow);
-  font-size: 0.7em;
-  display: inline-block;
-  transition: transform 0.4s ease;
-  vertical-align: middle;
-  /* Padding (not a bigger font-size) enlarges the tap target without
-     changing how big the arrow itself looks — it's the only thing left
-     that opens the submenu, since the link text now navigates instead. */
-  padding: 10px;
-  margin: -10px -10px -10px 8px;
-}
-
-#menu.menuNav > li.has-children.active > a .aik-menu-arrow,
-#menu.menuNav li.in-dropdown.active > a .aik-menu-arrow {
-  transform: rotate(180deg);
-}
-
-
-@media (max-width: 391px) {
-    .index_custom .logo_arch {
-      top: 70%;}
-    .index_custom .interest_section {
-      bottom: -45px;}
-}
-
-@media (max-width: 362px) {
-    .index_custom .interest_section {
-        bottom: -130px;
-    }
-}
-
-@media (max-width: 376px) {
-    .index_custom .interest_section {
-        bottom: -200px;
-    }
-
-    .index_custom .logo_arch {
-        top: 85%;
-    }
-
-        .aik_landing_top {
-
-        top: 35%;
-        }
-}
-/* @media (max-width: 767.98px) {
-  .btn_fill{
-        padding: 10px 20px 10px 0 !important;
-        font-size: 1.125rem !important;
+@media (max-width: 1300px) {
+  .aik-download-text {
+    font-size: 3.2rem;
+    line-height: 0.5;
   }
-} */
 
-/* ==========================================
-   PARTNER INQUIRY FORM (connect.html)
-========================================== */
+  .aik-appnow-row span {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 1025px) {
+  .aik-download-text {
+    font-size: 2.5rem;
+  }
+
+  .aik-appnow-row span {
+    font-size: 2.5rem;
+  }
+
+  .aik-appnow-row {
+    left: 44%;
+  }
+}
+
+@media (max-width: 575px) {
+  .aik-download-help {
+    padding: 48px 0 32px;
+  }
+
+  .aik-download-help__heading {
+    font-size: 1.75rem;
+  }
+
+  .custom-app-dl-section .app-dl-right {
+    width: 320px;
+    height: 350px;
+  }
+
+  .custom-app-dl-section .app-dl-right .mobile-app {
+    height: 350px;
+    left: 0;
+  }
+
+  .custom-app-dl-section .app-dl-right .qr-code {
+    height: 220px;
+    right: 0;
+  }
+
+  .app-dl-section {
+    padding: 60px 0 0;
+    height: auto;
+  }
+
+  .app-dl-heading {
+    font-size: 48px;
+  }
+
+  .app-dl-right img {
+    max-height: 320px;
+  }
+
+  .app-dl-diamond {
+    position: absolute;
+    /* inset: 0; */
+    z-index: 0;
+    pointer-events: none;
+    right: -18px;
+    /* bottom: 0; */
+    width: 106%;
+    /* height: 83%; */
+    object-fit: cover;
+    top: 68%;
+  }
+}
+
+@media (min-width:2550px) {
+  .custom-driven-sec .driven-sec__inner {
+    gap: 615px;
+    /* <--- Yahan se dono text blocks ke darmiyan gap change kar sakte hain */
+  }
+}
+
+@media (min-width: 2550px) {
+  .custom-app-dl-section .app-dl-right .mobile-app {
+    position: absolute;
+    left: -408px;
+    bottom: 0;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .custom-app-dl-section .app-dl-right .qr-code {
+    position: absolute;
+    right: -440px;
+    bottom: -35px;
+    height: 85%;
+    z-index: 1;
+  }
+
+  .custom-app-dl-section .app-dl-diamond {
+    position: absolute;
+    /* inset: 0; */
+    z-index: 0;
+    pointer-events: none;
+    right: -253px;
+    /* bottom: 0; */
+    width: 100%;
+    /* height: 83%; */
+    object-fit: cover;
+    top: 7%;
+  }
+}
+
+
+/* ==============================================================
+   SECTION: Partner Inquiry Form
+   ============================================================== */
+
+
+.pif-footer .btn_fill:after {
+  background-color: #fff;
+  color: var(--aik-green);
+}
 
 .pif-section {
   background: #fff;
@@ -5558,14 +4836,15 @@ header .logo {
   border-radius: 50px;
   outline: none;
   padding: 0 24px;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 15px;
   color: #333;
   background: #fff;
 }
+
 .pif-field input[type="text"],
-.pif-field input[type="email"]{
-   border: 1px solid var(--aik-green);
+.pif-field input[type="email"] {
+  border: 1px solid var(--aik-green);
 }
 
 .pif-field input::placeholder,
@@ -5579,7 +4858,7 @@ header .logo {
   border-radius: 20px;
   outline: none;
   padding: 18px 24px;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 15px;
   color: #333;
   background: #fff;
@@ -5588,7 +4867,6 @@ header .logo {
   border: 1px solid var(--aik-green);
 }
 
-/* Phone field with PK +92 prefix */
 .pif-phone {
   display: flex;
   align-items: center;
@@ -5612,7 +4890,6 @@ header .logo {
   padding-left: 16px;
 }
 
-/* Select */
 .pif-select {
   position: relative;
 }
@@ -5624,14 +4901,14 @@ header .logo {
   border-radius: 50px;
   outline: none;
   padding: 0 45px 0 24px;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 15px;
   color: #333;
   background: #fff;
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-   border: 1px solid var(--aik-green);
+  border: 1px solid var(--aik-green);
 }
 
 .pif-select select:invalid {
@@ -5648,7 +4925,6 @@ header .logo {
   font-size: 14px;
 }
 
-/* Field-level error messages */
 .pif-error {
   display: none;
   color: #b3261e;
@@ -5669,7 +4945,6 @@ header .logo {
   box-shadow: 0 0 0 2px #b3261e;
 }
 
-/* Footer row: agree checkbox + submit */
 .pif-footer {
   display: flex;
   align-items: center;
@@ -5744,7 +5019,6 @@ header .logo {
   display: block;
 }
 
-/* Success / general alert */
 .pif-alert {
   display: none;
   margin-top: 26px;
@@ -5755,9 +5029,6 @@ header .logo {
   text-align: center;
 }
 
-/* On success the form's fields are hidden entirely (js/custom.js), so the
-   alert becomes the only thing left in the card — sized to read as a
-   proper "thank you" message filling that space, not a small strip. */
 .pif-alert.is-success {
   display: block;
   margin-top: 0;
@@ -5773,8 +5044,6 @@ header .logo {
   color: #b3261e;
   border: 1px solid #f3c9c5;
 }
-
-/* ── Responsive ──────────────────────────── */
 
 @media (max-width: 767px) {
   .pif-section {
@@ -5815,15 +5084,6 @@ header .logo {
   }
 }
 
-.smarter-sec__inner img{
-  width: 700px;
-}
-
-@media (max-width: 991px) {
-.smarter-sec__inner img{
-  width: 100% !important;
-}
-}
 @media (max-width: 400px) {
   .pif-card {
     padding: 28px 16px;
@@ -5834,15 +5094,11 @@ header .logo {
   }
 }
 
-/* ==========================================
-   SCHEDULE OF CHARGES (schedule_of_charges block)
-   Cards deliberately REUSE the existing .news-single card classes
-   (main.css) — same card design as "Our Media News" — with a PDF icon
-   thumbnail (.soc-thumb) standing in for a post thumbnail image, sized
-   to the same 380px height main.css gives .news-single-media img. The
-   outer section/heading/grid get their own .soc-* namespace, same
-   reasoning as .help-sec/.feature-suite-sec/.explore-sec.
-========================================== */
+
+/* ==============================================================
+   SECTION: Schedule of Charges
+   ============================================================== */
+
 
 .soc-section {
   padding: 90px 0 110px;
@@ -5882,9 +5138,6 @@ header .logo {
   z-index: 2;
 }
 
-/* Stand-in for a post thumbnail — a large PDF icon on a solid teal
-   panel, same 380px height as .news-single-media img so the card shell
-   (glass content overlay, border-radius, etc.) is unaffected. */
 .soc-thumb {
   display: flex;
   align-items: flex-start;
@@ -5925,13 +5178,16 @@ header .logo {
   }
 }
 
-/* ==========================================
-   YOUR FEEDBACK MATTER FORM (feedback_form block)
-   Same visual language as the Partner Inquiry Form (.pif-*) — yellow
-   card, pill inputs, teal submit button — but its own component/prefix
-   (.fb-*), not a variant of it. No agree checkbox row, Product Name and
-   Query Type are native <select>s instead of a text field / multiselect.
-========================================== */
+
+/* ==============================================================
+   SECTION: Feedback Form
+   ============================================================== */
+
+
+.fb-footer .btn_fill:after {
+  background-color: #fff;
+  color: var(--aik-green);
+}
 
 .fb-section {
   background: #fff;
@@ -6004,7 +5260,7 @@ header .logo {
   border-radius: 50px;
   outline: none;
   padding: 0 24px;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 15px;
   color: #333;
   background: #fff;
@@ -6021,7 +5277,7 @@ header .logo {
   border-radius: 20px;
   outline: none;
   padding: 18px 24px;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 15px;
   color: #333;
   background: #fff;
@@ -6029,7 +5285,6 @@ header .logo {
   min-height: 130px;
 }
 
-/* Phone field with PK +92 prefix */
 .fb-phone {
   display: flex;
   align-items: center;
@@ -6053,7 +5308,6 @@ header .logo {
   padding-left: 16px;
 }
 
-/* Select */
 .fb-select {
   position: relative;
 }
@@ -6065,7 +5319,7 @@ header .logo {
   border-radius: 50px;
   outline: none;
   padding: 0 45px 0 24px;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 15px;
   color: #333;
   background: #fff;
@@ -6088,7 +5342,6 @@ header .logo {
   font-size: 14px;
 }
 
-/* Field-level error messages */
 .fb-error {
   display: none;
   color: #b3261e;
@@ -6125,9 +5378,6 @@ header .logo {
   text-align: center;
 }
 
-/* On success the form's fields are hidden entirely (js/custom.js), so the
-   alert becomes the only thing left in the card — sized to read as a
-   proper "thank you" message filling that space, not a small strip. */
 .fb-alert.is-success {
   display: block;
   margin-top: 0;
@@ -6183,140 +5433,11 @@ header .logo {
   }
 }
 
-/* Decorative grid position utilities — pair with .grid-left / .grid-right */
 
-.grid-center-left {
-  top: 50%;
-  bottom: auto;
-  transform: translateY(-50%);
-}
+/* ==============================================================
+   SECTION: Send Money
+   ============================================================== */
 
-.grid-top-right {
-  top: 0;
-  right: 0;
-  bottom: auto;
-}
-
-.grid-top-left {
-  top: 0;
-  left: 0;
-  bottom: auto;
-}
-
-.grid-bottom-right{
-  bottom: 0;
-  right: 0;
-  top: auto;
-} 
-
-
-
-
-
-@media (max-width: 767.98px) {
-  .connect-sec-custom {
-    padding: 75px 0 0 !important;
-    align-items: flex-end;
-  }
-}
-
-.deen-smarter-sec .smarter-sec__inner {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-@media (max-width: 1450px){
-  .app-dl-right img {
-    max-height: 650px;
-  }
-	@media screen and (min-width: 1400px) and (max-width: 1440px) {
-		.debit_custom_smarter-sec .smarter-sec__left {
-    max-width: 600px !important;
-}
-		.deen-sec .smarter-sec__left {
-    max-width: 600px !important;
-}
-				
-	}
-	
-  .app-dl-heading {
-    font-size: 4rem;
-  }
-  .app-dl-logo img {
-    
-    max-width: 220px;
-  }
-  .app-dl-diamond {
-        position: absolute;
-        /* inset: 0; */
-        z-index: 0;
-        pointer-events: none;
-        right: -167px;
-        /* bottom: 0; */
-        width: 116%;
-        /* height: 83%; */
-        object-fit: cover;
-        top: 0%;
-    }
-
-
-    .app-dl-diamond {
-    right: -167px;
-    top: 1%;
-    }
-    
-    .debit_custom_why-choose-sec{
-      
-    padding: 100px 0 0;
-    
-    }
-    .debit_custom_why-choose-sec .smarter-sec__inner {
-        align-items: flex-end;
-    }
-
-    .debit_custom_smarter-sec .smarter-sec__left {
-    max-width: 600px !important;
-}
-}
-@media (max-width: 575px) {
-  .app-dl-section {
-    padding: 60px 0 0;
-    height: auto;
-  }
-
-  .app-dl-heading {
-    font-size: 48px;
-  }
-
-  .app-dl-right img {
-    max-height: 320px;
-  }
-
-  .home_about_section {
-    height: auto !important;
-    padding: 25% 0 !important;
-}
-
-    .app-dl-diamond {
-        position: absolute;
-        /* inset: 0; */
-        z-index: 0;
-        pointer-events: none;
-        right: -18px;
-        /* bottom: 0; */
-        width: 106%;
-        /* height: 83%; */
-        object-fit: cover;
-        top: 68%;
-    }
-}
-
-/* ==========================================
-   SEND MONEY YOUR WAY (send_money block)
-   Standalone component (.send-money-*) — solid green cards, no image,
-   just a centered title + description. Not connected to News posts.
-========================================== */
 
 .send-money-sec {
   padding: 90px 0 110px;
@@ -6360,7 +5481,7 @@ header .logo {
 .send-money-card__title {
   color: var(--aik-yellow);
   font-weight: 700;
-/*   font-size: 1.0625rem; */
+  /*   font-size: 1.0625rem; */
   margin: 0 0 10px;
 }
 
@@ -6391,16 +5512,11 @@ header .logo {
   }
 }
 
-/* ==========================================
-   SEARCH RESULTS (search.php)
-   Standalone component (.search-result*) — deliberately NOT the
-   .news-single image card used on Media News/Schedule of Charges/Send
-   Money: search results mix Posts and Pages, and Pages generally don't
-   have a featured image, so a plain title + excerpt + Read More list
-   (no image dependency) is used instead. Pagination reuses the existing
-   .news-archive-pagination / .page-numbers styles as-is. No hero banner —
-   too heavy for a results page — just a plain heading above the list.
-========================================== */
+
+/* ==============================================================
+   SECTION: Search Results Page
+   ============================================================== */
+
 
 .search-results-sec {
   padding: 70px 0 100px;
@@ -6420,10 +5536,6 @@ header .logo {
   color: var(--aik-yellow);
 }
 
-/* Same pill search bar as .aik-download-help__search (download_band
-   block) — own class since this page isn't that block, but identical
-   styling so it reads as the same search control site-wide. Lets a
-   visitor search again without going back to the header search icon. */
 .search-results-form {
   display: flex;
   align-items: center;
@@ -6443,7 +5555,7 @@ header .logo {
   border: none;
   outline: none;
   background: transparent;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-size: 15px;
   color: #333;
 }
@@ -6561,12 +5673,11 @@ header .logo {
   }
 }
 
-/* ==========================================
-   404 (404.php)
-   Standalone component (.error-404-*) — no hero banner (same reasoning
-   as Search Results). Reuses .search-results-form (the pill search bar)
-   and .btn.btn_fill as-is, same controls used site-wide.
-========================================== */
+
+/* ==============================================================
+   SECTION: 404 Page
+   ============================================================== */
+
 
 .error-404-sec {
   padding: 120px 0 140px;
@@ -6617,5 +5728,430 @@ header .logo {
 
   .error-404__title {
     font-size: 1.5rem;
+  }
+}
+
+
+/* ==============================================================
+   SECTION: Newsletter & Footer
+   ============================================================== */
+
+
+.aik-footer__grid {
+  align-items: baseline;
+}
+
+footer.aik-footer {
+  background-color: var(--aik-green);
+  color: #fff;
+  float: left;
+  font-family: "Outfit", sans-serif;
+  margin-top: 0;
+  width: 100%;
+}
+
+.aik-newsletter {
+  padding: 52px 0;
+}
+
+.aik-newsletter__wrap {
+  align-items: center;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.aik-newsletter__text h2 {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.18;
+  margin: 0;
+}
+
+.aik-newsletter__text h2 span {
+  color: var(--aik-yellow);
+  display: block;
+}
+
+.aik-newsletter__form {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  gap: 16px;
+}
+
+.aik-newsletter__input {
+  background: #fff;
+  border: none;
+  border-radius: 50px;
+  color: #333;
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  height: 52px;
+  outline: none;
+  padding: 0 26px;
+  width: 290px;
+}
+
+.aik-newsletter__input::placeholder {
+  color: #b0b0b0;
+}
+
+.aik-newsletter__btn {
+  align-items: center;
+  background-color: var(--aik-yellow);
+  border: none;
+  border-radius: 50px;
+  color: #065258;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Outfit", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  gap: 9px;
+  height: 52px;
+  padding: 0 45px;
+  transition: background-color 0.25s ease;
+  white-space: nowrap;
+}
+
+.aik-newsletter__btn:hover {
+  background-color: #ddb800;
+}
+
+.aik-footer__hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.50);
+  margin: 0;
+}
+
+.aik-footer__body {
+  padding: 56px 0 52px;
+}
+
+.aik-footer__grid {
+  display: grid;
+  gap: 40px;
+  /* gap: 100px; */
+  /*   grid-template-columns: 2.2fr 1fr 1.3fr 1fr 1.5fr; */
+  grid-template-columns: 4.2fr 3fr 7.3fr 2fr;
+}
+
+@media (max-width: 991.98px) {
+  .aik-footer__logo {
+    grid-row: 1 / 3;
+  }
+}
+
+.aik-footer__logo {
+  margin-bottom: 22px;
+}
+
+.aik-footer__logo img {
+  height: auto;
+  max-width: 170px;
+  width: 100%;
+}
+
+.aik-footer__heading {
+  color: var(--aik-yellow) !important;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.aik-footer__heading--social {
+  margin-top: 28px;
+}
+
+.aik-footer__desc {
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 15x;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 300px;
+}
+
+.aik-footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aik-footer__links li {
+  margin-bottom: 13px;
+}
+
+.aik-footer__links li a {
+  color: rgba(255, 255, 255, 0.82);
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.aik-footer__links li a:hover {
+  color: var(--aik-yellow);
+  transform: translateX(5px);
+}
+
+.aik-footer__badges {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-bottom: 0;
+}
+
+.aik-footer__badge {
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.aik-footer__badge:hover {
+  opacity: 0.85;
+}
+
+.aik-footer__badge img {
+  display: block;
+  height: auto;
+  max-width: 162px;
+  width: 100%;
+}
+
+.aik-footer__social {
+  display: flex;
+  gap: 12px;
+}
+
+.aik-footer__social i {
+  color: #065258;
+}
+
+.aik-footer__social-btn {
+  align-items: center;
+  background-color: rgba(255, 255, 255);
+  border-radius: 50%;
+  color: #fff !important;
+  display: inline-flex;
+  font-size: 15px;
+  height: 30px;
+  justify-content: center;
+  text-decoration: none !important;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  width: 30px;
+}
+
+.aik-footer__social-btn:hover {
+  background-color: var(--aik-yellow);
+  color: #1a1a1a !important;
+}
+
+.aik-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 20px 0;
+}
+
+.aik-footer__bottom-inner {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.aik-footer__copy {
+  color: rgba(255, 255, 255, 0.70);
+  font-size: 13px;
+  margin: 0;
+}
+
+.aik-footer__copy>span {
+  color: var(--aik-yellow);
+  font-weight: 600;
+}
+
+.aik-footer__legal {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+
+.aik-footer__legal a {
+  color: rgba(255, 255, 255, 0.70);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.aik-footer__legal a:hover {
+  color: var(--aik-yellow);
+}
+
+.aik-footer__pipe {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+}
+
+@media (max-width: 1199.98px) {
+  .aik-footer__grid {
+    gap: 30px;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr 1.4fr;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .aik-newsletter__wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .aik-footer__grid {
+    gap: 36px 28px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .aik-footer__col--brand {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 28px;
+    align-items: start;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .aik-footer__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .aik-footer__heading {
+    padding: 18px 0;
+  }
+
+  .aik-footer__copy>span {
+    color: #fff;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .aik-footer__bottom-inner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .aik-newsletter__text h2 {
+    font-size: 10vw;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .aik-footer__grid {
+    gap: 32px 16px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .aik-newsletter__form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .aik-newsletter__input {
+    width: 100%;
+  }
+
+  .aik-newsletter__btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .aik-footer__col--brand,
+  .aik-footer__col--app {
+    grid-column: 1 / -1;
+    display: block;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .aik-footer__grid {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .aik-footer__col--brand {
+    grid-column: 1 !important;
+    display: block !important;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 0;
+  }
+
+  .aik-footer__col:not(.aik-footer__col--brand):not(.aik-footer__col--app) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .aik-footer__col:not(.aik-footer__col--brand):not(.aik-footer__col--app) > .aik-footer__heading {
+    cursor: pointer;
+    user-select: none;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 0 !important;
+    padding: 18px 0;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .footer-acc-arrow {
+    width: 32px;
+    height: 32px;
+    background: var(--aik-yellow);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.35s ease;
+    color: var(--aik-green);
+    font-size: 17px;
+    pointer-events: none;
+  }
+
+  .aik-footer__col:not(.aik-footer__col--app).is-open > .aik-footer__heading .footer-acc-arrow {
+    transform: rotate(90deg);
+  }
+
+  .footer-acc-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+
+  .aik-footer__col:not(.aik-footer__col--app).is-open .footer-acc-body {
+    max-height: 600px;
+  }
+
+  .footer-acc-body .aik-footer__links {
+    padding-top: 10px;
+    padding-bottom: 14px;
+  }
+
+  .footer-acc-body .aik-footer__badges {
+    padding-top: 10px;
+  }
+
+  .footer-acc-body .aik-footer__heading--social {
+    margin-top: 18px;
+  }
+
+  .footer-acc-body .aik-footer__social {
+    margin-bottom: 14px;
   }
 }

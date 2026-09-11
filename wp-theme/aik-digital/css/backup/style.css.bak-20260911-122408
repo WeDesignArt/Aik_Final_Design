@@ -15,10 +15,220 @@
    sibling was dropping to its own line instead of sitting next to the search
    icon. */
 
-          .aik_landing_top {
+@media (max-width: 767.98px) {
+ .page-id-560 .custom-smarter-sec {
+       height: 56vh;
+        
+    }
+	
+	.page-id-201 .mb_customize {
+		height: 1250px;
+	 	padding: 75px 0 0px;	
+	}
+	
+	
+	
+	
+	
+	
+}
+
+ 
+
+
+
+.aik-footer__grid{
+	align-items:baseline;
+}
+
+/* .aik-footer__grid {
+	align-items: center;
+} */
+.custom_column .aik-footer__links {
+	column-count: 2;
+	
+}
+/* 
+.custom_column {
+	    width: 306px;
+} */
+
+@media (max-width: 768px){
+	.custom_column {
+	    width: auto;
+}
+	
+}
+
+
+
+
+
+.pif-footer .btn_fill:after {
+    background-color: #fff;
+    color: var(--aik-green);
+}
+
+.padding_custom{
+	padding: 100px 0 0 !important;
+}
+
+@media (max-width: 768px) {
+.padding_custom     .explore-sec__inner {
+         flex-direction: column;
+}
+}
+
+
+.page_content h1,
+.page_content h2,
+.page_content h3,
+.page_content h4,
+.page_content h5,
+.page_content h6 {
+    color: var(--aik-green);
+    font-weight: 700;
+}
+
+.page_content .btn_fill {
+    width: 400px;
+}
+@media (max-width: 768px){
+	.page_content .privacy_btn {
+	    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+}
+
+
+.fb-footer .btn_fill:after {
+	background-color: #fff;
+	color: var(--aik-green);
+}
+
+
+.business_hero .hero_main_text .btn_fill {
+	    padding: 13px 70px 13px 30px;
+		font-size: 1rem;
+}
+
+
+.news-single .read-btn {
+    bottom: 5px;
+    padding: 0;
+    position: absolute;
+}
+
+
+.news-single-content {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(13px) saturate(1.5);
+    border: 1px solid hsla(0, 0%, 100%, .2);
+    border-radius: 20px;
+    bottom: 12px;
+    color: #fff;
+    height: 45%;
+    left: 50%;
+    padding: 12px 20px;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 95%;
+}
+
+/* .news-single-media img {
+    height: 100%;
+    width: 100%;
+} */
+
+   @media screen and (max-width: 1366px) {
+    .business_hero .mobile_track {
+        right: 15%;
+        top: 70px;
+    }
+	
+	    .mobile_track .mobile_pill {
+        padding: 6px;
+        width: 300px;
+    }
+}
+
+
+
+
+
+
+.aik_landing_top .left_text_block h2 {
+	font-size: 5rem;
+}
+
+@media (max-width: 1925px) {
+.aik_landing_top .left_text_block h2 {
+	font-size: 3.5rem;
+}
+}
+@media (max-width: 1690px) {
+.aik_landing_top .left_text_block h2 {
+	font-size: 3rem;
+	}
+	
+	.aik_landing_top {
+		    top: 27%;
+		
+	}
+	.logo_arch {
+    left: 54%;
+	top: 62%;
+}
+
+.mobile_track {
+    left: 50%;
+    top: 161px;
+}
+	
+}
+
+
+
+   .home_about_section_content_title {
+     color: #005257;
+   }
+
+.interest_section .interest_text {
+	padding-left: 10px;
+}
+
+.home_about_section_content p {
+    font-size: 1.125rem;
+    margin: 1vw auto;
+    width: 50%;
+}
+
+.btn_fill {
+	font-size: 1rem;
+	padding: 13px 70px 13px 30px;
+}
+
+   .container_content{
+    max-width: 1740px;
+    margin: auto ;
+    width: 90%;
+   }
+
+   .md-news{
+    position: relative;
+    z-index: 1;
+   }
+
+
+
+/* ============================================================
+   Hero section / Landing page - Custom styles
+   ============================================================ */
+
+       .aik_landing_top {
         pointer-events: none;
        }
-
 
    @media screen and (max-width: 1366px) {
     .logo_arch {
@@ -29,7 +239,10 @@
         width: 300px;
         top: 173px;
     }
+
+  
 }
+
 
 .nav_wrapper {
   display: flex;
@@ -95,15 +308,29 @@ header .logo {
 .aik-social-float {
   position: fixed;
   right: 20px;
-  bottom: 100px;
+  bottom: 150px;
   z-index: 999;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.aik-social-float a,
+
 .aik-chat-float a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+/*   width: 60px;
+  height: 60px; */
+  border-radius: 50%;
+/*   background-color: var(--aik-yellow);
+  color: var(--aik-green);
+  font-size: 18px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18); */
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.aik-social-float a{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,8 +344,7 @@ header .logo {
   transition: background-color 0.25s ease, transform 0.25s ease;
 }
 
-.aik-social-float a:hover,
-.aik-chat-float a:hover {
+.aik-social-float a:hover {
   background-color: #ddb800;
   transform: translateX(-3px);
 }
@@ -130,39 +356,50 @@ header .logo {
 .aik-chat-float {
   position: fixed;
   right: 20px;
-  bottom: 0;
+  bottom: 5px;
   z-index: 999;
 }
 
 /* The <dotlottie-wc> canvas would otherwise swallow the click before it
    reaches the surrounding <a> — keep it purely decorative. */
 .aik-chat-float__lottie {
-  width: 34px;
-  height: 34px;
+  width: 100px;
+  height: 100px;
   display: block;
   pointer-events: none;
 }
 
 @media (max-width: 767px) {
+
+
+  .app_link_holder {
+   
+    top: 85px;
+  }
+  .business_hero .hero_main_text_desc {
+    margin-bottom: 20px;
+  }
+
+
+
   .aik-social-float {
     right: 12px;
-    bottom: 16px;
+    bottom: 75px;
   }
 
   .aik-chat-float {
     right: 12px;
   }
 
-  .aik-social-float a,
-  .aik-chat-float a {
+  .aik-social-float a {
     width: 36px;
     height: 36px;
     font-size: 15px;
   }
 
   .aik-chat-float__lottie {
-    width: 28px;
-    height: 28px;
+    width: 70px;
+    height: 70px;
   }
 }
 
@@ -184,7 +421,7 @@ header .logo {
 
 .smarter-sec__inner .note .smarter-sec__desc_note {
 	color: #005257;
-	font-size: 13px;
+	font-size: 16x;
 	line-height: 1.6;
 	margin: 0 0 8px;
 }
@@ -261,11 +498,11 @@ header .logo {
 
 }
 
-/* Business hero (business.html) — .business_hero .mobile_track has an
-   unscoped width:380px in main.css that outranks (specificity) the theme's
-   own @media(max-width:1366px){.mobile_track{width:350px}} breakpoint rule,
-   so the phone mockup never actually shrinks at 1366px like every other
-   tier does — it overflows past the fold instead. Narrowing it here (image
+/* Business hero — .business_hero .mobile_track has an unscoped width:380px
+   in main.css that outranks (specificity) the theme's own
+   @media(max-width:1366px){.mobile_track{width:350px}} breakpoint rule, so
+   the phone mockup never actually shrinks at 1366px like every other tier
+   does — it overflows past the fold instead. Narrowing it here (image
    scales proportionally, height:auto) keeps it, and the two floating pills
    anchored to it by percentage, inside the viewport. */
 @media (max-width: 1366px) {
@@ -291,7 +528,6 @@ header .logo {
 
 /* Bento Cards Custom */
 
-
     .section_title_heading  span{
       color: var(--aik-yellow);
     }
@@ -299,6 +535,24 @@ header .logo {
 .bento-grid-section {
   padding: 0 0 80px !important;
 }
+
+.bento-card__title {
+    
+    font-size: 40px !important;
+      white-space: nowrap;
+}
+
+@media (max-width: 1601px) {
+	.bento-card__title {
+    
+    font-size: 36px !important;
+	    white-space: nowrap;
+}
+	
+}
+
+
+
 
 @media (max-width: 1367px) {
     .bento-grid-section {
@@ -308,7 +562,7 @@ header .logo {
 
 .bento-card__title {
     
-    font-size: 58px !important;
+    font-size: 36px !important;
 }
 
 .bento-card__content {
@@ -319,6 +573,22 @@ header .logo {
 
     height: 580px !important;
 }
+
+@media (max-width: 768px) {
+	
+	.smarter-sec__top-logo img {
+	margin: auto;
+}
+	
+	
+	
+	
+.bento-card__title {
+    font-size: 30px !important;
+    white-space: break-spaces;
+}
+}
+
 
 /* Card becomes an <a> tag when a Link is set (bento_grid.php) — <a> is
    inline by default, which ignores the width/height main.css sets on
@@ -435,10 +705,12 @@ header .logo {
 }
 
 .aik-faq__item.is-open .aik-faq__answer {
-  /* Bumped up from 300px so a paragraph + a short bullet list doesn't
-     get clipped now that answers can carry bold/lists/links. Still a
-     fixed cap (same max-height transition technique used by the mobile
-     footer accordion elsewhere on the site) — raise further if needed. */
+  /* Answers now come from a WYSIWYG field (bold/lists/links), so they can
+     run noticeably longer than the old plain-text version — bumped up
+     from 300px so a paragraph + a short bullet list doesn't get clipped.
+     Still a fixed cap (matches the same max-height transition technique
+     used by the mobile footer accordion elsewhere on the site), so an
+     unusually long answer can still clip; raise this further if needed. */
   max-height: 600px;
 }
 
@@ -789,9 +1061,10 @@ footer.aik-footer {
 
 .aik-footer__grid {
   display: grid;
-  /* gap: 40px; */
-  gap: 100px;
-  grid-template-columns: 2.2fr 1fr 1.3fr 1fr 1.5fr;
+  gap: 40px;
+  /* gap: 100px; */
+/*   grid-template-columns: 2.2fr 1fr 1.3fr 1fr 1.5fr; */
+	grid-template-columns: 4.2fr 3fr 7.3fr 2fr;
 }
 
 @media (max-width: 1199.98px) {
@@ -867,7 +1140,7 @@ footer.aik-footer {
 
 .aik-footer__desc {
   color: rgba(255, 255, 255, 0.80);
-  font-size: 14px;
+  font-size: 15x;
   line-height: 1.75;
   margin: 0;
   max-width: 300px;
@@ -888,7 +1161,7 @@ footer.aik-footer {
 .aik-footer__links li a {
   color: rgba(255, 255, 255, 0.82);
   display: inline-block;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1;
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -1668,7 +1941,36 @@ footer.aik-footer {
   flex-direction: row;
   align-items: center;
   gap: 14px;
-  padding: 18px 22px;
+  padding: 18px 12px;
+  /* main.css's base .news-single-content background (a translucent white
+     glass tint) reads as darker or lighter card-to-card only by accident,
+     depending on how bright the photo behind it happens to be — not a
+     deliberate alternation. Setting an explicit dark/"light dark" pair
+     here, tied to the same odd/even --green modifier as the badge/text
+     colors, makes cards 1&3 vs 2&4 consistently alternate regardless of
+     the background image. step-info__num is untouched either way. */
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(10px) saturate(1.5);
+  height: 120px;
+  width: 400px;
+}
+
+@media (max-width: 1600px) {
+  .order-steps .step-info {
+    width: 325px;
+  }
+}
+
+@media (max-width: 1450px) {
+  .order-steps .step-info {
+    height: 150px;
+    width: 270px;
+  }
+}
+
+.order-steps .step-info--green {
+  background: hsla(0, 0%, 100%, 0.009);
 }
 
 .order-steps .step-info__num {
@@ -1708,12 +2010,21 @@ footer.aik-footer {
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
   margin: 0;
+  /* main.css clamps every <p> inside .news-single-content to 2 lines with
+     an ellipsis (meant for short news-card teasers) — this <p> shares
+     that class via .step-info, so a longer step description was getting
+     cut off mid-sentence. Same unset already used on .step-info__title
+     below. */
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
 }
 
 @media (max-width: 767px) {
   .order-steps .step-info {
     padding: 14px 18px;
     gap: 10px;
+    width: 350px;
+    
   }
 
   .order-steps .step-info__title {
@@ -1738,6 +2049,15 @@ footer.aik-footer {
   color: var(--aik-green);
 }
 
+/* "Title/Description Text Color: White" option (steps block) — overrides
+   the default alternating yellow/green title color with plain white for
+   every card, regardless of --green. step-info__num (the numbered badge)
+   is untouched, so it keeps alternating yellow/green either way. */
+.order-steps .step-info--white-text .step-info__title,
+.order-steps .step-info--white-text .step-info__desc {
+  color: #fff !important;
+}
+
 /* Keep decorative grid graphics behind the card content on this section */
 .md-news-section .container {
   position: relative;
@@ -1755,7 +2075,7 @@ footer.aik-footer {
    not every .swiper on the page). */
 .md-news-swiper-wrap {
   position: relative;
-  padding: 0 60px;
+  padding: 0 50px;
 }
 
 .md-news-swiper__nav {
@@ -1810,10 +2130,10 @@ footer.aik-footer {
 }
 
 /* ==========================================
-   MEDIA NEWS ARCHIVE (archive.php)
-   Different card look from the homepage's dark
-   glass-overlay .news-single cards — plain white
-   cards with the image on top, text below.
+   MEDIA NEWS ARCHIVE (archive.php / home.php)
+   Cards reuse the homepage's .news-single dark
+   glass-overlay style (main.css) — this block
+   only supplies the grid layout + pagination.
 ========================================== */
 
 .news-archive-section {
@@ -1821,85 +2141,10 @@ footer.aik-footer {
   background: #fff;
 }
 
-.news-archive-header {
-  margin-bottom: 44px;
-}
-
-.news-archive-heading {
-  color: var(--aik-green);
-  font-size: 2.75rem;
-  font-weight: 800;
-  margin: 0;
-}
-
 .news-archive-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background-color: #e5e5e5;
-}
-
-.news-archive-card {
-  background: #fff;
-  padding: 0 24px 32px;
-}
-
-.news-archive-card__media {
-  display: block;
-  margin: 0 0 20px;
-  overflow: hidden;
-}
-
-.news-archive-card__media img {
-  display: block;
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.news-archive-card__media:hover img {
-  transform: scale(1.05);
-}
-
-.news-archive-card__date {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: #888;
-  margin: 0 0 12px;
-}
-
-.news-archive-card__title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.4;
-  margin: 0 0 18px;
-}
-
-.news-archive-card__title a {
-  color: #1a1a1a;
-  text-decoration: none;
-}
-
-.news-archive-card__title a:hover {
-  color: var(--aik-green);
-}
-
-.news-archive-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--aik-green);
-  text-decoration: none;
-}
-
-.news-archive-card__link:hover {
-  text-decoration: underline;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
 .news-archive-pagination {
@@ -1948,16 +2193,8 @@ footer.aik-footer {
     padding: 50px 0 60px;
   }
 
-  .news-archive-heading {
-    font-size: 1.75rem;
-  }
-
   .news-archive-grid {
     grid-template-columns: 1fr;
-  }
-
-  .news-archive-card {
-    padding: 0 20px 26px;
   }
 }
 
@@ -2463,7 +2700,19 @@ footer.aik-footer {
 
 .smarter-sec__left {
   flex: 0 0 auto;
-  max-width: 500px;
+  max-width: 650px;
+/* 	previously it was 550px */
+}
+
+/* Optional Top Logo/Image (e.g. aik Tijarat logo) shown above the heading */
+.smarter-sec__top-logo {
+  margin: 0 0 20px;
+}
+
+.smarter-sec__top-logo img {
+  display: block;
+  max-width: 220px;
+  height: auto;
 }
 
 .smarter-sec__heading {
@@ -2483,7 +2732,7 @@ footer.aik-footer {
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.7;
   margin: 0 0 40px;
-  max-width: 420px;
+  max-width: 500px;
 }
 
 .debit_custom_smarter-sec .smarter-sec__desc {
@@ -2526,6 +2775,12 @@ font-weight: 700;
 font-size: 17px;
 }
 
+.smarter-sec__desc span {
+  color: var(--aik-yellow);
+  font-weight: 700;
+font-variation-settings: "wght" 700;
+}
+
 /* Background Style "None" (plain white section) — auto-applied by the
    template when that's selected. The base heading/desc/list colors above
    are white for the dark textured background used everywhere else, which
@@ -2542,7 +2797,8 @@ font-size: 17px;
 }
 
 .smarter-sec--on-white .smarter-sec__desc,
-.smarter-sec--on-white .smarter-sec__desc li span {
+.smarter-sec--on-white .smarter-sec__desc li span,
+.smarter-sec--on-white .smarter-sec__desc span {
   color: #000;
 }
 
@@ -2636,10 +2892,10 @@ font-size: 17px;
 /* Glass effect – overrides btn_fill defaults */
 .smarter-sec__btn {
   /* Was a white-tinted glass (rgba(255,255,255,.1)) — reads fine on the
-     dark teal top of the gradient bg, but on the lighter yellow-green
-     bottom (where "Physical Card"/"Virtual Card" actually sit) it's
-     nearly invisible, just a faint outline. A dark tint instead stays
-     visibly darker than the bg at every point in the gradient. */
+     dark teal top of a gradient bg, but on a lighter background (e.g.
+     the yellow-green bottom of Spend Smarter's gradient) it's nearly
+     invisible, just a faint outline. A dark tint instead stays visibly
+     darker than the bg at every point in the gradient. */
   background-color: rgba(0, 0, 0, 0.32) !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
@@ -2650,12 +2906,15 @@ font-size: 17px;
      coincidentally worked: the arrow (::after) is position:absolute;
      right:-2px, so it's NOT a flex sibling of the label text at all —
      it just floats on top of the button's rightmost ~50px, entirely
-     outside the gap:20px flex spacing. width:auto + enough right
-     padding to actually clear the 52px circle fixes both short and
-     long labels the same way (already fixed on the WP theme copy —
-     ported here since this static file never got it). */
+     outside the gap:20px flex spacing. main.css's own padding is only
+     10px 20px 10px 0, so nothing ever reserved room for that circle;
+     a short label inside the old fixed 194px box happened to leave
+     enough empty space to clear it, but a longer label (or width:auto
+     with the old padding) runs text straight under the circle. Auto
+     width + enough right padding to clear the circle (52px wide) plus a
+     visual gap fixes both short and long labels the same way. */
   width: auto !important;
-  padding: 10px 70px 10px 10px !important;
+  padding: 14px 70px 14px 30px !important;
   white-space: nowrap !important;
 }
 
@@ -2749,13 +3008,14 @@ font-size: 17px;
 }
 
 /* ==========================================
-   WE'RE HERE TO HELP (contact.html)
+   WE'RE HERE TO HELP (help_section block)
    Standalone component, deliberately NOT built on .smarter-sec — that
    block already juggles heading/description/list/icon-grid/media/button
    variants and is crowded enough; this repeating info-card layout gets
    its own namespace instead of becoming a 5th variant on top of it.
-   No hero sits above this section on contact.html, so it carries its
-   own top spacing instead of relying on a preceding hero_wrapper.
+   No hero sits above this section when placed first on a page, so it
+   carries its own top spacing instead of relying on a preceding
+   hero_wrapper.
 ========================================== */
 
 .help-sec {
@@ -2766,7 +3026,7 @@ font-size: 17px;
 
 .help-sec__inner {
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   justify-content: space-between;
   gap: 60px;
   position: relative;
@@ -2805,7 +3065,7 @@ font-size: 17px;
 }
 
 .help-sec__item-title {
-  font-size: 1.375rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--aik-green);
   margin: 0 0 8px;
@@ -2872,12 +3132,12 @@ font-size: 17px;
 }
 
 /* ==========================================
-   EXPLORE OUR FEATURE SUITE (feature-suite.html)
+   EXPLORE OUR FEATURE SUITE (feature_suite block)
    Standalone component (own .feature-suite-* namespace, same reasoning
    as .help-sec) — an autoplaying content/image slider. Each slide's
    content/image side is swapped with the "feature-suite-slide--reverse"
    modifier class, which just flips flex-direction — the DOM order of
-   content vs. media stays identical for both variants, so a WP template
+   content vs. media stays identical for both variants, so the template
    never needs to reorder markup, only add/omit one class.
 ========================================== */
 
@@ -2987,8 +3247,9 @@ font-size: 17px;
 .feature-suite-slide__tagline {
   color: var(--aik-yellow);
   font-weight: 700;
-  font-size: 1.0625rem;
+  font-size: 1.5rem;
   margin: 0 0 16px;
+  font-variation-settings: "wght" 700;
 }
 
 .feature-suite-slide__desc {
@@ -3016,6 +3277,7 @@ font-size: 17px;
 .feature-suite-slide__list li span {
   color: var(--aik-yellow);
   font-weight: 700;
+    font-variation-settings: "wght" 700;
 }
 
 .feature-suite-slide__media {
@@ -3034,6 +3296,26 @@ font-size: 17px;
   max-width: 82%;
   height: auto;
   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+	.feature-suite-slide {
+
+    height: auto;
+	}
+
+  /* Below this width, js/custom.js turns on Swiper's autoHeight (each
+     slide sizes the whole slider to its OWN content). The desktop
+     "stretch every slide to match the tallest one" trick above still
+     applies at this width otherwise, and fights autoHeight's own
+     measurement — slides get pinned to whatever height was stretched at
+     the time, so a longer slide's content ends up clipped instead of
+     the container growing to fit it. Turning stretch off here lets each
+     .swiper-slide sit at its own natural content height, which is what
+     autoHeight needs to measure correctly. */
+  .feature-suite-swiper .swiper-wrapper {
+    align-items: flex-start;
+  }
 }
 
 .feature-suite-swiper__pagination {
@@ -3127,7 +3409,7 @@ font-size: 17px;
 }
 
 /* ==========================================
-   EXPLORE AIK BEFORE YOU SIGN UP (explore-guest.html)
+   EXPLORE AIK BEFORE YOU SIGN UP (explore_guest block)
    Standalone component (own .explore-sec* namespace, same reasoning as
    .help-sec/.feature-suite-sec) — deliberately not a Smarter Section
    variant.
@@ -3149,11 +3431,11 @@ font-size: 17px;
 
 .explore-sec__left {
   flex: 0 0 auto;
-  max-width: 540px;
+  max-width: 650px;
 }
 
 .explore-sec__heading {
-  font-size: 2.75rem;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 1.2;
   color: var(--aik-green);
@@ -3171,7 +3453,7 @@ font-size: 17px;
 }
 
 .explore-sec__subheading {
-  font-size: 1.1875rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--aik-green);
   margin: 0 0 12px;
@@ -3215,7 +3497,7 @@ font-size: 17px;
 .explore-sec__right img {
   display: block;
   width: 100%;
-  max-width: 500px;
+/*   max-width: 500px; */
   height: auto;
 }
 
@@ -4458,7 +4740,6 @@ font-size: 17px;
     }
 
 
-
         .smarter-sec__heading {
 
         font-size: 12vw !important;
@@ -4580,11 +4861,12 @@ font-size: 17px;
 
     .business_hero .mobile_track {
         right: 23%;
-        top: 65%;
+        top: 69%;
     }
 
     .custom_size{
       height: 1070px;
+      background-color: #dac10f;
     }
 
     .interest_section {
@@ -4625,8 +4907,9 @@ font-size: 17px;
 }
 
 .business_hero .hero_main_text .btn_fill {
-    font-size: .875rem !important;
-   padding: 10px 40px 10px 19px !important; 
+    /* font-size: .875rem !important;
+   padding: 10px 40px 10px 19px !important;  */
+   width: 254px;
 }
 
 
@@ -4639,6 +4922,7 @@ header .logo {
 .smarter-sec {
   padding: 75px 0;
   align-items: start;
+  min-height: auto;
 }
 
 .debit_custom_why-choose-sec{
@@ -4659,7 +4943,7 @@ header .logo {
 @media (max-width: 410px) {
 
 
-      .smarter-sec {
+      /* .smarter-sec {
         padding: 25px 0;
     position: relative;
     overflow: hidden;
@@ -4667,15 +4951,16 @@ header .logo {
     display: flex;
     align-items: start;
 
-    }
+    } */
 
-.business_hero .hero_main_text .btn_fill {
+/* .business_hero .hero_main_text .btn_fill {
         font-size: 0.7rem !important;
         padding-right: 34px !important;
-    }
-    .custom_adjustment{
+    } */
+
+    /* .custom_adjustment{
       height: 900px;
-    }
+    } */
     .index_custom .interest_section {
         bottom: -126px;
         left: 28px;
@@ -5074,8 +5359,8 @@ header .logo {
 
   /* Yellow circular arrow button */
   .footer-acc-arrow {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     background: var(--aik-yellow);
     border-radius: 50%;
     display: inline-flex;
@@ -5200,13 +5485,12 @@ header .logo {
         top: 35%;
         }
 }
-
-@media (max-width: 767.98px) {
+/* @media (max-width: 767.98px) {
   .btn_fill{
         padding: 10px 20px 10px 0 !important;
         font-size: 1.125rem !important;
   }
-}
+} */
 
 /* ==========================================
    PARTNER INQUIRY FORM (connect.html)
@@ -5491,9 +5775,9 @@ header .logo {
   text-align: center;
 }
 
-/* On success the form's fields are hidden entirely, so the alert becomes
-   the only thing left in the card — sized to read as a proper "thank
-   you" message filling that space, not a small strip. */
+/* On success the form's fields are hidden entirely (js/custom.js), so the
+   alert becomes the only thing left in the card — sized to read as a
+   proper "thank you" message filling that space, not a small strip. */
 .pif-alert.is-success {
   display: block;
   margin-top: 0;
@@ -5571,7 +5855,7 @@ header .logo {
 }
 
 /* ==========================================
-   SCHEDULE OF CHARGES (schedule-of-charges.html)
+   SCHEDULE OF CHARGES (schedule_of_charges block)
    Cards deliberately REUSE the existing .news-single card classes
    (main.css) — same card design as "Our Media News" — with a PDF icon
    thumbnail (.soc-thumb) standing in for a post thumbnail image, sized
@@ -5662,7 +5946,7 @@ header .logo {
 }
 
 /* ==========================================
-   YOUR FEEDBACK MATTER FORM (feedback-form.html)
+   YOUR FEEDBACK MATTER FORM (feedback_form block)
    Same visual language as the Partner Inquiry Form (.pif-*) — yellow
    card, pill inputs, teal submit button — but its own component/prefix
    (.fb-*), not a variant of it. No agree checkbox row, Product Name and
@@ -5681,7 +5965,7 @@ header .logo {
 }
 
 .fb-heading {
-  font-size: 2.25rem;
+  font-size: 4rem;
   font-weight: 800;
   color: var(--aik-green);
   line-height: 1.25;
@@ -5693,7 +5977,7 @@ header .logo {
 }
 
 .fb-subtext {
-  font-size: 15px;
+  font-size: 18px;
   color: #444;
   margin: 0;
 }
@@ -5861,9 +6145,9 @@ header .logo {
   text-align: center;
 }
 
-/* On success the form's fields are hidden entirely, so the alert becomes
-   the only thing left in the card — sized to read as a proper "thank
-   you" message filling that space, not a small strip. */
+/* On success the form's fields are hidden entirely (js/custom.js), so the
+   alert becomes the only thing left in the card — sized to read as a
+   proper "thank you" message filling that space, not a small strip. */
 .fb-alert.is-success {
   display: block;
   margin-top: 0;
@@ -5905,6 +6189,11 @@ header .logo {
 
   .fb-footer {
     justify-content: center;
+  }
+
+  .fb-submit {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 
@@ -5957,11 +6246,20 @@ header .logo {
   justify-content: flex-end;
 }
 
-@media (max-width: 1399px){
+@media (max-width: 1450px){
   .app-dl-right img {
     max-height: 650px;
   }
-
+	@media screen and (min-width: 1400px) and (max-width: 1440px) {
+		.debit_custom_smarter-sec .smarter-sec__left {
+    max-width: 600px !important;
+}
+		.deen-sec .smarter-sec__left {
+    max-width: 600px !important;
+}
+				
+	}
+	
   .app-dl-heading {
     font-size: 4rem;
   }
@@ -5994,7 +6292,8 @@ header .logo {
     
     }
     .debit_custom_why-choose-sec .smarter-sec__inner {
-        align-items: flex-end;
+/*         align-items: flex-end; */
+		   align-items: center;
     }
 
     .debit_custom_smarter-sec .smarter-sec__left {
@@ -6035,9 +6334,9 @@ header .logo {
 }
 
 /* ==========================================
-   SEND MONEY YOUR WAY (send-money.html)
+   SEND MONEY YOUR WAY (send_money block)
    Standalone component (.send-money-*) — solid green cards, no image,
-   just a centered title + description.
+   just a centered title + description. Not connected to News posts.
 ========================================== */
 
 .send-money-sec {
@@ -6082,7 +6381,7 @@ header .logo {
 .send-money-card__title {
   color: var(--aik-yellow);
   font-weight: 700;
-  font-size: 1.0625rem;
+/*   font-size: 1.0625rem; */
   margin: 0 0 10px;
 }
 
@@ -6114,13 +6413,14 @@ header .logo {
 }
 
 /* ==========================================
-   SEARCH RESULTS (search-results.html / search.php)
+   SEARCH RESULTS (search.php)
    Standalone component (.search-result*) — deliberately NOT the
    .news-single image card used on Media News/Schedule of Charges/Send
    Money: search results mix Posts and Pages, and Pages generally don't
    have a featured image, so a plain title + excerpt + Read More list
    (no image dependency) is used instead. Pagination reuses the existing
-   .news-archive-pagination / .page-numbers styles as-is.
+   .news-archive-pagination / .page-numbers styles as-is. No hero banner —
+   too heavy for a results page — just a plain heading above the list.
 ========================================== */
 
 .search-results-sec {
@@ -6250,7 +6550,9 @@ header .logo {
 }
 
 .search-results-empty {
-  padding: 60px 0;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 0;
   color: #555;
   font-size: 16px;
 }
@@ -6281,7 +6583,7 @@ header .logo {
 }
 
 /* ==========================================
-   404 (404.html / 404.php)
+   404 (404.php)
    Standalone component (.error-404-*) — no hero banner (same reasoning
    as Search Results). Reuses .search-results-form (the pill search bar)
    and .btn.btn_fill as-is, same controls used site-wide.
@@ -6338,6 +6640,7 @@ header .logo {
     font-size: 1.5rem;
   }
 }
+
 
 /* ============================================================
    TABLET RESPONSIVE (768px – 1366px)

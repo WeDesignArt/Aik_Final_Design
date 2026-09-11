@@ -26,13 +26,20 @@ $mobile_url    = ! empty( $mobile_image['url'] ) ? $mobile_image['url'] : AIK_TH
 $mobile_bg_url = ! empty( $mobile_bg_image['url'] ) ? $mobile_bg_image['url'] : AIK_THEME_URI . '/images/bg-1.png';
 $is_business   = ( 'business' === $hero_style );
 $is_inner      = ( 'inner' === $hero_style );
+
+// Which side of the site the current page belongs to (its own "Menu
+// Section" field, not this block's hero_style) — drives the Personal/
+// Business toggle below, same logic as header.php's own copy of it.
+$aik_menu_section     = is_page() ? get_field( 'menu_section' ) : null;
+$aik_personal_active  = esc_attr( 'business' === $aik_menu_section ? '' : ( $aik_menu_section ? 'active' : '' ) );
+$aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : '' );
 ?>
 <?php if ( $is_inner ) : ?>
       <section class="home_hero_wrapper index_custom clearfix position-relative bg_primary">
         <section class="home_hero_slider custom_adjustment aik_landing overflow-hidden">
           <div class="app_link_holder">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><span>Personal</span> </a>
-            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>"><span>Business</span> </a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span>Personal</span> </a>
+            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span>Business</span> </a>
           </div>
           <article class="hero_item debit_hero_item">
             <div class="hero_img">
@@ -51,8 +58,8 @@ $is_inner      = ( 'inner' === $hero_style );
       <section class="home_hero_wrapper clearfix position-relative bg_primary">
         <section class="home_hero_slider custom_size aik_landing overflow-hidden business_hero">
           <div class="app_link_holder">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><span>Personal</span> </a>
-            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="active"><span>Business</span> </a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span>Personal</span> </a>
+            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span>Business</span> </a>
           </div>
           <article class="hero_item">
             <div class="hero_img">
@@ -109,8 +116,8 @@ $is_inner      = ( 'inner' === $hero_style );
       <section class="home_hero_wrapper index_custom clearfix position-relative bg_primary">
         <section class="home_hero_slider custom_adjustment aik_landing overflow-hidden">
           <div class="app_link_holder">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="active"><span>Personal</span> </a>
-            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>"><span>Business</span> </a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span>Personal</span> </a>
+            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span>Business</span> </a>
           </div>
           <article class="hero_item">
             <div class="hero_img">
