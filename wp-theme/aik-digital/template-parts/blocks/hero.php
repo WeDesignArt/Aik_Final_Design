@@ -8,6 +8,7 @@ $bg_image          = get_sub_field( 'bg_image' );
 $mobile_image      = get_sub_field( 'mobile_image' );
 $pill_1_icon       = get_sub_field( 'pill_1_icon' );
 $pill_1_text       = get_sub_field( 'pill_1_text' );
+$pill_1_text_ur    = get_sub_field( 'pill_1_text_ur' );
 $pill_2_icon       = get_sub_field( 'pill_2_icon' );
 $pill_2_text       = get_sub_field( 'pill_2_text' );
 $show_interest     = get_sub_field( 'show_no_interest_banner' );
@@ -38,8 +39,8 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
       <section class="home_hero_wrapper index_custom clearfix position-relative bg_primary">
         <section class="home_hero_slider custom_adjustment aik_landing overflow-hidden">
           <div class="app_link_holder">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span>Personal</span> </a>
-            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span>Business</span> </a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span data-en="Personal" data-ur="پرسنل">Personal</span> </a>
+            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span data-en="Business" data-ur="بزنس">Business</span> </a>
           </div>
           <article class="hero_item debit_hero_item">
             <div class="hero_img">
@@ -58,8 +59,8 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
       <section class="home_hero_wrapper clearfix position-relative bg_primary">
         <section class="home_hero_slider custom_size aik_landing overflow-hidden business_hero">
           <div class="app_link_holder">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span>Personal</span> </a>
-            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span>Business</span> </a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span data-en="Personal" data-ur="پرسنل">Personal</span> </a>
+            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span data-en="Business" data-ur="بزنس">Business</span> </a>
           </div>
           <article class="hero_item">
             <div class="hero_img">
@@ -90,7 +91,7 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
               <?php if ( $pill_1_text ) : ?>
               <div class="mobile_pill pill_top_right" data-aos="zoom-in" data-aos-delay="300" data-aos-offset="0">
                 <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_1_icon['url'] ) ? $pill_1_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
-                <div class="mobile_pill_text"><?php echo esc_html( $pill_1_text ); ?></div>
+                <div class="mobile_pill_text" data-en="<?php echo esc_attr( $pill_1_text ); ?>" data-ur="<?php echo esc_attr( $pill_1_text_ur ? $pill_1_text_ur : $pill_1_text ); ?>"><?php echo esc_html( $pill_1_text ); ?></div>
               </div>
               <?php endif; ?>
               <?php if ( $pill_2_text ) : ?>
@@ -116,8 +117,8 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
       <section class="home_hero_wrapper index_custom clearfix position-relative bg_primary">
         <section class="home_hero_slider custom_adjustment aik_landing overflow-hidden">
           <div class="app_link_holder">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span>Personal</span> </a>
-            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span>Business</span> </a>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="<?php echo $aik_personal_active; ?>"><span data-en="Personal" data-ur="پرسنل">Personal</span> </a>
+            <a href="<?php echo esc_url( home_url( '/business' ) ); ?>" class="<?php echo $aik_business_active; ?>"><span data-en="Business" data-ur="بزنس">Business</span> </a>
           </div>
           <article class="hero_item">
             <div class="hero_img">
@@ -137,7 +138,7 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
               <?php if ( $pill_1_text ) : ?>
               <div class="mobile_pill pill_left" data-aos="zoom-in" data-aos-delay="400" data-aos-offset="0">
                 <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_1_icon['url'] ) ? $pill_1_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
-                <div class="mobile_pill_text"><?php echo esc_html( $pill_1_text ); ?></div>
+                <div class="mobile_pill_text" data-en="<?php echo esc_attr( $pill_1_text ); ?>" data-ur="<?php echo esc_attr( $pill_1_text_ur ? $pill_1_text_ur : $pill_1_text ); ?>"><?php echo esc_html( $pill_1_text ); ?></div>
               </div>
               <?php endif; ?>
               <?php if ( $pill_2_text ) : ?>

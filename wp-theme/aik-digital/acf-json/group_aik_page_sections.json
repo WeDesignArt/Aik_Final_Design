@@ -60,6 +60,14 @@
                             "wrapper": { "width": "50" }
                         },
                         {
+                            "key": "field_aik_hero_pill1_text_ur",
+                            "label": "Pill 1 Text (Urdu)",
+                            "name": "pill_1_text_ur",
+                            "type": "text",
+                            "instructions": "Optional. Shown instead of Pill 1 Text when a visitor switches the site to Urdu. Leave blank to keep showing the English text.",
+                            "wrapper": { "width": "50" }
+                        },
+                        {
                             "key": "field_aik_hero_pill2_icon",
                             "label": "Pill 2 Icon",
                             "name": "pill_2_icon",

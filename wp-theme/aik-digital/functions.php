@@ -40,7 +40,7 @@ function aik_enqueue_assets() {
 	wp_enqueue_style( 'aik-google-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap', array(), null );
 	wp_enqueue_style( 'aik-main', AIK_THEME_URI . '/css/main.css', array(), AIK_THEME_VERSION );
 	wp_enqueue_style( 'aik-style', AIK_THEME_URI . '/css/style.css', array( 'aik-main' ), AIK_THEME_VERSION );
-	wp_enqueue_style( 'aik-responsive', AIK_THEME_URI . '/css/responsive.css', array( 'aik-main' ), AIK_THEME_VERSION );
+	wp_enqueue_style( 'aik-responsive', AIK_THEME_URI . '/css/responsive.css', array( 'aik-main', 'aik-style' ), AIK_THEME_VERSION );
 
 	// The theme ships its own jQuery build (matching the original static site);
 	// drop WP's bundled copy on the front end to avoid loading it twice.
@@ -54,6 +54,7 @@ function aik_enqueue_assets() {
 	wp_enqueue_script( 'aik-vendor', AIK_THEME_URI . '/js/vendor.js', array( 'jquery' ), AIK_THEME_VERSION, true );
 	wp_enqueue_script( 'aik-custom', AIK_THEME_URI . '/js/custom.js', array( 'aik-vendor' ), AIK_THEME_VERSION, true );
 	wp_enqueue_script( 'aik-app', AIK_THEME_URI . '/js/app.js', array( 'aik-custom' ), AIK_THEME_VERSION, true );
+	wp_enqueue_script( 'aik-lang', AIK_THEME_URI . '/js/lang.js', array(), AIK_THEME_VERSION, true );
 }
 add_action( 'wp_enqueue_scripts', 'aik_enqueue_assets' );
 
