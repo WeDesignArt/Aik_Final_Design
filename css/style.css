@@ -7,6 +7,625 @@
 
 /* Additional CSS */
 
+/* ============================================================
+   BRAND AMBASSADOR PAGE STYLES (How It Works & Bottom Banner)
+   - Zero custom button or font-family CSS added (uses site defaults & .btn_fill)
+   ============================================================ */
+
+/* How it Works Section */
+.how-it-works-sec {
+  padding: 95px 0 105px;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works-sec .container {
+  position: relative;
+  z-index: 2;
+}
+
+.how-it-works__heading {
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 800;
+  color: #005257;
+  text-align: center;
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+
+.how-it-works__filter-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 45px;
+}
+
+.how-it-works__select {
+  border-radius: 999px;
+  padding: 6px 36px 6px 18px;
+  border: 1.5px solid #005257;
+  color: #005257;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background-color: #f7faf9;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.how-it-works__select:focus {
+  border-color: #f5ce1a;
+  box-shadow: 0 0 0 3px rgba(245, 206, 26, 0.25);
+}
+
+.how-it-works__grid {
+  display: grid;
+  gap: 24px;
+  transition: all 0.35s ease;
+}
+
+.how-it-works__grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.how-it-works__grid.cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 991.98px) {
+  .how-it-works__grid.cols-3,
+  .how-it-works__grid.cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .how-it-works__grid.cols-3,
+  .how-it-works__grid.cols-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.how-it-works__card {
+  background: #174d53;
+  border-radius: 22px;
+  padding: 38px 24px 34px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 82, 87, 0.12);
+  min-height: 270px;
+}
+
+.how-it-works__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 82, 87, 0.25);
+}
+
+.how-it-works__badge {
+  width: 58px;
+  height: 58px;
+  background: #f5ce1a;
+  color: #005257;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 14px rgba(245, 206, 26, 0.4);
+  flex-shrink: 0;
+}
+
+.how-it-works__card-title {
+  color: #f5ce1a;
+  font-size: 1.18rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.how-it-works__card-desc {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Brand Ambassador Bottom Banner */
+.brand-ambassador-bottom-banner {
+  background-image: url('../images/bg_brand_ambassador.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 85px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-ambassador-bottom-banner__title {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 800;
+  color: #f5ce1a;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.brand-ambassador-bottom-banner__sub {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.brand-ambassador-smarter-sec .smarter-sec__inner {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.brand-ambassador-smarter-sec .smarter-sec__right img {
+  max-width: 580px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Body blur when modal is open */
+body.ba-modal-open {
+  overflow: hidden !important;
+}
+
+body.ba-modal-open .site-content {
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  transition: filter 0.3s ease;
+  pointer-events: none;
+}
+
+/* Brand Ambassador Registration Popup Modal (Glassmorphism Blur Effect) */
+.ba-modal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+}
+
+.ba-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.ba-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 36, 40, 0.68);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+
+.ba-modal__dialog {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  border-radius: 28px;
+  width: 100%;
+  max-width: 620px;
+  padding: 42px 48px 40px;
+  box-shadow: 0 25px 70px rgba(0, 30, 35, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  transform: scale(0.92) translateY(20px);
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+
+.ba-modal.is-open .ba-modal__dialog {
+  transform: scale(1) translateY(0);
+}
+
+.ba-modal__close {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #d83232;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.ba-modal__close:hover {
+  background: rgba(216, 50, 50, 0.08);
+  transform: scale(1.15);
+}
+
+.ba-modal__title {
+  font-size: 1.32rem;
+  font-weight: 800;
+  color: #005257;
+  margin-bottom: 24px;
+  line-height: 1.35;
+  padding-right: 32px;
+}
+
+.ba-form__group {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.ba-form__label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #005257;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.ba-form__req {
+  color: #d83232;
+  font-weight: 800;
+  margin-left: 2px;
+}
+
+.ba-form__input,
+.ba-form__select {
+  width: 100%;
+  height: 52px;
+  border: 1.5px solid #dce5e5;
+  border-radius: 12px;
+  padding: 0 18px;
+  font-size: 0.95rem;
+  color: #00363a;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  font-family: inherit;
+}
+
+.ba-form__input::placeholder {
+  color: #9cb1b1;
+  font-weight: 400;
+  font-size: 0.92rem;
+}
+
+.ba-form__input:focus,
+.ba-form__select:focus {
+  border-color: #005257;
+  box-shadow: 0 0 0 3.5px rgba(0, 82, 87, 0.14);
+}
+
+.ba-form__select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.ba-form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  padding-right: 44px;
+}
+
+.ba-form__select-arrow {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #005257;
+  font-size: 0.9rem;
+}
+
+.ba-form__checkbox-wrap {
+  margin: 20px 0 24px;
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ba-form__check-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  margin: 0;
+  user-select: none;
+}
+
+.ba-form__checkbox {
+  width: 19px;
+  height: 19px;
+  margin-top: 2px;
+  accent-color: #005257;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ba-form__check-text {
+  font-size: 0.85rem;
+  color: #496366;
+  line-height: 1.45;
+}
+
+.ba-terms-link {
+  color: #005257;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.ba-terms-link:hover {
+  color: #0c6a70;
+}
+
+.ba-form__action {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+/* Button exact match to design (split pill with flush yellow circle and white arrow) */
+.ba-btn-next {
+  background: #174d53;
+  border: none;
+  border-radius: 999px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0 0 32px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 82, 87, 0.2);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.ba-btn-next:hover {
+  background: #0d3b40;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 82, 87, 0.32);
+}
+
+.ba-btn-next__text {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  margin-right: 22px;
+}
+
+.ba-btn-next__icon {
+  width: 50px;
+  height: 50px;
+  background: #f5ce1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.ba-btn-next__icon i {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 900;
+  -webkit-text-stroke: 0.7px #ffffff;
+  transition: transform 0.25s ease;
+}
+
+.ba-btn-next:hover .ba-btn-next__icon i {
+  transform: translate(2px, -2px);
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 650px) {
+  .ba-modal__dialog {
+    padding: 30px 22px 26px;
+    border-radius: 20px;
+  }
+  .ba-modal__title {
+    font-size: 1.15rem;
+  }
+}
+
+/* Urdu styling for modal */
+html[lang="ur"] .ba-form__group,
+html[lang="ur"] .ba-form__checkbox-wrap {
+  text-align: right;
+  direction: rtl;
+}
+
+html[lang="ur"] .ba-modal__close {
+  right: auto;
+  left: 24px;
+}
+
+html[lang="ur"] .ba-modal__title {
+  padding-right: 0;
+  padding-left: 30px;
+  text-align: right;
+}
+
+html[lang="ur"] .ba-form__select {
+  padding-right: 18px;
+  padding-left: 44px;
+}
+
+html[lang="ur"] .ba-form__select-arrow {
+  right: auto;
+  left: 18px;
+}
+
+html[lang="ur"] .ba-form__action {
+  justify-content: flex-end;
+}
+
+html[lang="ur"] .ba-btn-next {
+  padding: 0 32px 0 0;
+  flex-direction: row-reverse;
+}
+
+html[lang="ur"] .ba-btn-next__text {
+  margin-right: 0;
+  margin-left: 22px;
+}
+
+
+
+/* aik bachat account _ Card */
+
+.page-id-444 .order-steps .step-info {
+    width: 500px;
+}
+
+
+
+/* URDU BUSINESS PAGe */
+
+html[lang="ur"] .aik_landing .hero_main_text {
+    align-items: flex-end;
+    right: 0;
+    justify-content: center;
+    left: auto;
+}
+
+html[lang="ur"] .business_hero .logo_arch {
+    left: -13%;
+    scale: -1 1;
+}
+
+html[lang="ur"] .business_hero .mobile_track {
+    left: auto;
+    transform: none;
+    right: 66%;
+    width: 380px;
+}
+
+html[lang="ur"]  .hero_main_text {
+	    padding: 2vw 5vw 2vw 0;
+}
+
+@media (max-width:1690px) {
+	html[lang="ur"] .business_hero .logo_arch {
+    left: -20%;
+	}
+	
+	html[lang="ur"] .business_hero .mobile_track {
+    left: auto;
+    transform: none;
+    right: 54%;
+    width: 380px;
+}
+	
+	
+}
+
+@media (min-width: 768px) and (max-width: 1366px) {
+	html[lang="ur"] .business_hero .mobile_track {
+    left: auto;
+    transform: none;
+    right: 62%;
+    width: 260px;
+}
+	
+	html[lang="ur"] .business_hero .logo_arch {
+    left: -20%;
+	}	
+	
+	
+	
+}
+
+@media (max-width: 767.98px) {
+   html[lang="ur"] .business_hero .hero_main_text .btn_fill {
+        width: auto;
+    }
+	
+	html[lang="ur"] .business_hero .logo_arch {
+            top: 86%;
+        left: 60% !important;
+	scale: 1 1;
+}
+	
+	html[lang="ur"] .business_hero .mobile_track {
+    left: auto;
+    transform: none;
+    right: 23%;
+    width: 205px;
+}
+	
+	
+	
+}
+
+
+/* END HERE */
+
+
+html[lang="ur"] .business_hero .hero_main_text p {
+	width: 100%;
+}
+
+html[lang="ur"] .aik_landing .hero_main_text {
+    align-items: flex-end;
+}
+
+
+
+
+
+/* remove dot and auto scroll  and arrow for all pages 25sept */
+
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
+	
+    display: none;
+}
+
+html[lang="ur"]  .aik-faq__item .aik-faq__toggle {
+    justify-content: end;
+}
+
+
+
+
+
 /* main.css sets align-items/justify-content on .nav_wrapper but never
    display:flex, so those properties were no-ops — harmless before since
    .search_holder / .header-actions were mutually exclusive by breakpoint
@@ -14,6 +633,11 @@
    sibling (.header-connect-btn) exposed it: without display:flex, that block
    sibling was dropping to its own line instead of sitting next to the search
    icon. */
+
+
+.page-id-1039 .why-choose-sec .smarter-sec__inner {
+    padding-top: 100px;
+}
 
 @media (max-width: 767.98px) {
  .page-id-560 .custom-smarter-sec {
@@ -33,7 +657,6 @@
 	
 }
 
- 
 
 
 
@@ -142,6 +765,12 @@
 } */
 
    @media screen and (max-width: 1366px) {
+	   html[lang="ur"] .aik_landing_top, .aik_landing_top:has(.is-ur) {
+    width: 62%;
+    top: 20%;
+    left: 49%;
+}
+	   
     .business_hero .mobile_track {
         right: 15%;
         top: 70px;
@@ -204,10 +833,10 @@
     width: 50%;
 }
 
-.btn_fill {
+/* .btn_fill {
 	font-size: 1rem;
 	padding: 13px 70px 13px 30px;
-}
+} */
 
    .container_content{
     max-width: 1740px;
@@ -311,6 +940,7 @@ header .logo {
   border-radius: 50px;
   overflow: hidden;
   margin-right: 12px;
+  vertical-align: middle;
 }
 
 .lang-toggle__btn {
@@ -323,11 +953,92 @@ header .logo {
   padding: 9px 16px;
   cursor: pointer;
   transition: background-color 0.25s ease, color 0.25s ease;
+  line-height: 1;
 }
 
 .lang-toggle__btn.is-active {
   background-color: var(--aik-yellow);
   color: var(--aik-green);
+}
+
+/* Off-canvas mobile drawer language switcher */
+.off_canvas_lang {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  margin-bottom: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+}
+
+.off_canvas_lang_label {
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.off_canvas_lang .lang-toggle {
+  margin-right: 0;
+}
+
+/* Mobile responsive fixes to avoid header stacking and overlap */
+@media (max-width: 767.98px) {
+  .header_row .nav_wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .header_row .nav_wrapper.me-4 {
+    margin-right: 8px !important;
+  }
+
+  .header .lang-toggle {
+    margin-right: 4px;
+    border-radius: 20px;
+  }
+
+  .header .lang-toggle__btn {
+    font-size: 11px;
+    padding: 5px 8px;
+    line-height: 1.1;
+  }
+
+  .search_mobile {
+    width: 32px;
+    height: 32px;
+  }
+
+  .search_mobile button {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  header .logo .logo_wrapper img {
+    max-height: 38px;
+    width: auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .header .lang-toggle__btn {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+
+  .header_row .nav_wrapper {
+    gap: 4px;
+  }
+
+  .header_row .nav_wrapper.me-4 {
+    margin-right: 4px !important;
+  }
 }
 
 /* RTL — scoped to individual elements that currently hold real Urdu text
@@ -340,6 +1051,95 @@ header .logo {
 .is-ur {
   direction: rtl;
   text-align: right;
+	 font-family: 'Noto Nastaliq Urdu', serif;
+}
+
+html[lang="ur"] .home_about_section_content_title span {
+	font-family: 'Noto Nastaliq Urdu', serif;
+}
+
+/* Centered elements and headings MUST remain center-aligned in Urdu */
+.text-center,
+.text-center .is-ur,
+.text-center.is-ur,
+.home_about_section_content_title,
+.home_about_section_content_title.is-ur,
+.home_about_section_content p.is-ur,
+.section_title_heading,
+.section_title_heading.is-ur,
+.section_title p.is-ur,
+.bento-grid-btn.text-center .is-ur,
+.text-center h1.is-ur,
+.text-center h2.is-ur,
+.text-center h3.is-ur,
+.text-center p.is-ur,
+.text-center a.is-ur,
+.text-center span.is-ur,
+.md-news-header .is-ur,
+.aik-download-help .is-ur,
+.aik-faq__heading.is-ur
+{
+  text-align: center !important;
+}
+
+/* Hero section adjustments in Urdu to prevent heading overlapping pill_left */
+html[lang="ur"] .aik_landing_top,
+.aik_landing_top:has(.is-ur) {
+  width: 62%;
+  top: 20%;
+	    left: 49%;
+}
+@media (max-width: 1366px){
+	html[lang="ur"] .aik_landing_top, .aik_landing_top:has(.is-ur){
+		left: 20%;
+		top: 32%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  html[lang="ur"] .aik_landing_top, .aik_landing_top:has(.is-ur) {
+    width: 67%;
+    top: 30%;
+    left: 48%;
+  }
+	
+	
+}
+
+html[lang="ur"] .aik_landing_top .left_text_block,
+.aik_landing_top .left_text_block:has(.is-ur) {
+  width: 44%;
+}
+
+html[lang="ur"] .aik_landing_top .left_text_block h2,
+.aik_landing_top .left_text_block h2.is-ur {
+  font-size: clamp(2rem, 3.1vw, 3.4rem);
+  line-height: 1.25;
+  text-align: right;
+  margin-bottom: 0;
+}
+
+@media (min-width: 992px) {
+  html[lang="ur"] .mobile_track .mobile_pill.pill_left,
+  .mobile_track:has(.is-ur) .mobile_pill.pill_left {
+    top: 260px;
+  }
+}
+
+/* Smarter Section in Urdu — text/buttons flow right-to-left there, but
+   .smarter-sec__desc's max-width:500px and .smarter-sec__btns' default
+   flex start-alignment were both tuned for the English (left-aligned)
+   layout: the Urdu paragraph was wrapping into a narrow forced column
+   instead of using the available width, and the button sat pinned to
+   the left under right-aligned text instead of lining up with it.
+   English is untouched — only fires once real Urdu text is showing. */
+html[lang="ur"] .smarter-sec__desc,
+.smarter-sec__desc:has(.is-ur) {
+  max-width: none;
+}
+
+html[lang="ur"] .smarter-sec__btns {
+  justify-content: flex-end;
 }
 
 /* Floating social icons — fixed to the right edge, sitewide */
@@ -3215,6 +4015,75 @@ font-variation-settings: "wght" 700;
 
 .feature-suite-sec__heading span {
   color: var(--aik-yellow);
+}
+
+/* Prev/next arrows sit OUTSIDE the slider's own box (not overlaid on top
+   of slide content like Swiper's default nav) — the wrap reserves side
+   padding for them and each button is absolutely positioned within that
+   padding, same pattern as .md-news-swiper-wrap. */
+.feature-suite-swiper-wrap {
+  position: relative;
+  z-index: 2;
+  padding: 0 70px;
+}
+
+.feature-suite-swiper__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--aik-yellow);
+  color: var(--aik-green);
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.feature-suite-swiper__nav:hover {
+  background-color: #ddb800;
+}
+
+/* Swiper adds this class to nextEl/prevEl when there's nowhere left to
+   go (e.g. loop disabled and already at an end) — hidden rather than
+   dimmed, matching .md-news-swiper__nav's same convention. */
+.feature-suite-swiper__nav.swiper-button-disabled {
+  display: none;
+}
+
+.feature-suite-swiper__nav--prev {
+  left: 0;
+}
+
+.feature-suite-swiper__nav--next {
+  right: 0;
+}
+
+.feature-suite-sec--white .feature-suite-swiper__nav {
+  background-color: var(--aik-green);
+  color: #fff;
+}
+
+.feature-suite-sec--white .feature-suite-swiper__nav:hover {
+  background-color: #053f44;
+}
+
+@media (max-width: 575px) {
+  .feature-suite-swiper-wrap {
+    padding: 0 50px;
+  }
+
+  .feature-suite-swiper__nav {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
 }
 
 .feature-suite-swiper {
@@ -6695,16 +7564,43 @@ header .logo {
    gives tablet its own real layout instead of patching the desktop
    one down to fit.
    ============================================================ */
+  .business_hero .mobile_track .pill_bottom_left {
+    left: -65%;
+    bottom: 62%;
+  }
+
+
+
 @media (min-width: 768px) and (max-width: 1366px) {
 
-  /* Personal/standard hero — same "stack the phone below the
-     heading" idea already used at true-mobile widths, just with more
-     room to breathe (bigger phone, roomier heading). */
+  /* Personal/standard hero — keeps the same side-by-side arrangement as
+     desktop (text left, phone right), not a stacked/centered layout:
+     the site's design is side-by-side at every other resolution and a
+     centered stack read as a different, wrong design at this one. The
+     original desktop values (left:50%+transform, both text and phone
+     centered on the same point, phone width in fixed px) are what
+     caused the overlap in the first place once the viewport gets this
+     narrow — so instead of centering, the text is pinned to the left
+     edge in a narrower column and the phone to the right edge in a
+     fluid (vw-based) width, so they only ever share the middle if the
+     viewport is too narrow for both, which .mobile_track's clamp()
+     lower bound + this breakpoint's own lower bound (768px) is sized
+     to avoid.
+     top:170px (not %): .app_link_holder (the Personal/Business toggle)
+     sits at a fixed top:130px from main.css. A %-based top drifts with
+     viewport height — fine on tall viewports, but 18% of a real
+     1366x768 laptop's 768px-tall viewport is only ~138px, landing text
+     right on the toggle. Fixed px clears it at every height in this
+     breakpoint's realistic range.
+     Sized close to the original desktop scale (3-line heading, ~350px
+     phone) rather than shrunk down, per client feedback that a visibly
+     smaller/compressed version read as a different, wrong design. */
   .aik_landing_top {
-    left: 50%;
-    top: 18%;
-    width: 100%;
-    text-align: center;
+    left: 4%;
+    transform: none;
+    top: 170px;
+    width: 34%;
+    text-align: left;
   }
 
   .aik_landing_top .left_text_block {
@@ -6712,23 +7608,42 @@ header .logo {
   }
 
   .aik_landing_top .left_text_block h2 {
-    font-size: clamp(1.75rem, 4.2vw, 3rem);
+    font-size: clamp(2.2rem, 4.6vw, 3.4rem);
   }
 
+  /* Fluid width (not a fixed px) so the phone shrinks a little at the
+     narrow end of this breakpoint instead of colliding with
+     .aik-social-float's fixed floating icons on the right edge;
+     right:110px is a flat clearance from that same float column at
+     every width in range (it's a fixed-position element, not relative
+     to .mobile_track, so its own inset can't scale with vw the way the
+     phone's width does). */
   .mobile_track {
-    left: 50%;
-    top: 340px;
-    width: 340px;
+    left: auto;
+    right: 420px;
+    transform: none;
+    top: 153px;
+    width: clamp(260px, 26vw, 350px);
   }
 
   .mobile_track .mobile_pill.pill_left {
-    left: -20%;
+    left: -32%;
     top: 240px;
   }
 
   .mobile_track .mobile_pill.pill_right {
-    right: -10%;
+    right: 2%;
     top: 340px;
+  }
+
+  /* Scoped to .index_custom (the standard/personal hero's own wrapper,
+     per hero.php) — NOT bare .logo_arch, which would also hit the
+     Business hero's arch (it renders one too, via .custom_size) and
+     shift it off its own, still-correct position for this breakpoint. */
+  .index_custom .logo_arch {
+    top: 69%;
+    width: 600px;
+    left: 57%;
   }
 
   /* Business hero — .app_link_holder needs a real stacking context
@@ -6743,21 +7658,32 @@ header .logo {
 
   .business_hero .mobile_track {
     left: auto;
-    right: 8%;
-    top: 260px;
-    width: 260px;
+    right: 9%;
+    top: 220px;
+    width: 235px;
   }
 
   .business_hero .mobile_track .pill_top_right {
-    right: -5%;
-    top: -30px;
-    max-width: 220px;
+        right: -29%;
+        top: 51px;
+        max-width: auto; 
+    }
+	    .business_hero .mobile_track .pill_bottom_left {
+        bottom: -20%;
+        left: -50%;
+    }
+	
+	  .business_hero .hero_btn_group .btn_fill {
+    
+    font-size: 0.85rem;
+/*     padding: 8px 8px 8px 18px; */
+    gap: 8px;
+    white-space: normal;
+    text-align: left;
+  }
   }
 
-  .business_hero .mobile_track .pill_bottom_left {
-    left: -30%;
-    bottom: 60%;
-  }
+
 
   /* main.css's .btn_fill is a fixed width:194px flex row (label +
      52px round arrow icon), sized for short labels like "Submit" —
@@ -6771,13 +7697,48 @@ header .logo {
     justify-content: center;
   }
 
+
+
+
+/* Business hero — client-tuned values for the 768-1366 tablet range,
+   placed late in the file (after the earlier max-width:1366px rules
+   near the top of this file) so they win the cascade for these shared,
+   unscoped selectors without needing !important. */
+@media (min-width: 768px) and (max-width: 1366px) {
   .business_hero .hero_btn_group .btn_fill {
-    width: 248px !important;
+    /* width: 248px !important; */
     font-size: 0.85rem;
-    padding: 8px 8px 8px 18px;
-    gap: 8px;
+    /* padding: 8px 8px 8px 18px; */
+    /* gap: 8px; */
     white-space: normal;
-    text-align: left;
+    /* text-align: left; */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1366px) {
+  .business_hero .mobile_track {
+    left: auto;
+    right: 11%;
+    top: 85px;
+    width: 260px;
+  }
+}
+
+/* Same specificity/selector as the .logo_arch rule near the top of this
+   file (line ~233) — placed here, later in source order, so THIS value
+   wins instead (equal specificity: last declared takes it). Only
+   affects Business hero here in practice: .index_custom .logo_arch
+   (Personal hero, two classes) is more specific and always wins there
+   regardless of source order, so it's unaffected either way. */
+@media screen and (max-width: 1366px) {
+  .logo_arch {
+    top: 60%;
+    width: 600px;
+    
+  }
+  .business_hero  .logo_arch {
+    left: 77%;
+
   }
 }
 

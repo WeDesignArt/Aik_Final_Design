@@ -75,7 +75,7 @@
 
           <div class="search_holder d-none d-md-block">
             <form action="<?php echo esc_url( home_url( '/' ) ); ?>">
-              <input id="search" name="s" type="text" placeholder="Search">
+              <input id="search" name="s" type="text" placeholder="Search" data-en-placeholder="Search" data-ur-placeholder="تلاش کریں">
               <button id="search_submit" type="submit"><i class="bi bi-search"></i></button>
             </form>
           </div>
@@ -136,15 +136,15 @@
       <div class="srch-drawer">
         <div class="container">
           <div class="srch-drawer-header">
-            <p class="srch-label">What are you looking for?</p>
+            <p class="srch-label" data-en="What are you looking for?" data-ur="آپ کیا تلاش کر رہے ہیں؟">What are you looking for?</p>
             <button class="srch-close" id="searchClose" aria-label="Close search">
               <i class="bi bi-x-lg"></i>
             </button>
           </div>
           <form action="<?php echo esc_url( home_url( '/' ) ); ?>" class="srch-input-wrap">
             <i class="bi bi-search srch-input-icon"></i>
-            <input type="search" class="srch-input" id="searchInput" name="s" placeholder="Search AIK Digital…" autocomplete="off" spellcheck="false">
-            <button type="submit" class="srch-submit-btn">Search</button>
+            <input type="search" class="srch-input" id="searchInput" name="s" placeholder="Search AIK Digital…" data-en-placeholder="Search AIK Digital…" data-ur-placeholder="AIK ڈیجیٹل تلاش کریں…" autocomplete="off" spellcheck="false">
+            <button type="submit" class="srch-submit-btn" data-en="Search" data-ur="تلاش کریں">Search</button>
           </form>
         </div>
       </div>
@@ -152,6 +152,13 @@
 
     <div class="off_canvas">
       <div class="off_canvas_wrapper">
+        <div class="off_canvas_lang">
+          <span class="off_canvas_lang_label" data-en="Language:" data-ur="زبان:">Language:</span>
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" class="lang-toggle__btn is-active" data-lang="en">EN</button>
+            <button type="button" class="lang-toggle__btn" data-lang="ur">اردو</button>
+          </div>
+        </div>
         <?php
         // Which off-canvas menu shows depends on $aik_menu_section (set
         // above, near the top of this file) — "Business" on pages under

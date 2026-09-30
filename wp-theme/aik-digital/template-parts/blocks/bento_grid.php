@@ -3,13 +3,15 @@
  * Layout: bento_grid
  */
 
-$heading      = get_sub_field( 'heading' );
-$cards        = get_sub_field( 'cards' );
-$custom_grid  = get_sub_field( 'custom_grid' );
-$card_pattern = get_sub_field( 'card_pattern' ) ?: 'big_first';
-$show_button  = get_sub_field( 'show_button' );
-$button_label = get_sub_field( 'button_label' );
-$button_link  = get_sub_field( 'button_link' );
+$heading          = get_sub_field( 'heading' );
+$heading_ur       = get_sub_field( 'heading_ur' );
+$cards            = get_sub_field( 'cards' );
+$custom_grid      = get_sub_field( 'custom_grid' );
+$card_pattern     = get_sub_field( 'card_pattern' ) ?: 'big_first';
+$show_button      = get_sub_field( 'show_button' );
+$button_label     = get_sub_field( 'button_label' );
+$button_label_ur  = get_sub_field( 'button_label_ur' );
+$button_link      = get_sub_field( 'button_link' );
 
 /**
  * main.css lays this grid out with fixed grid-column spans keyed to these
@@ -29,7 +31,7 @@ $slugs = ( 'small_first' === $card_pattern )
       <section class="bento-grid-section overflow-hidden">
         <div class="container">
           <div class="section_title text-center">
-            <h2 class="section_title_heading pb_60 mx-auto col-lg-9" data-aos="fade-left"><?php echo aik_highlight( $heading ); ?></h2>
+            <h2 class="section_title_heading pb_60 mx-auto col-lg-9" data-aos="fade-left" data-en="<?php echo esc_attr( aik_highlight( $heading ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $heading_ur ? $heading_ur : $heading ) ); ?>"><?php echo aik_highlight( $heading ); ?></h2>
           </div>
           <?php if ( ! empty( $cards ) ) : ?>
           <div class="bento-grid<?php echo $custom_grid ? ' custom-grid' : ''; ?>">
@@ -41,6 +43,10 @@ $slugs = ( 'small_first' === $card_pattern )
 				}
 				$card_tag  = ! empty( $card['link'] ) ? 'a' : 'div';
 				$card_href = ! empty( $card['link'] ) ? ' href="' . esc_url( $card['link'] ) . '"' : '';
+				$c_title   = ! empty( $card['title'] ) ? $card['title'] : '';
+				$c_title_ur = ! empty( $card['title_ur'] ) ? $card['title_ur'] : $c_title;
+				$c_desc    = ! empty( $card['description'] ) ? $card['description'] : '';
+				$c_desc_ur = ! empty( $card['description_ur'] ) ? $card['description_ur'] : $c_desc;
 				?>
             <<?php echo $card_tag; ?> class="<?php echo esc_attr( $card_classes ); ?>"<?php echo $card_href; // phpcs:ignore -- trusted, built entirely from esc_url() above. ?> data-aos="fade-up" data-aos-delay="<?php echo esc_attr( $i * 100 ); ?>">
               <div class="bento-card__inner">
@@ -50,13 +56,13 @@ $slugs = ( 'small_first' === $card_pattern )
                 </div>
                 <?php endif; ?>
                 <?php if ( ! empty( $card['image']['url'] ) ) : ?>
-                <div class="bento-card__media"><img src="<?php echo esc_url( $card['image']['url'] ); ?>" alt="<?php echo esc_attr( str_replace( '**', '', $card['title'] ) ); ?>" class="bento-card__img">
+                <div class="bento-card__media"><img src="<?php echo esc_url( $card['image']['url'] ); ?>" alt="<?php echo esc_attr( str_replace( '**', '', $c_title ) ); ?>" class="bento-card__img">
                   <div class="bento-card__bg-placeholder bento-card__bg-placeholder--<?php echo esc_attr( $slug ); ?>"></div>
                 </div>
                 <?php endif; ?>
                 <div class="bento-card__content">
-                  <h3 class="bento-card__title"><?php echo aik_highlight( $card['title'] ); ?></h3>
-                  <p class="bento-card__desc"><?php echo aik_nl2br( $card['description'] ); ?></p>
+                  <h3 class="bento-card__title" data-en="<?php echo esc_attr( aik_highlight( $c_title ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $c_title_ur ) ); ?>"><?php echo aik_highlight( $c_title ); ?></h3>
+                  <p class="bento-card__desc" data-en="<?php echo esc_attr( aik_nl2br( $c_desc ) ); ?>" data-ur="<?php echo esc_attr( aik_nl2br( $c_desc_ur ) ); ?>"><?php echo aik_nl2br( $c_desc ); ?></p>
                 </div>
               </div>
             </<?php echo $card_tag; ?>>
@@ -64,7 +70,7 @@ $slugs = ( 'small_first' === $card_pattern )
           </div>
           <?php if ( $show_button && $button_label ) : ?>
           <div class="bento-grid-btn text-center">
-            <a href="<?php echo esc_url( $button_link ? $button_link : '#' ); ?>" class="btn btn_fill"><?php echo esc_html( $button_label ); ?></a>
+            <a href="<?php echo esc_url( $button_link ? $button_link : '#' ); ?>" class="btn btn_fill" data-en="<?php echo esc_attr( $button_label ); ?>" data-ur="<?php echo esc_attr( $button_label_ur ? $button_label_ur : $button_label ); ?>"><?php echo esc_html( $button_label ); ?></a>
           </div>
           <?php endif; ?>
           <?php endif; ?>

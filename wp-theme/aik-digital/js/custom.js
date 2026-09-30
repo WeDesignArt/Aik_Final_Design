@@ -392,17 +392,20 @@ if ( document.readyState === "complete" ) {
 }
 
 // "Explore Our Feature Suite" slider — one slide fully visible at a time,
-// autoplays every 7s, drag/swipe with mouse or touch, mousewheel also
-// steps a slide (mousewheel module is already part of the bundled
-// vendor.js Swiper build, same as the other Swiper instances on this
-// page). The feature_suite ACF layout can be added more than once per
-// page, each rendering its own #featureSuiteSwiper{N} id and scoped
-// .feature-suite-swiper__pagination inside it — looping over every
-// .feature-suite-swiper on the page (rather than one hard-coded id, like
-// aikInitMdNewsSwiper uses) initializes each instance independently with
-// its own pagination instead of every instance fighting over one.
+// manual nav only (no autoplay), drag/swipe with mouse or touch,
+// mousewheel also steps a slide (mousewheel module is already part of
+// the bundled vendor.js Swiper build, same as the other Swiper instances
+// on this page). The feature_suite ACF layout can be added more than
+// once per page, each rendering its own #featureSuiteSwiper{N} id and
+// scoped .feature-suite-swiper__pagination/-wrap nav buttons inside it —
+// looping over every .feature-suite-swiper on the page (rather than one
+// hard-coded id, like aikInitMdNewsSwiper uses) initializes each
+// instance independently with its own pagination/nav instead of every
+// instance fighting over one.
 function aikInitFeatureSuiteSwipers() {
   document.querySelectorAll( ".feature-suite-swiper" ).forEach( function ( el ) {
+    var wrap = el.closest( ".feature-suite-swiper-wrap" );
+
     new Swiper( el, {
       slidesPerView: 1,
       loop: true,
@@ -410,14 +413,13 @@ function aikInitFeatureSuiteSwipers() {
       observeParents: true,
       grabCursor: true,
 
-      autoplay: {
-        delay: 7000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
-
       mousewheel: {
         forceToAxis: true,
+      },
+
+      navigation: {
+        nextEl: wrap ? wrap.querySelector( ".feature-suite-swiper__nav--next" ) : null,
+        prevEl: wrap ? wrap.querySelector( ".feature-suite-swiper__nav--prev" ) : null,
       },
 
       speed: 700,

@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css?cb=1781771517554">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?cb=1790163326774">
 </head>
 
 <body>
@@ -116,7 +116,9 @@
         <div class="container">
           <h2 class="feature-suite-sec__heading" data-aos="fade-up">Explore Our <span>Feature Suite</span></h2>
 
-          <div class="swiper feature-suite-swiper" id="featureSuiteSwiper">
+          <div class="feature-suite-swiper-wrap">
+            <button type="button" class="feature-suite-swiper__nav feature-suite-swiper__nav--prev" aria-label="Previous slide"><i class="bi bi-arrow-left"></i></button>
+            <div class="swiper feature-suite-swiper" id="featureSuiteSwiper">
             <div class="swiper-wrapper">
 
               <div class="swiper-slide">
@@ -186,6 +188,8 @@
 
             </div>
             <div class="swiper-pagination feature-suite-swiper__pagination"></div>
+            </div>
+            <button type="button" class="feature-suite-swiper__nav feature-suite-swiper__nav--next" aria-label="Next slide"><i class="bi bi-arrow-right"></i></button>
           </div>
         </div>
       </section>

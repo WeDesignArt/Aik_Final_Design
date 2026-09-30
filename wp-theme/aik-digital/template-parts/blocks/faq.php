@@ -7,6 +7,7 @@
  */
 
 $heading      = get_sub_field( 'heading' );
+$heading_ur   = get_sub_field( 'heading_ur' );
 $items        = get_sub_field( 'items' );
 $show_button  = get_sub_field( 'show_button' );
 $button_label = get_sub_field( 'button_label' );
@@ -18,16 +19,21 @@ if ( empty( $items ) ) {
 ?>
       <section class="aik-faq">
         <div class="container">
-          <h2 class="aik-faq__heading" data-aos="fade-up"><?php echo aik_highlight( $heading ); ?></h2>
+          <h2 class="aik-faq__heading" data-aos="fade-up" data-en="<?php echo esc_attr( aik_highlight( $heading ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $heading_ur ? $heading_ur : $heading ) ); ?>"><?php echo aik_highlight( $heading ); ?></h2>
           <div class="aik-faq__list">
-            <?php foreach ( $items as $i => $item ) : ?>
+            <?php foreach ( $items as $i => $item ) :
+				$question    = $item['question'];
+				$question_ur = ! empty( $item['question_ur'] ) ? $item['question_ur'] : $question;
+				$answer_html    = apply_filters( 'the_content', $item['answer'] );
+				$answer_html_ur = apply_filters( 'the_content', ! empty( $item['answer_ur'] ) ? $item['answer_ur'] : $item['answer'] );
+				?>
             <div class="aik-faq__item<?php echo 0 === $i ? ' is-open' : ''; ?>">
               <button type="button" class="aik-faq__toggle">
-                <span class="aik-faq__question"><?php echo esc_html( $item['question'] ); ?></span>
+                <span class="aik-faq__question" data-en="<?php echo esc_attr( $question ); ?>" data-ur="<?php echo esc_attr( $question_ur ); ?>"><?php echo esc_html( $question ); ?></span>
                 <span class="aik-faq__arrow"><i class="bi bi-arrow-right"></i></span>
               </button>
-              <div class="aik-faq__answer">
-                <?php echo apply_filters( 'the_content', $item['answer'] ); // phpcs:ignore -- WYSIWYG field, same filter chain the_content() uses (wpautop, shortcodes, etc.). ?>
+              <div class="aik-faq__answer" data-en="<?php echo esc_attr( $answer_html ); ?>" data-ur="<?php echo esc_attr( $answer_html_ur ); ?>">
+                <?php echo $answer_html; // phpcs:ignore -- WYSIWYG field, same filter chain the_content() uses (wpautop, shortcodes, etc.). ?>
               </div>
             </div>
             <?php endforeach; ?>

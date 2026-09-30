@@ -66,6 +66,12 @@ if ( empty( $linkedin_url ) ) {
 if ( empty( $copyright_text ) ) {
 	$copyright_text = 'aik Bankislami';
 }
+
+$hide_footer = get_field( 'hide_footer' )
+	|| is_page( 'brand-ambassador' )
+	|| is_page_template( 'page-brand-ambassador.php' );
+
+if ( ! $hide_footer ) :
 ?>
     <footer class="aik-footer position-relative overflow-hidden">
       <section class="aik-newsletter footer_content">
@@ -148,6 +154,7 @@ if ( empty( $copyright_text ) ) {
       <div class="grid-right"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/right-grid-white.png" alt="gride-img"></div>
       <div class="footer-overlay"></div>
     </footer>
+    <?php endif; ?>
   </div>
   <?php wp_footer(); ?>
   <script>// Set current year in footer

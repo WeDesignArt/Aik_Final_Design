@@ -8,6 +8,7 @@
  */
 
 $heading           = get_sub_field( 'heading' );
+$heading_ur        = get_sub_field( 'heading_ur' );
 $background_style  = get_sub_field( 'background_style' ) ?: 'default';
 $background_image  = get_sub_field( 'background_image' );
 $slides            = get_sub_field( 'slides' );
@@ -27,11 +28,6 @@ if ( $extra_class ) {
 
 // Unique per-instance id — this layout can be added more than once per
 // page, and Swiper needs a distinct selector for each instance.
-// get_row_index() is this row's 1-based position within the whole
-// page_sections field (not just among feature_suite rows), which is all
-// that's needed for a unique DOM id — a `static` counter would be
-// unreliable here since include() (not include_once) recompiles this
-// file fresh on every row, so static state doesn't carry over.
 $swiper_id = 'featureSuiteSwiper-' . (int) get_row_index();
 ?>
       <section class="<?php echo esc_attr( $section_class ); ?>">
@@ -41,29 +37,37 @@ $swiper_id = 'featureSuiteSwiper-' . (int) get_row_index();
         <div class="grid-left"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/left-grid-<?php echo 'white' === $background_style ? 'gray' : 'white'; ?>.png" alt="gride-img"></div>
         <div class="container">
           <?php if ( $heading ) : ?>
-          <h2 class="feature-suite-sec__heading" data-aos="fade-up"><?php echo aik_highlight( $heading ); ?></h2>
+          <h2 class="feature-suite-sec__heading" data-aos="fade-up" data-en="<?php echo esc_attr( aik_highlight( $heading ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $heading_ur ? $heading_ur : $heading ) ); ?>"><?php echo aik_highlight( $heading ); ?></h2>
           <?php endif; ?>
 
           <?php if ( ! empty( $slides ) ) : ?>
-          <div class="swiper feature-suite-swiper" id="<?php echo esc_attr( $swiper_id ); ?>">
+          <div class="feature-suite-swiper-wrap">
+            <button type="button" class="feature-suite-swiper__nav feature-suite-swiper__nav--prev" aria-label="Previous slide"><i class="bi bi-arrow-left"></i></button>
+            <div class="swiper feature-suite-swiper" id="<?php echo esc_attr( $swiper_id ); ?>">
             <div class="swiper-wrapper">
               <?php foreach ( $slides as $slide ) :
 					$slide_class = 'feature-suite-slide';
 					if ( 'content_right' === $slide['layout_position'] ) {
 						$slide_class .= ' feature-suite-slide--reverse';
 					}
+					$s_title      = ! empty( $slide['title'] ) ? $slide['title'] : '';
+					$s_title_ur   = ! empty( $slide['title_ur'] ) ? $slide['title_ur'] : $s_title;
+					$s_tagline    = ! empty( $slide['tagline'] ) ? $slide['tagline'] : '';
+					$s_tagline_ur = ! empty( $slide['tagline_ur'] ) ? $slide['tagline_ur'] : $s_tagline;
+					$s_desc       = ! empty( $slide['description'] ) ? $slide['description'] : '';
+					$s_desc_ur    = ! empty( $slide['description_ur'] ) ? $slide['description_ur'] : $s_desc;
 					?>
               <div class="swiper-slide">
                 <div class="<?php echo esc_attr( $slide_class ); ?>">
                   <div class="feature-suite-slide__content">
-                    <?php if ( $slide['title'] ) : ?>
-                    <h3 class="feature-suite-slide__title"><?php echo aik_highlight( $slide['title'] ); ?></h3>
+                    <?php if ( $s_title ) : ?>
+                    <h3 class="feature-suite-slide__title" data-en="<?php echo esc_attr( aik_highlight( $s_title ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $s_title_ur ) ); ?>"><?php echo aik_highlight( $s_title ); ?></h3>
                     <?php endif; ?>
-                    <?php if ( $slide['tagline'] ) : ?>
-                    <p class="feature-suite-slide__tagline"><?php echo esc_html( $slide['tagline'] ); ?></p>
+                    <?php if ( $s_tagline ) : ?>
+                    <p class="feature-suite-slide__tagline" data-en="<?php echo esc_attr( $s_tagline ); ?>" data-ur="<?php echo esc_attr( $s_tagline_ur ); ?>"><?php echo esc_html( $s_tagline ); ?></p>
                     <?php endif; ?>
-                    <?php if ( $slide['description'] ) : ?>
-                    <p class="feature-suite-slide__desc"><?php echo aik_nl2br( $slide['description'] ); ?></p>
+                    <?php if ( $s_desc ) : ?>
+                    <p class="feature-suite-slide__desc" data-en="<?php echo esc_attr( aik_nl2br( $s_desc ) ); ?>" data-ur="<?php echo esc_attr( aik_nl2br( $s_desc_ur ) ); ?>"><?php echo aik_nl2br( $s_desc ); ?></p>
                     <?php endif; ?>
                     <?php if ( ! empty( $slide['list_items'] ) ) : ?>
                     <ul class="feature-suite-slide__list">
@@ -75,7 +79,7 @@ $swiper_id = 'featureSuiteSwiper-' . (int) get_row_index();
                   </div>
                   <?php if ( ! empty( $slide['image']['url'] ) ) : ?>
                   <div class="feature-suite-slide__media">
-                    <img src="<?php echo esc_url( $slide['image']['url'] ); ?>" alt="<?php echo esc_attr( $slide['image']['alt'] ? $slide['image']['alt'] : ( $slide['title'] ? wp_strip_all_tags( $slide['title'] ) : '' ) ); ?>">
+                    <img src="<?php echo esc_url( $slide['image']['url'] ); ?>" alt="<?php echo esc_attr( $slide['image']['alt'] ? $slide['image']['alt'] : ( $s_title ? wp_strip_all_tags( $s_title ) : '' ) ); ?>">
                   </div>
                   <?php endif; ?>
                 </div>
@@ -83,6 +87,8 @@ $swiper_id = 'featureSuiteSwiper-' . (int) get_row_index();
               <?php endforeach; ?>
             </div>
             <div class="swiper-pagination feature-suite-swiper__pagination"></div>
+            </div>
+            <button type="button" class="feature-suite-swiper__nav feature-suite-swiper__nav--next" aria-label="Next slide"><i class="bi bi-arrow-right"></i></button>
           </div>
           <?php endif; ?>
         </div>

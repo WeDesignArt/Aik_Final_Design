@@ -34,13 +34,32 @@ add_action( 'after_setup_theme', 'aik_setup' );
  * behaviour (GSAP preloader, AOS, Swiper, footer accordion, search drawer)
  * keeps working unmodified.
  */
+/**
+ * filemtime() of a theme-relative asset, e.g. '/css/style.css' — used as
+ * the enqueue version instead of the static AIK_THEME_VERSION for files
+ * that get edited often. AIK_THEME_VERSION never changes between deploys,
+ * so the enqueued URL (?ver=1.0.0) was identical before and after every
+ * CSS/JS edit — nothing (browser cache, Cloudways' server-side cache) had
+ * any reason to treat it as a new file, so edits could silently keep
+ * serving the old cached copy after upload. filemtime() changes the moment
+ * the file itself changes, forcing a fresh fetch every time. Falls back to
+ * AIK_THEME_VERSION if the file can't be read (safe default, matches the
+ * old behavior instead of erroring).
+ */
+function aik_asset_version( $relative_path ) {
+	$file = AIK_THEME_DIR . $relative_path;
+	$mtime = file_exists( $file ) ? filemtime( $file ) : false;
+	return $mtime ? $mtime : AIK_THEME_VERSION;
+}
+
 function aik_enqueue_assets() {
 	add_editor_style();
 
 	wp_enqueue_style( 'aik-google-fonts', 'https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap', array(), null );
-	wp_enqueue_style( 'aik-main', AIK_THEME_URI . '/css/main.css', array(), AIK_THEME_VERSION );
-	wp_enqueue_style( 'aik-style', AIK_THEME_URI . '/css/style.css', array( 'aik-main' ), AIK_THEME_VERSION );
-	wp_enqueue_style( 'aik-responsive', AIK_THEME_URI . '/css/responsive.css', array( 'aik-main', 'aik-style' ), AIK_THEME_VERSION );
+		wp_enqueue_style( 'aik-google-fonts', 'https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&family=Outfit:wght@100..900&display=swap', array(), null );
+	wp_enqueue_style( 'aik-main', AIK_THEME_URI . '/css/main.css', array(), aik_asset_version( '/css/main.css' ) );
+	wp_enqueue_style( 'aik-style', AIK_THEME_URI . '/css/style.css', array( 'aik-main' ), aik_asset_version( '/css/style.css' ) );
+	wp_enqueue_style( 'aik-responsive', AIK_THEME_URI . '/css/responsive.css', array( 'aik-main', 'aik-style' ), aik_asset_version( '/css/responsive.css' ) );
 
 	// The theme ships its own jQuery build (matching the original static site);
 	// drop WP's bundled copy on the front end to avoid loading it twice.
@@ -52,9 +71,9 @@ function aik_enqueue_assets() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'aik-jquery-migrate', AIK_THEME_URI . '/js/jquery-migrate.js', array( 'jquery' ), AIK_THEME_VERSION, true );
 	wp_enqueue_script( 'aik-vendor', AIK_THEME_URI . '/js/vendor.js', array( 'jquery' ), AIK_THEME_VERSION, true );
-	wp_enqueue_script( 'aik-custom', AIK_THEME_URI . '/js/custom.js', array( 'aik-vendor' ), AIK_THEME_VERSION, true );
-	wp_enqueue_script( 'aik-app', AIK_THEME_URI . '/js/app.js', array( 'aik-custom' ), AIK_THEME_VERSION, true );
-	wp_enqueue_script( 'aik-lang', AIK_THEME_URI . '/js/lang.js', array(), AIK_THEME_VERSION, true );
+	wp_enqueue_script( 'aik-custom', AIK_THEME_URI . '/js/custom.js', array( 'aik-vendor' ), aik_asset_version( '/js/custom.js' ), true );
+	wp_enqueue_script( 'aik-app', AIK_THEME_URI . '/js/app.js', array( 'aik-custom' ), aik_asset_version( '/js/app.js' ), true );
+	wp_enqueue_script( 'aik-lang', AIK_THEME_URI . '/js/lang.js', array(), aik_asset_version( '/js/lang.js' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'aik_enqueue_assets' );
 

@@ -24,7 +24,20 @@
                             "name": "heading",
                             "type": "text",
                             "instructions": "Wrap the highlighted words in **double asterisks**, e.g. The Smarter Way to Move **Your Money**",
-                            "default_value": "The Smarter Way to Move **Your Money**"
+                            "default_value": "The Smarter Way to Move **Your Money**",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_hero_heading_ur",
+                            "label": "Heading (Urdu)",
+                            "name": "heading_ur",
+                            "type": "text",
+                            "instructions": "Optional. Wrap highlighted words in **double asterisks**.",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_hero_bg_image",
@@ -49,7 +62,9 @@
                             "type": "image",
                             "return_format": "array",
                             "preview_size": "thumbnail",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_hero_pill1_text",
@@ -57,7 +72,9 @@
                             "name": "pill_1_text",
                             "type": "text",
                             "default_value": "Riba-free principles and protected by bank-grade",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_hero_pill1_text_ur",
@@ -65,7 +82,9 @@
                             "name": "pill_1_text_ur",
                             "type": "text",
                             "instructions": "Optional. Shown instead of Pill 1 Text when a visitor switches the site to Urdu. Leave blank to keep showing the English text.",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_hero_pill2_icon",
@@ -74,7 +93,9 @@
                             "type": "image",
                             "return_format": "array",
                             "preview_size": "thumbnail",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_hero_pill2_text",
@@ -82,7 +103,19 @@
                             "name": "pill_2_text",
                             "type": "text",
                             "default_value": "Utilities & Transfers all in one place",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_hero_pill2_text_ur",
+                            "label": "Pill 2 Text (Urdu)",
+                            "name": "pill_2_text_ur",
+                            "type": "text",
+                            "instructions": "Optional Urdu text for Pill 2.",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_hero_show_interest",
@@ -115,7 +148,11 @@
                             "name": "hero_style",
                             "type": "select",
                             "instructions": "\"Business\" adds a subheading, two buttons, and repositions the pills top-right/bottom-left, matching business.html's richer hero. \"Inner Page\" is the shorter, centered-heading hero used on Debit Card, Deen, Payroll, Safa, Tijarat, Aghaaz, What's New, and Connect — it has a reduced height and its own desktop/mobile background images instead of the app mockup and pills.",
-                            "choices": { "standard": "Standard (heading only, index.html)", "business": "Business (subheading + buttons)", "inner": "Inner Page (short hero, centered heading)" },
+                            "choices": {
+                                "standard": "Standard (heading only, index.html)",
+                                "business": "Business (subheading + buttons)",
+                                "inner": "Inner Page (short hero, centered heading)"
+                            },
                             "default_value": "standard",
                             "ui": 1
                         },
@@ -155,12 +192,49 @@
                             ]
                         },
                         {
+                            "key": "field_aik_hero_subheading_ur",
+                            "label": "Subheading (Urdu)",
+                            "name": "subheading_ur",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Optional Urdu subheading for Business hero.",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_style",
+                                        "operator": "==",
+                                        "value": "business"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
                             "key": "field_aik_hero_button1_text",
                             "label": "Button 1 Text",
                             "name": "button_1_text",
                             "type": "text",
                             "default_value": "Get Started Digitally",
-                            "wrapper": { "width": "50" },
+                            "wrapper": {
+                                "width": "50"
+                            },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_style",
+                                        "operator": "==",
+                                        "value": "business"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_hero_button1_text_ur",
+                            "label": "Button 1 Text (Urdu)",
+                            "name": "button_1_text_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            },
                             "conditional_logic": [
                                 [
                                     {
@@ -176,7 +250,9 @@
                             "label": "Button 1 Link",
                             "name": "button_1_link",
                             "type": "url",
-                            "wrapper": { "width": "50" },
+                            "wrapper": {
+                                "width": "50"
+                            },
                             "conditional_logic": [
                                 [
                                     {
@@ -193,7 +269,27 @@
                             "name": "button_2_text",
                             "type": "text",
                             "default_value": "Speak to an Expert",
-                            "wrapper": { "width": "50" },
+                            "wrapper": {
+                                "width": "50"
+                            },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_hero_style",
+                                        "operator": "==",
+                                        "value": "business"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_hero_button2_text_ur",
+                            "label": "Button 2 Text (Urdu)",
+                            "name": "button_2_text_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            },
                             "conditional_logic": [
                                 [
                                     {
@@ -209,7 +305,9 @@
                             "label": "Button 2 Link",
                             "name": "button_2_link",
                             "type": "url",
-                            "wrapper": { "width": "50" },
+                            "wrapper": {
+                                "width": "50"
+                            },
                             "conditional_logic": [
                                 [
                                     {
@@ -235,14 +333,42 @@
                             "type": "textarea",
                             "rows": 2,
                             "instructions": "Wrap highlighted words in **double asterisks**.",
-                            "default_value": "Experience a **borderless** **digital** wallet where Shariah compliance meets high **velocity banking**"
+                            "default_value": "Experience a **borderless** **digital** wallet where Shariah compliance meets high **velocity banking**",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_about_heading_ur",
+                            "label": "Heading (Urdu)",
+                            "name": "heading_ur",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Optional. Wrap highlighted words in **double asterisks**.",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_about_description",
                             "label": "Description",
                             "name": "description",
                             "type": "textarea",
-                            "rows": 2
+                            "rows": 2,
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_about_description_ur",
+                            "label": "Description (Urdu)",
+                            "name": "description_ur",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Optional Urdu description.",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_about_button_text",
@@ -250,14 +376,27 @@
                             "name": "button_text",
                             "type": "text",
                             "default_value": "Read More",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_about_button_text_ur",
+                            "label": "Button Text (Urdu)",
+                            "name": "button_text_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_about_button_link",
                             "label": "Button Link",
                             "name": "button_link",
                             "type": "url",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         }
                     ]
                 },
@@ -273,7 +412,20 @@
                             "name": "heading",
                             "type": "text",
                             "instructions": "Wrap highlighted words in **double asterisks**.",
-                            "default_value": "Enjoy a **Better Payment** Experience"
+                            "default_value": "Enjoy a **Better Payment** Experience",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_bento_heading_ur",
+                            "label": "Heading (Urdu)",
+                            "name": "heading_ur",
+                            "type": "text",
+                            "instructions": "Optional. Wrap highlighted words in **double asterisks**.",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_bento_custom_grid",
@@ -295,7 +447,9 @@
                                 "small_first": "2 Small cards, then 2 Big"
                             },
                             "default_value": "big_first",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_bento_cards",
@@ -314,7 +468,9 @@
                                     "type": "image",
                                     "return_format": "array",
                                     "preview_size": "thumbnail",
-                                    "wrapper": { "width": "25" }
+                                    "wrapper": {
+                                        "width": "25"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_bento_card_image",
@@ -323,14 +479,27 @@
                                     "type": "image",
                                     "return_format": "array",
                                     "preview_size": "medium",
-                                    "wrapper": { "width": "25" }
+                                    "wrapper": {
+                                        "width": "25"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_bento_card_title",
                                     "label": "Title",
                                     "name": "title",
                                     "type": "text",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_bento_card_title_ur",
+                                    "label": "Title (Urdu)",
+                                    "name": "title_ur",
+                                    "type": "text",
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_bento_card_desc",
@@ -338,7 +507,19 @@
                                     "name": "description",
                                     "type": "textarea",
                                     "rows": 2,
-                                    "wrapper": { "width": "100" }
+                                    "wrapper": {
+                                        "width": "100"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_bento_card_desc_ur",
+                                    "label": "Description (Urdu)",
+                                    "name": "description_ur",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": {
+                                        "width": "100"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_bento_card_link",
@@ -346,7 +527,9 @@
                                     "name": "link",
                                     "type": "url",
                                     "instructions": "Optional. If set, the whole card becomes clickable.",
-                                    "wrapper": { "width": "100" }
+                                    "wrapper": {
+                                        "width": "100"
+                                    }
                                 }
                             ]
                         },
@@ -365,7 +548,27 @@
                             "name": "button_label",
                             "type": "text",
                             "default_value": "See More",
-                            "wrapper": { "width": "50" },
+                            "wrapper": {
+                                "width": "50"
+                            },
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_bento_show_button",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "key": "field_aik_bento_button_label_ur",
+                            "label": "Button Label (Urdu)",
+                            "name": "button_label_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            },
                             "conditional_logic": [
                                 [
                                     {
@@ -381,7 +584,9 @@
                             "label": "Button Link",
                             "name": "button_link",
                             "type": "url",
-                            "wrapper": { "width": "50" },
+                            "wrapper": {
+                                "width": "50"
+                            },
                             "conditional_logic": [
                                 [
                                     {
@@ -417,7 +622,21 @@
                             "type": "textarea",
                             "rows": 2,
                             "instructions": "Wrap highlighted words in **double asterisks**.",
-                            "default_value": "Spend **Smarter,** the **Halal** Way"
+                            "default_value": "Spend **Smarter,** the **Halal** Way",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_smarter_heading_ur",
+                            "label": "Heading (Urdu)",
+                            "name": "heading_ur",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Optional. Wrap highlighted words in **double asterisks**.",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_smarter_description",
@@ -425,7 +644,21 @@
                             "name": "description",
                             "type": "textarea",
                             "rows": 3,
-                            "instructions": "Plain paragraph, optional. Shown above Bullet List Items if both are filled in — e.g. an intro line before a \"Why Choose\" / \"Key Features\" list. Leave blank for list-only sections. Wrap words in **double asterisks** to highlight them in yellow, or __double underscores__ for plain bold (no color change), same as the Heading field."
+                            "instructions": "Plain paragraph, optional. Shown above Bullet List Items if both are filled in — e.g. an intro line before a \"Why Choose\" / \"Key Features\" list. Leave blank for list-only sections. Wrap words in **double asterisks** to highlight them in yellow, or __double underscores__ for plain bold (no color change), same as the Heading field.",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_smarter_description_ur",
+                            "label": "Description (Urdu)",
+                            "name": "description_ur",
+                            "type": "textarea",
+                            "rows": 3,
+                            "instructions": "Optional Urdu description.",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_smarter_list_items",
@@ -443,7 +676,18 @@
                                     "label": "Item Heading",
                                     "name": "item_heading",
                                     "type": "text",
-                                    "wrapper": { "width": "35" }
+                                    "wrapper": {
+                                        "width": "35"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_smarter_list_item_heading_ur",
+                                    "label": "Item Heading (Urdu)",
+                                    "name": "item_heading_ur",
+                                    "type": "text",
+                                    "wrapper": {
+                                        "width": "35"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_smarter_list_item_text",
@@ -451,7 +695,19 @@
                                     "name": "item_text",
                                     "type": "textarea",
                                     "rows": 2,
-                                    "wrapper": { "width": "65" }
+                                    "wrapper": {
+                                        "width": "65"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_smarter_list_item_text_ur",
+                                    "label": "Item Text (Urdu)",
+                                    "name": "item_text_ur",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": {
+                                        "width": "65"
+                                    }
                                 }
                             ]
                         },
@@ -473,14 +729,27 @@
                                     "type": "image",
                                     "return_format": "array",
                                     "preview_size": "thumbnail",
-                                    "wrapper": { "width": "40" }
+                                    "wrapper": {
+                                        "width": "40"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_smarter_icon_item_label",
                                     "label": "Label",
                                     "name": "icon_label",
                                     "type": "text",
-                                    "wrapper": { "width": "60" }
+                                    "wrapper": {
+                                        "width": "60"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_smarter_icon_item_label_ur",
+                                    "label": "Label (Urdu)",
+                                    "name": "icon_label_ur",
+                                    "type": "text",
+                                    "wrapper": {
+                                        "width": "60"
+                                    }
                                 }
                             ]
                         },
@@ -490,9 +759,14 @@
                             "name": "media_type",
                             "type": "select",
                             "instructions": "Choose whether the side column below shows the Image or the Video field.",
-                            "choices": { "image": "Image", "video": "Video" },
+                            "choices": {
+                                "image": "Image",
+                                "video": "Video"
+                            },
                             "default_value": "image",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_smarter_image",
@@ -535,9 +809,14 @@
                             "name": "image_position",
                             "type": "select",
                             "instructions": "Applies to whichever media type is selected above.",
-                            "choices": { "right": "Right", "left": "Left" },
+                            "choices": {
+                                "right": "Right",
+                                "left": "Left"
+                            },
                             "default_value": "right",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_smarter_bg_style",
@@ -545,9 +824,15 @@
                             "name": "background_style",
                             "type": "select",
                             "instructions": "Most sections use \"Default\" (the dark textured smarter_bg.png overlay seen throughout the site). Use \"None\" for plain white/transparent sections (e.g. Debit Card's \"Your Key to Everyday Savings\"). Use \"Custom Image\" for text-only sections with their own full background image (e.g. \"Start Saving Today\").",
-                            "choices": { "default": "Default (dark textured background)", "none": "None (no background overlay)", "custom": "Custom Background Image" },
+                            "choices": {
+                                "default": "Default (dark textured background)",
+                                "none": "None (no background overlay)",
+                                "custom": "Custom Background Image"
+                            },
                             "default_value": "default",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_smarter_bg_image",
@@ -589,18 +874,31 @@
                             "label": "Left Grid Decoration",
                             "name": "grid_left",
                             "type": "select",
-                            "choices": { "none": "None", "bottom_left": "Bottom Left", "top_left": "Top Left", "center_left": "Center Left" },
+                            "choices": {
+                                "none": "None",
+                                "bottom_left": "Bottom Left",
+                                "top_left": "Top Left",
+                                "center_left": "Center Left"
+                            },
                             "default_value": "none",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_smarter_grid_right",
                             "label": "Right Grid Decoration",
                             "name": "grid_right",
                             "type": "select",
-                            "choices": { "none": "None", "top_right": "Top Right", "bottom_right": "Bottom Right" },
+                            "choices": {
+                                "none": "None",
+                                "top_right": "Top Right",
+                                "bottom_right": "Bottom Right"
+                            },
                             "default_value": "none",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_smarter_buttons",
@@ -616,6 +914,12 @@
                                     "key": "field_aik_smarter_btn_label",
                                     "label": "Label",
                                     "name": "label",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "field_aik_smarter_btn_label_ur",
+                                    "label": "Label (Urdu)",
+                                    "name": "label_ur",
                                     "type": "text"
                                 },
                                 {
@@ -662,7 +966,15 @@
                                     "type": "text",
                                     "instructions": "Optional label, e.g. \"Note\". Don't type a trailing colon, it's added automatically.",
                                     "default_value": "Note",
-                                    "wrapper": { "width": "30" }
+                                    "wrapper": {
+                                        "width": "30"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_smarter_note_heading_ur",
+                                    "label": "Note Heading (Urdu)",
+                                    "name": "note_heading_ur",
+                                    "type": "text"
                                 },
                                 {
                                     "key": "field_aik_smarter_note_text",
@@ -670,7 +982,16 @@
                                     "name": "note_text",
                                     "type": "textarea",
                                     "rows": 2,
-                                    "wrapper": { "width": "70" }
+                                    "wrapper": {
+                                        "width": "70"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_smarter_note_text_ur",
+                                    "label": "Note Text (Urdu)",
+                                    "name": "note_text_ur",
+                                    "type": "textarea",
+                                    "rows": 2
                                 }
                             ]
                         },
@@ -714,7 +1035,18 @@
                             "name": "label_1",
                             "type": "text",
                             "default_value": "Driven by",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_driven_label1_ur",
+                            "label": "Label 1 (Urdu)",
+                            "name": "label_1_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_driven_heading1",
@@ -722,7 +1054,18 @@
                             "name": "heading_1",
                             "type": "text",
                             "default_value": "Ethics",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_driven_heading1_ur",
+                            "label": "Heading 1 (Urdu)",
+                            "name": "heading_1_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_driven_label2",
@@ -730,7 +1073,18 @@
                             "name": "label_2",
                             "type": "text",
                             "default_value": "Led by",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_driven_label2_ur",
+                            "label": "Label 2 (Urdu)",
+                            "name": "label_2_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_driven_heading2",
@@ -738,7 +1092,18 @@
                             "name": "heading_2",
                             "type": "text",
                             "default_value": "Innovation.",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_driven_heading2_ur",
+                            "label": "Heading 2 (Urdu)",
+                            "name": "heading_2_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_driven_bg_image",
@@ -766,6 +1131,14 @@
                             "default_value": "Trusted by **Thousands**, **Perfected** for You."
                         },
                         {
+                            "key": "field_aik_testi_heading_ur",
+                            "label": "Heading (Urdu)",
+                            "name": "heading_ur",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Optional. Wrap highlighted words in **double asterisks**. Leave blank to keep showing the English heading."
+                        },
+                        {
                             "key": "field_aik_testi_description",
                             "label": "Description",
                             "name": "description",
@@ -773,12 +1146,24 @@
                             "rows": 3
                         },
                         {
+                            "key": "field_aik_testi_description_ur",
+                            "label": "Description (Urdu)",
+                            "name": "description_ur",
+                            "type": "textarea",
+                            "rows": 3,
+                            "instructions": "Optional. Leave blank to keep showing the English text."
+                        },
+                        {
                             "key": "field_aik_testi_items",
                             "label": "Testimonials",
                             "name": "testimonials",
                             "type": "relationship",
-                            "post_type": [ "testimonial" ],
-                            "filters": [ "search" ],
+                            "post_type": [
+                                "testimonial"
+                            ],
+                            "filters": [
+                                "search"
+                            ],
                             "return_format": "id",
                             "min": 0,
                             "max": 0,
@@ -798,7 +1183,9 @@
                             "name": "heading_line_1",
                             "type": "text",
                             "default_value": "Download",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_appdl_heading2",
@@ -806,7 +1193,9 @@
                             "name": "heading_line_2",
                             "type": "text",
                             "default_value": "App Now",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_appdl_logo",
@@ -867,12 +1256,38 @@
                             ]
                         },
                         {
+                            "key": "field_aik_dlband_help_heading_ur",
+                            "label": "Help Search Heading (Urdu)",
+                            "name": "help_heading_ur",
+                            "type": "text",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_aik_dlband_show_help",
+                                        "operator": "==",
+                                        "value": "1"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
                             "key": "field_aik_dlband_heading1",
                             "label": "Heading Line 1",
                             "name": "heading_line_1",
                             "type": "text",
                             "default_value": "Download",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_dlband_heading1_ur",
+                            "label": "Heading Line 1 (Urdu)",
+                            "name": "heading_line_1_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_dlband_heading2",
@@ -880,7 +1295,18 @@
                             "name": "heading_line_2",
                             "type": "text",
                             "default_value": "App Now",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_dlband_heading2_ur",
+                            "label": "Heading Line 2 (Urdu)",
+                            "name": "heading_line_2_ur",
+                            "type": "text",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_dlband_logo",
@@ -947,14 +1373,40 @@
                             "name": "heading",
                             "type": "textarea",
                             "rows": 2,
-                            "default_value": "Our Media News"
+                            "default_value": "Our Media News",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_news_heading_ur",
+                            "label": "Heading (Urdu)",
+                            "name": "heading_ur",
+                            "type": "textarea",
+                            "rows": 2,
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_news_description",
                             "label": "Description",
                             "name": "description",
                             "type": "textarea",
-                            "rows": 2
+                            "rows": 2,
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_news_description_ur",
+                            "label": "Description (Urdu)",
+                            "name": "description_ur",
+                            "type": "textarea",
+                            "rows": 2,
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_news_category",
@@ -965,7 +1417,9 @@
                             "field_type": "select",
                             "return_format": "id",
                             "allow_null": 1,
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_news_count",
@@ -974,7 +1428,9 @@
                             "type": "number",
                             "instructions": "Leave blank (or 0) to show every post automatically — no need to update this each time a new one is published. Set a number only if you want to cap the preview to fewer posts than actually exist.",
                             "default_value": "",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         }
                     ]
                 },
@@ -1007,9 +1463,14 @@
                             "name": "columns",
                             "type": "select",
                             "instructions": "How many step cards sit side by side on desktop.",
-                            "choices": { "3": "3 in a row", "4": "4 in a row" },
+                            "choices": {
+                                "3": "3 in a row",
+                                "4": "4 in a row"
+                            },
                             "default_value": "3",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_steps_text_color",
@@ -1017,9 +1478,14 @@
                             "name": "text_color",
                             "type": "select",
                             "instructions": "\"Default\" keeps the alternating yellow/green title color per card. \"White\" makes every card's title and description white instead. The numbered badge is unaffected either way.",
-                            "choices": { "default": "Default (alternating yellow/green)", "white": "White" },
+                            "choices": {
+                                "default": "Default (alternating yellow/green)",
+                                "white": "White"
+                            },
                             "default_value": "default",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_steps_list",
@@ -1039,14 +1505,18 @@
                                     "type": "image",
                                     "return_format": "array",
                                     "preview_size": "medium",
-                                    "wrapper": { "width": "25" }
+                                    "wrapper": {
+                                        "width": "25"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_steps_item_title",
                                     "label": "Title",
                                     "name": "title",
                                     "type": "text",
-                                    "wrapper": { "width": "35" }
+                                    "wrapper": {
+                                        "width": "35"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_steps_item_desc",
@@ -1054,7 +1524,9 @@
                                     "name": "description",
                                     "type": "textarea",
                                     "rows": 2,
-                                    "wrapper": { "width": "40" }
+                                    "wrapper": {
+                                        "width": "40"
+                                    }
                                 }
                             ]
                         }
@@ -1075,6 +1547,13 @@
                             "default_value": "Frequently Asked Questions"
                         },
                         {
+                            "key": "field_aik_faq_heading_ur",
+                            "label": "Heading (Urdu)",
+                            "name": "heading_ur",
+                            "type": "text",
+                            "instructions": "Optional. Leave blank to keep showing the English heading."
+                        },
+                        {
                             "key": "field_aik_faq_items",
                             "label": "Questions",
                             "name": "items",
@@ -1088,7 +1567,20 @@
                                     "key": "field_aik_faq_item_question",
                                     "label": "Question",
                                     "name": "question",
-                                    "type": "text"
+                                    "type": "text",
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_faq_item_question_ur",
+                                    "label": "Question (Urdu)",
+                                    "name": "question_ur",
+                                    "type": "text",
+                                    "instructions": "Optional. Leave blank to keep showing the English text.",
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_faq_item_answer",
@@ -1099,7 +1591,24 @@
                                     "tabs": "visual",
                                     "toolbar": "basic",
                                     "media_upload": 0,
-                                    "delay": 1
+                                    "delay": 1,
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_faq_item_answer_ur",
+                                    "label": "Answer (Urdu)",
+                                    "name": "answer_ur",
+                                    "type": "wysiwyg",
+                                    "instructions": "Optional. Leave blank to keep showing the English answer.",
+                                    "tabs": "visual",
+                                    "toolbar": "basic",
+                                    "media_upload": 0,
+                                    "delay": 1,
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 }
                             ]
                         },
@@ -1118,7 +1627,9 @@
                             "name": "button_label",
                             "type": "text",
                             "default_value": "See More",
-                            "wrapper": { "width": "50" },
+                            "wrapper": {
+                                "width": "50"
+                            },
                             "conditional_logic": [
                                 [
                                     {
@@ -1134,7 +1645,9 @@
                             "label": "Button Link",
                             "name": "button_link",
                             "type": "url",
-                            "wrapper": { "width": "50" },
+                            "wrapper": {
+                                "width": "50"
+                            },
                             "conditional_logic": [
                                 [
                                     {
@@ -1241,7 +1754,9 @@
                                     "return_format": "array",
                                     "preview_size": "medium",
                                     "instructions": "Optional. Leave blank to show a plain PDF icon instead.",
-                                    "wrapper": { "width": "100" }
+                                    "wrapper": {
+                                        "width": "100"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_soc_doc_title",
@@ -1249,7 +1764,9 @@
                                     "name": "title",
                                     "type": "text",
                                     "instructions": "e.g. \"Schedule of Charges — Personal Banking\".",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_soc_doc_file",
@@ -1258,7 +1775,9 @@
                                     "type": "file",
                                     "return_format": "array",
                                     "mime_types": "pdf",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 }
                             ]
                         }
@@ -1305,7 +1824,9 @@
                                     "name": "item_title",
                                     "type": "text",
                                     "instructions": "Optional. Leave blank for an item that's just a bold line + description (e.g. \"Need Help With Something Specific?\").",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_help_item_bold",
@@ -1313,7 +1834,9 @@
                                     "name": "item_bold",
                                     "type": "text",
                                     "instructions": "e.g. \"UAN: 111 245 475\", an email address, \"Head Office\".",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_help_item_bold_link",
@@ -1321,7 +1844,9 @@
                                     "name": "item_bold_link",
                                     "type": "text",
                                     "instructions": "Optional. If set, the Bold Text above becomes a link — e.g. mailto:support@aikdigital.io or tel:111245475. (A plain Text field, not ACF's URL field, since ACF's URL field rejects mailto:/tel: links.)",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_help_item_desc",
@@ -1364,7 +1889,21 @@
                             "type": "textarea",
                             "rows": 2,
                             "instructions": "Wrap highlighted words in **double asterisks**.",
-                            "default_value": "Explore Our **Feature Suite**"
+                            "default_value": "Explore Our **Feature Suite**",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_fs_heading_ur",
+                            "label": "Heading (Urdu)",
+                            "name": "heading_ur",
+                            "type": "textarea",
+                            "rows": 2,
+                            "instructions": "Wrap highlighted words in **double asterisks**.",
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_fs_background_style",
@@ -1372,9 +1911,14 @@
                             "name": "background_style",
                             "type": "select",
                             "instructions": "\"Default\" is the dark green section (heading/tagline/text in white and yellow). \"White\" switches to a plain white background with the heading/tagline/text in green instead — highlighted **words** stay yellow either way.",
-                            "choices": { "default": "Default (dark green background)", "white": "White (plain white background)" },
+                            "choices": {
+                                "default": "Default (dark green background)",
+                                "white": "White (plain white background)"
+                            },
                             "default_value": "default",
-                            "wrapper": { "width": "50" }
+                            "wrapper": {
+                                "width": "50"
+                            }
                         },
                         {
                             "key": "field_aik_fs_bg_image",
@@ -1412,6 +1956,12 @@
                                     "instructions": "Wrap highlighted words in **double asterisks**, e.g. \"RAAST **QR** Payments\"."
                                 },
                                 {
+                                    "key": "field_aik_fs_slide_title_ur",
+                                    "label": "Title (Urdu)",
+                                    "name": "title_ur",
+                                    "type": "text"
+                                },
+                                {
                                     "key": "field_aik_fs_slide_tagline",
                                     "label": "Tagline",
                                     "name": "tagline",
@@ -1419,11 +1969,24 @@
                                     "instructions": "Short yellow highlight line under the title, e.g. \"Say Goodbye to Cash: Accept RAAST QR Payments Instantly\"."
                                 },
                                 {
+                                    "key": "field_aik_fs_slide_tagline_ur",
+                                    "label": "Tagline (Urdu)",
+                                    "name": "tagline_ur",
+                                    "type": "text"
+                                },
+                                {
                                     "key": "field_aik_fs_slide_desc",
                                     "label": "Description",
                                     "name": "description",
                                     "type": "textarea",
                                     "rows": 2
+                                },
+                                {
+                                    "key": "field_aik_fs_slide_desc_ur",
+                                    "label": "Description (Urdu)",
+                                    "name": "description_ur",
+                                    "type": "textarea",
+                                    "rows": 3
                                 },
                                 {
                                     "key": "field_aik_fs_slide_list",
@@ -1441,7 +2004,9 @@
                                             "label": "Item Heading",
                                             "name": "item_heading",
                                             "type": "text",
-                                            "wrapper": { "width": "35" }
+                                            "wrapper": {
+                                                "width": "35"
+                                            }
                                         },
                                         {
                                             "key": "field_aik_fs_slide_list_item_text",
@@ -1449,7 +2014,9 @@
                                             "name": "item_text",
                                             "type": "textarea",
                                             "rows": 2,
-                                            "wrapper": { "width": "65" }
+                                            "wrapper": {
+                                                "width": "65"
+                                            }
                                         }
                                     ]
                                 },
@@ -1460,16 +2027,29 @@
                                     "type": "image",
                                     "return_format": "array",
                                     "preview_size": "medium",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_fs_slide_layout",
                                     "label": "Layout",
                                     "name": "layout_position",
                                     "type": "select",
-                                    "choices": { "content_left": "Content Left / Image Right", "content_right": "Content Right / Image Left" },
+                                    "choices": {
+                                        "content_left": "Content Left / Image Right",
+                                        "content_right": "Content Right / Image Left"
+                                    },
                                     "default_value": "content_left",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_fs_slide_btn_label_ur",
+                                    "label": "Button Label (Urdu)",
+                                    "name": "button_label_ur",
+                                    "type": "text"
                                 }
                             ]
                         },
@@ -1548,7 +2128,9 @@
                                     "name": "title",
                                     "type": "text",
                                     "default_value": "Experience aik. Join when you're ready.",
-                                    "wrapper": { "width": "100" }
+                                    "wrapper": {
+                                        "width": "100"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_eg_cb_description",
@@ -1556,7 +2138,9 @@
                                     "name": "description",
                                     "type": "textarea",
                                     "rows": 2,
-                                    "wrapper": { "width": "100" }
+                                    "wrapper": {
+                                        "width": "100"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_eg_cb_btn_label",
@@ -1564,14 +2148,18 @@
                                     "name": "button_label",
                                     "type": "text",
                                     "default_value": "Explore as a Guest",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_eg_cb_btn_link",
                                     "label": "Button Link",
                                     "name": "button_link",
                                     "type": "url",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 }
                             ]
                         },
@@ -1623,7 +2211,9 @@
                                     "label": "Title",
                                     "name": "title",
                                     "type": "text",
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 },
                                 {
                                     "key": "field_aik_sm_card_desc",
@@ -1631,9 +2221,177 @@
                                     "name": "description",
                                     "type": "textarea",
                                     "rows": 2,
-                                    "wrapper": { "width": "50" }
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
                                 }
                             ]
+                        }
+                    ]
+                },
+                "layout_aik_how_it_works": {
+                    "key": "layout_aik_how_it_works",
+                    "name": "how_it_works",
+                    "label": "How It Works (Cards)",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_hiw_heading",
+                            "label": "Heading",
+                            "name": "heading",
+                            "type": "text",
+                            "default_value": "How it Works",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_hiw_heading_ur",
+                            "label": "Heading (Urdu)",
+                            "name": "heading_ur",
+                            "type": "text",
+                            "default_value": "یہ کیسے کام کرتا ہے",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_hiw_default_steps",
+                            "label": "Default Steps",
+                            "name": "default_steps",
+                            "type": "select",
+                            "choices": {
+                                "3": "3 Steps",
+                                "4": "4 Steps"
+                            },
+                            "default_value": "3",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_hiw_show_dropdown",
+                            "label": "Show 3/4 Steps Switcher Dropdown",
+                            "name": "show_step_dropdown",
+                            "type": "true_false",
+                            "default_value": 1,
+                            "ui": 1,
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_hiw_steps_list",
+                            "label": "Steps List",
+                            "name": "steps_list",
+                            "type": "repeater",
+                            "layout": "block",
+                            "button_label": "Add Step",
+                            "sub_fields": [
+                                {
+                                    "key": "field_aik_hiw_step_num",
+                                    "label": "Step Number (e.g. 01)",
+                                    "name": "number",
+                                    "type": "text",
+                                    "wrapper": {
+                                        "width": "20"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_hiw_step_title",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "type": "text",
+                                    "wrapper": {
+                                        "width": "40"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_hiw_step_title_ur",
+                                    "label": "Title (Urdu)",
+                                    "name": "title_ur",
+                                    "type": "text",
+                                    "wrapper": {
+                                        "width": "40"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_hiw_step_desc",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
+                                },
+                                {
+                                    "key": "field_aik_hiw_step_desc_ur",
+                                    "label": "Description (Urdu)",
+                                    "name": "description_ur",
+                                    "type": "textarea",
+                                    "rows": 2,
+                                    "wrapper": {
+                                        "width": "50"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "layout_aik_ba_banner": {
+                    "key": "layout_aik_ba_banner",
+                    "name": "ba_banner",
+                    "label": "Brand Ambassador Bottom Banner",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_aik_ba_banner_title",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text",
+                            "default_value": "Become a Brand Ambassador",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_ba_banner_title_ur",
+                            "label": "Title (Urdu)",
+                            "name": "title_ur",
+                            "type": "text",
+                            "default_value": "ایک برانڈ ایمبیسیڈر بنیں",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_ba_banner_subtext",
+                            "label": "Subtext",
+                            "name": "subtext",
+                            "type": "text",
+                            "default_value": "© 2026 BankIslami aik. All Shariah principles applied.",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_ba_banner_subtext_ur",
+                            "label": "Subtext (Urdu)",
+                            "name": "subtext_ur",
+                            "type": "text",
+                            "default_value": "© 2026 BankIslami aik. تمام شریعت کے اصول لاگو ہیں۔",
+                            "wrapper": {
+                                "width": "50"
+                            }
+                        },
+                        {
+                            "key": "field_aik_ba_banner_bg_image",
+                            "label": "Background Image",
+                            "name": "bg_image",
+                            "type": "image",
+                            "return_format": "array",
+                            "preview_size": "large"
                         }
                     ]
                 }

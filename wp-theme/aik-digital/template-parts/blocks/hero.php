@@ -4,6 +4,7 @@
  */
 
 $heading           = get_sub_field( 'heading' );
+$heading_ur        = get_sub_field( 'heading_ur' );
 $bg_image          = get_sub_field( 'bg_image' );
 $mobile_image      = get_sub_field( 'mobile_image' );
 $pill_1_icon       = get_sub_field( 'pill_1_icon' );
@@ -11,14 +12,18 @@ $pill_1_text       = get_sub_field( 'pill_1_text' );
 $pill_1_text_ur    = get_sub_field( 'pill_1_text_ur' );
 $pill_2_icon       = get_sub_field( 'pill_2_icon' );
 $pill_2_text       = get_sub_field( 'pill_2_text' );
+$pill_2_text_ur    = get_sub_field( 'pill_2_text_ur' );
 $show_interest     = get_sub_field( 'show_no_interest_banner' );
 $interest_image    = get_sub_field( 'no_interest_image' );
 
 $hero_style        = get_sub_field( 'hero_style' ); // 'standard' | 'business' | 'inner'
 $subheading        = get_sub_field( 'subheading' );
+$subheading_ur     = get_sub_field( 'subheading_ur' );
 $btn_1_text        = get_sub_field( 'button_1_text' );
+$btn_1_text_ur     = get_sub_field( 'button_1_text_ur' );
 $btn_1_link        = get_sub_field( 'button_1_link' );
 $btn_2_text        = get_sub_field( 'button_2_text' );
+$btn_2_text_ur     = get_sub_field( 'button_2_text_ur' );
 $btn_2_link        = get_sub_field( 'button_2_link' );
 $mobile_bg_image   = get_sub_field( 'mobile_bg_image' );
 
@@ -50,7 +55,7 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
               </picture>
             </div>
             <div class="debit-hero-caption">
-              <h1><?php echo aik_highlight( $heading ); ?></h1>
+              <h1 data-en="<?php echo esc_attr( aik_highlight( $heading ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $heading_ur ? $heading_ur : $heading ) ); ?>"><?php echo aik_highlight( $heading ); ?></h1>
             </div>
           </article>
         </section>
@@ -71,17 +76,17 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
             </div>
             <div class="logo_arch"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/logo-arch.svg" alt="arch" data-aos="zoom-in"></div>
             <section class="hero_main_text">
-              <h1 class="hero_main_text_title home_main_title" data-aos="fade-right"><?php echo aik_highlight( $heading ); ?></h1>
+              <h1 class="hero_main_text_title home_main_title" data-aos="fade-right" data-en="<?php echo esc_attr( aik_highlight( $heading ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $heading_ur ? $heading_ur : $heading ) ); ?>"><?php echo aik_highlight( $heading ); ?></h1>
               <?php if ( $subheading ) : ?>
-              <p class="hero_main_text_desc" data-aos="fade-up"><?php echo aik_nl2br( $subheading ); ?></p>
+              <p class="hero_main_text_desc" data-aos="fade-up" data-en="<?php echo esc_attr( aik_nl2br( $subheading ) ); ?>" data-ur="<?php echo esc_attr( aik_nl2br( $subheading_ur ? $subheading_ur : $subheading ) ); ?>"><?php echo aik_nl2br( $subheading ); ?></p>
               <?php endif; ?>
               <?php if ( $btn_1_text || $btn_2_text ) : ?>
               <div class="hero_btn_group d-flex align-items-center gap-3" data-aos="fade-up" data-aos-delay="100">
                 <?php if ( $btn_1_text ) : ?>
-                <a href="<?php echo esc_url( $btn_1_link ? $btn_1_link : 'javascript:void(0);' ); ?>" class="btn btn_fill"><?php echo esc_html( $btn_1_text ); ?></a>
+                <a href="<?php echo esc_url( $btn_1_link ? $btn_1_link : 'javascript:void(0);' ); ?>" class="btn btn_fill" data-en="<?php echo esc_attr( $btn_1_text ); ?>" data-ur="<?php echo esc_attr( $btn_1_text_ur ? $btn_1_text_ur : $btn_1_text ); ?>"><?php echo esc_html( $btn_1_text ); ?></a>
                 <?php endif; ?>
                 <?php if ( $btn_2_text ) : ?>
-                <a href="<?php echo esc_url( $btn_2_link ? $btn_2_link : 'javascript:void(0);' ); ?>" class="btn btn_fill"><?php echo esc_html( $btn_2_text ); ?></a>
+                <a href="<?php echo esc_url( $btn_2_link ? $btn_2_link : 'javascript:void(0);' ); ?>" class="btn btn_fill" data-en="<?php echo esc_attr( $btn_2_text ); ?>" data-ur="<?php echo esc_attr( $btn_2_text_ur ? $btn_2_text_ur : $btn_2_text ); ?>"><?php echo esc_html( $btn_2_text ); ?></a>
                 <?php endif; ?>
               </div>
               <?php endif; ?>
@@ -97,7 +102,7 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
               <?php if ( $pill_2_text ) : ?>
               <div class="mobile_pill pill_bottom_left" data-aos="zoom-in" data-aos-delay="400" data-aos-offset="0">
                 <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_2_icon['url'] ) ? $pill_2_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
-                <div class="mobile_pill_text"><?php echo esc_html( $pill_2_text ); ?></div>
+                <div class="mobile_pill_text" data-en="<?php echo esc_attr( $pill_2_text ); ?>" data-ur="<?php echo esc_attr( $pill_2_text_ur ? $pill_2_text_ur : $pill_2_text ); ?>"><?php echo esc_html( $pill_2_text ); ?></div>
               </div>
               <?php endif; ?>
             </section>
@@ -130,7 +135,7 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
             <div class="logo_arch"><img src="<?php echo esc_url( AIK_THEME_URI ); ?>/images/logo-arch.svg" alt="arch" data-aos="zoom-in"></div>
             <section class="aik_landing_top">
               <div class="left_text_block" data-aos="fade-right" data-aos-delay="200">
-                <h2><?php echo aik_highlight( $heading ); ?></h2>
+                <h2 data-en="<?php echo esc_attr( aik_highlight( $heading ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $heading_ur ? $heading_ur : $heading ) ); ?>"><?php echo aik_highlight( $heading ); ?></h2>
               </div>
             </section>
             <section class="mobile_track">
@@ -144,13 +149,13 @@ $aik_business_active  = esc_attr( 'business' === $aik_menu_section ? 'active' : 
               <?php if ( $pill_2_text ) : ?>
               <div class="mobile_pill pill_right" data-aos="zoom-in" data-aos-delay="500" data-aos-offset="0">
                 <div class="mobile_pill_icon"><img src="<?php echo esc_url( ! empty( $pill_2_icon['url'] ) ? $pill_2_icon['url'] : AIK_THEME_URI . '/images/icon-arrow.svg' ); ?>" alt="icon"></div>
-                <div class="mobile_pill_text"><?php echo esc_html( $pill_2_text ); ?></div>
+                <div class="mobile_pill_text" data-en="<?php echo esc_attr( $pill_2_text ); ?>" data-ur="<?php echo esc_attr( $pill_2_text_ur ? $pill_2_text_ur : $pill_2_text ); ?>"><?php echo esc_html( $pill_2_text ); ?></div>
               </div>
               <?php endif; ?>
             </section>
             <?php if ( $show_interest && ! empty( $interest_image['url'] ) ) : ?>
             <section class="interest_section custom_interest_section clearfix clear">
-              <div class="container">
+              <div class="no_container">
                 <div class="interest_row w-100 d-flex justify-content-between align-items-center">
                   <div class="interest_text"><img src="<?php echo esc_url( $interest_image['url'] ); ?>" alt="no interest"></div>
                 </div>

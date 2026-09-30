@@ -7,7 +7,9 @@
 
 $top_image       = get_sub_field( 'top_image' );
 $heading         = get_sub_field( 'heading' );
+$heading_ur      = get_sub_field( 'heading_ur' );
 $description     = get_sub_field( 'description' );
+$description_ur  = get_sub_field( 'description_ur' );
 $list_items      = get_sub_field( 'list_items' );
 $icon_items      = get_sub_field( 'icon_items' );
 $media_type      = get_sub_field( 'media_type' ) ?: 'image';
@@ -66,38 +68,58 @@ $grid_right_modifiers = array(
               <?php if ( ! empty( $top_image['url'] ) ) : ?>
               <div class="smarter-sec__top-logo" data-aos="fade-right"><img src="<?php echo esc_url( $top_image['url'] ); ?>" alt="<?php echo esc_attr( $top_image['alt'] ? $top_image['alt'] : '' ); ?>"></div>
               <?php endif; ?>
-              <h2 class="smarter-sec__heading" data-aos="fade-right"><?php echo aik_highlight( $heading ); ?></h2>
+              <h2 class="smarter-sec__heading" data-aos="fade-right" data-en="<?php echo esc_attr( aik_highlight( $heading ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $heading_ur ? $heading_ur : $heading ) ); ?>"><?php echo aik_highlight( $heading ); ?></h2>
               <?php if ( $description ) : ?>
-              <p class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="200"><?php echo aik_highlight( $description ); ?></p>
+              <p class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="200" data-en="<?php echo esc_attr( aik_highlight( $description ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $description_ur ? $description_ur : $description ) ); ?>"><?php echo aik_highlight( $description ); ?></p>
               <?php endif; ?>
               <?php if ( ! empty( $list_items ) ) : ?>
               <ul class="smarter-sec__desc" data-aos="fade-up" data-aos-delay="250">
-                <?php foreach ( $list_items as $item ) : ?>
-                <li><?php if ( $item['item_heading'] ) : ?><span><?php echo esc_html( $item['item_heading'] ); ?>:</span> <?php endif; ?><?php echo aik_nl2br( $item['item_text'] ); ?></li>
+                <?php foreach ( $list_items as $item ) :
+					$item_h    = ! empty( $item['item_heading'] ) ? $item['item_heading'] : '';
+					$item_h_ur = ! empty( $item['item_heading_ur'] ) ? $item['item_heading_ur'] : $item_h;
+					$item_t    = ! empty( $item['item_text'] ) ? $item['item_text'] : '';
+					$item_t_ur = ! empty( $item['item_text_ur'] ) ? $item['item_text_ur'] : $item_t;
+					$en_html   = ( $item_h ? '<span>' . esc_html( $item_h ) . ':</span> ' : '' ) . aik_nl2br( $item_t );
+					$ur_html   = ( $item_h_ur ? '<span>' . esc_html( $item_h_ur ) . ':</span> ' : '' ) . aik_nl2br( $item_t_ur );
+				?>
+                <li data-en="<?php echo esc_attr( $en_html ); ?>" data-ur="<?php echo esc_attr( $ur_html ); ?>"><?php echo $en_html; // phpcs:ignore ?></li>
                 <?php endforeach; ?>
               </ul>
               <?php endif; ?>
               <?php if ( ! empty( $icon_items ) ) : ?>
               <div class="smarter-sec__icons" data-aos="fade-up" data-aos-delay="300">
-                <?php foreach ( $icon_items as $icon_item ) : ?>
+                <?php foreach ( $icon_items as $icon_item ) :
+					$lbl    = ! empty( $icon_item['icon_label'] ) ? $icon_item['icon_label'] : '';
+					$lbl_ur = ! empty( $icon_item['icon_label_ur'] ) ? $icon_item['icon_label_ur'] : $lbl;
+				?>
                 <div class="smarter-sec__icon-item">
                   <span class="smarter-sec__icon-box"><?php aik_the_acf_image( $icon_item['icon_image'], 'smarter-sec__icon-img' ); ?></span>
-                  <span class="smarter-sec__icon-label"><?php echo esc_html( $icon_item['icon_label'] ); ?></span>
+                  <span class="smarter-sec__icon-label" data-en="<?php echo esc_attr( $lbl ); ?>" data-ur="<?php echo esc_attr( $lbl_ur ); ?>"><?php echo esc_html( $lbl ); ?></span>
                 </div>
                 <?php endforeach; ?>
               </div>
               <?php endif; ?>
               <?php if ( ! empty( $buttons ) ) : ?>
               <div class="smarter-sec__btns" data-aos="fade-up" data-aos-delay="400">
-                <?php foreach ( $buttons as $btn ) : ?>
-                  <a href="<?php echo esc_url( $btn['link'] ? $btn['link'] : '#' ); ?>" class="btn btn_fill smarter-sec__btn"><?php echo esc_html( $btn['label'] ); ?></a>
+                <?php foreach ( $buttons as $btn ) :
+					$b_lbl    = ! empty( $btn['label'] ) ? $btn['label'] : '';
+					$b_lbl_ur = ! empty( $btn['label_ur'] ) ? $btn['label_ur'] : $b_lbl;
+				?>
+                  <a href="<?php echo esc_url( $btn['link'] ? $btn['link'] : '#' ); ?>" class="btn btn_fill smarter-sec__btn" data-en="<?php echo esc_attr( $b_lbl ); ?>" data-ur="<?php echo esc_attr( $b_lbl_ur ); ?>"><?php echo esc_html( $b_lbl ); ?></a>
                 <?php endforeach; ?>
               </div>
               <?php endif; ?>
               <?php if ( $show_notes && ! empty( $notes ) ) : ?>
               <div class="note" data-aos="fade-up" data-aos-delay="450">
-                <?php foreach ( $notes as $note ) : ?>
-                <p class="smarter-sec__desc_note"><?php if ( $note['note_heading'] ) : ?><strong><?php echo esc_html( $note['note_heading'] ); ?>:</strong> <?php endif; ?><?php echo aik_nl2br( $note['note_text'] ); ?></p>
+                <?php foreach ( $notes as $note ) :
+					$n_h    = ! empty( $note['note_heading'] ) ? $note['note_heading'] : '';
+					$n_h_ur = ! empty( $note['note_heading_ur'] ) ? $note['note_heading_ur'] : $n_h;
+					$n_t    = ! empty( $note['note_text'] ) ? $note['note_text'] : '';
+					$n_t_ur = ! empty( $note['note_text_ur'] ) ? $note['note_text_ur'] : $n_t;
+					$en_note = ( $n_h ? '<strong>' . esc_html( $n_h ) . ':</strong> ' : '' ) . aik_nl2br( $n_t );
+					$ur_note = ( $n_h_ur ? '<strong>' . esc_html( $n_h_ur ) . ':</strong> ' : '' ) . aik_nl2br( $n_t_ur );
+				?>
+                <p class="smarter-sec__desc_note" data-en="<?php echo esc_attr( $en_note ); ?>" data-ur="<?php echo esc_attr( $ur_note ); ?>"><?php echo $en_note; // phpcs:ignore ?></p>
                 <?php endforeach; ?>
               </div>
               <?php endif; ?>

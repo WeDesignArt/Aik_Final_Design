@@ -8,16 +8,19 @@
  * so pages already using that one keep their existing design.
  */
 
-$show_help    = get_sub_field( 'show_help_search' );
-$help_heading = get_sub_field( 'help_heading' );
-$heading_1    = get_sub_field( 'heading_line_1' );
-$heading_2    = get_sub_field( 'heading_line_2' );
-$logo         = get_sub_field( 'logo_image' );
-$qr           = get_sub_field( 'qr_image' );
-$phone        = get_sub_field( 'phone_image' );
-$phone_mobile = get_sub_field( 'phone_image_mobile' );
-$bg_band      = get_sub_field( 'bg_band_image' );
-$bg_mobile    = get_sub_field( 'bg_image_mobile' );
+$show_help        = get_sub_field( 'show_help_search' );
+$help_heading     = get_sub_field( 'help_heading' );
+$help_heading_ur  = get_sub_field( 'help_heading_ur' );
+$heading_1        = get_sub_field( 'heading_line_1' );
+$heading_1_ur     = get_sub_field( 'heading_line_1_ur' );
+$heading_2        = get_sub_field( 'heading_line_2' );
+$heading_2_ur     = get_sub_field( 'heading_line_2_ur' );
+$logo             = get_sub_field( 'logo_image' );
+$qr               = get_sub_field( 'qr_image' );
+$phone            = get_sub_field( 'phone_image' );
+$phone_mobile     = get_sub_field( 'phone_image_mobile' );
+$bg_band          = get_sub_field( 'bg_band_image' );
+$bg_mobile        = get_sub_field( 'bg_image_mobile' );
 
 $logo_url         = ! empty( $logo['url'] ) ? $logo['url'] : AIK_THEME_URI . '/images/aik_connect_logo-aik.png';
 $qr_url           = ! empty( $qr['url'] ) ? $qr['url'] : AIK_THEME_URI . '/images/aik_connect_qr-code.png';
@@ -29,9 +32,9 @@ $bg_mobile_url    = ! empty( $bg_mobile['url'] ) ? $bg_mobile['url'] : AIK_THEME
       <?php if ( $show_help ) : ?>
       <section class="aik-download-help">
         <div class="container">
-          <h2 class="aik-download-help__heading"><?php echo esc_html( $help_heading ); ?></h2>
+          <h2 class="aik-download-help__heading" data-en="<?php echo esc_attr( $help_heading ); ?>" data-ur="<?php echo esc_attr( $help_heading_ur ? $help_heading_ur : $help_heading ); ?>"><?php echo esc_html( $help_heading ); ?></h2>
           <form class="aik-download-help__search" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
-            <input type="text" name="s" placeholder="Search" autocomplete="off">
+            <input type="text" name="s" placeholder="Search" data-en-placeholder="Search" data-ur-placeholder="تلاش کریں" autocomplete="off">
             <button type="submit" aria-label="Search"><img src="https://wordpress-732216-6548062.cloudwaysapps.com/wp-content/uploads/2026/09/icon_submit.png" alt=""></button>
           </form>
         </div>
@@ -47,7 +50,7 @@ $bg_mobile_url    = ! empty( $bg_mobile['url'] ) ? $bg_mobile['url'] : AIK_THEME
             <img src="<?php echo esc_url( $phone_url ); ?>" alt="aik app phone mockup">
           </div>
 
-          <div class="aik-download-text"><?php echo esc_html( $heading_1 ); ?></div>
+          <div class="aik-download-text" data-en="<?php echo esc_attr( $heading_1 ); ?>" data-ur="<?php echo esc_attr( $heading_1_ur ? $heading_1_ur : $heading_1 ); ?>"><?php echo esc_html( $heading_1 ); ?></div>
 
           <div class="aik-qrcode">
             <img src="<?php echo esc_url( $qr_url ); ?>" alt="QR code">
@@ -55,7 +58,7 @@ $bg_mobile_url    = ! empty( $bg_mobile['url'] ) ? $bg_mobile['url'] : AIK_THEME
 
           <div class="aik-appnow-row">
             <img src="<?php echo esc_url( $logo_url ); ?>" alt="aik logo">
-            <span><?php echo esc_html( $heading_2 ); ?></span>
+            <span data-en="<?php echo esc_attr( $heading_2 ); ?>" data-ur="<?php echo esc_attr( $heading_2_ur ? $heading_2_ur : $heading_2 ); ?>"><?php echo esc_html( $heading_2 ); ?></span>
           </div>
 
         </div>
@@ -66,9 +69,9 @@ $bg_mobile_url    = ! empty( $bg_mobile['url'] ) ? $bg_mobile['url'] : AIK_THEME
         <div class="container position-relative">
           <div class="app-dl-wrap">
             <div class="app-dl-left">
-              <h2 class="app-dl-heading" data-aos="fade-left"><?php echo esc_html( $heading_1 ); ?></h2>
+              <h2 class="app-dl-heading" data-aos="fade-left" data-en="<?php echo esc_attr( $heading_1 ); ?>" data-ur="<?php echo esc_attr( $heading_1_ur ? $heading_1_ur : $heading_1 ); ?>"><?php echo esc_html( $heading_1 ); ?></h2>
               <div class="app-dl-logo"><img src="<?php echo esc_url( $logo_url ); ?>" alt="aik" data-aos="fade-up"></div>
-              <h2 class="app-dl-heading" data-aos="fade-left"><?php echo esc_html( $heading_2 ); ?></h2>
+              <h2 class="app-dl-heading" data-aos="fade-left" data-en="<?php echo esc_attr( $heading_2 ); ?>" data-ur="<?php echo esc_attr( $heading_2_ur ? $heading_2_ur : $heading_2 ); ?>"><?php echo esc_html( $heading_2 ); ?></h2>
               <div class="mt-4 qr_mb text-center"><img src="<?php echo esc_url( $qr_url ); ?>" alt="code" class="img-fluid d-inline-block"></div>
             </div>
             <div class="app-dl-right"><img src="<?php echo esc_url( $phone_mobile_url ); ?>" alt="aik Mobile App" data-aos="fade-left"></div>

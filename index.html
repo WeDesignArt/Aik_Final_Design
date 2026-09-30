@@ -15,7 +15,8 @@
   <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.28/dist/dotlottie-wc.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css?cb=1781771517554">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?cb=1790163326774">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
@@ -71,9 +72,8 @@
           <div class="logo_wrapper"><img src="images/logo-aik.svg" alt="AIK"></div>
         </a>
         <div class="nav_wrapper me-4">
-          <a href="https://aikconnect.aikdigital.co/" target="_blank"
-            class="header-connect-btn d-none d-md-inline-flex" data-en="aik connect"
-            data-ur="aik connect سے رابطہ">aik connect</a>
+          <a href="https://aikconnect.aikdigital.co/" target="_blank" class="header-connect-btn d-none d-md-inline-flex"
+            data-en="aik connect" data-ur="aik connect سے رابطہ">aik connect</a>
 
           <div class="lang-toggle" role="group" aria-label="Language">
             <button type="button" class="lang-toggle__btn is-active" data-lang="en">EN</button>
@@ -134,7 +134,8 @@
 
           <!-- Header row -->
           <div class="srch-drawer-header">
-            <p class="srch-label">What are you looking for?</p>
+            <p class="srch-label" data-en="What are you looking for?" data-ur="آپ کیا تلاش کر رہے ہیں؟">What are you
+              looking for?</p>
             <button class="srch-close" id="searchClose" aria-label="Close search">
               <i class="bi bi-x-lg"></i>
             </button>
@@ -144,11 +145,10 @@
           <div class="srch-input-wrap">
             <i class="bi bi-search srch-input-icon"></i>
             <input type="search" class="srch-input" id="searchInput" placeholder="Search AIK Digital…"
-              autocomplete="off" spellcheck="false">
-            <button class="srch-submit-btn">Search</button>
+              data-en-placeholder="Search AIK Digital…" data-ur-placeholder="AIK ڈیجیٹل تلاش کریں…" autocomplete="off"
+              spellcheck="false">
+            <button class="srch-submit-btn" data-en="Search" data-ur="تلاش کریں">Search</button>
           </div>
-
-
 
         </div>
       </div>
@@ -156,23 +156,37 @@
 
     <div class="off_canvas">
       <div class="off_canvas_wrapper">
+        <div class="off_canvas_lang">
+          <span class="off_canvas_lang_label" data-en="Language:" data-ur="زبان:">Language:</span>
+          <div class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" class="lang-toggle__btn is-active" data-lang="en">EN</button>
+            <button type="button" class="lang-toggle__btn" data-lang="ur">اردو</button>
+          </div>
+        </div>
         <ul id="menu" class="menuNav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="javascript:void(0);">About Us</a></li>
-          <li><a href="javascript:void(0);">Promotion Card</a></li>
-          <li><a href="javascript:void(0);">Features <i class="bi bi-chevron-down aik-menu-arrow"></i></a>
+          <li><a href="index.html"><span data-en="Home" data-ur="ہوم">Home</span></a></li>
+          <li><a href="javascript:void(0);"><span data-en="About Us" data-ur="ہمارے بارے میں">About Us</span></a></li>
+          <li><a href="javascript:void(0);"><span data-en="Promotion Card" data-ur="پروموشن کارڈ">Promotion
+                Card</span></a></li>
+          <li><a href="javascript:void(0);"><span data-en="Features" data-ur="خصوصیات">Features</span> <i
+                class="bi bi-chevron-down aik-menu-arrow"></i></a>
             <ul>
-              <li><a href="javascript:void(0);">Digital Account Opening</a></li>
-              <li><a href="javascript:void(0);">Money Transfer</a></li>
-              <li><a href="javascript:void(0);">Mobile Load</a></li>
-              <li><a href="javascript:void(0);">Utility Bill Payments</a></li>
-              <li><a href="debit-card.html">Debit Card</a></li>
+              <li><a href="javascript:void(0);"><span data-en="Digital Account Opening"
+                    data-ur="ڈیجیٹل اکاؤنٹ کھولنا">Digital Account Opening</span></a></li>
+              <li><a href="javascript:void(0);"><span data-en="Money Transfer" data-ur="رقم کی منتقلی">Money
+                    Transfer</span></a></li>
+              <li><a href="javascript:void(0);"><span data-en="Mobile Load" data-ur="موبائل لوڈ">Mobile Load</span></a>
+              </li>
+              <li><a href="javascript:void(0);"><span data-en="Utility Bill Payments"
+                    data-ur="یوٹیلیٹی بل کی ادائیگی">Utility Bill Payments</span></a></li>
+              <li><a href="debit-card.html"><span data-en="Debit Card" data-ur="ڈیبٹ کارڈ">Debit Card</span></a></li>
             </ul>
           </li>
-          <li><a href="javascript:void(0);">News Media</a></li>
-          <li><a href="javascript:void(0);">Help</a></li>
-          <li><a href="javascript:void(0);">Careers</a></li>
-          <li><a href="javascript:void(0);">Contact Us</a></li>
+          <li><a href="javascript:void(0);"><span data-en="News Media" data-ur="خبریں اور میڈیا">News Media</span></a>
+          </li>
+          <li><a href="javascript:void(0);"><span data-en="Help" data-ur="مدد">Help</span></a></li>
+          <li><a href="javascript:void(0);"><span data-en="Careers" data-ur="کیریئرز">Careers</span></a></li>
+          <li><a href="javascript:void(0);"><span data-en="Contact Us" data-ur="رابطہ کریں">Contact Us</span></a></li>
         </ul>
       </div>
     </div>
@@ -180,8 +194,8 @@
       <section class="home_hero_wrapper index_custom clearfix position-relative bg_primary">
         <section class="home_hero_slider custom_adjustment aik_landing overflow-hidden">
           <div class="app_link_holder"><a href="index.html" class="active"><span data-en="Personal"
-                  data-ur="پرسنل">Personal</span> </a><a
-              href="business.html"><span data-en="Business" data-ur="بزنس">Business</span> </a>
+                data-ur="پرسنل">Personal</span> </a><a href="business.html"><span data-en="Business"
+                data-ur="بزنس">Business</span> </a>
             <!-- <a href="https://aikconnect.aikdigital.co/"
               target="_blank"><span>aik connect</span></a> -->
           </div>
@@ -194,7 +208,9 @@
             <div class="logo_arch"><img src="images/logo-arch.svg" alt="arch" data-aos="zoom-in"></div>
             <section class="aik_landing_top">
               <div class="left_text_block" data-aos="fade-right" data-aos-delay="200">
-                <h2>The Smarter Way to Move <span>Your Money</span></h2>
+                <h2 data-en="The Smarter Way to Move <span>Your Money</span>"
+                  data-ur="آپ کے پیسوں کو منتقل کرنے کا <span>ہوشیار طریقہ</span>">The Smarter Way to Move <span>Your
+                    Money</span></h2>
               </div>
               <div class="hero_main_text d-none">
                 <h1 class="hero_main_text_title home_main_title">Your <span>Digital</span> <span>Wallet</span>, Always
@@ -216,11 +232,12 @@
               </div>
               <div class="mobile_pill pill_right" data-aos="zoom-in" data-aos-delay="500" data-aos-offset="0">
                 <div class="mobile_pill_icon"><img src="images/icon-arrow.svg" alt="icon"></div>
-                <div class="mobile_pill_text">Utilities & Transfers all in one place</div>
+                <div class="mobile_pill_text" data-en="Utilities & Transfers all in one place"
+                  data-ur="یوٹیلیٹیز اور منتقلی سب ایک ہی جگہ">Utilities & Transfers all in one place</div>
               </div>
             </section>
             <section class="interest_section custom_interest_section clearfix clear">
-              <div class="container">
+              <div class="no_container">
                 <div class="interest_row w-100 d-flex justify-content-between align-items-center">
                   <div class="interest_text"><img src="images/no-interest-light.png" alt="no interest"></div>
                 </div>
@@ -250,13 +267,18 @@
                 <div class="row justify-content-center align-items-center g-0">
                   <div class="col-lg-10 text-center">
                     <div class="home_about_section_content text-center">
-                      <h2 class="home_about_section_content_title display-3" data-aos="fade-left">Experience a
+                      <h2 class="home_about_section_content_title display-3" data-aos="fade-left"
+                        data-en="Experience a <span>borderless</span> <span>digital</span> wallet where Shariah compliance meets high <span>velocity banking</span>"
+                        data-ur="ایک <span>بے سرحد</span> <span>ڈیجیٹل</span> والیٹ کا تجربہ کریں جہاں شریعت کی پابندی اور تیز رفتار بینکنگ یکجا ہیں">
+                        Experience a
                         <span>borderless</span> <span>digital</span> wallet where Shariah compliance meets high
                         <span>velocity banking</span>
                       </h2>
-                      <p data-aos="fade-up">Manage, spend, and grow your wealth with aik digital the future of the Halal
-                        economy in your pocket.</p><a href="javascript:void(0);" class="btn btn_fill"
-                        data-aos="fade-right">Read More</a>
+                      <p data-aos="fade-up">aik digital is Pakistan’s upcoming digital financial service offering
+                        seamless transactions, smart savings, and fully Riba-free solutions. Built for individuals and
+                        businesses seeking ethical, modern finance.</p><a href="javascript:void(0);"
+                        class="btn btn_fill" data-aos="fade-right" data-en="Read More" data-ur="مزید پڑھیں">Read
+                        More</a>
                     </div>
                   </div>
                 </div>
@@ -270,8 +292,10 @@
       <section class="bento-grid-section overflow-hidden">
         <div class="container">
           <div class="section_title text-center">
-            <h2 class="section_title_heading pb_60 mx-auto col-lg-9" data-aos="fade-left">Enjoy a <span
-                class="highlight">Better Payment</span> Experience</h2>
+            <h2 class="section_title_heading pb_60 mx-auto col-lg-9" data-aos="fade-left"
+              data-en="Enjoy a <span class=&quot;highlight&quot;>Better Payment</span> Experience"
+              data-ur="ایک <span class=&quot;highlight&quot;>بہتر ادائیگی</span> کے تجربے سے لطف اندوز ہوں">Enjoy a
+              <span class="highlight">Better Payment</span> Experience</h2>
           </div>
           <div class="bento-grid">
 
@@ -287,8 +311,12 @@
                   <div class="bento-card__bg-placeholder bento-card__bg-placeholder--transfers"></div>
                 </div>
                 <div class="bento-card__content">
-                  <h3 class="bento-card__title">Instant Transfers</h3>
-                  <p class="bento-card__desc">Send funds to friends, family, or bank accounts in seconds. Secure,
+                  <h3 class="bento-card__title" data-en="Instant Transfers" data-ur="فوری رقم کی منتقلی">Instant
+                    Transfers</h3>
+                  <p class="bento-card__desc"
+                    data-en="Send funds to friends, family, or bank accounts in seconds. Secure, seamless, and entirely hassle-free."
+                    data-ur="دوستوں، خاندان یا بینک اکاؤنٹس میں سیکنڈوں میں رقم بھیجیں۔ محفوظ، ہموار اور مکمل آسانی۔">
+                    Send funds to friends, family, or bank accounts in seconds. Secure,
                     seamless, and entirely hassle-free.</p>
                 </div>
               </div>
@@ -304,8 +332,11 @@
                   <div class="bento-card__bg-placeholder bento-card__bg-placeholder--airtime"></div>
                 </div>
                 <div class="bento-card__content">
-                  <h3 class="bento-card__title">Easy Airtime</h3>
-                  <p class="bento-card__desc">Never run out of talk time or data. Top up any network instantly, anytime,
+                  <h3 class="bento-card__title" data-en="Easy Airtime" data-ur="آسان ایئر ٹائم">Easy Airtime</h3>
+                  <p class="bento-card__desc"
+                    data-en="Never run out of talk time or data. Top up any network instantly, anytime, anywhere."
+                    data-ur="کبھی بیلنس یا ڈیٹا ختم نہ ہو۔ کسی بھی نیٹ ورک پر فوری ٹاپ اپ کریں، کسی بھی وقت، کہیں بھی۔">
+                    Never run out of talk time or data. Top up any network instantly, anytime,
                     anywhere.</p>
                 </div>
               </div>

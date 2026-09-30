@@ -3,10 +3,12 @@
  * Layout: news
  */
 
-$heading     = get_sub_field( 'heading' );
-$description = get_sub_field( 'description' );
-$category    = get_sub_field( 'category' );
-$count       = (int) get_sub_field( 'count' );
+$heading        = get_sub_field( 'heading' );
+$heading_ur     = get_sub_field( 'heading_ur' );
+$description    = get_sub_field( 'description' );
+$description_ur = get_sub_field( 'description_ur' );
+$category       = get_sub_field( 'category' );
+$count          = (int) get_sub_field( 'count' );
 
 // "Number of Posts" is an optional cap, not a required count — left blank
 // (or 0) it shows every post in the category automatically, so a new post
@@ -24,9 +26,9 @@ $news_query = new WP_Query(
       <section class="md-news-section position-relative overflow-hidden">
         <div class="container">
           <div class="md-news-header" data-aos="fade-up">
-            <h2 class="md-news-title"><?php echo aik_highlight( $heading ); ?></h2>
+            <h2 class="md-news-title" data-en="<?php echo esc_attr( aik_highlight( $heading ) ); ?>" data-ur="<?php echo esc_attr( aik_highlight( $heading_ur ? $heading_ur : $heading ) ); ?>"><?php echo aik_highlight( $heading ); ?></h2>
             <?php if ( $description ) : ?>
-            <p class="md-news-subtitle"><?php echo aik_nl2br( $description ); ?></p>
+            <p class="md-news-subtitle" data-en="<?php echo esc_attr( aik_nl2br( $description ) ); ?>" data-ur="<?php echo esc_attr( aik_nl2br( $description_ur ? $description_ur : $description ) ); ?>"><?php echo aik_nl2br( $description ); ?></p>
             <?php endif; ?>
           </div>
           <?php if ( $news_query->have_posts() ) : ?>
@@ -58,7 +60,7 @@ $news_query = new WP_Query(
                         </div>
                         <h2 class="news-single-content-title"><?php if ( $external_link ) : ?><a href="<?php echo esc_url( $external_link ); ?>" target="_blank" rel="noopener noreferrer"><?php the_title(); ?></a><?php else : ?><?php the_title(); ?><?php endif; ?></h2>
                         <?php if ( $external_link ) : ?>
-                        <a href="<?php echo esc_url( $external_link ); ?>" target="_blank" rel="noopener noreferrer" class="btn read-btn">Read More <i class="ri-arrow-right-line"></i></a>
+                        <a href="<?php echo esc_url( $external_link ); ?>" target="_blank" rel="noopener noreferrer" class="btn read-btn"><span data-en="Read More" data-ur="مزید پڑھیں">Read More</span> <i class="ri-arrow-right-line"></i></a>
                         <?php endif; ?>
                       </div>
                     </article>
@@ -72,7 +74,7 @@ $news_query = new WP_Query(
 
               <button type="button" class="md-news-swiper__nav md-news-swiper__nav--next" aria-label="Next news"><i class="bi bi-arrow-right"></i></button>
             </div>
-            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="300"><a href="<?php echo esc_url( aik_news_index_url() ); ?>" class="btn btn_fill">See More</a></div>
+            <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="300"><a href="<?php echo esc_url( aik_news_index_url() ); ?>" class="btn btn_fill" data-en="See More" data-ur="مزید دیکھیں">See More</a></div>
           </div>
           <?php endif; ?>
         </div>

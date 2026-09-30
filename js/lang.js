@@ -1,10 +1,6 @@
-// EN/UR toggle: swaps text from data-en/data-ur attributes, flips <html dir>
-// for RTL. No content duplication in the DOM, no page reload. Elements
-// without a data-ur (most of the site, until the client sends Urdu copy)
-// just keep showing English when "ur" is selected.
-// ponytail: layout stays LTR-shaped even in RTL (only text direction flips)
-// -- full pixel mirroring (hero, footer grid, icon order) is deferred until
-// real Urdu content shows what actually needs it.
+// EN/UR toggle: swaps text and innerHTML from data-en/data-ur attributes.
+// Supports innerHTML (for highlight spans), input placeholders, and images.
+// Toggles .is-ur only on translated elements to keep layout and un-translated copy intact.
 (function () {
   "use strict";
   var STORAGE_KEY = "aikLang";
@@ -24,40 +20,50 @@
   }
 
   function applyLang(lang) {
-    document.documentElement.lang = lang === "ur" ? "ur" : "en";
+    var isUrdu = lang === "ur";
+    document.documentElement.lang = isUrdu ? "ur" : "en";
 
-    // No blanket dir="rtl" on <html>/<body> -- almost none of the site is
-    // translated yet, and forcing RTL direction onto still-English text
-    // flips its punctuation/reading order (the classic ",Trusted by
-    // Thousands" bug). Only the elements that actually HAVE Urdu text
-    // right now get flipped, via .is-ur below; everything else (the vast
-    // majority, until real content arrives) stays untouched.
+    // Swap text and innerHTML preserving formatting like <span class="highlight_text">
     document.querySelectorAll("[data-en]").forEach(function (el) {
-      var usingUrdu = lang === "ur" && el.dataset.ur;
-      el.textContent = usingUrdu ? el.dataset.ur : el.dataset.en;
+      var usingUrdu = isUrdu && el.dataset.ur;
+      el.innerHTML = usingUrdu ? el.dataset.ur : el.dataset.en;
       el.classList.toggle("is-ur", !!usingUrdu);
     });
 
-    // Same idea for images: <img data-src-en="..." data-src-ur="...">
-    // swaps its src, for sections that need a different graphic in Urdu
-    // (e.g. text baked into the image itself).
-    document.querySelectorAll("[data-src-en]").forEach(function (el) {
-      el.src = (lang === "ur" && el.dataset.srcUr) ? el.dataset.srcUr : el.dataset.srcEn;
+    // Swap input placeholders
+    document.querySelectorAll("[data-en-placeholder]").forEach(function (el) {
+      var usingUrdu = isUrdu && el.dataset.urPlaceholder;
+      el.placeholder = usingUrdu ? el.dataset.urPlaceholder : el.dataset.enPlaceholder;
+      el.classList.toggle("is-ur", !!usingUrdu);
     });
 
+    // Swap images with language variants
+    document.querySelectorAll("[data-src-en]").forEach(function (el) {
+      el.src = (isUrdu && el.dataset.srcUr) ? el.dataset.srcUr : el.dataset.srcEn;
+    });
+
+    // Sync all toggle buttons on the page (header, drawer, etc.)
     document.querySelectorAll(".lang-toggle__btn").forEach(function (btn) {
       btn.classList.toggle("is-active", btn.dataset.lang === lang);
     });
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function init() {
     applyLang(getStoredLang());
 
-    document.querySelectorAll(".lang-toggle__btn").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        setStoredLang(btn.dataset.lang);
-        applyLang(btn.dataset.lang);
-      });
+    // Event delegation so all toggle buttons (including off-canvas drawer) work reliably
+    document.addEventListener("click", function (e) {
+      var btn = e.target.closest(".lang-toggle__btn");
+      if (!btn || !btn.dataset.lang) return;
+      var newLang = btn.dataset.lang;
+      setStoredLang(newLang);
+      applyLang(newLang);
     });
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();

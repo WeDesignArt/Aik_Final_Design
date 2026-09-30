@@ -345,11 +345,11 @@ function aikInitMdNewsSwiper() {
     observeParents: true,
     loop: true,
 
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
+    // autoplay: {
+    //   delay: 4000,
+    //   disableOnInteraction: false,
+    //   pauseOnMouseEnter: true,
+    // },
 
     navigation: {
       nextEl: ".md-news-swiper__nav--next",
@@ -388,6 +388,55 @@ if ( document.readyState === "complete" ) {
   aikInitMdNewsSwiper();
 } else {
   window.addEventListener( "load", aikInitMdNewsSwiper );
+}
+
+// "Explore Our Feature Suite" slider — one slide fully visible at a time,
+// manual nav only (no autoplay), drag/swipe with mouse or touch,
+// mousewheel also steps a slide. Mirrors the WP theme's copy of this
+// function (wp-theme/aik-digital/js/custom.js) exactly.
+function aikInitFeatureSuiteSwipers() {
+  document.querySelectorAll( ".feature-suite-swiper" ).forEach( function ( el ) {
+    var wrap = el.closest( ".feature-suite-swiper-wrap" );
+
+    new Swiper( el, {
+      slidesPerView: 1,
+      loop: true,
+      observer: true,
+      observeParents: true,
+      grabCursor: true,
+
+      mousewheel: {
+        forceToAxis: true,
+      },
+
+      navigation: {
+        nextEl: wrap ? wrap.querySelector( ".feature-suite-swiper__nav--next" ) : null,
+        prevEl: wrap ? wrap.querySelector( ".feature-suite-swiper__nav--prev" ) : null,
+      },
+
+      speed: 700,
+
+      breakpoints: {
+        0: {
+          autoHeight: true,
+        },
+        769: {
+          autoHeight: false,
+        },
+      },
+
+      pagination: {
+        el: el.querySelector( ".feature-suite-swiper__pagination" ),
+        clickable: true,
+      },
+    } );
+  } );
+}
+
+if ( document.readyState === "complete" ) {
+  aikInitFeatureSuiteSwipers();
+} else {
+  window.addEventListener( "load", aikInitFeatureSuiteSwipers );
 }
 
 // "Explore Our Feature Suite" slider — one slide fully visible at a time,
