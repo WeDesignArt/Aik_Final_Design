@@ -257,69 +257,71 @@
 // ========================================
 // SWIPER INITIALIZATION
 // ========================================
-const testimonialSwiper = new Swiper("#testimonialSwiper", {
-  // Slides per view
-  slidesPerView: 1,
+if (typeof Swiper !== "undefined" && document.querySelector("#testimonialSwiper")) {
+  const testimonialSwiper = new Swiper("#testimonialSwiper", {
+    // Slides per view
+    slidesPerView: 1,
 
-  // Space between cards
-  spaceBetween: 24,
+    // Space between cards
+    spaceBetween: 24,
 
-  // Loop infinitely
-  loop: true,
+    // Loop infinitely
+    loop: true,
 
-  // Auto play - medium speed
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-  },
-
-  // Transition speed (ms) - medium
-  speed: 800,
-
-  // Smooth easing
-  autoplayDisableOnInteraction: false,
-
-  // Dots / Pagination
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-    dynamicBullets: false,
-  },
-
-  // Responsive Breakpoints
-  breakpoints: {
-    // Mobile
-    0: {
-      slidesPerView: 1,
-      spaceBetween: 16,
+    // Auto play - medium speed
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
     },
 
-    // Tablet
-    576: {
-      slidesPerView: 1.5,
-      spaceBetween: 20,
+    // Transition speed (ms) - medium
+    speed: 800,
+
+    // Smooth easing
+    autoplayDisableOnInteraction: false,
+
+    // Dots / Pagination
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+      dynamicBullets: false,
     },
 
-    // Small Laptop
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 24,
-    },
+    // Responsive Breakpoints
+    breakpoints: {
+      // Mobile
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 16,
+      },
 
-    // Desktop - 3 cards like image
-    1024: {
-      slidesPerView: 3,
-      spaceBetween: 28,
-    },
+      // Tablet
+      576: {
+        slidesPerView: 1.5,
+        spaceBetween: 20,
+      },
 
-    // Large Desktop
-    1280: {
-      slidesPerView: 3,
-      spaceBetween: 32,
+      // Small Laptop
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 24,
+      },
+
+      // Desktop - 3 cards like image
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 28,
+      },
+
+      // Large Desktop
+      1280: {
+        slidesPerView: 3,
+        spaceBetween: 32,
+      },
     },
-  },
-});
+  });
+}
 
 // Media News — prev/next nav buttons use their own class (.md-news-swiper__nav--prev/--next)
 // instead of Swiper's default .swiper-button-prev/-next, so no CSS is ever

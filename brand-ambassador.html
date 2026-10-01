@@ -318,7 +318,7 @@
             <div class="ba-form__checkbox-wrap">
               <label class="ba-form__check-label" for="baTermsCheck">
                 <input type="checkbox" id="baTermsCheck" name="terms_agree" class="ba-form__checkbox" required>
-                <span class="ba-form__check-text" data-en="I have read and agree to the Brand Ambassador <a href='javascript:void(0);' class='ba-terms-link'>Terms &amp; Conditions</a>." data-ur="میں نے برانڈ ایمبیسیڈر کے <a href='javascript:void(0);' class='ba-terms-link'>شرائط و ضوابط</a> پڑھ لیے ہیں اور ان سے متفق ہوں۔">I have read and agree to the Brand Ambassador <a href="javascript:void(0);" class="ba-terms-link">Terms &amp; Conditions</a>.</span>
+                <span class="ba-form__check-text" data-en="I have read and agree to the Brand Ambassador <a href='brand-ambassador-terms.html' class='ba-terms-link' target='_blank'>Terms &amp; Conditions</a>." data-ur="میں نے برانڈ ایمبیسیڈر کے <a href='brand-ambassador-terms.html' class='ba-terms-link' target='_blank'>شرائط و ضوابط</a> پڑھ لیے ہیں اور ان سے متفق ہوں۔">I have read and agree to the Brand Ambassador <a href="brand-ambassador-terms.html" class="ba-terms-link" target="_blank">Terms &amp; Conditions</a>.</span>
               </label>
             </div>
 
@@ -445,8 +445,18 @@
       if (form) {
         form.addEventListener("submit", function (e) {
           e.preventDefault();
-          // The next step (Terms & Conditions) design will be added when provided
-          alert("Registration details submitted! The Terms & Conditions step will follow next.");
+          try {
+            var regData = {
+              name: document.getElementById("baName").value,
+              age: document.getElementById("baAge").value,
+              city: document.getElementById("baCity").value,
+              institute: document.getElementById("baInstitute").value,
+              account: document.getElementById("baAccount").value,
+              submittedAt: new Date().toISOString()
+            };
+            sessionStorage.setItem("aik_ba_registration", JSON.stringify(regData));
+          } catch (err) {}
+          window.location.href = "brand-ambassador-terms.html";
         });
       }
     })();
